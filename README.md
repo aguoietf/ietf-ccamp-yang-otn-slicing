@@ -1,5 +1,5 @@
 # This is the repository for draft-zheng-ccamp-yang-otn-slicing
-https://tools.ietf.org/html/draft-zheng-ccamp-yang-otn-slicing-01
+https://datatracker.ietf.org/doc/draft-zheng-ccamp-yang-otn-slicing/
 
 # Abstract
 The requirement of slicing network resource with desired quality of service is emerging at every network technology, including the Optical Transport Networks (OTN). As a part of the transport network, OTN can provide hard pipes with guaranteed data isolation and deterministic low latency, which are highly demanded in the Service Level Agreement (SLA).
