@@ -1,8 +1,7 @@
 ---
 coding: utf-8
 
-title: >
-    Framework and Data Model for OTN Network Slicing
+title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
 docname: draft-zheng-ccamp-yang-otn-slicing-02
