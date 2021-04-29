@@ -1,12 +1,27 @@
-# This is the repository for draft-zheng-ccamp-yang-otn-slicing
-https://datatracker.ietf.org/doc/draft-zheng-ccamp-yang-otn-slicing/
+# Framework and YANG of OTN Slices
+
+## Scope
+
+This repository is to facilitate the work on the [IETF CCAMP](https://datatracker.ietf.org/wg/ccamp/documents/) Individual Internet-Draft, "[Framework and YANG of OTN Slices](https://datatracker.ietf.org/doc/draft-zheng-ccamp-yang-otn-slicing/)".
+
+[Diff editor copy vs published version](https://www.ietf.org/rfcdiff?url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
+
 
 # Abstract
-The requirement of slicing network resource with desired quality of service is emerging at every network technology, including the Optical Transport Networks (OTN). As a part of the transport network, OTN can provide hard pipes with guaranteed data isolation and deterministic low latency, which are highly demanded in the Service Level Agreement (SLA).
 
-This document describes a framework for OTN network slicing and a YANG data model augmentation of the OTN topology model. Additional YANG data model augmentations will be defined in a future version of this draft.
+   The requirement of slicing network resource with desired quality of
+   service is emerging at every network technology, including the
+   Optical Transport Networks (OTN). As a part of the transport network,
+   OTN can provide hard pipes with guaranteed data isolation and
+   deterministic low latency, which are highly demanded in the Service
+   Level Agreement (SLA).
 
-# Contributing
+   This document describes a framework for OTN network slicing and a
+   YANG data model augmentation of the OTN topology model. Additional
+   YANG data model augmentations will be defined in a future version of
+   this draft.
+
+## Contributing
 
 This repository relates to activities in the Internet Engineering Task Force
 ([IETF](https://www.ietf.org/)). All material in this repository is considered
@@ -25,7 +40,7 @@ BCP 78, 79, the TLP, and the TLP rules regarding code components (e.g. being
 subject to a Simplified BSD License) in Contributions.
 
 
-# Other Resources
+## Other Resources
 
 Discussion of this work occurs on the
 [CCAMP working group mailing list](https://mailarchive.ietf.org/arch/browse/ccamp/)
