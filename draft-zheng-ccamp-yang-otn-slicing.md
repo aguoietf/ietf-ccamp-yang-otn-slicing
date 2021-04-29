@@ -75,6 +75,7 @@ normative:
    OTN can provide hard pipes with guaranteed data isolation and
    deterministic low latency, which are highly demanded in the Service
    Level Agreement (SLA).
+
    This document describes a framework for OTN network slicing and a
    YANG data model augmentation of the OTN topology model. Additional
    YANG data model augmentations will be defined in a future version of
