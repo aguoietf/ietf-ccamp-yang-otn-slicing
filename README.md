@@ -6,9 +6,9 @@ This repository is to facilitate the work on the [IETF CCAMP](https://datatracke
 
 Diff editor copy vs published version:
 - [Side-by-side diff](https://www.ietf.org/rfcdiff?url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiffurl1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbarsurl1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiffurl1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
+- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiff&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
+- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbars&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
+- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiff&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
 
 # Abstract
 
