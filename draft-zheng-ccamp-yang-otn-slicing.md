@@ -190,64 +190,86 @@ realization of an IETF network slice in OTN network domains.
 
    An OTN slice is a collection of OTN network resources that are used
    to establish a logically dedicated OTN virtual network over one or
-   more OTN networks. For example, the bandwidth of an OTN slice is
-   described in terms of a total number or a specific set of OTN
-tributary slots ; the labels
-   may be specified as OTN tributary slots and/or tributary ports to
-   allow slice users to interconnect devices with matching
-   specifications.
+   more OTN network domains. 
 
-   The relationship between an OTN slice and an IETF network slice
-   {{?I-D.ietf-teas-ietf-network-slice-definition}} is for further discussions.
+   In a single-domain OTN network, the scope of an OTN slice is between 
+   the access link endpoints of corresponding OTN devices. For 
+   multi-domain OTN networks, an end-to-end OTN slice may consist of 
+   multiple OTN subslices, one for each domain, and an OTN subslice may 
+   terminate at an inter-domain OTN link.
 
-   To support the configuration of OTN slices, an OTN slice controller
-   (OTN-SC) can be deployed either outside or within the SDN controller.
-   In the former case, the OTN-SC translates an OTN slice configuration
-   request into a TE topology configuration or a set of TE tunnel
-   configurations, and instantiate it by using the TE topology {{!RFC8795}}
-   or TE tunnel {{!I-D.ietf-teas-yang-te}} interfaces at the MPI (MDSC-to-
-   PNC Interface), as defined in the ACTN framework {{?RFC8453}}.
+   An OTN slice may be preconfigured and activated by the management plane, 
+   or be dynamically provisioned by a higher layer slice controller, e.g. 
+   an IETF network slice controller, based on the traffic demand at the 
+   data layer.
+
+   An OTN slice controller (OTN-SC) is a logical function responsible for
+   the life-cycle management of OTN slices instantiated within the 
+   corresponding OTN network domains. The OTN-SC provides interfaces at 
+   its north bound to allow a higher-layer slice controller or orchestrator 
+   to configure OTN slices, and it interfaces at the south bound with a 
+   network controller or lower-layer slice controller to realize OTN slices.
+   The logical function within the OTN-SC is responsible for translating OTN 
+   slice configurations received from the north bound into concrete slice 
+   realization configurations sent to the network controller from the south
+   bound.
+
+   OTN-SC functionalities may be recursive, in that a higher-level OTN-SC may
+   also designate the creation of OTN slices to a lower-level OTN-SC in a 
+   recursive manner.
+   [Q: add a recursion diagram here?]
+
+   The OTN-SC is a logically independent function which may be deployed in 
+   different means to serve the realization needs. In reference with the 
+   ACTN control framework [RFC8453], an OTN-SC may be deployed
+    -	as an independent network function;
+    -	together with a Physical Network Controller (PNC) for single domain
+    	or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
+    -	together with a higher-level network slice controller to support 
+	    end-to-end network slicing;
+
+
+    [TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
+
+    The OTN-SC translates an OTN slice configuration request into a 
+	TE topology configuration or a set of TE tunnel
+   configurations, and instantiate it by using the TE topology [RFC8795]
+   or TE tunnel [I-D.ietf-teas-yang-te] interfaces at the MPI (MDSC-to-
+   PNC Interface), as defined in the ACTN framework [RFC8453].
    In the latter case, an Orchestrator or an end-to-end slice controller
    may request OTN slices directly through the OTN slicing interface
-   provided by the OTN-SC. A higher-level OTN-SC may also designate the
-   creation of OTN slices to a lower-level OTN-SC in a recursive manner.
-   {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy and the
-   positioning of the OTN slicing interfaces.
+   provided by the OTN-SC. 
+
+
+   Figure 1 illustrates the OTN slicing control hierarchy and the positioning 
+   of the OTN slicing interfaces.
+
 
 ~~~~
                       +--------------------+
                       | Provider's User    |
                       +--------|-----------+
-                               |CMI
+                               | CMI
        +-----------------------+----------------------------+
-       |          Orchestrator / E2E Slice Controller       |
-       +------------+---------------------------+-----------+
-                    |                           |
-                    |                           |
-                    |                           | NSC-NBI
-                    |                    +------+-----------+
-                    |                    | IETF Network     |
-                    |    +---------------+ Slice Controller |
-                    |    |               +---------+--------+
-         OTN-SC NBI |    |OTN-SC NBI               |
-                    |    |                         |
-       +------------+----+----+   OTN-SC NBI       |OTN-SC NBI
-       |       OTN-SC         +---------------+    |
-       +------------+---------+               |    |
-                    |MPI                      |    |
-       +------------|-------------------------|----|--------+
-       | SDN        |                 +-------+----+-------+|
-       | Controller |                 |      OTN-SC        ||
-       |            |                 +-------+------------+|
-       |            |                         |Internal API |
-       |+-----------+-------------------------+------------+|
-       ||                PNC/MDSC-L                        ||
-       |+-----------------------+--------------------------+|
-       +------------------------|---------------------------+
-                                |SBI
-                    +-----------+----------+
-                    |OTN Physical Network  |
-                    +----------------------+
+       |          Orchestrator / E2E Slice Controller       | 
+       +------------+-----------------------------+---------+
+                    |                             | NSC-NBI
+                    |       +---------------------+---------+
+                    |       | IETF Network Slice Controller |
+                    |       +-----+---------------+---------+
+                    |             |               |
+                    | OTN-SC NBI  |               |               
+       +------------+-------------+--------+      |
+       |               OTN-SC              |      |
+       +--------------------------+--------+      |      
+                                  | MPI           | MPI                           
+       +--------------------------+---------------+---------+ 
+       |                         PNC                        | 
+       +--------------------------+-------------------------+ 
+                                  | SBI
+                      +-----------+----------+
+                      |OTN Physical Network  |
+                      +----------------------+
 
 ~~~~
 {: #fig-slice-interfaces title="Positioning of OTN Slicing Interfaces"}
@@ -275,6 +297,8 @@ inter-domain links. In some real network scenarios, OTN network resources
 including tributary slots are managed explicitly by network operators for
 network maintenance considerations. Therefore an OTN slice controller
 shall support configuring an OTN slice with both options.
+
+    [TODO: describe slicing for access links (non-OTN) and OTN links]
 
 # YANG Data Model for OTN Slicing Configuration
 
