@@ -217,31 +217,32 @@ realization of an IETF network slice in OTN network domains.
    OTN-SC functionalities may be recursive, in that a higher-level OTN-SC may
    also designate the creation of OTN slices to a lower-level OTN-SC in a 
    recursive manner.
-   [Q: add a recursion diagram here?]
+
+\[Q: add a recursion diagram here?]
 
    The OTN-SC is a logically independent function which may be deployed in 
    different means to serve the realization needs. In reference with the 
-   ACTN control framework [RFC8453], an OTN-SC may be deployed
-    -	as an independent network function;
-    -	together with a Physical Network Controller (PNC) for single domain
-    	or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
-    -	together with a higher-level network slice controller to support 
-	    end-to-end network slicing;
+   ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
+    - as an independent network function;
+    - together with a Physical Network Controller (PNC) for single domain
+      or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
+    - together with a higher-level network slice controller to support 
+      end-to-end network slicing;
 
 
-    [TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
+\[TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
 
-    The OTN-SC translates an OTN slice configuration request into a 
-	TE topology configuration or a set of TE tunnel
-   configurations, and instantiate it by using the TE topology [RFC8795]
-   or TE tunnel [I-D.ietf-teas-yang-te] interfaces at the MPI (MDSC-to-
-   PNC Interface), as defined in the ACTN framework [RFC8453].
+   The OTN-SC translates an OTN slice configuration request into a 
+   TE topology configuration or a set of TE tunnel
+   configurations, and instantiate it by using the TE topology {{!RFC8795}}
+   or TE tunnel {{!I-D.ietf-teas-yang-te}} interfaces at the MPI (MDSC-to-
+   PNC Interface), as defined in the ACTN framework {{?RFC8453}}.
    In the latter case, an Orchestrator or an end-to-end slice controller
    may request OTN slices directly through the OTN slicing interface
    provided by the OTN-SC. 
 
 
-   Figure 1 illustrates the OTN slicing control hierarchy and the positioning 
+   {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy and the positioning 
    of the OTN slicing interfaces.
 
 
@@ -286,7 +287,7 @@ realization of an IETF network slice in OTN network domains.
       different granularities.
 
    Additionally, since an OTN switch is typically designed to be fully
-non-blocking switchable at the lowest ODU container granularity, , it is
+non-blocking switchable at the lowest ODU container granularity, it is
 desirable to specify just the total number of tributary slots in the
 lowest granularity (e.g. ODU0) when configuring tributary-slot based
 slicing on links and ports internal to an OTN network. In multi-domain
@@ -298,7 +299,7 @@ including tributary slots are managed explicitly by network operators for
 network maintenance considerations. Therefore an OTN slice controller
 shall support configuring an OTN slice with both options.
 
-    [TODO: describe slicing for access links (non-OTN) and OTN links]
+\[TODO: describe slicing for access links (non-OTN) and OTN links]
 
 # YANG Data Model for OTN Slicing Configuration
 
