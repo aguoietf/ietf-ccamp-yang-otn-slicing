@@ -214,24 +214,6 @@ realization of an IETF network slice in OTN network domains.
    realization configurations sent to the network controller from the south
    bound.
 
-   OTN-SC functionalities may be recursive, in that a higher-level OTN-SC may
-   also designate the creation of OTN slices to a lower-level OTN-SC in a 
-   recursive manner.
-
-\[Q: add a recursion diagram here?]
-
-   The OTN-SC is a logically independent function which may be deployed in 
-   different means to serve the realization needs. In reference with the 
-   ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
-    - as an independent network function;
-    - together with a Physical Network Controller (PNC) for single domain
-      or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
-    - together with a higher-level network slice controller to support 
-      end-to-end network slicing;
-
-
-\[TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
-
    The OTN-SC translates an OTN slice configuration request into a 
    TE topology configuration or a set of TE tunnel
    configurations, and instantiate it by using the TE topology {{!RFC8795}}
@@ -242,8 +224,8 @@ realization of an IETF network slice in OTN network domains.
    provided by the OTN-SC. 
 
 
-   {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy and the positioning 
-   of the OTN slicing interfaces.
+   {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy 
+   and the positioning of the OTN slicing interfaces.
 
 
 ~~~~
@@ -274,6 +256,46 @@ realization of an IETF network slice in OTN network domains.
 
 ~~~~
 {: #fig-slice-interfaces title="Positioning of OTN Slicing Interfaces"}
+
+   OTN-SC functionalities may be recursive, in that a higher-level
+   OTN-SC may designate the creation of OTN slices to a lower-level
+   OTN-SC in a recursive manner. This scenario may apply to the
+   creation of OTN slices in multi-domain OTN networks, where 
+   multiple domain-wide OTN slices provisioned by lower-layer
+   OTN-SCs are stitched to support a multi-domain OTN slice
+   provisioned by the higer-level OTN-SC.  Alternatively, an OTN-SC
+   may interface with a Multi-Domain Service Orchestrator (MDSC) to
+   realize OTN slices in multi-domain without OTN-SC recursion. 
+   {{fig-otn-sc-recursion}} illustrates both options for OTN slicing
+   in multi-domain.
+
+~~~~
+    +-------------------+                    +-------------------+
+    |      OTN-SC       |                    |      OTN-SC       |
+    +--------|----------+                    +---|----------|----+
+             |MPI                                |OTN-SC NBI|
+    +--------|----------+                    +---|----+ +---|----+
+    |      MDSC         |                    | OTN-SC | | OTN-SC |
+    +---|----------|----+                    +---|----+ +---|----+
+	    |MPI       |MPI                          |MPI       |MPI
+    +---|----+ +---|----+                    +---|----+ +---|----+
+    |   PNC  | |   PNC  |                    |   PNC  | |   PNC  |
+    +--------+ +--------+                    +--------+ +--------+
+	Multi-domain Option 1                    Multi-domain Option 2
+~~~~
+{: #fig-otn-sc-recursion title="OTN-SC for multi-domain"}
+
+   The OTN-SC is a logically independent function which may be deployed in 
+   different means to cater to the realization needs. In reference with the 
+   ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
+    - as an independent network function;
+    - together with a Physical Network Controller (PNC) for single domain
+      or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
+    - together with a higher-level network slice controller to support 
+      end-to-end network slicing;
+
+\[TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
+
 
    A particular OTN network resource, such as a port or link, may be
    sliced in two modes:
