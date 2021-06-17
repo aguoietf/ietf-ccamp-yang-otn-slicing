@@ -277,11 +277,11 @@ realization of an IETF network slice in OTN network domains.
     +--------|----------+                    +---|----+ +---|----+
     |      MDSC         |                    | OTN-SC | | OTN-SC |
     +---|----------|----+                    +---|----+ +---|----+
-	    |MPI       |MPI                          |MPI       |MPI
+        |MPI       |MPI                          |MPI       |MPI
     +---|----+ +---|----+                    +---|----+ +---|----+
     |   PNC  | |   PNC  |                    |   PNC  | |   PNC  |
     +--------+ +--------+                    +--------+ +--------+
-	Multi-domain Option 1                    Multi-domain Option 2
+    Multi-domain Option 1                    Multi-domain Option 2
 ~~~~
 {: #fig-otn-sc-recursion title="OTN-SC for multi-domain"}
 
