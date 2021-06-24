@@ -183,7 +183,7 @@ the required connectivity between different entities of an end-to-end
 network slice, with a specific commitment. An IETF network slice may be
 composed of network slices from underlying network domains that include
 OTN, in a combination of hierarchical (recursive) or sequential
-(stitched) manner. In this case, an OTN network slice is essentially a
+(stitched) manner. In this case, an OTN slice is essentially a
 realization of an IETF network slice in OTN network domains.
 
 # Framework for OTN slicing
@@ -302,9 +302,9 @@ realization of an IETF network slice in OTN network domains.
 
    -  Link-based slicing, where a link and its associated link
       termination points (LTPs) are dedicatedly allocated to a
-      particular OTN network slice.
+      particular OTN slice.
 
-   -  Tributary-slot based slicing, where multiple OTN network slices
+   -  Tributary-slot based slicing, where multiple OTN slices
       share the same link by allocating different OTN tributary slots in
       different granularities.
 
@@ -313,7 +313,7 @@ non-blocking switchable at the lowest ODU container granularity, it is
 desirable to specify just the total number of tributary slots in the
 lowest granularity (e.g. ODU0) when configuring tributary-slot based
 slicing on links and ports internal to an OTN network. In multi-domain
-OTN network scenarios where separate OTN network slices are created on
+OTN network scenarios where separate OTN slices are created on
 each of the OTN networks and are stitched at inter-domain OTN links, it
 is necessary to specify matching tributary slots at the endpoints of the
 inter-domain links. In some real network scenarios, OTN network resources
