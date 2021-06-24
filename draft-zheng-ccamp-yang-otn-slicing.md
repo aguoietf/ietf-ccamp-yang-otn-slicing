@@ -195,7 +195,7 @@ realization of an IETF network slice in OTN network domains.
    In a single-domain OTN network, the scope of an OTN slice is between 
    the access link endpoints of corresponding OTN devices. For 
    multi-domain OTN networks, an end-to-end OTN slice may consist of 
-   multiple OTN subslices, one for each domain, and an OTN subslice may 
+   multiple OTN segment slices, one for each domain, and an OTN segment slice may 
    terminate at an inter-domain OTN link.
 
    An OTN slice may be preconfigured and activated by the management plane, 
