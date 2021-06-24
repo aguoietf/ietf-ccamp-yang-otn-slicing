@@ -186,6 +186,8 @@ OTN, in a combination of hierarchical (recursive) or sequential
 (stitched) manner. In this case, an OTN slice is essentially a
 realization of an IETF network slice in OTN network domains.
 
+[refer to the example of 5G network slicing in the mid-haul from https://datatracker.ietf.org/doc/html/draft-rokui-5g-transport-slice-00]
+
 # Framework for OTN slicing
 
    An OTN slice is a collection of OTN network resources that are used
@@ -196,7 +198,8 @@ realization of an IETF network slice in OTN network domains.
    the access link endpoints of corresponding OTN devices. For 
    multi-domain OTN networks, an end-to-end OTN slice may consist of 
    multiple OTN segment slices, one for each domain, and an OTN segment slice may 
-   terminate at an inter-domain OTN link.
+   terminate at an inter-domain OTN link. 
+   [rewording: OTN slice includes access links (In IETF NS draft it is using "endpoint" but it refers to UNI client. Check with transport NBI design team]
 
    An OTN slice may be preconfigured and activated by the management plane, 
    or be dynamically provisioned by a higher layer slice controller, e.g. 
@@ -214,7 +217,8 @@ realization of an IETF network slice in OTN network domains.
    
 \[TODO: Describe technology-agnostic vs. technology-specific use cases and the use 
   case for IETF network slice controller. Reference ietf-network-slice w.r.t. 
-  the technology-agnostic use cases.]   
+  the technology-agnostic use cases.]  
+   OTN-SC NBI is technology specific.   
 
    The OTN slice realization configurations may be in the form of a TE topology 
    configuration as defined by the TE topology model {{!RFC8795}}, or a set of 
@@ -241,7 +245,7 @@ realization of an IETF network slice in OTN network domains.
                     |       | IETF Network Slice Controller |
                     |       +-----+---------------+---------+
                     |             |               |
-                    | OTN-SC NBI  |               |               
+                    | OTN-SC NBI  |OTN-SC NBI     |               
        +------------+-------------+--------+      |
        |               OTN-SC              |      |
        +--------------------------+--------+      |      
