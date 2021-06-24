@@ -178,7 +178,7 @@ normative:
 
    An end-to-end network slice, such as a 5G network slice {{TS.28.530-3GPP}} may
 span multiple technological and administrative domains. According to
-{{?I-D.ietf-teas-ietf-network-slice-definition}}, IETF network slice provides
+{{?I-D.ietf-teas-ietf-network-slices}}, IETF network slice provides
 the required connectivity between different entities of an end-to-end
 network slice, with a specific commitment. An IETF network slice may be
 composed of network slices from underlying network domains that include
@@ -207,22 +207,22 @@ realization of an IETF network slice in OTN network domains.
    the life-cycle management of OTN slices instantiated within the 
    corresponding OTN network domains. The OTN-SC provides interfaces at 
    its north bound to allow a higher-layer slice controller or orchestrator 
-   to configure OTN slices, and it interfaces at the south bound with a 
-   network controller or lower-layer slice controller to realize OTN slices.
-   The logical function within the OTN-SC is responsible for translating OTN 
-   slice configurations received from the north bound into concrete slice 
-   realization configurations sent to the network controller from the south
-   bound.
+   to configure OTN slices. The logical function within the OTN-SC is 
+   responsible for translating OTN slice configurations received 
+   from the north bound into concrete slice realization configurations sent
+   to the network controller at the south bound.  
+   
+\[TODO: Describe technology-agnostic vs. technology-specific use cases and the use 
+  case for IETF network slice controller. Reference ietf-network-slice w.r.t. 
+  the technology-agnostic use cases.]   
 
-   The OTN-SC translates an OTN slice configuration request into a 
-   TE topology configuration or a set of TE tunnel
-   configurations, and instantiate it by using the TE topology {{!RFC8795}}
-   or TE tunnel {{!I-D.ietf-teas-yang-te}} interfaces at the MPI (MDSC-to-
-   PNC Interface), as defined in the ACTN framework {{?RFC8453}}.
-   In the latter case, an Orchestrator or an end-to-end slice controller
+   The OTN slice realization configurations may be in the form of a TE topology 
+   configuration as defined by the TE topology model {{!RFC8795}}, or a set of 
+   TE tunnel configurations as defined by the TE Tunnel model 
+   {{!I-D.ietf-teas-yang-te}} at the MPI (MDSC-to-PNC Interface) in the ACTN 
+   framework {{?RFC8453}}. An Orchestrator or an end-to-end slice controller
    may request OTN slices directly through the OTN slicing interface
    provided by the OTN-SC. 
-
 
    {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy 
    and the positioning of the OTN slicing interfaces.
