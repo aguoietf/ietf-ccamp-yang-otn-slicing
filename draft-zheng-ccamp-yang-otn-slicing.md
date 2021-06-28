@@ -29,6 +29,14 @@ author:
     org: Futurewei Technologies
     email: aihuaguo.ietf@gmail.com
   -
+    name: Luis M. Contreras
+    org: Telefonica
+    email: luismiguel.contrerasmurillo@telefonica.com
+  -
+    name: Oscar Gonzalez de Dios 
+    org: Telefonica
+    email: oscar.gonzalezdedios@telefonica.com
+  -
     name: Victor Lopez
     org: Nokia
     email: victor.lopez@nokia.com
