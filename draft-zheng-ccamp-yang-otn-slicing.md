@@ -184,57 +184,50 @@ normative:
 
 ## End-to-end network slicing
 
-   An end-to-end network slice, such as a 5G network slice {{TS.28.530-3GPP}} may
-span multiple technological and administrative domains. According to
-{{?I-D.ietf-teas-ietf-network-slices}}, IETF network slice provides
-the required connectivity between different entities of an end-to-end
-network slice, with a specific commitment. An IETF network slice may be
-composed of network slices from underlying network domains that include
-OTN, in a combination of hierarchical (recursive) or sequential
-(stitched) manner. In this case, an OTN slice is essentially a
-realization of an IETF network slice in OTN network domains.
-
-[refer to the example of 5G network slicing in the mid-haul from https://datatracker.ietf.org/doc/html/draft-rokui-5g-transport-slice-00]
+   In an end-to-end network slicing scenario such as 5G network slicing
+   {{TS.28.530-3GPP}}, an IETF network slice {{?I-D.ietf-teas-ietf-network-slices}}
+   provides the required connectivity between different entities in RAN
+   and CN segments of an end-to-end network slice, with a specific performance
+   commitment.An IETF network slice could be composed of network slices 
+   from multiple technological and adminstrative domains. For OTN network
+   domains, an IETF network slice may be realized by means of slicing OTN
+   network resources, e.g. ODU time slots, to achieve desired performance
+   commitments.
 
 # Framework for OTN slicing
 
-   An OTN slice is a collection of OTN network resources that are used
-   to establish a logically dedicated OTN virtual network over one or
-   more OTN network domains. 
-
-   In a single-domain OTN network, the scope of an OTN slice is between 
-   the access link endpoints of corresponding OTN devices. For 
-   multi-domain OTN networks, an end-to-end OTN slice may consist of 
-   multiple OTN segment slices, one for each domain, and an OTN segment slice may 
-   terminate at an inter-domain OTN link. 
-   [rewording: OTN slice includes access links (In IETF NS draft it is using "endpoint" but it refers to UNI client. Check with transport NBI design team]
-
-   An OTN slice may be preconfigured and activated by the management plane, 
-   or be dynamically provisioned by a higher layer slice controller, e.g. 
-   an IETF network slice controller, based on the traffic demand at the 
-   data layer.
+   An OTN slice is an OTN virtual network topology connecting a number of OTN
+   endpoints using a set of shared or dedicated OTN network resources to
+   satisfy specific service level objectives (SLOs). An OTN slice may include
+   multiple endpoints, each of which may be associated with a set of physical
+   or logical resources, e.g. optical port or time slots, at the access link 
+   termination point (TP) of an OTN network domain. For
+   multi-domain OTN networks, an OTN slice may be realized by multiple OTN
+   segment slices and the endpoints of a segment slice may be associated with
+   physical or logical resources at corresponding inter-domain link 
+   termination points.   
+   
+   OTN slices may be preconfigured by the management plane and presented to 
+   the client via the northbound interface (NBI), or they may be dynamically 
+   provisioned by a higher layer slice controller, e.g. 
+   an IETF network slice controller (IETF NSC) through the NBI.
 
    An OTN slice controller (OTN-SC) is a logical function responsible for
    the life-cycle management of OTN slices instantiated within the 
-   corresponding OTN network domains. The OTN-SC provides interfaces at 
-   its north bound to allow a higher-layer slice controller or orchestrator 
-   to configure OTN slices. The logical function within the OTN-SC is 
-   responsible for translating OTN slice configurations received 
-   from the north bound into concrete slice realization configurations sent
-   to the network controller at the south bound.  
+   corresponding OTN network domains. The OTN-SC provides technology-specific 
+   interfaces at its north bound (OTN-SC NBI) to allow a higher-layer slice 
+   controller or an orchestrator to configure OTN slices with OTN-specific 
+   network resources. The logical function within the OTN-SC is responsible 
+   for translating OTN slice configurations received into concrete slice  
+   realization which can be understood and provisioned by the network  
+   controller at the south bound.
    
-\[TODO: Describe technology-agnostic vs. technology-specific use cases and the use 
-  case for IETF network slice controller. Reference ietf-network-slice w.r.t. 
-  the technology-agnostic use cases.]  
-   OTN-SC NBI is technology specific.   
-
-   The OTN slice realization configurations may be in the form of a TE topology 
-   configuration as defined by the TE topology model {{!RFC8795}}, or a set of 
-   TE tunnel configurations as defined by the TE Tunnel model 
-   {{!I-D.ietf-teas-yang-te}} at the MPI (MDSC-to-PNC Interface) in the ACTN 
-   framework {{?RFC8453}}. An Orchestrator or an end-to-end slice controller
-   may request OTN slices directly through the OTN slicing interface
-   provided by the OTN-SC. 
+   OTN-SC NBI is technology-specific, while the IETF NSC-NBI is technology-
+   agnostic. An IETF NSC may translate its customer's technology-agnostic slice
+   request into an OTN slice request and utilize the OTN-SC NBI to realize 
+   and IETF network slice, or alternatively, it may translate the slicing
+   request into connection provisioning commands and communication directly
+   with the underlying network controller to realize the slice.
 
    {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy 
    and the positioning of the OTN slicing interfaces.
@@ -297,7 +290,7 @@ realization of an IETF network slice in OTN network domains.
 ~~~~
 {: #fig-otn-sc-recursion title="OTN-SC for multi-domain"}
 
-   The OTN-SC is a logically independent function which may be deployed in 
+   OTN-SC is a logically independent function which may be deployed in 
    different means to cater to the realization needs. In reference with the 
    ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
     - as an independent network function;
@@ -307,7 +300,14 @@ realization of an IETF network slice in OTN network domains.
       end-to-end network slicing;
 
 \[TODO: Describe two methods for OTN-SC to create OTN slices: VN type 1 and 2]
-
+   
+   The OTN slice realization configurations may be in the form of a TE topology 
+   configuration as defined by the TE topology model {{!RFC8795}}, or a set of 
+   TE tunnel configurations as defined by the TE Tunnel model 
+   {{!I-D.ietf-teas-yang-te}} at the MPI (MDSC-to-PNC Interface) in the ACTN 
+   framework {{?RFC8453}}. An Orchestrator or an end-to-end slice controller
+   may request OTN slices directly through the OTN slicing interface
+   provided by the OTN-SC. 
 
    A particular OTN network resource, such as a port or link, may be
    sliced in two modes:
