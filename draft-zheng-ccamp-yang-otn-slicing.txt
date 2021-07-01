@@ -5,8 +5,11 @@
 CCAMP Working Group                                             H. Zheng
 Internet-Draft                                                   I. Busi
 Intended status: Standards Track                     Huawei Technologies
-Expires: December 19, 2021                                        A. Guo
+Expires: January 2, 2022                                          A. Guo
                                                   Futurewei Technologies
+                                                            L. Contreras
+                                                                 O. Dios
+                                                              Telefonica
                                                                 V. Lopez
                                                               S. Belotti
                                                                D. Beller
@@ -16,7 +19,7 @@ Expires: December 19, 2021                                        A. Guo
                                                                    CAICT
                                                                  Y. Zhao
                                                             China Mobile
-                                                           June 17, 2021
+                                                           July 01, 2021
 
 
             Framework and Data Model for OTN Network Slicing
@@ -46,19 +49,21 @@ Status of This Memo
    working documents as Internet-Drafts.  The list of current Internet-
    Drafts is at https://datatracker.ietf.org/drafts/current/.
 
+
+
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 1]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 1]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
-   This Internet-Draft will expire on December 19, 2021.
+   This Internet-Draft will expire on January 2, 2022.
 
 Copyright Notice
 
@@ -77,7 +82,7 @@ Copyright Notice
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
    2.  Use Cases for OTN Network Slicing . . . . . . . . . . . . . .   3
      2.1.  Leased Line Services with OTN . . . . . . . . . . . . . .   3
      2.2.  Co-construction and Sharing . . . . . . . . . . . . . . .   3
@@ -99,21 +104,21 @@ Table of Contents
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  13
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  13
    Contributors' Addresses . . . . . . . . . . . . . . . . . . . . .  13
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  13
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  14
+
+
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 2]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
 
 1.  Introduction
 
    The requirement of slicing network resource with desired quality of
    service is emerging at every network technology, including the
    Optical Transport Networks (OTN).  As a part of the transport
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 2]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
    network, OTN can provide hard pipes with guaranteed data isolation
    and deterministic low latency, which are highly demanded in the
    Service Level Agreement (SLA).  This document describes a framework
@@ -156,19 +161,17 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
    system to provision services remotely.  In this scenario, different
    founders' network resources need to be automatically (associated)
    divided, isolated, and visualized.  In addition, all founders have
+
+
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 3]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
    independent O&M capabilities, and should be able to perform service-
    level provisioning in their respective slices.
-
-
-
-
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 3]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
 
 2.3.  Wholesale of optical resources
 
@@ -212,61 +215,61 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 2.5.  End-to-end network slicing
 
-   An end-to-end network slice, such as a 5G network slice
-   [TS.28.530-3GPP] may span multiple technological and administrative
-   domains.  According to [I-D.ietf-teas-ietf-network-slice-definition],
-   IETF network slice provides the required connectivity between
-   different entities of an end-to-end network slice, with a specific
-   commitment.  An IETF network slice may be composed of network slices
+   In an end-to-end network slicing scenario such as 5G network slicing
+   [TS.28.530-3GPP], an IETF network slice
+   [I-D.ietf-teas-ietf-network-slices] provides the required
 
 
 
-Zheng, et al.           Expires December 19, 2021               [Page 4]
+Zheng, et al.            Expires January 2, 2022                [Page 4]
 
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
 
-   from underlying network domains that include OTN, in a combination of
-   hierarchical (recursive) or sequential (stitched) manner.  In this
-   case, an OTN network slice is essentially a realization of an IETF
-   network slice in OTN network domains.
+   connectivity between different entities in RAN and CN segments of an
+   end-to-end network slice, with a specific performance commitment.An
+   IETF network slice could be composed of network slices from multiple
+   technological and adminstrative domains.  For OTN network domains, an
+   IETF network slice may be realized by means of slicing OTN network
+   resources, e.g.  ODU time slots, to achieve desired performance
+   commitments.
 
 3.  Framework for OTN slicing
 
-   An OTN slice is a collection of OTN network resources that are used
-   to establish a logically dedicated OTN virtual network over one or
-   more OTN network domains.
+   An OTN slice is an OTN virtual network topology connecting a number
+   of OTN endpoints using a set of shared or dedicated OTN network
+   resources to satisfy specific service level objectives (SLOs).  An
+   OTN slice may include multiple endpoints, each of which may be
+   associated with a set of physical or logical resources, e.g. optical
+   port or time slots, at the access link termination point (TP) of an
+   OTN network domain.  For multi-domain OTN networks, an OTN slice may
+   be realized by multiple OTN segment slices and the endpoints of a
+   segment slice may be associated with physical or logical resources at
+   corresponding inter-domain link termination points.
 
-   In a single-domain OTN network, the scope of an OTN slice is between
-   the access link endpoints of corresponding OTN devices.  For multi-
-   domain OTN networks, an end-to-end OTN slice may consist of multiple
-   OTN subslices, one for each domain, and an OTN subslice may terminate
-   at an inter-domain OTN link.
-
-   An OTN slice may be preconfigured and activated by the management
-   plane, or be dynamically provisioned by a higher layer slice
-   controller, e.g.  an IETF network slice controller, based on the
-   traffic demand at the data layer.
+   OTN slices may be preconfigured by the management plane and presented
+   to the client via the northbound interface (NBI), or they may be
+   dynamically provisioned by a higher layer slice controller, e.g.  an
+   IETF network slice controller (IETF NSC) through the NBI.
 
    An OTN slice controller (OTN-SC) is a logical function responsible
    for the life-cycle management of OTN slices instantiated within the
-   corresponding OTN network domains.  The OTN-SC provides interfaces at
-   its north bound to allow a higher-layer slice controller or
-   orchestrator to configure OTN slices, and it interfaces at the south
-   bound with a network controller or lower-layer slice controller to
-   realize OTN slices.  The logical function within the OTN-SC is
-   responsible for translating OTN slice configurations received from
-   the north bound into concrete slice realization configurations sent
-   to the network controller from the south bound.
+   corresponding OTN network domains.  The OTN-SC provides technology-
+   specific interfaces at its north bound (OTN-SC NBI) to allow a
+   higher-layer slice controller or an orchestrator to configure OTN
+   slices with OTN-specific network resources.  The logical function
+   within the OTN-SC is responsible for translating OTN slice
+   configurations received into concrete slice
+   realization which can be understood and provisioned by the network
+   controller at the south bound.
 
-   The OTN-SC translates an OTN slice configuration request into a TE
-   topology configuration or a set of TE tunnel configurations, and
-   instantiate it by using the TE topology [RFC8795] or TE tunnel
-   [I-D.ietf-teas-yang-te] interfaces at the MPI (MDSC-to- PNC
-   Interface), as defined in the ACTN framework [RFC8453].  In the
-   latter case, an Orchestrator or an end-to-end slice controller may
-   request OTN slices directly through the OTN slicing interface
-   provided by the OTN-SC.
+   OTN-SC NBI is technology-specific, while the IETF NSC-NBI is
+   technology- agnostic.  An IETF NSC may translate its customer's
+   technology-agnostic slice request into an OTN slice request and
+   utilize the OTN-SC NBI to realize and IETF network slice, or
+   alternatively, it may translate the slicing request into connection
+   provisioning commands and communication directly with the underlying
+   network controller to realize the slice.
 
    Figure 1 illustrates the OTN slicing control hierarchy and the
    positioning of the OTN slicing interfaces.
@@ -274,12 +277,9 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 
 
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 5]
+Zheng, et al.            Expires January 2, 2022                [Page 5]
 
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
 
                          +--------------------+
@@ -294,7 +294,7 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
                        |       | IETF Network Slice Controller |
                        |       +-----+---------------+---------+
                        |             |               |
-                       | OTN-SC NBI  |               |
+                       | OTN-SC NBI  |OTN-SC NBI     |
           +------------+-------------+--------+      |
           |               OTN-SC              |      |
           +--------------------------+--------+      |
@@ -333,9 +333,9 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 
 
-Zheng, et al.           Expires December 19, 2021               [Page 6]
+Zheng, et al.            Expires January 2, 2022                [Page 6]
 
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
 
        +-------------------+                    +-------------------+
@@ -353,48 +353,55 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
                      Figure 2: OTN-SC for multi-domain
 
-   The OTN-SC is a logically independent function which may be deployed
-   in different means to cater to the realization needs.  In reference
-   with the ACTN control framework [RFC8453], an OTN-SC may be deployed
-   - as an independent network function; - together with a Physical
-   Network Controller (PNC) for single domain or with a Multi-Domain
-   Service Orchestrator (MDSC)for multi domain; - together with a
-   higher-level network slice controller to support end-to-end network
-   slicing;
+   OTN-SC is a logically independent function which may be deployed in
+   different means to cater to the realization needs.  In reference with
+   the ACTN control framework [RFC8453], an OTN-SC may be deployed - as
+   an independent network function; - together with a Physical Network
+   Controller (PNC) for single domain or with a Multi-Domain Service
+   Orchestrator (MDSC)for multi domain; - together with a higher-level
+   network slice controller to support end-to-end network slicing;
 
    [TODO: Describe two methods for OTN-SC to create OTN slices: VN type
    1 and 2]
+
+   The OTN slice realization configurations may be in the form of a TE
+   topology configuration as defined by the TE topology model [RFC8795],
+   or a set of TE tunnel configurations as defined by the TE Tunnel
+   model [I-D.ietf-teas-yang-te] at the MPI (MDSC-to-PNC Interface) in
+   the ACTN framework [RFC8453].  An Orchestrator or an end-to-end slice
+   controller may request OTN slices directly through the OTN slicing
+   interface provided by the OTN-SC.
 
    A particular OTN network resource, such as a port or link, may be
    sliced in two modes:
 
    o  Link-based slicing, where a link and its associated link
       termination points (LTPs) are dedicatedly allocated to a
-      particular OTN network slice.
+      particular OTN slice.
 
-   o  Tributary-slot based slicing, where multiple OTN network slices
-      share the same link by allocating different OTN tributary slots in
-      different granularities.
+   o  Tributary-slot based slicing, where multiple OTN slices share the
+      same link by allocating different OTN tributary slots in different
+      granularities.
 
    Additionally, since an OTN switch is typically designed to be fully
    non-blocking switchable at the lowest ODU container granularity, it
    is desirable to specify just the total number of tributary slots in
+
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 7]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
    the lowest granularity (e.g.  ODU0) when configuring tributary-slot
    based slicing on links and ports internal to an OTN network.  In
-   multi-domain OTN network scenarios where separate OTN network slices
-   are created on each of the OTN networks and are stitched at inter-
-   domain OTN links, it is necessary to specify matching tributary slots
-   at the endpoints of the inter-domain links.  In some real network
-   scenarios, OTN network resources including tributary slots are
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 7]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
-   managed explicitly by network operators for network maintenance
+   multi-domain OTN network scenarios where separate OTN slices are
+   created on each of the OTN networks and are stitched at inter-domain
+   OTN links, it is necessary to specify matching tributary slots at the
+   endpoints of the inter-domain links.  In some real network scenarios,
+   OTN network resources including tributary slots are managed
+   explicitly by network operators for network maintenance
    considerations.  Therefore an OTN slice controller shall support
    configuring an OTN slice with both options.
 
@@ -421,6 +428,28 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 4.1.2.  MPI YANG Model Tree
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 8]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
       module: ietf-otn-slice
         augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-
       attributes:
@@ -437,18 +466,6 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
       ../../../../../nt:link/link-id
 
                 Figure 3: OTN network slicing tree diagram
-
-
-
-
-
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 8]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
 
 4.1.3.  MPI YANG Code
 
@@ -482,6 +499,13 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
             for Optical Transport Network Topology";
        }
 
+
+
+Zheng, et al.            Expires January 2, 2022                [Page 9]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
        organization
          "IETF CCAMP Working Group";
        contact
@@ -498,14 +522,6 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
                   <mailto:aihuaguo.ietf@gmail.com>
 
           Editor: Victor Lopez
-
-
-
-Zheng, et al.           Expires December 19, 2021               [Page 9]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
                   <mailto:victor.lopezalvarez@telefonica.com>";
 
        description
@@ -539,6 +555,13 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
         * Groupings
         */
 
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 10]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
        grouping otn-link-slice-profile {
          choice otn-slice-granularity {
            default link;
@@ -554,14 +577,6 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
                key slice-id;
                description
                  "List of slices.";
-
-
-
-Zheng, et al.           Expires December 19, 2021              [Page 10]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
                leaf slice-id {
                  type uint32;
                    description
@@ -595,6 +610,14 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
         * Augments
         */
        augment "/nw:networks/nw:network/nt:link/tet:te/"
+
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 11]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
              + "tet:te-link-attributes" {
          when "../../../nw:network-types/tet:te-topology/"
             + "otntopo:otn-topology" {
@@ -610,13 +633,6 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
      <CODE ENDS>
 
                  Figure 4: OTN network slicing YANG model
-
-
-
-Zheng, et al.           Expires December 19, 2021              [Page 11]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
 
 4.2.  OTN Slicing YANG Model for OTN-SC NBI
 
@@ -645,6 +661,19 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 8.1.  Normative References
 
+
+
+
+
+
+
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 12]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., Bryskin, I.,
               and O. G. D. Dios, "A YANG Data Model for Traffic
@@ -666,21 +695,13 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
               2018, <http://ftp.3gpp.org//Specs/
               archive/28_series/28.530/28530-f10.zip>.
 
-
-
-
-Zheng, et al.           Expires December 19, 2021              [Page 12]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
-
-
 8.2.  Informative References
 
-   [I-D.ietf-teas-ietf-network-slice-definition]
-              Rokui, R., Homma, S., Makhijani, K., Contreras, L. M., and
-              J. Tantsura, "Definition of IETF Network Slices", draft-
-              ietf-teas-ietf-network-slice-definition-01 (work in
-              progress), February 2021.
+   [I-D.ietf-teas-ietf-network-slices]
+              Farrel, A., Gray, E., Drake, J., Rokui, R., Homma, S.,
+              Makhijani, K., Contreras, L. M., and J. Tantsura,
+              "Framework for IETF Network Slices", draft-ietf-teas-ietf-
+              network-slices-03 (work in progress), May 2021.
 
    [RFC8453]  Ceccarelli, D., Ed. and Y. Lee, Ed., "Framework for
               Abstraction and Control of TE Networks (ACTN)", RFC 8453,
@@ -700,6 +721,14 @@ Contributors' Addresses
    Huawei Technologies Canada
 
    Email: henry.yu@huawei.com
+
+
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 13]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
 
 Authors' Addresses
 
@@ -724,10 +753,16 @@ Authors' Addresses
    Email: aihuaguo.ietf@gmail.com
 
 
+   Luis M. Contreras
+   Telefonica
 
-Zheng, et al.           Expires December 19, 2021              [Page 13]
-
-Internet-Draft      Framework and YANG of OTN Slices           June 2021
+   Email: luismiguel.contrerasmurillo@telefonica.com
+
+
+   Oscar Gonzalez de Dios
+   Telefonica
+
+   Email: oscar.gonzalezdedios@telefonica.com
 
 
    Victor Lopez
@@ -740,6 +775,15 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
    Nokia
 
    Email: Sergio.belotti@nokia.com
+
+
+
+
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 14]
+
+Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
 
    Dieter Beller
@@ -781,4 +825,16 @@ Internet-Draft      Framework and YANG of OTN Slices           June 2021
 
 
 
-Zheng, et al.           Expires December 19, 2021              [Page 14]
+
+
+
+
+
+
+
+
+
+
+
+
+Zheng, et al.            Expires January 2, 2022               [Page 15]
