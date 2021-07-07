@@ -138,7 +138,7 @@ normative:
    founders of the network use each other's management and control
    system to provision services remotely. In this scenario, different
    founders' network resources need to be automatically (associated)
-   divided, isolated, and visualized. In addition, all founders have
+   divided, isolated, and visualized. All founders may share or have
    independent O&M capabilities, and should be able to perform service-
    level provisioning in their respective slices.
 
