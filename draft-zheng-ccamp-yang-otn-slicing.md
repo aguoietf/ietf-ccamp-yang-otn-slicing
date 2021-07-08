@@ -282,7 +282,7 @@ normative:
       share the same link by allocating different OTN tributary slots in
       different granularities.
 
-   Furthemore, an OTN switch is typically fully non-blockable switching 
+   Furthermore, an OTN switch is typically fully non-blockable switching 
    at the lowest ODU container granularity, it is
 desirable to specify just the total number of tributary slots in the
 lowest granularity (e.g. ODU0), when configuring tributary-slot based
