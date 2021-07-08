@@ -104,6 +104,58 @@ normative:
    YANG data model augmentations will be defined in a future version of
    this draft.
 
+## Definition of OTN Slice
+   An OTN slice is an OTN virtual network topology connecting a number
+   of OTN endpoints using a set of shared or dedicated OTN network resources to
+   satisfy specific service level objectives (SLOs).
+
+   An OTN slice is a technology-specific realization of an IETF network slice 
+   {{?I-D.ietf-teas-ietf-network-slices}} in the OTN domain, with the
+   capability of configuring slice resources in the term of OTN technologies. 
+   Therefore, all the terms and definitions with respect to network slicing as 
+   defined in {{?I-D.ietf-teas-ietf-network-slices}} apply to OTN slicing.
+   
+   An OTN slice can span multiple OTN administrative domains, encompassing 
+   access links, intra-domain paths, and inter-domain links. 
+   An OTN slice may include multiple endpoints, each associated with a set of physical
+   or logical resources, e.g. optical port or time slots, at the termination point (TP) of 
+   an access link or inter-domain link at an OTN provider edge (PE) equipment. 
+
+   An end-to-end OTN slice may be composed from multiple OTN segment slices in
+   a hierarchical or sequential (or stitched) combination. 
+
+   {{fig-otn-slice}} illustrates the scope of OTN slices in multi-domain environment.
+~~~~
+        <-------------------End-to-end OTN Slice----------------->
+
+        <-- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 --->
+
+
+          +-------------------------+  +-----------------------+
+          | +-----+      +-------+  |  | +-------+      +-----+|
+ +----+   | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||    +----+
+ | CE +---+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+----+ CE |
+ +----+   |/|     |      | Node  |\ |  | | Node  |      |     ||    +----+
+        | ||+-----+      +-------+ ||| | +-------+      +-----+| |
+        | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
+        | ++-----------------------++| +-----------------------+ |
+        |  |                       | |                           |
+        |  +-----+    +------------+ |                           |
+        |        |    |              |                           |
+        V        V    V              V                           V
+     Access     OTN Slice        Inter-domain                  Access
+     Link       Endpoint         Link                          Link
+
+~~~~
+{: #fig-otn-slice title="OTN Slice"}
+
+   OTN slices may be pre-configured by the management plane and presented to 
+   the customer via the northbound interface (NBI), or they may be dynamically 
+   provisioned by a higher layer slice controller, e.g. 
+   an IETF network slice controller (IETF NSC) through the NBI. The OTN slice is 
+   provided by a service provider to a customer to be used as though it was part
+   of the customer's own networks.
+         
 # Use Cases for OTN Network Slicing
 
 ## Leased Line Services with OTN
@@ -191,34 +243,16 @@ normative:
    (RAN) and the Core Network (CN) segments, with a specific 
    performance commitment. An IETF network slice could be composed of 
    network slices from multiple technological and administrative 
-   domains. For OTN network domains, an IETF network slice may be 
-   realized by means of slicing OTN network resources, e.g. ODU time 
-   slots, to achieve desired performance commitments.
+   domains. An IETF network slice can be realized by using or combining
+   multiple underlying OTN slices with OTN resources, e.g. ODU time 
+   slots or ODU containers,to achieve end-to-end slicing across the transport
+   domain.
 
 # Framework for OTN slicing
 
-   An OTN slice is an OTN virtual network topology connecting a number
-   of OTN endpoints using a set of shared or dedicated OTN network resources to
-   satisfy specific service level objectives (SLOs). 
-   An OTN slice can encompass access links, intra-domain paths, and inter-domain links. 
-   An OTN slice may include multiple endpoints with each associated with a set of physical
-   or logical resources, e.g. optical port or time slots, at the access link 
-   termination point (TP) of an OTN network domain. For multi-domain OTN networks, 
-   an OTN slice may be realized by multiple OTN
-   segment slices and the endpoints of a segment slice may be associated with
-   physical or logical resources at corresponding inter-domain link 
-   termination points.   
-   
-   OTN slices may be pre-configured by the management plane and presented to 
-   the customer via the northbound interface (NBI), or they may be dynamically 
-   provisioned by a higher layer slice controller, e.g. 
-   an IETF network slice controller (IETF NSC) through the NBI. The OTN slice is 
-   provided by a service provider to a customer to be used as though it was part
-   of the customer's own networks.
-   
    OTN slices may be abstracted differently depending on the requirement contained
    in the configuration provided by the slice customer. Whereas the customer requests
-   an OTN slice to provide connectivities between specified endpoints, the OTN slice 
+   an OTN slice to provide connectivities between specified endpoints, an OTN slice 
    can be abstracted as a set of endpoint-to-endpoint links, with each link formed 
    by an end-to-end tunnel across the underlying OTN networks. The resources
    associated with each link of the slice is reserved and commissioned in the underlying
