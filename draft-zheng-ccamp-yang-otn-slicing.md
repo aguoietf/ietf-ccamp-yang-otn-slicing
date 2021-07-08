@@ -190,7 +190,7 @@ normative:
    of an end-to-end network slice, such as the Radio Access Network 
    (RAN) and the Core Network (CN) segments, with a specific 
    performance commitment. An IETF network slice could be composed of 
-   network slices from multiple technological and adminstrative 
+   network slices from multiple technological and administrative 
    domains. For OTN network domains, an IETF network slice may be 
    realized by means of slicing OTN network resources, e.g. ODU time 
    slots, to achieve desired performance commitments.
@@ -223,7 +223,9 @@ normative:
    by an end-to-end tunnel across the underlying OTN networks. The resources
    associated with each link of the slice is reserved and commissioned in the underlying
    physical network upon the completion of configuring the OTN slice, and all the 
-   links are active. An OTN slice can also be abstracted as an abstract topology when the customer reqeuests
+   links are active. 
+   
+   An OTN slice can also be abstracted as an abstract topology when the customer reqeuests
    the slice to share resources between multiple endpoints and to use the resources on demand.
    The abstract topology may consist of virtual nodes and virtual links, and their associated
    resources are reserved but not comissioned across the underlying OTN networks. The 
