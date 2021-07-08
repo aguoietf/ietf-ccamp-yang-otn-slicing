@@ -124,7 +124,9 @@ normative:
    An end-to-end OTN slice may be composed from multiple OTN segment slices in
    a hierarchical or sequential (or stitched) combination. 
 
-   {{fig-otn-slice}} illustrates the scope of OTN slices in multi-domain environment.
+   {{fig-otn-slice}} illustrates the scope of OTN slices in multi-domain 
+   environment.
+
 ~~~~
         <-------------------End-to-end OTN Slice----------------->
 
@@ -133,9 +135,9 @@ normative:
 
           +-------------------------+  +-----------------------+
           | +-----+      +-------+  |  | +-------+      +-----+|
- +----+   | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||    +----+
- | CE +---+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+----+ CE |
- +----+   |/|     |      | Node  |\ |  | | Node  |      |     ||    +----+
+   +----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
+   | CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
+   +----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
         | ||+-----+      +-------+ ||| | +-------+      +-----+| |
         | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
         | ++-----------------------++| +-----------------------+ |
