@@ -128,9 +128,9 @@ normative:
    environment.
 
 ~~~~
-     <-------------------End-to-end OTN Slice----------------->
+      <------------------End-to-end OTN Slice---------------->
 
-     <-- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 --->
+      <- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 -->
 
 
        +-------------------------+  +-----------------------+
@@ -138,15 +138,15 @@ normative:
 +----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
 | CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
 +----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
-     | ||+-----+      +-------+ ||| | +-------+      +-----+| |
-     | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
-     | ++-----------------------++| +-----------------------+ |
-     |  |                       | |                           |
-     |  +-----+    +------------+ |                           |
-     |        |    |              |                           |
-     V        V    V              V                           V
-  Access     OTN Slice        Inter-domain                  Access
-  Link       Endpoint         Link                          Link
+      |||+-----+      +-------+ ||| | +-------+      +-----+| |
+      |||    OTN Domain 1       ||| |      OTN Domain 2     | |
+      |++-----------------------++| +-----------------------+ |
+      | |                       | |                           |
+      | +-----+    +------------+ |                           |
+      |       |    |              |                           |
+      V       V    V              V                           V
+   Access    OTN Slice        Inter-domain                  Access
+   Link      Endpoint         Link                          Link
 
 ~~~~
 {: #fig-otn-slice title="OTN Slice"}
@@ -266,10 +266,14 @@ normative:
    The abstract topology may consist of virtual nodes and virtual links, and their associated
    resources are reserved but not comissioned across the underlying OTN networks. The 
    customer can later commission resources within the slice dynamically using the NBI provided
-   by the service provider. Those means to abstract an OTN slice is similar to the Virtual 
-   Network (VN) concept defined for higher-level interfaces in {{!I-D.ietf-teas-actn-vn-yang}}, where
-   the connectivity-based slice abstraction corresponds to VN Type 1 and the resource-based slice
-   abstraction corresponds to VN type 2.
+   by the service provider. An OTN slice could use abstract topology to connect endpoints with 
+   shared resources to optimize the resource utilization, and connections can be activated 
+   within the slice as needed.
+   
+   It is worth noting that those means to abstract an OTN slice are similar to the Virtual 
+   Network (VN) abstraction defined for higher-level interfaces in {{?RFC8453}}, in which context
+   a connectivity-based slice corresponds to Type 1 VN and a resource-based slice corresponds to 
+   Type 2 VN, respectively.
 
    A particular resource in an OTN network, such as a port or link, may be
    sliced with one of the two granularity levels:
@@ -284,7 +288,7 @@ normative:
 
    Furthermore, an OTN switch is typically fully non-blockable switching 
    at the lowest ODU container granularity, it is
-desirable to specify just the total number of tributary slots in the
+desirable to specify just the total number of ODU containers in the
 lowest granularity (e.g. ODU0), when configuring tributary-slot based
 slicing on links and ports internal to an OTN network. In multi-domain
 OTN network scenarios where separate OTN slices are created on
@@ -300,12 +304,12 @@ shall support configuring an OTN slice with both options.
    corresponding OTN network domains. The OTN-SC provides technology-specific 
    interfaces at its north bound (OTN-SC NBI) to allow a higher-layer slice 
    controller, such as an IETF network slice controller (NSC), or an orchestrator, 
-   to configure OTN slices with OTN-specific 
-   network resources. The OTN-SC interfaces at the south bound using the MDSC-to-PNC 
+   to request OTN slices with OTN-specific 
+   requirements. The OTN-SC interfaces at the south bound using the MDSC-to-PNC 
    interface (MPI) with a Physical Network Controller (PNC) or Multi-Domain Service Orchestrator (MDSC),
    as defined in the ACTN control framework {{?RFC8453}}. The logical function 
-   within the OTN-SC is responsible for translating OTN slice configurations 
-   received into concrete slice realization which can be understood and 
+   within the OTN-SC is responsible for translating the OTN slice requests 
+   into concrete slice realization which can be understood and 
    provisioned at the south bound by the PNC or MDSC.
    
    When realizing OTN slices, the OTN-SC may translate a connectivity-based OTN slice 
@@ -397,12 +401,6 @@ shall support configuring an OTN slice with both options.
 
 ### MPI YANG Model Overview
 
-   When realizing OTN slices, the OTN-SC may translate a connectivity-based OTN slice 
-   into a set of end-to-end tunnels using the Traffic-engineering(TE) tunnel interface defined in 
-   {{!I-D.ietf-teas-yang-te}}. For a resource-based OTN slices, the 
-   OTN-SC may transate the abstract topology representing the slice into a colored graph on an 
-   abstract TE topology using the TE topology interface defined in {{!RFC8795}}.
-   
    For the configuration of connectivity-based OTN slices, existing models such as 
    the TE tunnel interface {{!I-D.ietf-teas-yang-te}} may be used and no addition is 
    needed. This model is addressing the case for configuring resource-based OTN slices,
