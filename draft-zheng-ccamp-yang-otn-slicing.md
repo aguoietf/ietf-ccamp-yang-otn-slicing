@@ -128,25 +128,25 @@ normative:
    environment.
 
 ~~~~
-        <-------------------End-to-end OTN Slice----------------->
+     <-------------------End-to-end OTN Slice----------------->
 
-        <-- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 --->
+     <-- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 --->
 
 
-          +-------------------------+  +-----------------------+
-          | +-----+      +-------+  |  | +-------+      +-----+|
-   +----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
-   | CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
-   +----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
-        | ||+-----+      +-------+ ||| | +-------+      +-----+| |
-        | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
-        | ++-----------------------++| +-----------------------+ |
-        |  |                       | |                           |
-        |  +-----+    +------------+ |                           |
-        |        |    |              |                           |
-        V        V    V              V                           V
-     Access     OTN Slice        Inter-domain                  Access
-     Link       Endpoint         Link                          Link
+       +-------------------------+  +-----------------------+
+       | +-----+      +-------+  |  | +-------+      +-----+|
++----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
+| CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
++----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
+     | ||+-----+      +-------+ ||| | +-------+      +-----+| |
+     | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
+     | ++-----------------------++| +-----------------------+ |
+     |  |                       | |                           |
+     |  +-----+    +------------+ |                           |
+     |        |    |              |                           |
+     V        V    V              V                           V
+  Access     OTN Slice        Inter-domain                  Access
+  Link       Endpoint         Link                          Link
 
 ~~~~
 {: #fig-otn-slice title="OTN Slice"}

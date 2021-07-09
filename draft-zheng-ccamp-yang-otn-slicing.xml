@@ -87,7 +87,7 @@
       </address>
     </author>
 
-    <date year="2021" month="July" day="08"/>
+    <date year="2021" month="July" day="09"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -131,6 +131,60 @@
    YANG data model augmentations will be defined in a future version of
    this draft.</t>
 
+<section anchor="definition-of-otn-slice" title="Definition of OTN Slice">
+<t>An OTN slice is an OTN virtual network topology connecting a number
+   of OTN endpoints using a set of shared or dedicated OTN network resources to
+   satisfy specific service level objectives (SLOs).</t>
+
+<t>An OTN slice is a technology-specific realization of an IETF network slice 
+   <xref target="I-D.ietf-teas-ietf-network-slices"/> in the OTN domain, with the
+   capability of configuring slice resources in the term of OTN technologies. 
+   Therefore, all the terms and definitions with respect to network slicing as 
+   defined in <xref target="I-D.ietf-teas-ietf-network-slices"/> apply to OTN slicing.</t>
+
+<t>An OTN slice can span multiple OTN administrative domains, encompassing 
+   access links, intra-domain paths, and inter-domain links. 
+   An OTN slice may include multiple endpoints, each associated with a set of physical
+   or logical resources, e.g. optical port or time slots, at the termination point (TP) of 
+   an access link or inter-domain link at an OTN provider edge (PE) equipment.</t>
+
+<t>An end-to-end OTN slice may be composed from multiple OTN segment slices in
+   a hierarchical or sequential (or stitched) combination.</t>
+
+<t><xref target="fig-otn-slice"/> illustrates the scope of OTN slices in multi-domain 
+   environment.</t>
+
+<figure title="OTN Slice" anchor="fig-otn-slice"><artwork><![CDATA[
+        <-------------------End-to-end OTN Slice----------------->
+
+        <-- OTN Segment Slice 1 --->  <-- OTN Segment Slice 2 --->
+
+
+          +-------------------------+  +-----------------------+
+          | +-----+      +-------+  |  | +-------+      +-----+|
+   +----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
+   | CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
+   +----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
+        | ||+-----+      +-------+ ||| | +-------+      +-----+| |
+        | ||    OTN Domain 1       ||| |      OTN Domain 2     | |
+        | ++-----------------------++| +-----------------------+ |
+        |  |                       | |                           |
+        |  +-----+    +------------+ |                           |
+        |        |    |              |                           |
+        V        V    V              V                           V
+     Access     OTN Slice        Inter-domain                  Access
+     Link       Endpoint         Link                          Link
+
+]]></artwork></figure>
+
+<t>OTN slices may be pre-configured by the management plane and presented to 
+   the customer via the northbound interface (NBI), or they may be dynamically 
+   provisioned by a higher layer slice controller, e.g. 
+   an IETF network slice controller (IETF NSC) through the NBI. The OTN slice is 
+   provided by a service provider to a customer to be used as though it was part
+   of the customer’s own networks.</t>
+
+</section>
 </section>
 <section anchor="use-cases-for-otn-network-slicing" title="Use Cases for OTN Network Slicing">
 
@@ -222,42 +276,26 @@
    of an end-to-end network slice, such as the Radio Access Network 
    (RAN) and the Core Network (CN) segments, with a specific 
    performance commitment. An IETF network slice could be composed of 
-   network slices from multiple technological and adminstrative 
-   domains. For OTN network domains, an IETF network slice may be 
-   realized by means of slicing OTN network resources, e.g. ODU time 
-   slots, to achieve desired performance commitments.</t>
+   network slices from multiple technological and administrative 
+   domains. An IETF network slice can be realized by using or combining
+   multiple underlying OTN slices with OTN resources, e.g. ODU time 
+   slots or ODU containers,to achieve end-to-end slicing across the transport
+   domain.</t>
 
 </section>
 </section>
 <section anchor="framework-for-otn-slicing" title="Framework for OTN slicing">
 
-<t>An OTN slice is an OTN virtual network topology connecting a number
-   of OTN endpoints using a set of shared or dedicated OTN network resources to
-   satisfy specific service level objectives (SLOs). 
-   An OTN slice can encompass access links, intra-domain paths, and inter-domain links. 
-   An OTN slice may include multiple endpoints with each associated with a set of physical
-   or logical resources, e.g. optical port or time slots, at the access link 
-   termination point (TP) of an OTN network domain. For multi-domain OTN networks, 
-   an OTN slice may be realized by multiple OTN
-   segment slices and the endpoints of a segment slice may be associated with
-   physical or logical resources at corresponding inter-domain link 
-   termination points.</t>
-
-<t>OTN slices may be pre-configured by the management plane and presented to 
-   the customer via the northbound interface (NBI), or they may be dynamically 
-   provisioned by a higher layer slice controller, e.g. 
-   an IETF network slice controller (IETF NSC) through the NBI. The OTN slice is 
-   provided by a service provider to a customer to be used as though it was part
-   of the customer’s own networks.</t>
-
 <t>OTN slices may be abstracted differently depending on the requirement contained
    in the configuration provided by the slice customer. Whereas the customer requests
-   an OTN slice to provide connectivities between specified endpoints, the OTN slice 
+   an OTN slice to provide connectivities between specified endpoints, an OTN slice 
    can be abstracted as a set of endpoint-to-endpoint links, with each link formed 
    by an end-to-end tunnel across the underlying OTN networks. The resources
    associated with each link of the slice is reserved and commissioned in the underlying
    physical network upon the completion of configuring the OTN slice, and all the 
-   links are active. An OTN slice can also be abstracted as an abstract topology when the customer reqeuests
+   links are active.</t>
+
+<t>An OTN slice can also be abstracted as an abstract topology when the customer reqeuests
    the slice to share resources between multiple endpoints and to use the resources on demand.
    The abstract topology may consist of virtual nodes and virtual links, and their associated
    resources are reserved but not comissioned across the underlying OTN networks. The 
@@ -279,7 +317,7 @@ share the same link by allocating different OTN tributary slots in
 different granularities.</t>
 </list></t>
 
-<t>Furthemore, an OTN switch is typically fully non-blockable switching 
+<t>Furthermore, an OTN switch is typically fully non-blockable switching 
    at the lowest ODU container granularity, it is
 desirable to specify just the total number of tributary slots in the
 lowest granularity (e.g. ODU0), when configuring tributary-slot based
@@ -679,11 +717,11 @@ shall support configuring an OTN slice with both options.</t>
       <author fullname='Oscar Gonzalez de Dios'>
 	 <organization>Telefonica</organization>
       </author>
-      <date day='22' month='February' year='2021'/>
+      <date day='8' month='July' year='2021'/>
       <abstract>
-	 <t>   This document defines a YANG data model for the configuration and
+	 <t>   This document defines a YANG data model for the provisioning and
    management of Traffic Engineering (TE) tunnels, Label Switched Paths
-   (LSPs). and interfaces.  The model is divided into YANG modules that
+   (LSPs), and interfaces.  The model is divided into YANG modules that
    classify data into generic, device-specific, technology agnostic, and
    technology-specific elements.
 
@@ -693,8 +731,8 @@ shall support configuring an OTN slice with both options.</t>
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-26'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-26.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-27'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-27.txt' type='TXT'/>
 </reference>
 
 
@@ -819,180 +857,190 @@ Email: henry.yu@huawei.com
   </back>
 
 <!-- ##markdown-source:
-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
-8QTh9E4V9HWi2NtSbdn/gu5sErNBym51YfdOXSaX34Ojb30qIuZ8Eahtx/Qw
-l/y37Uhs8PfuPvu82+rYjrlfEPk1+q9rI+x9ZR9hL8bgIRUVvq8QegpRPKAT
-5oH5AXKCYjOuMeFKgtYCD31BMI7Lhr22G+0Vyd5xfO8glZp4faKxO9d0swdq
-uD9E7j6W9D+tSwoR10gant/90c6uTSBccykwh9McV67b+BEBb/B+wv4o4+OW
-+4cr+NOzk4vn2/oFGDt39QtcriAL7hbs2jwIO558SefLE/o+mrNTvlBhjdsR
-0XFzHti6YcFdAhNfUlW42dG3vb6dhiD8dZhD6+y5JRhvHdmrVWyyGV+GVcU3
-1uTx59/RKL8CJVen1Ai0taL9AM1/7GEhmehT7DSji8e5E035KX2NZT8Oi26p
-4XtDwnYdf35MDdY/veWmOHVZ/GUYfEOIvx6UWKioTLCXTYSLQvlGOdcktPcJ
-uU/h0mutAibkUmGku2/I4lHrMD/ijduNs3dvkvlMZZSHQ8aGJ9sbggLpoxcy
-AsoWMrviT+kvnOx7tOQ/fzjOc7pw0GtI+9OF53RV7PHZ8e7ZNGJjZpIkYppm
-VwO0Ee48y/wvexRSSPPFceZ6/+wpSXNbd6LSh7cVfqoi3fH3K/Asub6xRd05
-Zse68Rm58Sn5LhhHyUdd5cn10ejRqJZQiIBGjXKNd5Zuw3USrtc23+Dlqbh3
-Yq8fEz/LEgL6b3wVeM/d9WICks05XaZ/TvlG7wXOG62b+Bb7/waUtbm89mAA
-AA==
+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
+r6n8N5RRgMZ+ZwAA
 
 -->
 
