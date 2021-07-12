@@ -77,7 +77,7 @@ normative:
 
 --- abstract
 
-   The requirement of slicing network resource with desired quality of
+   The requirement of slicing network resources with desired quality of
    service is emerging at every network technology, including the
    Optical Transport Networks (OTN). As a part of the transport network,
    OTN can provide hard pipes with guaranteed data isolation and
@@ -93,7 +93,7 @@ normative:
 
 # Introduction
 
-   The requirement of slicing network resource with desired quality of
+   The requirement of slicing network resources with desired quality of
    service is emerging at every network technology, including the
    Optical Transport Networks (OTN). As a part of the transport network,
    OTN can provide hard pipes with guaranteed data isolation and
@@ -112,7 +112,7 @@ normative:
    An OTN slice is a technology-specific realization of an IETF network slice 
    {{?I-D.ietf-teas-ietf-network-slices}} in the OTN domain, with the
    capability of configuring slice resources in the term of OTN technologies. 
-   Therefore, all the terms and definitions with respect to network slicing as 
+   Therefore, all the terms and definitions concerning network slicing as 
    defined in {{?I-D.ietf-teas-ietf-network-slices}} apply to OTN slicing.
    
    An OTN slice can span multiple OTN administrative domains, encompassing 
@@ -121,7 +121,7 @@ normative:
    or logical resources, e.g. optical port or time slots, at the termination point (TP) of 
    an access link or inter-domain link at an OTN provider edge (PE) equipment. 
 
-   An end-to-end OTN slice may be composed from multiple OTN segment slices in
+   An end-to-end OTN slice may be composed of multiple OTN segment slices in
    a hierarchical or sequential (or stitched) combination. 
 
    {{fig-otn-slice}} illustrates the scope of OTN slices in multi-domain 
@@ -152,9 +152,9 @@ normative:
 {: #fig-otn-slice title="OTN Slice"}
 
    OTN slices may be pre-configured by the management plane and presented to 
-   the customer via the northbound interface (NBI), or they may be dynamically 
-   provisioned by a higher layer slice controller, e.g. 
-   an IETF network slice controller (IETF NSC) through the NBI. The OTN slice is 
+   the customer via the northbound interface (NBI), or be dynamically 
+   provisioned by a higher layer slice controller, e.g. an IETF network slice 
+   controller (IETF NSC) through the NBI. The OTN slice is 
    provided by a service provider to a customer to be used as though it was part
    of the customer's own networks.
          
@@ -168,7 +168,7 @@ normative:
    challenging due to rapid changes in service demands. Carriers are
    recommended to provide network-level slicing capabilities to meet
    this demand. Based on such capabilities, private network users have
-   full control over the sliced resources which have allocated to them
+   full control over the sliced resources which have been allocated to them
    and which could be used to support their leased lines, when needed.
    Users may formulate policies based on the demand for services and
    time to schedule the resources from the entire network's perspective
@@ -214,8 +214,8 @@ normative:
    resources flexibly, just like they are self-constructed. Therefore,
    the purchaser is not only provided with a network slice, but also the
    full set of functionalities for operating and maintaining the network
-   slice.  The purchaser also expects to, in a flexible and independent
-   manner, schedule and maintain physical resources to support their own
+   slice.  The purchaser also expects to, flexibly and independently, 
+   schedule and maintain physical resources to support their own
    end-to-end automation using both leased and self-constructed network
    resources.
 
@@ -247,7 +247,7 @@ normative:
    network slices from multiple technological and administrative 
    domains. An IETF network slice can be realized by using or combining
    multiple underlying OTN slices with OTN resources, e.g. ODU time 
-   slots or ODU containers,to achieve end-to-end slicing across the transport
+   slots or ODU containers, to achieve end-to-end slicing across the transport
    domain.
 
 # Framework for OTN slicing
@@ -258,13 +258,13 @@ normative:
    can be abstracted as a set of endpoint-to-endpoint links, with each link formed 
    by an end-to-end tunnel across the underlying OTN networks. The resources
    associated with each link of the slice is reserved and commissioned in the underlying
-   physical network upon the completion of configuring the OTN slice, and all the 
+   physical network upon the completion of configuring the OTN slice and all the 
    links are active. 
    
-   An OTN slice can also be abstracted as an abstract topology when the customer reqeuests
+   An OTN slice can also be abstracted as an abstract topology when the customer requests
    the slice to share resources between multiple endpoints and to use the resources on demand.
-   The abstract topology may consist of virtual nodes and virtual links, and their associated
-   resources are reserved but not comissioned across the underlying OTN networks. The 
+   The abstract topology may consist of virtual nodes and virtual links, whose associated
+   resources are reserved but not commissioned across the underlying OTN networks. The 
    customer can later commission resources within the slice dynamically using the NBI provided
    by the service provider. An OTN slice could use abstract topology to connect endpoints with 
    shared resources to optimize the resource utilization, and connections can be activated 
@@ -278,11 +278,11 @@ normative:
    A particular resource in an OTN network, such as a port or link, may be
    sliced with one of the two granularity levels:
 
-   -  Link-based slicing, where a link and its associated link
+   -  Link-based slicing, in which a link and its associated link
       termination points (LTPs) are dedicatedly allocated to a
       particular OTN slice.
 
-   -  Tributary-slot based slicing, where multiple OTN slices
+   -  Tributary-slot based slicing, in which multiple OTN slices
       share the same link by allocating different OTN tributary slots in
       different granularities.
 
@@ -302,20 +302,20 @@ shall support configuring an OTN slice with both options.
    An OTN slice controller (OTN-SC) is a logical function responsible for
    the life-cycle management of OTN slices instantiated within the 
    corresponding OTN network domains. The OTN-SC provides technology-specific 
-   interfaces at its north bound (OTN-SC NBI) to allow a higher-layer slice 
+   interfaces at its northbound (OTN-SC NBI) to allow a higher-layer slice 
    controller, such as an IETF network slice controller (NSC), or an orchestrator, 
    to request OTN slices with OTN-specific 
-   requirements. The OTN-SC interfaces at the south bound using the MDSC-to-PNC 
+   requirements. The OTN-SC interfaces at the southbound using the MDSC-to-PNC 
    interface (MPI) with a Physical Network Controller (PNC) or Multi-Domain Service Orchestrator (MDSC),
    as defined in the ACTN control framework {{?RFC8453}}. The logical function 
    within the OTN-SC is responsible for translating the OTN slice requests 
    into concrete slice realization which can be understood and 
-   provisioned at the south bound by the PNC or MDSC.
+   provisioned at the southbound by the PNC or MDSC.
    
    When realizing OTN slices, the OTN-SC may translate a connectivity-based OTN slice 
    into a set of end-to-end tunnels using the Traffic-engineering(TE) tunnel interface defined in 
-   {{!I-D.ietf-teas-yang-te}}. For a resource-based OTN slices, the 
-   OTN-SC may transate the abstract topology representing the slice into a colored graph on an 
+   {{!I-D.ietf-teas-yang-te}}. For a resource-based OTN slice, the 
+   OTN-SC may translate the abstract topology representing the slice into a colored graph on an 
    abstract TE topology using the TE topology interface defined in {{!RFC8795}}.
    
    The OTN-SC NBI is technology-specific, while the IETF NSC-NBI is technology-
@@ -364,9 +364,10 @@ shall support configuring an OTN slice with both options.
    creation of OTN slices in multi-domain OTN networks, where 
    multiple domain-wide OTN slices provisioned by lower-layer
    OTN-SCs are stitched to support a multi-domain OTN slice
-   provisioned by the higer-level OTN-SC.  Alternatively, the OTN-SC
+   provisioned by the higher-level OTN-SC.  Alternatively, the OTN-SC
    may interface with an MDSC, which in turn interfaces with multiple 
-   PNCs through the MPI to realize OTN slices in multi-domain without OTN-SC recursion. 
+   PNCs through the MPI to realize OTN slices in multi-domain OTN networks 
+   without OTN-SC recursion. 
    {{fig-otn-sc-recursion}} illustrates both options for OTN slicing
    in multi-domain.
 
@@ -387,11 +388,11 @@ shall support configuring an OTN slice with both options.
 {: #fig-otn-sc-recursion title="OTN-SC for multi-domain"}
 
    OTN-SC functionalities are logically independent and may be deployed in 
-   different means to cater to the realization needs. In reference with the 
+   different combinations to cater to the realization needs. In reference with the 
    ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
     - as an independent network function;
-    - together with a Physical Network Controller (PNC) for single domain
-      or with a Multi-Domain Service Orchestrator (MDSC)for multi domain;
+    - together with a Physical Network Controller (PNC) for single-domain
+      or with a Multi-Domain Service Orchestrator (MDSC)for multi-domain;
     - together with a higher-level network slice controller to support 
       end-to-end network slicing;
 
@@ -404,12 +405,12 @@ shall support configuring an OTN slice with both options.
    For the configuration of connectivity-based OTN slices, existing models such as 
    the TE tunnel interface {{!I-D.ietf-teas-yang-te}} may be used and no addition is 
    needed. This model is addressing the case for configuring resource-based OTN slices,
-   where the model permits to reserve resources exploiting on the common knowledge of an underlying 
+   where the model permits to reserve resources exploiting the common knowledge of an underlying 
    virtual topology between the OTN-SC and the subtended network controller (MDSC or PNC). The slice
-   is configured by by marking corresponding link resources on the TE topology received from the 
+   is configured by marking corresponding link resources on the TE topology received from the 
    underlying MDSC or PNC with a slice identifier and OTN-specific resource requirements, 
-   e.g. the number of ODU time slots or type/number of ODU container. The MDSC or PNC, based on the 
-   marked resources by OTN-SC, will update the underlying TE topology with new TE link for each of 
+   e.g. the number of ODU time slots or the type/number of ODU containers. The MDSC or PNC, based on the 
+   marked resources by the OTN-SC, will update the underlying TE topology with new TE link for each of 
    the colored links to keep booked the reserved OTN resources e.g. time slots or ODU containers.
 
 ### MPI YANG Model Tree
@@ -460,7 +461,7 @@ shall support configuring an OTN slice with both options.
 
    This document was prepared using kramdown.
 
-   Previous versions of this document was prepared using 2-Word-v2.0.template.dot.
+   Previous versions of this document were prepared using 2-Word-v2.0.template.dot.
 
 {: numbered="false"}
 
