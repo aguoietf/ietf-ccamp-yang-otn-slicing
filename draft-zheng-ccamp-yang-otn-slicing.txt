@@ -98,12 +98,12 @@ Table of Contents
        4.1.3.  MPI YANG Code . . . . . . . . . . . . . . . . . . . .  10
      4.2.  OTN Slicing YANG Model for OTN-SC NBI . . . . . . . . . .  13
    5.  Manageability Considerations  . . . . . . . . . . . . . . . .  13
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  13
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  13
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
    8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
      8.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  14
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  15
    Contributors' Addresses . . . . . . . . . . . . . . . . . . . . .  15
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  15
 
@@ -626,8 +626,12 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
         */
 
        grouping otn-link-slice-profile {
+         description
+           "Profile of an OTN link slice.";
          choice otn-slice-granularity {
-           default link;
+           default "link";
+           description
+             "Link slice granularity.";
            case link {
              leaf slice-id {
                type uint32;
@@ -646,6 +650,8 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
                    "Slice identifier";
                }
                choice technology {
+                 description
+                   "Data plane technology types.";
                  case otn {
                    leaf otn-ts-num {
                      type uint32;
@@ -656,16 +662,10 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
                  }
                }
                leaf sliced-link-ref {
-                 config false;
                  type leafref {
                    path "../../../../../nt:link/nt:link-id";
                  }
-                 description
-                   "Relative reference to virtual links generated from
-                    this TE link.";
-               }
-             }
-           }
+                 config false;
 
 
 
@@ -674,6 +674,12 @@ Zheng, et al.           Expires January 13, 2022               [Page 12]
 Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
 
+                 description
+                   "Relative reference to virtual links generated from
+                    this TE link.";
+               }
+             }
+           }
          }
        }
 
@@ -712,13 +718,7 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
    conflicts.  The access to slice management functions will only be
    permitted after successful security checks.
 
-6.  Security Considerations
 
-   <Add any security considerations>
-
-7.  IANA Considerations
-
-   <Add any IANA considerations>
 
 
 
@@ -729,6 +729,14 @@ Zheng, et al.           Expires January 13, 2022               [Page 13]
 
 Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
+
+6.  Security Considerations
+
+   <Add any security considerations>
+
+7.  IANA Considerations
+
+   <Add any IANA considerations>
 
 8.  References
 
@@ -767,14 +775,6 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
               DOI 10.17487/RFC8453, August 2018,
               <https://www.rfc-editor.org/info/rfc8453>.
 
-Acknowledgments
-
-   This document was prepared using kramdown.
-
-   Previous versions of this document were prepared using 2-Word-
-   v2.0.template.dot.
-
-
 
 
 
@@ -785,6 +785,13 @@ Zheng, et al.           Expires January 13, 2022               [Page 14]
 
 Internet-Draft      Framework and YANG of OTN Slices           July 2021
 
+
+Acknowledgments
+
+   This document was prepared using kramdown.
+
+   Previous versions of this document were prepared using 2-Word-
+   v2.0.template.dot.
 
 Contributors' Addresses
 
@@ -828,18 +835,17 @@ Authors' Addresses
    Email: oscar.gonzalezdedios@telefonica.com
 
 
-   Victor Lopez
-   Nokia
-
-   Email: victor.lopez@nokia.com
-
-
-
 
 
 Zheng, et al.           Expires January 13, 2022               [Page 15]
 
 Internet-Draft      Framework and YANG of OTN Slices           July 2021
+
+
+   Victor Lopez
+   Nokia
+
+   Email: victor.lopez@nokia.com
 
 
    Sergio Belotti
@@ -870,12 +876,6 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2021
    China Mobile
 
    Email: zhaoyangyjy@chinamobile.com
-
-
-
-
-
-
 
 
 
