@@ -1,14 +1,42 @@
-   module: ietf-otn-slice
-     augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-
-   attributes:
-       +--rw (otn-slice-granularity)?
-          +--:(link)
-          |  +--rw slice-id?   uint32
-          +--:(link-resource)
-             +--rw slices* [slice-id]
-                +--rw slice-id            uint32
-                +--rw (technology)?
-                |  +--:(otn)
-                |     +--rw otn-ts-num?   uint32
-                +--ro sliced-link-ref?    ->
-   ../../../../../nt:link/link-id
+module: ietf-otn-slice
+
+  augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes:
+    +--rw (otn-slice-granularity)?
+       +--:(link)
+       |  +--rw slice-id?   uint32
+       +--:(link-resource)
+          +--rw slices* [slice-id]
+             +--rw slice-id                      uint32
+             +--rw (technology)?
+             |  +--:(otn)
+             |     +--rw (slice-bandwidth)?
+             |        +--:(containers)
+             |        |  +--rw odu-containers* [odu-type]
+             |        |     +--rw odu-type    -> ../otn/odu-type
+             |        |     +--rw odu-num?    uint16
+             |        |     +--rw otn
+             |        |        +--rw odu-type?
+             |        |        |       identityref
+             |        |        +--rw (oduflex-type)?
+             |        |           +--:(generic)
+             |        |           |  +--rw nominal-bit-rate
+             |        |           |          uint64
+             |        |           +--:(cbr)
+             |        |           |  +--rw client-type
+             |        |           |          identityref
+             |        |           +--:(gfp-n-k)
+             |        |           |  +--rw gfp-n                   uint8
+             |        |           |  +--rw gfp-k?                  gfp-k
+             |        |           +--:(flexe-client)
+             |        |           |  +--rw flexe-client
+             |        |           |          flexe-client-rate
+             |        |           +--:(flexe-aware)
+             |        |           |  +--rw flexe-aware-n
+             |        |           |          uint16
+             |        |           +--:(packet)
+             |        |              +--rw opuflex-payload-rate
+             |        |                      uint64
+             |        +--:(time-slots)
+             |           +--rw otn-ts-num?       uint32
+             +--ro sliced-link-ref?
+                     -> ../../../../../nt:link/link-id
