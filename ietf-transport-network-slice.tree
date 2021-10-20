@@ -1,0 +1,46 @@
+module: ietf-transport-network-slice
+  +--rw network-slices
+     +--rw network-slice* [ns-id]
+        +--rw ns-id                    string
+        +--rw ns-name?                 string
+        +--rw ns-description?          string
+        +--rw customer-name*           string
+        +--rw slo
+        |  +--rw optimization-criterion?   identityref
+        |  +--rw delay-tolerance?          boolean
+        |  +--rw periodicity*              uint64
+        |  +--rw isolation-level?          identityref
+        +--rw endpoints
+        |  +--rw endpoint* [endpoint-id]
+        |     +--rw endpoint-id    string
+        +--rw network-topologies
+        |  +--rw network-topology* [topology-id]
+        |     +--rw topology-id    string
+        |     +--rw node* [node-id]
+        |     |  +--rw node-id              inet:uri
+        |     |  +--rw slo
+        |     |  |  +--rw isolation-level?   identityref
+        |     |  +--rw termination-point* [tp-id]
+        |     |     +--rw tp-id          inet:uri
+        |     |     +--rw endpoint-id?   -> /network-slices/network-slice[ns-id=current()/../../../../../ns-id]/endpoints/endpoint/endpoint-id
+        |     +--rw link* [link-id]
+        |        +--rw link-id        inet:uri
+        |        +--rw slo
+        |        |  +--rw delay-tolerance?   boolean
+        |        |  +--rw periodicity*       uint64
+        |        |  +--rw isolation-level?   identityref
+        |        +--rw source
+        |        |  +--rw source-node?   -> ../../../node/node-id
+        |        |  +--rw source-tp?     -> ../../../node[node-id=current()/../source-node]/termination-point/tp-id
+        |        +--rw destination
+        |           +--rw dest-node?   -> ../../../node/node-id
+        |           +--rw dest-tp?     -> ../../../node[node-id=current()/../dest-node]/termination-point/tp-id
+        +--rw connectivity-matrices
+           +--rw connectivity-matrix* [connectivity-matrix-id]
+              +--rw connectivity-matrix-id    uint32
+              +--rw topology-id?              -> ../../../network-topologies/network-topology/topology-id
+              +--rw src-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
+              +--rw dst-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
+              +--rw slo
+              +--rw explicit-path* [tp-id]
+                 +--rw tp-id    -> /network-slices/network-slice[ns-id=current()/../../../../ns-id]/network-topologies/network-topology[topology-id=current()/../../topology-id]/node/termination-point/tp-id

@@ -60,6 +60,10 @@ author:
     name: Yang Zhao
     org: China Mobile
     email: zhaoyangyjy@chinamobile.com
+  -
+    name: Xufeng Liu
+    org: Volta Networks
+    email: xufeng.liu.ietf@gmail.com
 
 #contributor:
 #  -
@@ -418,7 +422,7 @@ shall support configuring an OTN slice with both options.
 ~~~~
 {::include ./ietf-otn-slice.tree}
 ~~~~
-{: #fig-otn-slice-tree title="OTN network slicing tree diagram"}
+{: #fig-otn-slice-tree title="OTN slicing tree diagram"}
 
 ### MPI YANG Code
 
@@ -427,11 +431,62 @@ shall support configuring an OTN slice with both options.
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~
-{: #fig-otn-slice-yang title="OTN network slicing YANG model"}
+{: #fig-otn-slice-yang title="OTN slicing YANG model"}
 
 ## OTN Slicing YANG Model for OTN-SC NBI
 
-   TBD.
+### NBI YANG Model Overview
+   The YANG model for OTN-SC NBI is OTN-technology specific, but shares many
+   common constructs and attributes with generic network slicing YANG models.
+   Furthermore, the OTN-SC NBI YANG is expected to support both connectivity-based
+   and resource-based slice configuration, which is likely a common requirement for
+   supporting slicing at other transport network layers, e.g. WDM or MPLS-TP.
+   Therefore, the OTN-SC NBI YANG model is designed into two models, a common base 
+   model for transport network slicing, and an OTN slicing model which augments the 
+   base model with OTN technology-specific constructs.
+
+   The base model defines a transport network slice (TNS) with the following
+   constructs and attributes:
+   - Common attributes, which include a set of common attributes like slice identifier,
+     name, description and names of customers who use the slice.
+   - Endpoints, which represent conceptual points of connection from a customer
+     device to the TNS. An endpoint is mapped to specific physical or virtual resources
+     of the customer and provider, and such mapping is pre-negotiated and known to 
+     both the customer and provider prior to the slice configuration. The mechanism 
+     for endpoint negotiation is outside the scope of this draft.
+   - Network topology, which represent set of shared, reserved resources organized as a virtual 
+     topology between all of the endpoints. A customer could use such network topology
+     to define detailed connecvitiy path traversing the topology, and allow sharing of 
+     resources between its multiple endpoint pairs.
+   - Connectivity matrix, which represent the intended virtual connections between the endpoints
+     within a TNS. A connctivity matrix entry could be associated with an explicit path 
+     over the above network topology. 
+   - Service-level objectives (SLOs) associated with different objects, including the TNS, 
+     node, link, termination point, and explicit path, within a TNS.
+
+### NBI YANG Model Tree for Transport Network Slice
+
+~~~~
+{::include ./ietf-transport-network-slice.tree}
+~~~~
+{: #fig-ietf-transport-network-slice title="Tree diagram for transport network slice"}
+
+### NBI YANG Code for Transport Network Slice
+
+~~~~
+   <CODE BEGINS>file "ietf-transport-network-slice@2021-10-18.yang"
+{::include ./ietf-transport-network-slice.yang}
+   <CODE ENDS>
+~~~~
+{: #fig-ietf-transport-network-yang title="YANG model for transport network slice"}   
+   
+### NBI YANG Model Tree for OTN slice
+
+TBD.
+
+### NBI YANG Code for OTN Slice
+
+TBD. 
 
 # Manageability Considerations
 
