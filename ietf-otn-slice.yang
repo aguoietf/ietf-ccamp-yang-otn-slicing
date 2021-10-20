@@ -27,6 +27,13 @@
           for Optical Transport Network Topology";
      }
 
+     import ietf-layer1-types {
+       prefix "l1-types";
+       reference
+         "I-D.ietf-ccamp-layer1-types: A YANG Data Model
+          for Layer 1 Types";
+     }
+
      organization
        "IETF CCAMP Working Group";
      contact
@@ -97,18 +104,27 @@
                "List of slices.";
              leaf slice-id {
                type uint32;
-                 description
+               description
                  "Slice identifier";
              }
              choice technology {
                description
                  "Data plane technology types.";
                case otn {
-                 leaf otn-ts-num {
-                   type uint32;
+                 choice slice-bandwidth {
                    description
-                     "Number of OTN tributary slots allocated for the
-                      slice.";
+                     "Bandwidth specification for OTN slices.";
+                   case containers {
+                     uses l1-types:otn-link-bandwidth;
+                   }
+                   case time-slots {
+                     leaf otn-ts-num {
+                       type uint32;
+                       description
+                         "Number of OTN tributary slots allocated for the
+                          slice.";
+                     }
+                   }
                  }
                }
              }

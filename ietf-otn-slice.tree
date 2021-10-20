@@ -1,14 +1,19 @@
-   module: ietf-otn-slice
-     augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-
-   attributes:
-       +--rw (otn-slice-granularity)?
-          +--:(link)
-          |  +--rw slice-id?   uint32
-          +--:(link-resource)
-             +--rw slices* [slice-id]
-                +--rw slice-id            uint32
-                +--rw (technology)?
-                |  +--:(otn)
-                |     +--rw otn-ts-num?   uint32
-                +--ro sliced-link-ref?    ->
-   ../../../../../nt:link/link-id
+module: ietf-otn-slice
+
+  augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes:
+    +--rw (otn-slice-granularity)?
+       +--:(link)
+       |  +--rw slice-id?   uint32
+       +--:(link-resource)
+          +--rw slices* [slice-id]
+             +--rw slice-id                  uint32
+             +--rw (technology)?
+             |  +--:(otn)
+             |     +--rw (slice-bandwidth)?
+             |        +--:(containers)
+             |        |  +--rw odulist* [odu-type]
+             |        |     +--rw odu-type    identityref
+             |        |     +--rw number?     uint16
+             |        +--:(time-slots)
+             |           +--rw otn-ts-num?   uint32
+             +--ro sliced-link-ref?          -> ../../../../../nt:link/link-id
