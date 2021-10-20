@@ -1,38 +1,7 @@
    module ietf-transport-network-slice {
      yang-version 1.1;
-     namespace "urn:ietf:params:xml:ns:yang:ietf-otn-slice-nbi";
-     prefix "otns-nbi";
-
-     import ietf-network {
-       prefix "nw";
-       reference "RFC 8345: A YANG Data Model for Network Topologies";
-     }
-
-     import ietf-network-topology {
-       prefix "nt";
-       reference "RFC 8345: A YANG Data Model for Network Topologies";
-     }
-
-     import ietf-te-topology {
-       prefix "tet";
-       reference
-         "RFC8795: YANG Data Model for Traffic Engineering
-         (TE) Topologies";
-     }
-
-     import ietf-otn-topology {
-       prefix "otntopo";
-       reference
-         "I-D.ietf-ccamp-otn-topo-yang: A YANG Data Model
-          for Optical Transport Network Topology";
-     }
-
-     import ietf-network-slice {
-       prefix "liu-ns";
-       reference
-         "I-D.draft-liu-teas-transport-network-slice-yang: IETF
-		  Network Slice YANG Data Model";
-     }
+     namespace "urn:ietf:params:xml:ns:yang:ietf-transport-network-slice";
+     prefix "tns";
 
      import ietf-inet-types {
        prefix inet;
@@ -436,29 +405,6 @@
      /*
       * Configuration data nodes
       */
-     container access-points {
-       description
-         "Acess point (AP) configurations";
-       list access-point {
-         key "ap-id";
-         description
-           "AP identifier";
-         leaf ap-id {
-           type string;
-             description
-             "A unique identifier for the referred AP";
-         }
-         leaf pe-node-id {
-           type string;
-           description
-             "PE node identifier in the underlying TE topology";
-         }
-       }
-       reference
-         "RFC 8453: Framework for Abstraction and Control of TE
-          Networks (ACTN), Section 6";
-     }
-
      container network-slices {
        description
          "Generic network slice configurations";
@@ -487,13 +433,6 @@
                description
                  "Endpoint identifier";
              }
-			 leaf ap-id {
-			   type leafref {
-                 path "/access-points/access-point/ap-id";
-               }
-               description
-                 "Relative reference to AP id.";
-			 }
            }
 		 }
 		 container network-topologies {
