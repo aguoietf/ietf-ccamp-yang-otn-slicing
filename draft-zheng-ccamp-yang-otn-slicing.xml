@@ -86,8 +86,14 @@
         <email>zhaoyangyjy@chinamobile.com</email>
       </address>
     </author>
+    <author initials="X." surname="Liu" fullname="Xufeng Liu">
+      <organization>Volta Networks</organization>
+      <address>
+        <email>xufeng.liu.ietf@gmail.com</email>
+      </address>
+    </author>
 
-    <date year="2021" month="July" day="12"/>
+    <date year="2021" month="October" day="22"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -118,7 +124,7 @@
   <middle>
 
 
-<section anchor="introduction" title="Introduction">
+<section anchor="introduction"><name>Introduction</name>
 
 <t>The requirement of slicing network resources with desired quality of
    service is emerging at every network technology, including the
@@ -131,7 +137,7 @@
    YANG data model augmentations will be defined in a future version of
    this draft.</t>
 
-<section anchor="definition-of-otn-slice" title="Definition of OTN Slice">
+<section anchor="definition-of-otn-slice"><name>Definition of OTN Slice</name>
 <t>An OTN slice is an OTN virtual network topology connecting a number
    of OTN endpoints using a set of shared or dedicated OTN network resources to
    satisfy specific service level objectives (SLOs).</t>
@@ -182,13 +188,13 @@
    provisioned by a higher layer slice controller, e.g. an IETF network slice 
    controller (IETF NSC) through the NBI. The OTN slice is 
    provided by a service provider to a customer to be used as though it was part
-   of the customer’s own networks.</t>
+   of the customer's own networks.</t>
 
 </section>
 </section>
-<section anchor="use-cases-for-otn-network-slicing" title="Use Cases for OTN Network Slicing">
+<section anchor="use-cases-for-otn-network-slicing"><name>Use Cases for OTN Network Slicing</name>
 
-<section anchor="leased-line-services-with-otn" title="Leased Line Services with OTN">
+<section anchor="leased-line-services-with-otn"><name>Leased Line Services with OTN</name>
 
 <t>For end business customers (like OTT or enterprises), leased lines
    have the advantage of providing high-speed connections with low
@@ -199,7 +205,7 @@
    full control over the sliced resources which have been allocated to them
    and which could be used to support their leased lines, when needed.
    Users may formulate policies based on the demand for services and
-   time to schedule the resources from the entire network’s perspective
+   time to schedule the resources from the entire network's perspective
    flexibly. For example, the bandwidth between any two points may be
    established or released based on the time or monitored traffic
    characteristics. The routing and bandwidth may be adjusted at a
@@ -207,7 +213,7 @@
    efficiency.</t>
 
 </section>
-<section anchor="co-construction-and-sharing" title="Co-construction and Sharing">
+<section anchor="co-construction-and-sharing"><name>Co-construction and Sharing</name>
 
 <t>Co-construction and sharing of a network are becoming a popular means
    among service providers to reduce networking building CAPEX. For Co-
@@ -218,15 +224,15 @@
    resources. In this scenario, the network O&amp;M is performed by a
    certain founder in each region, where the same founder usually
    deploys an independent management and control system. The other
-   founders of the network use each other’s management and control
+   founders of the network use each other's management and control
    system to provision services remotely. In this scenario, different
-   founders’ network resources need to be automatically (associated)
+   founders' network resources need to be automatically (associated)
    divided, isolated, and visualized. All founders may share or have
    independent O&amp;M capabilities, and should be able to perform service-
    level provisioning in their respective slices.</t>
 
 </section>
-<section anchor="wholesale-of-optical-resources" title="Wholesale of optical resources">
+<section anchor="wholesale-of-optical-resources"><name>Wholesale of optical resources</name>
 
 <t>In the optical resource wholesale market, smaller, local carriers and
    wireless carriers may rent resources from larger carriers, or
@@ -237,7 +243,7 @@
    From the perspective of a resource provider, it is crucial that a
    network slice is timely configured to meet traffic matrix
    requirements requested by its tenants. The support for multi-tenancy
-   within the resource provider’s network demands that the network
+   within the resource provider's network demands that the network
    slices are qualitatively isolated from each other to meet the
    requirements for transparency, non-interference, and security.
    Typically, a resource purchaser expects to use the leased network
@@ -250,7 +256,7 @@
    resources.</t>
 
 </section>
-<section anchor="vertical-dedicated-network-with-otn" title="Vertical dedicated network with OTN">
+<section anchor="vertical-dedicated-network-with-otn"><name>Vertical dedicated network with OTN</name>
 
 <t>Vertical industry slicing is an emerging category of network slicing
    due to the high demand for private high-speed network interconnects
@@ -268,7 +274,7 @@
    required to ensure flexible and efficient network resource usage.</t>
 
 </section>
-<section anchor="end-to-end-network-slicing" title="End-to-end network slicing">
+<section anchor="end-to-end-network-slicing"><name>End-to-end network slicing</name>
 
 <t>In an end-to-end network slicing scenario such as 5G network slicing
    <xref target="TS.28.530-3GPP"/>, an IETF network slice <xref target="I-D.ietf-teas-ietf-network-slices"/>
@@ -284,7 +290,7 @@
 
 </section>
 </section>
-<section anchor="framework-for-otn-slicing" title="Framework for OTN slicing">
+<section anchor="framework-for-otn-slicing"><name>Framework for OTN slicing</name>
 
 <t>OTN slices may be abstracted differently depending on the requirement contained
    in the configuration provided by the slice customer. Whereas the customer requests
@@ -354,7 +360,7 @@ shall support configuring an OTN slice with both options.</t>
    abstract TE topology using the TE topology interface defined in <xref target="RFC8795"/>.</t>
 
 <t>The OTN-SC NBI is technology-specific, while the IETF NSC-NBI is technology-
-   agnostic. An IETF NSC may translate its customer’s technology-agnostic slice
+   agnostic. An IETF NSC may translate its customer's technology-agnostic slice
    request into an OTN slice request and utilize the OTN-SC NBI to realize 
    the IETF network slice. Alternatively, the IETF NSC may translate the slicing
    request into tunnel or topology configuration commands and communicate directly
@@ -429,11 +435,11 @@ shall support configuring an OTN slice with both options.</t>
       end-to-end network slicing;</t>
 
 </section>
-<section anchor="yang-data-model-for-otn-slicing-configuration" title="YANG Data Model for OTN Slicing Configuration">
+<section anchor="yang-data-model-for-otn-slicing-configuration"><name>YANG Data Model for OTN Slicing Configuration</name>
 
-<section anchor="otn-slicing-yang-model-for-mpi" title="OTN Slicing YANG Model for MPI">
+<section anchor="otn-slicing-yang-model-for-mpi"><name>OTN Slicing YANG Model for MPI</name>
 
-<section anchor="mpi-yang-model-overview" title="MPI YANG Model Overview">
+<section anchor="mpi-yang-model-overview"><name>MPI YANG Model Overview</name>
 
 <t>For the configuration of connectivity-based OTN slices, existing models such as 
    the TE tunnel interface <xref target="I-D.ietf-teas-yang-te"/> may be used and no addition is 
@@ -447,29 +453,34 @@ shall support configuring an OTN slice with both options.</t>
    the colored links to keep booked the reserved OTN resources e.g. time slots or ODU containers.</t>
 
 </section>
-<section anchor="mpi-yang-model-tree" title="MPI YANG Model Tree">
+<section anchor="mpi-yang-model-tree"><name>MPI YANG Model Tree</name>
 
-<figure title="OTN network slicing tree diagram" anchor="fig-otn-slice-tree"><artwork><![CDATA[
-   module: ietf-otn-slice
-     augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-
-   attributes:
-       +--rw (otn-slice-granularity)?
-          +--:(link)
-          |  +--rw slice-id?   uint32
-          +--:(link-resource)
-             +--rw slices* [slice-id]
-                +--rw slice-id            uint32
-                +--rw (technology)?
-                |  +--:(otn)
-                |     +--rw otn-ts-num?   uint32
-                +--ro sliced-link-ref?    ->
-   ../../../../../nt:link/link-id
+<figure title="OTN slicing tree diagram" anchor="fig-otn-slice-tree"><artwork><![CDATA[
+module: ietf-otn-slice
+
+  augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes:
+    +--rw (otn-slice-granularity)?
+       +--:(link)
+       |  +--rw slice-id?   uint32
+       +--:(link-resource)
+          +--rw slices* [slice-id]
+             +--rw slice-id                  uint32
+             +--rw (technology)?
+             |  +--:(otn)
+             |     +--rw (slice-bandwidth)?
+             |        +--:(containers)
+             |        |  +--rw odulist* [odu-type]
+             |        |     +--rw odu-type    identityref
+             |        |     +--rw number?     uint16
+             |        +--:(time-slots)
+             |           +--rw otn-ts-num?   uint32
+             +--ro sliced-link-ref?          -> ../../../../../nt:link/link-id
 ]]></artwork></figure>
 
 </section>
-<section anchor="mpi-yang-code" title="MPI YANG Code">
+<section anchor="mpi-yang-code"><name>MPI YANG Code</name>
 
-<figure title="OTN network slicing YANG model" anchor="fig-otn-slice-yang"><artwork><![CDATA[
+<figure title="OTN slicing YANG model" anchor="fig-otn-slice-yang"><artwork><![CDATA[
    <CODE BEGINS>file "ietf-otn-slice@2021-02-22.yang"
    module ietf-otn-slice {
      yang-version 1.1;
@@ -498,6 +509,13 @@ shall support configuring an OTN slice with both options.</t>
        reference
          "I-D.ietf-ccamp-otn-topo-yang: A YANG Data Model
           for Optical Transport Network Topology";
+     }
+
+     import ietf-layer1-types {
+       prefix "l1-types";
+       reference
+         "I-D.ietf-ccamp-layer1-types: A YANG Data Model
+          for Layer 1 Types";
      }
 
      organization
@@ -570,18 +588,27 @@ shall support configuring an OTN slice with both options.</t>
                "List of slices.";
              leaf slice-id {
                type uint32;
-                 description
+               description
                  "Slice identifier";
              }
              choice technology {
                description
                  "Data plane technology types.";
                case otn {
-                 leaf otn-ts-num {
-                   type uint32;
+                 choice slice-bandwidth {
                    description
-                     "Number of OTN tributary slots allocated for the
-                      slice.";
+                     "Bandwidth specification for OTN slices.";
+                   case containers {
+                     uses l1-types:otn-link-bandwidth;
+                   }
+                   case time-slots {
+                     leaf otn-ts-num {
+                       type uint32;
+                       description
+                         "Number of OTN tributary slots allocated for the
+                          slice.";
+                     }
+                   }
                  }
                }
              }
@@ -620,13 +647,605 @@ shall support configuring an OTN slice with both options.</t>
 
 </section>
 </section>
-<section anchor="otn-slicing-yang-model-for-otn-sc-nbi" title="OTN Slicing YANG Model for OTN-SC NBI">
+<section anchor="otn-slicing-yang-model-for-otn-sc-nbi"><name>OTN Slicing YANG Model for OTN-SC NBI</name>
+
+<section anchor="nbi-yang-model-overview"><name>NBI YANG Model Overview</name>
+<t>The YANG model for OTN-SC NBI is OTN-technology specific, but shares many
+   common constructs and attributes with generic network slicing YANG models.
+   Furthermore, the OTN-SC NBI YANG is expected to support both connectivity-based
+   and resource-based slice configuration, which is likely a common requirement for
+   supporting slicing at other transport network layers, e.g. WDM or MPLS-TP.
+   Therefore, the OTN-SC NBI YANG model is designed into two models, a common base 
+   model for transport network slicing, and an OTN slicing model which augments the 
+   base model with OTN technology-specific constructs.</t>
+
+<t>The base model defines a transport network slice (TNS) with the following
+   constructs and attributes:
+   - Common attributes, which include a set of common attributes like slice identifier,
+     name, description and names of customers who use the slice.
+   - Endpoints, which represent conceptual points of connection from a customer
+     device to the TNS. An endpoint is mapped to specific physical or virtual resources
+     of the customer and provider, and such mapping is pre-negotiated and known to 
+     both the customer and provider prior to the slice configuration. The mechanism 
+     for endpoint negotiation is outside the scope of this draft.
+   - Network topology, which represent set of shared, reserved resources organized as a virtual 
+     topology between all of the endpoints. A customer could use such network topology
+     to define detailed connecvitiy path traversing the topology, and allow sharing of 
+     resources between its multiple endpoint pairs.
+   - Connectivity matrix, which represent the intended virtual connections between the endpoints
+     within a TNS. A connctivity matrix entry could be associated with an explicit path 
+     over the above network topology. 
+   - Service-level objectives (SLOs) associated with different objects, including the TNS, 
+     node, link, termination point, and explicit path, within a TNS.</t>
+
+</section>
+<section anchor="nbi-yang-model-tree-for-transport-network-slice"><name>NBI YANG Model Tree for Transport Network Slice</name>
+
+<figure title="Tree diagram for transport network slice" anchor="fig-ietf-transport-network-slice"><artwork><![CDATA[
+module: ietf-transport-network-slice
+  +--rw network-slices
+     +--rw network-slice* [ns-id]
+        +--rw ns-id                    string
+        +--rw ns-name?                 string
+        +--rw ns-description?          string
+        +--rw customer-name*           string
+        +--rw slo
+        |  +--rw optimization-criterion?   identityref
+        |  +--rw delay-tolerance?          boolean
+        |  +--rw periodicity*              uint64
+        |  +--rw isolation-level?          identityref
+        +--rw endpoints
+        |  +--rw endpoint* [endpoint-id]
+        |     +--rw endpoint-id    string
+        +--rw network-topologies
+        |  +--rw network-topology* [topology-id]
+        |     +--rw topology-id    string
+        |     +--rw node* [node-id]
+        |     |  +--rw node-id              inet:uri
+        |     |  +--rw slo
+        |     |  |  +--rw isolation-level?   identityref
+        |     |  +--rw termination-point* [tp-id]
+        |     |     +--rw tp-id          inet:uri
+        |     |     +--rw endpoint-id?   -> /network-slices/network-slice[ns-id=current()/../../../../../ns-id]/endpoints/endpoint/endpoint-id
+        |     +--rw link* [link-id]
+        |        +--rw link-id        inet:uri
+        |        +--rw slo
+        |        |  +--rw delay-tolerance?   boolean
+        |        |  +--rw periodicity*       uint64
+        |        |  +--rw isolation-level?   identityref
+        |        +--rw source
+        |        |  +--rw source-node?   -> ../../../node/node-id
+        |        |  +--rw source-tp?     -> ../../../node[node-id=current()/../source-node]/termination-point/tp-id
+        |        +--rw destination
+        |           +--rw dest-node?   -> ../../../node/node-id
+        |           +--rw dest-tp?     -> ../../../node[node-id=current()/../dest-node]/termination-point/tp-id
+        +--rw connectivity-matrices
+           +--rw connectivity-matrix* [connectivity-matrix-id]
+              +--rw connectivity-matrix-id    uint32
+              +--rw topology-id?              -> ../../../network-topologies/network-topology/topology-id
+              +--rw src-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
+              +--rw dst-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
+              +--rw slo
+              +--rw explicit-path* [tp-id]
+                 +--rw tp-id    -> /network-slices/network-slice[ns-id=current()/../../../../ns-id]/network-topologies/network-topology[topology-id=current()/../../topology-id]/node/termination-point/tp-id
+]]></artwork></figure>
+
+</section>
+<section anchor="nbi-yang-code-for-transport-network-slice"><name>NBI YANG Code for Transport Network Slice</name>
+
+<figure title="YANG model for transport network slice" anchor="fig-ietf-transport-network-yang"><artwork><![CDATA[
+   <CODE BEGINS>file "ietf-transport-network-slice@2021-10-18.yang"
+   module ietf-transport-network-slice {
+     yang-version 1.1;
+     namespace "urn:ietf:params:xml:ns:yang:ietf-transport-network-slice";
+     prefix "tns";
+
+     import ietf-inet-types {
+       prefix inet;
+       reference "RFC 6991";
+     }
+
+     import ietf-te-types {
+       prefix "te-types";
+       reference
+         "RFC 8776: Traffic Engineering Common YANG Types";
+     }
+
+     organization
+       "IETF CCAMP Working Group";
+     contact
+       "WG Web: <http://tools.ietf.org/wg/ccamp/>
+        WG List: <mailto:ccamp@ietf.org>
+
+        Editor: Haomian Zheng
+                <mailto:zhenghaomian@huawei.com>
+
+        Editor: Italo Busi
+                <mailto:italo.busi@huawei.com>
+
+        Editor: Aihua Guo
+                <mailto:aihuaguo.ietf@gmail.com>
+
+        Editor: Victor Lopez
+                <mailto:victor.lopezalvarez@telefonica.com>";
+
+     description
+       "This module defines a YANG data model to configure an OTN
+        network slice realization.
+
+        The model fully conforms to the Network Management Datastore
+        Architecture (NMDA).
+
+        Copyright (c) 2021 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Simplified BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices.";
+
+     revision "2021-10-06" {
+       description
+         "Initial Version";
+       reference
+         "draft-zheng-ccamp-yang-otn-slicing-01: Framework and Data
+          Model for OTN Network Slicing";
+     }
+
+     /*
+      * Identities
+      */
+     identity isolation-level {
+       description
+         "Base identity for the isolation-level.";
+       reference
+         "GSMA-NS-Template: Generic Network Slice Template,
+          Version 3.0.";
+     }
+     identity no-isolation {
+       base isolation-level;
+       description
+         "Network slices are not separated.";
+     }
+     identity physical-isolation {
+       base isolation-level;
+       description
+         "Network slices are physically separated (e.g. different rack,
+          different hardware, different location, etc.).";
+     }
+     identity logical-isolation {
+       base isolation-level;
+       description
+         "Network slices are logically separated.";
+     }
+     identity process-isolation {
+       base physical-isolation;
+       description
+         "Process and threads isolation.";
+     }
+     identity physical-memory-isolation {
+       base physical-isolation;
+       description
+         "Process and threads isolation.";
+     }
+     identity physical-network-isolation {
+       base physical-isolation;
+       description
+         "Process and threads isolation.";
+     }
+     identity virtual-resource-isolation {
+       base logical-isolation;
+       description
+         "A network slice has access to specific range of resources
+          that do not overlap with other network slices
+          (e.g. VM isolation).";
+     }
+     identity network-functions-isolation {
+       base logical-isolation;
+       description
+         "NF (Network Function) is dedicated to the network slice, but
+          virtual resources are shared.";
+     }
+     identity service-isolation {
+       base logical-isolation;
+       description
+         "NSC data are isolated from other NSCs, but virtual
+          resources and NFs are shared.";
+     }
+
+     /*
+      * Groupings
+      */
+
+     grouping ns-generic-info {
+       description
+         "Generic configuration of a network slice";
+         leaf ns-name {
+           type string;
+           description
+             "Name of the specific network slice";
+         }
+         leaf ns-description {
+           type string;
+           description
+             "Description regarding the specific network slice";
+         }
+         leaf-list customer-name {
+           type string;
+           description
+             "List of customers using the slice";
+         }
+     }
+
+     grouping ns-slo {
+       description
+         "SLO configuration of a network slice";
+
+       container slo {
+             description
+           "SLO configuration of a network slice";
+                   
+                 leaf optimization-criterion {
+           type identityref {
+             base te-types:objective-function-type;
+           }
+           description
+             "Optimization criterion applied to this topology.";
+         }
+         leaf delay-tolerance {
+           type boolean;
+           description
+             "'true' if is not too critical how long it takes to deliver
+              the amount of data.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+                 leaf-list periodicity {
+           type uint64;
+           units seconds;
+           description
+             "A list of periodicities supported by the network slice.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+         leaf isolation-level {
+           type identityref {
+             base isolation-level;
+           }
+           description
+             "A network slice instance may be fully or partly, logically
+              and/or physically, isolated from another network slice
+              instance. This attribute describes different types of
+              isolation:";
+         }
+           }
+     }
+
+     grouping node-slo {
+       description
+         "Node SLO";
+       container slo {
+             description
+           "SLO configuration of a node";
+         leaf isolation-level {
+           type identityref {
+             base isolation-level;
+           }
+           description
+             "A network slice instance may be fully or partly, logically
+              and/or physically, isolated from another network slice
+              instance. This attribute describes different types of
+              isolation:";
+         }
+       }
+     }
+
+     grouping link-slo {
+       description
+         "Link SLO";
+       container slo {
+             description
+           "SLO configuration of a link";
+         leaf delay-tolerance {
+           type boolean;
+           description
+             "'true' if is not too critical how long it takes to deliver
+              the amount of data.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+         leaf-list periodicity {
+           type uint64;
+           units seconds;
+           description
+             "A list of periodicities supported by the network slice.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+         leaf isolation-level {
+           type identityref {
+             base isolation-level;
+           }
+           description
+             "A network slice instance may be fully or partly, logically
+              and/or physically, isolated from another network slice
+              instance. This attribute describes different types of
+              isolation:";
+         }
+       }
+     }
+
+     grouping connectivity-matrix-slo {
+       description
+         "SLO configuration of a path within a network slice";
+
+       container slo {
+             description
+           "Path SLO configuration";
+           }
+           leaf delay-tolerance {
+           type boolean;
+           description
+             "'true' if is not too critical how long it takes to deliver
+              the amount of data.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+         leaf-list periodicity {
+           type uint64;
+           units seconds;
+           description
+             "A list of periodicities supported by the network slice.";
+           reference
+             "GSMA-NS-Template: Generic Network Slice Template,
+              Version 3.0.";
+         }
+         leaf isolation-level {
+           type identityref {
+             base isolation-level;
+           }
+           description
+             "A network slice instance may be fully or partly, logically
+              and/or physically, isolated from another network slice
+              instance. This attribute describes different types of
+              isolation:";
+         }
+     }
+
+     grouping connectivity-matrix-entry-slo {
+       description
+         "SLO configuration of a connectivity matrix entry within a
+                  network slice";
+
+       container slo {
+             description
+           "SLO configuration of a connectivity matrix entry";
+           }
+           
+           
+     }
+
+     grouping explicit-path {
+       description
+         "Underlay path for a connectivity matrix entry";
+
+       list explicit-path {
+         key "tp-id";
+         description
+           "List of TPs within a network topology that form a path.";
+         leaf tp-id {
+           type leafref {
+             path "/network-slices/network-slice[ns-id=current()"+
+                              "/../../../../ns-id]/network-topologies"+
+                  "/network-topology[topology-id=current()"+
+                                  "/../../topology-id]/node/termination-point/tp-id";
+           }
+           description
+             "Relative reference to TP id.";
+         }
+       }
+     }
+
+     grouping network-topology-def {
+                 list node {
+                   key "node-id";
+                   description
+                         "The inventory of nodes of this topology.";
+                   leaf node-id {
+                         type inet:uri;
+                         description
+                           "Node identifier.";
+                   }
+                   uses node-slo;
+                   list termination-point {
+                         key "tp-id";
+                         description
+                           "TP identifier";
+                         leaf tp-id {
+                           type inet:uri;
+                           description
+                                 "Termination point identifier.";
+                         }
+                         leaf endpoint-id {
+                           type leafref {
+                 path "/network-slices/network-slice[ns-id=current()"+
+                                  "/../../../../../ns-id]/endpoints/endpoint/"+
+                                          "endpoint-id";
+               }
+               description
+                 "Relative reference to TP id.";
+                         }
+                   }
+                 }
+                 list link {
+                   key "link-id";
+                         description
+                           "Link identifier.";
+                   leaf link-id {
+                         type inet:uri;
+                         description
+                           "Link identifier.";
+                   }
+                   uses link-slo;
+                   container source {
+                         description
+                           "Link source node";
+                         leaf source-node {
+                           type leafref {
+                                 path "../../../node/node-id";
+                           }
+                           description
+                                 "Source node identifier, must be in same topology.";
+                         }
+                         leaf source-tp {
+                           type leafref {
+                                 path "../../../node[node-id=current()/../"+
+                                          "source-node]/termination-point/tp-id";
+                           }
+                           description
+                                 "Termination point within source node that terminates
+                                  the link.";
+                         }
+                   }
+                   container destination {
+                         description
+                           "Link destination node";
+                         leaf dest-node {
+                           type leafref {
+                                 path "../../../node/node-id";
+                           }
+                           description
+                                 "Destination node identifier, must be in same topology.";
+                         }
+                         leaf dest-tp {
+                           type leafref {
+                                 path "../../../node[node-id=current()/../"+
+                                          "dest-node]/termination-point/tp-id";
+                           }
+                           description
+                                 "Termination point within destination node that terminates
+                                  the link.";
+                         }
+                   }
+                 }
+         }
+
+     /*
+      * Configuration data nodes
+      */
+     container network-slices {
+       description
+         "Generic network slice configurations";
+       list network-slice {
+         key "ns-id";
+         description
+           "Network slice identifier";
+         leaf ns-id {
+           type string;
+           description
+             "A unique network slice identifier across a slice controller";
+         }
+         uses ns-generic-info;
+                 uses ns-slo;
+
+                 container endpoints {
+                   description
+             "Endpoints of a network slice";
+                         
+           list endpoint {
+             key "endpoint-id";
+             description
+               "List of endpoints";
+             leaf endpoint-id {
+               type string;
+               description
+                 "Endpoint identifier";
+             }
+           }
+                 }
+                 container network-topologies {
+                   description
+             "A network slice is described as a network topology";
+                         
+           list network-topology {
+             key "topology-id";
+             description
+               "List of network topologies";
+             leaf topology-id {
+               type string;
+               description
+                 "Topology identifier";
+             }
+             uses network-topology-def;
+           }
+                 }       
+                 container connectivity-matrices {
+                   description
+             "Connectivity matrices";
+                         
+           list connectivity-matrix {
+             key "connectivity-matrix-id";
+             description
+               "List of connectivity matrix entities";
+             leaf connectivity-matrix-id {
+               type uint32;
+               description
+                 "Connectivity matrix identifier";
+             }
+                         leaf topology-id {
+                           type leafref {
+                 path "../../../network-topologies/network-topology/topology-id";
+               }
+               description
+                 "Relative reference to network topology id.";
+                         }
+                         leaf src-endpoint {
+                           type leafref {
+                 path "../../../endpoints/endpoint/endpoint-id";
+               }
+               description
+                 "Relative reference to endpoint id.";
+                         }
+                         leaf dst-endpoint {
+                           type leafref {
+                 path "../../../endpoints/endpoint/endpoint-id";
+               }
+               description
+                 "Relative reference to endpoint id.";
+                         }
+                         uses connectivity-matrix-entry-slo;
+                         uses explicit-path;
+           } //connectivity-matrix
+                 } //connectivity-matrices
+       } //network-slice
+     } //network slices
+   }
+   <CODE ENDS>
+]]></artwork></figure>
+
+</section>
+<section anchor="nbi-yang-model-tree-for-otn-slice"><name>NBI YANG Model Tree for OTN slice</name>
+
+<t>TBD.</t>
+
+</section>
+<section anchor="nbi-yang-code-for-otn-slice"><name>NBI YANG Code for OTN Slice</name>
 
 <t>TBD.</t>
 
 </section>
 </section>
-<section anchor="manageability-considerations" title="Manageability Considerations">
+</section>
+<section anchor="manageability-considerations"><name>Manageability Considerations</name>
 
 <t>To ensure the security and controllability of physical resource
    isolation, slice-based independent operation and management are
@@ -639,12 +1258,12 @@ shall support configuring an OTN slice with both options.</t>
    checks.</t>
 
 </section>
-<section anchor="security-considerations" title="Security Considerations">
+<section anchor="security-considerations"><name>Security Considerations</name>
 
 <t>&lt;Add any security considerations&gt;</t>
 
 </section>
-<section anchor="iana-considerations" title="IANA Considerations">
+<section anchor="iana-considerations"><name>IANA Considerations</name>
 
 <t>&lt;Add any IANA considerations&gt;</t>
 
@@ -762,9 +1381,9 @@ shall support configuring an OTN slice with both options.</t>
 	 <organization>Telefonica</organization>
       </author>
       <author fullname='Jeff Tantsura'>
-	 <organization>Juniper Networks</organization>
+	 <organization>Microsoft Inc.</organization>
       </author>
-      <date day='23' month='May' year='2021'/>
+      <date day='23' month='August' year='2021'/>
       <abstract>
 	 <t>   This document describes network slicing in the context of networks
    built from IETF technologies.  It defines the term &quot;IETF Network
@@ -785,8 +1404,8 @@ shall support configuring an OTN slice with both options.</t>
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-ietf-network-slices-03'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-ietf-network-slices-03.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-ietf-network-slices-04'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-ietf-network-slices-04.txt' type='TXT'/>
 </reference>
 
 
@@ -809,14 +1428,14 @@ shall support configuring an OTN slice with both options.</t>
     </references>
 
 
-<section numbered="false" anchor="acknowledgments" title="Acknowledgments">
+<section numbered="false" anchor="acknowledgments"><name>Acknowledgments</name>
 
 <t>This document was prepared using kramdown.</t>
 
 <t>Previous versions of this document were prepared using 2-Word-v2.0.template.dot.</t>
 
 </section>
-<section numbered="false" anchor="contributors-addresses" title="Contributors’ Addresses">
+<section numbered="false" anchor="contributors-addresses"><name>Contributors' Addresses</name>
 
 <figure><artwork><![CDATA[
 Henry Yu
@@ -831,191 +1450,262 @@ Email: henry.yu@huawei.com
   </back>
 
 <!-- ##markdown-source:
-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
+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
+PDhS19hvum69Sgyj/weO05b8xr0AAA==
 
 -->
 
