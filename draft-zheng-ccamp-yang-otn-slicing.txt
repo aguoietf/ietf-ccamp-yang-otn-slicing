@@ -98,14 +98,14 @@ Table of Contents
      4.2.  OTN Slicing YANG Model for OTN-SC NBI . . . . . . . . . .  14
        4.2.1.  NBI YANG Model Overview . . . . . . . . . . . . . . .  14
        4.2.2.  NBI YANG Model Tree for Transport Network Slice . . .  14
-       4.2.3.  NBI YANG Code for Transport Network Slice . . . . . .  16
+       4.2.3.  NBI YANG Code for Transport Network Slice . . . . . .  15
        4.2.4.  NBI YANG Model Tree for OTN slice . . . . . . . . . .  26
        4.2.5.  NBI YANG Code for OTN Slice . . . . . . . . . . . . .  26
    5.  Manageability Considerations  . . . . . . . . . . . . . . . .  26
    6.  Security Considerations . . . . . . . . . . . . . . . . . . .  26
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  27
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  27
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  27
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  26
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  26
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  26
 
 
 
@@ -115,8 +115,8 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
      8.2.  Informative References  . . . . . . . . . . . . . . . . .  27
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  28
-   Contributors' Addresses . . . . . . . . . . . . . . . . . . . . .  28
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  27
+   Contributors' Addresses . . . . . . . . . . . . . . . . . . . . .  27
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  28
 
 1.  Introduction
@@ -537,8 +537,7 @@ module: ietf-otn-slice
 
 4.1.3.  MPI YANG Code
 
-   <CODE BEGINS>
-   file "ietf-otn-slice@2021-02-22.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2021-10-22.yang"
       module ietf-otn-slice {
         yang-version 1.1;
         namespace "urn:ietf:params:xml:ns:yang:ietf-otn-slice";
@@ -554,6 +553,7 @@ module: ietf-otn-slice
           reference "RFC 8345: A YANG Data Model for Network Topologies";
         }
 
+        import ietf-te-topology {
 
 
 
@@ -562,7 +562,6 @@ Zheng, et al.             Expires 25 April 2022                [Page 10]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-        import ietf-te-topology {
           prefix "tet";
           reference
             "RFC8795: YANG Data Model for Traffic Engineering
@@ -613,6 +612,7 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
 
+
 Zheng, et al.             Expires 25 April 2022                [Page 11]
 
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
@@ -627,11 +627,11 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
            This version of this YANG module is part of RFC XXXX; see
            the RFC itself for full legal notices.";
 
-        revision "2021-02-22" {
+        revision "2021-10-22" {
           description
-            "Initial Version";
+            "Latest revision of MPI YANG model for OTN slicing.";
           reference
-            "draft-zheng-ccamp-yang-otn-slicing-01: Framework and Data
+            "draft-zheng-ccamp-yang-otn-slicing-03: Framework and Data
              Model for OTN Network Slicing";
         }
 
@@ -771,13 +771,13 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 4.2.2.  NBI YANG Model Tree for Transport Network Slice
 
-
-
-
-
-
-
-
+   module: ietf-transport-network-slice
+     +--rw network-slices
+        +--rw network-slice* [ns-id]
+           +--rw ns-id                    string
+           +--rw ns-name?                 string
+           +--rw ns-description?          string
+           +--rw customer-name*           string
 
 
 
@@ -786,54 +786,54 @@ Zheng, et al.             Expires 25 April 2022                [Page 14]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-module: ietf-transport-network-slice
-  +--rw network-slices
-     +--rw network-slice* [ns-id]
-        +--rw ns-id                    string
-        +--rw ns-name?                 string
-        +--rw ns-description?          string
-        +--rw customer-name*           string
-        +--rw slo
-        |  +--rw optimization-criterion?   identityref
-        |  +--rw delay-tolerance?          boolean
-        |  +--rw periodicity*              uint64
-        |  +--rw isolation-level?          identityref
-        +--rw endpoints
-        |  +--rw endpoint* [endpoint-id]
-        |     +--rw endpoint-id    string
-        +--rw network-topologies
-        |  +--rw network-topology* [topology-id]
-        |     +--rw topology-id    string
-        |     +--rw node* [node-id]
-        |     |  +--rw node-id              inet:uri
-        |     |  +--rw slo
-        |     |  |  +--rw isolation-level?   identityref
-        |     |  +--rw termination-point* [tp-id]
-        |     |     +--rw tp-id          inet:uri
-        |     |     +--rw endpoint-id?   -> /network-slices/network-slice[ns-id=current()/../../../../../ns-id]/endpoints/endpoint/endpoint-id
-        |     +--rw link* [link-id]
-        |        +--rw link-id        inet:uri
-        |        +--rw slo
-        |        |  +--rw delay-tolerance?   boolean
-        |        |  +--rw periodicity*       uint64
-        |        |  +--rw isolation-level?   identityref
-        |        +--rw source
-        |        |  +--rw source-node?   -> ../../../node/node-id
-        |        |  +--rw source-tp?     -> ../../../node[node-id=current()/../source-node]/termination-point/tp-id
-        |        +--rw destination
-        |           +--rw dest-node?   -> ../../../node/node-id
-        |           +--rw dest-tp?     -> ../../../node[node-id=current()/../dest-node]/termination-point/tp-id
-        +--rw connectivity-matrices
-           +--rw connectivity-matrix* [connectivity-matrix-id]
-              +--rw connectivity-matrix-id    uint32
-              +--rw topology-id?              -> ../../../network-topologies/network-topology/topology-id
-              +--rw src-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
-              +--rw dst-endpoint?             -> ../../../endpoints/endpoint/endpoint-id
-              +--rw slo
-              +--rw explicit-path* [tp-id]
-                 +--rw tp-id    -> /network-slices/network-slice[ns-id=current()/../../../../ns-id]/network-topologies/network-topology[topology-id=current()/../../topology-id]/node/termination-point/tp-id
+           +--rw slo
+           |  +--rw optimization-criterion?   identityref
+           |  +--rw delay-tolerance?          boolean
+           |  +--rw periodicity*              uint64
+           |  +--rw isolation-level?          identityref
+           +--rw endpoints
+           |  +--rw endpoint* [endpoint-id]
+           |     +--rw endpoint-id    string
+           +--rw network-topologies
+           |  +--rw network-topology* [topology-id]
+           |     +--rw topology-id    string
+           |     +--rw node* [node-id]
+           |     |  +--rw node-id              inet:uri
+           |     |  +--rw slo
+           |     |  |  +--rw isolation-level?   identityref
+           |     |  +--rw termination-point* [tp-id]
+           |     |     +--rw tp-id          inet:uri
+           |     |     +--rw endpoint-id?   leafref
+           |     +--rw link* [link-id]
+           |        +--rw link-id        inet:uri
+           |        +--rw slo
+           |        |  +--rw delay-tolerance?   boolean
+           |        |  +--rw periodicity*       uint64
+           |        |  +--rw isolation-level?   identityref
+           |        +--rw source
+           |        |  +--rw source-node?   -> ../../../node/node-id
+           |        |  +--rw source-tp?     leafref
+           |        +--rw destination
+           |           +--rw dest-node?   -> ../../../node/node-id
+           |           +--rw dest-tp?     leafref
+           +--rw connectivity-matrices
+              +--rw connectivity-matrix* [connectivity-matrix-id]
+                 +--rw connectivity-matrix-id    uint32
+                 +--rw topology-id?              leafref
+                 +--rw src-endpoint?
+                 |       -> ../../../endpoints/endpoint/endpoint-id
+                 +--rw dst-endpoint?
+                 |       -> ../../../endpoints/endpoint/endpoint-id
+                 +--rw slo
+                 +--rw explicit-path* [tp-id]
+                    +--rw tp-id    leafref
 
-          Figure 6: Tree diagram for transport network slice
+             Figure 6: Tree diagram for transport network slice
+
+4.2.3.  NBI YANG Code for Transport Network Slice
+
+
+
 
 
 
@@ -842,10 +842,7 @@ Zheng, et al.             Expires 25 April 2022                [Page 15]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-4.2.3.  NBI YANG Code for Transport Network Slice
-
-   <CODE BEGINS>
-   file "ietf-transport-network-slice@2021-10-18.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2021-10-22.yang"
       module ietf-transport-network-slice {
         yang-version 1.1;
         namespace "urn:ietf:params:xml:ns:yang:ietf-transport-network-slice";
@@ -890,6 +887,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
            Copyright (c) 2021 IETF Trust and the persons
            identified as authors of the code.  All rights reserved.
 
+           Redistribution and use in source and binary forms, with or
+           without modification, is permitted pursuant to, and subject
+           to the license terms contained in, the Simplified BSD License
 
 
 
@@ -898,20 +898,17 @@ Zheng, et al.             Expires 25 April 2022                [Page 16]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-           Redistribution and use in source and binary forms, with or
-           without modification, is permitted pursuant to, and subject
-           to the license terms contained in, the Simplified BSD License
            set forth in Section 4.c of the IETF Trust's Legal Provisions
            Relating to IETF Documents
            (https://trustee.ietf.org/license-info).
            This version of this YANG module is part of RFC XXXX; see
            the RFC itself for full legal notices.";
 
-        revision "2021-10-06" {
+        revision "2021-10-22" {
           description
-            "Initial Version";
+            "Latest revision of NBI YANG model for OTN slicing.";
           reference
-            "draft-zheng-ccamp-yang-otn-slicing-01: Framework and Data
+            "draft-zheng-ccamp-yang-otn-slicing-03: Framework and Data
              Model for OTN Network Slicing";
         }
 
@@ -946,6 +943,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
           description
             "Process and threads isolation.";
         }
+        identity physical-memory-isolation {
+          base physical-isolation;
+          description
 
 
 
@@ -954,9 +954,6 @@ Zheng, et al.             Expires 25 April 2022                [Page 17]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-        identity physical-memory-isolation {
-          base physical-isolation;
-          description
             "Process and threads isolation.";
         }
         identity physical-network-isolation {
@@ -1002,6 +999,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                 "Description regarding the specific network slice";
             }
             leaf-list customer-name {
+              type string;
+              description
+                "List of customers using the slice";
 
 
 
@@ -1010,9 +1010,6 @@ Zheng, et al.             Expires 25 April 2022                [Page 18]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-              type string;
-              description
-                "List of customers using the slice";
             }
         }
 
@@ -1021,10 +1018,10 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
             "SLO configuration of a network slice";
 
           container slo {
-                description
+            description
               "SLO configuration of a network slice";
 
-                    leaf optimization-criterion {
+          leaf optimization-criterion {
               type identityref {
                 base te-types:objective-function-type;
               }
@@ -1040,7 +1037,7 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                 "GSMA-NS-Template: Generic Network Slice Template,
                  Version 3.0.";
             }
-                    leaf-list periodicity {
+            leaf-list periodicity {
               type uint64;
               units seconds;
               description
@@ -1058,6 +1055,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                  and/or physically, isolated from another network slice
                  instance. This attribute describes different types of
                  isolation:";
+            }
+          }
+        }
 
 
 
@@ -1066,15 +1066,11 @@ Zheng, et al.             Expires 25 April 2022                [Page 19]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-            }
-              }
-        }
-
         grouping node-slo {
           description
             "Node SLO";
           container slo {
-                description
+            description
               "SLO configuration of a node";
             leaf isolation-level {
               type identityref {
@@ -1093,7 +1089,7 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
           description
             "Link SLO";
           container slo {
-                description
+            description
               "SLO configuration of a link";
             leaf delay-tolerance {
               type boolean;
@@ -1114,6 +1110,10 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                  Version 3.0.";
             }
             leaf isolation-level {
+              type identityref {
+                base isolation-level;
+              }
+              description
 
 
 
@@ -1122,10 +1122,6 @@ Zheng, et al.             Expires 25 April 2022                [Page 20]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-              type identityref {
-                base isolation-level;
-              }
-              description
                 "A network slice instance may be fully or partly, logically
                  and/or physically, isolated from another network slice
                  instance. This attribute describes different types of
@@ -1139,37 +1135,41 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
             "SLO configuration of a path within a network slice";
 
           container slo {
-                description
+            description
               "Path SLO configuration";
-              }
-              leaf delay-tolerance {
-              type boolean;
-              description
-                "'true' if is not too critical how long it takes to deliver
-                 the amount of data.";
-              reference
-                "GSMA-NS-Template: Generic Network Slice Template,
-                 Version 3.0.";
+          }
+          leaf delay-tolerance {
+            type boolean;
+            description
+              "'true' if is not too critical how long it takes to deliver
+               the amount of data.";
+            reference
+              "GSMA-NS-Template: Generic Network Slice Template,
+               Version 3.0.";
+          }
+          leaf-list periodicity {
+            type uint64;
+            units seconds;
+            description
+              "A list of periodicities supported by the network slice.";
+            reference
+              "GSMA-NS-Template: Generic Network Slice Template,
+               Version 3.0.";
+          }
+          leaf isolation-level {
+            type identityref {
+              base isolation-level;
             }
-            leaf-list periodicity {
-              type uint64;
-              units seconds;
-              description
-                "A list of periodicities supported by the network slice.";
-              reference
-                "GSMA-NS-Template: Generic Network Slice Template,
-                 Version 3.0.";
-            }
-            leaf isolation-level {
-              type identityref {
-                base isolation-level;
-              }
-              description
-                "A network slice instance may be fully or partly, logically
-                 and/or physically, isolated from another network slice
-                 instance. This attribute describes different types of
-                 isolation:";
-            }
+            description
+              "A network slice instance may be fully or partly, logically
+               and/or physically, isolated from another network slice
+               instance. This attribute describes different types of
+               isolation:";
+          }
+        }
+
+        grouping connectivity-matrix-entry-slo {
+          description
 
 
 
@@ -1178,24 +1178,18 @@ Zheng, et al.             Expires 25 April 2022                [Page 21]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-        }
-
-        grouping connectivity-matrix-entry-slo {
-          description
             "SLO configuration of a connectivity matrix entry within a
-                     network slice";
+             network slice";
 
           container slo {
-                description
+            description
               "SLO configuration of a connectivity matrix entry";
-              }
-
-
+          }
         }
 
         grouping explicit-path {
           description
-            "Underlay path for a connectivity matrix entry";
+            "Explicit path for a connectivity matrix entry";
 
           list explicit-path {
             key "tp-id";
@@ -1204,9 +1198,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
             leaf tp-id {
               type leafref {
                 path "/network-slices/network-slice[ns-id=current()"+
-                                 "/../../../../ns-id]/network-topologies"+
+                     "/../../../../ns-id]/network-topologies"+
                      "/network-topology[topology-id=current()"+
-                                     "/../../topology-id]/node/termination-point/tp-id";
+                     "/../../topology-id]/node/termination-point/tp-id";
               }
               description
                 "Relative reference to TP id.";
@@ -1215,17 +1209,23 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
         }
 
         grouping network-topology-def {
-                    list node {
-                      key "node-id";
-                      description
-                            "The inventory of nodes of this topology.";
-                      leaf node-id {
-                            type inet:uri;
-                            description
-                              "Node identifier.";
-                      }
-                      uses node-slo;
-                      list termination-point {
+          description
+            "Network topology definition";
+          list node {
+            key "node-id";
+            description
+            "The inventory of nodes of this topology.";
+            leaf node-id {
+              type inet:uri;
+              description
+                "Node identifier.";
+            }
+            uses node-slo;
+            list termination-point {
+              key "tp-id";
+              description
+                "TP identifier";
+              leaf tp-id {
 
 
 
@@ -1234,54 +1234,54 @@ Zheng, et al.             Expires 25 April 2022                [Page 22]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-                            key "tp-id";
-                            description
-                              "TP identifier";
-                            leaf tp-id {
-                              type inet:uri;
-                              description
-                                    "Termination point identifier.";
-                            }
-                            leaf endpoint-id {
-                              type leafref {
-                    path "/network-slices/network-slice[ns-id=current()"+
-                                     "/../../../../../ns-id]/endpoints/endpoint/"+
-                                             "endpoint-id";
-                  }
-                  description
-                    "Relative reference to TP id.";
-                            }
-                      }
-                    }
-                    list link {
-                      key "link-id";
-                            description
-                              "Link identifier.";
-                      leaf link-id {
-                            type inet:uri;
-                            description
-                              "Link identifier.";
-                      }
-                      uses link-slo;
-                      container source {
-                            description
-                              "Link source node";
-                            leaf source-node {
-                              type leafref {
-                                    path "../../../node/node-id";
-                              }
-                              description
-                                    "Source node identifier, must be in same topology.";
-                            }
-                            leaf source-tp {
-                              type leafref {
-                                    path "../../../node[node-id=current()/../"+
-                                             "source-node]/termination-point/tp-id";
-                              }
-                              description
-                                    "Termination point within source node that terminates
-                                     the link.";
-                            }
+                type inet:uri;
+                description
+                  "Termination point identifier.";
+              }
+              leaf endpoint-id {
+                type leafref {
+                  path "/network-slices/network-slice[ns-id=current()"+
+                       "/../../../../../ns-id]/endpoints/endpoint/"+
+                       "endpoint-id";
+                }
+                description
+                  "Relative reference to TP id.";
+              }
+            }
+          }
+          list link {
+            key "link-id";
+            description
+              "Link identifier.";
+            leaf link-id {
+              type inet:uri;
+              description
+                "Link identifier.";
+            }
+            uses link-slo;
+            container source {
+              description
+                "Link source node";
+              leaf source-node {
+                type leafref {
+                  path "../../../node/node-id";
+                }
+                description
+                  "Source node identifier, must be in same topology.";
+              }
+              leaf source-tp {
+                type leafref {
+                  path "../../../node[node-id=current()/../"+
+                       "source-node]/termination-point/tp-id";
+                }
+                description
+                  "Termination point within source node that terminates
+                   the link.";
+              }
+            }
+            container destination {
+              description
+                "Link destination node";
 
 
 
@@ -1290,29 +1290,25 @@ Zheng, et al.             Expires 25 April 2022                [Page 23]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-                      }
-                      container destination {
-                            description
-                              "Link destination node";
-                            leaf dest-node {
-                              type leafref {
-                                    path "../../../node/node-id";
-                              }
-                              description
-                                    "Destination node identifier, must be in same topology.";
-                            }
-                            leaf dest-tp {
-                              type leafref {
-                                    path "../../../node[node-id=current()/../"+
-                                             "dest-node]/termination-point/tp-id";
-                              }
-                              description
-                                    "Termination point within destination node that terminates
-                                     the link.";
-                            }
-                      }
-                    }
+              leaf dest-node {
+                type leafref {
+                  path "../../../node/node-id";
+                }
+                description
+                  "Destination node identifier, must be in same topology.";
+              }
+              leaf dest-tp {
+                type leafref {
+                  path "../../../node[node-id=current()/../"+
+                       "dest-node]/termination-point/tp-id";
+                }
+                description
+                  "Termination point within destination node that terminates
+                   the link.";
+              }
             }
+          }
+        }
 
         /*
          * Configuration data nodes
@@ -1330,14 +1326,18 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                 "A unique network slice identifier across a slice controller";
             }
             uses ns-generic-info;
-                    uses ns-slo;
+            uses ns-slo;
 
-                    container endpoints {
-                      description
+            container endpoints {
+              description
                 "Endpoints of a network slice";
 
               list endpoint {
                 key "endpoint-id";
+                description
+                  "List of endpoints";
+                leaf endpoint-id {
+                  type string;
 
 
 
@@ -1346,17 +1346,13 @@ Zheng, et al.             Expires 25 April 2022                [Page 24]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-                description
-                  "List of endpoints";
-                leaf endpoint-id {
-                  type string;
                   description
                     "Endpoint identifier";
                 }
               }
-                    }
-                    container network-topologies {
-                      description
+            }
+            container network-topologies {
+              description
                 "A network slice is described as a network topology";
 
               list network-topology {
@@ -1370,9 +1366,9 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                 }
                 uses network-topology-def;
               }
-                    }
-                    container connectivity-matrices {
-                      description
+            }
+            container connectivity-matrices {
+              description
                 "Connectivity matrices";
 
               list connectivity-matrix {
@@ -1384,16 +1380,20 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
                   description
                     "Connectivity matrix identifier";
                 }
-                            leaf topology-id {
-                              type leafref {
+                leaf topology-id {
+                  type leafref {
                     path "../../../network-topologies/network-topology/topology-id";
                   }
                   description
                     "Relative reference to network topology id.";
-                            }
-                            leaf src-endpoint {
-                              type leafref {
+                }
+                leaf src-endpoint {
+                  type leafref {
                     path "../../../endpoints/endpoint/endpoint-id";
+                  }
+                  description
+                    "Relative reference to endpoint id.";
+                }
 
 
 
@@ -1402,21 +1402,17 @@ Zheng, et al.             Expires 25 April 2022                [Page 25]
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
 
-                  }
-                  description
-                    "Relative reference to endpoint id.";
-                            }
-                            leaf dst-endpoint {
-                              type leafref {
+                leaf dst-endpoint {
+                  type leafref {
                     path "../../../endpoints/endpoint/endpoint-id";
                   }
                   description
                     "Relative reference to endpoint id.";
-                            }
-                            uses connectivity-matrix-entry-slo;
-                            uses explicit-path;
+                }
+                uses connectivity-matrix-entry-slo;
+                uses explicit-path;
               } //connectivity-matrix
-                    } //connectivity-matrices
+            } //connectivity-matrices
           } //network-slice
         } //network slices
       }
@@ -1447,17 +1443,6 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
    <Add any security considerations>
 
-
-
-
-
-
-
-Zheng, et al.             Expires 25 April 2022                [Page 26]
-
-Internet-Draft      Framework and YANG of OTN Slices        October 2021
-
-
 7.  IANA Considerations
 
    <Add any IANA considerations>
@@ -1465,6 +1450,13 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 8.  References
 
 8.1.  Normative References
+
+
+
+Zheng, et al.             Expires 25 April 2022                [Page 26]
+
+Internet-Draft      Framework and YANG of OTN Slices        October 2021
+
 
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., Bryskin, I.,
@@ -1503,6 +1495,14 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
               DOI 10.17487/RFC8453, August 2018,
               <https://www.rfc-editor.org/info/rfc8453>.
 
+Acknowledgments
+
+   This document was prepared using kramdown.
+
+   Previous versions of this document were prepared using 2-Word-
+   v2.0.template.dot.
+
+Contributors' Addresses
 
 
 
@@ -1513,15 +1513,6 @@ Zheng, et al.             Expires 25 April 2022                [Page 27]
 
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
-
-Acknowledgments
-
-   This document was prepared using kramdown.
-
-   Previous versions of this document were prepared using 2-Word-
-   v2.0.template.dot.
-
-Contributors' Addresses
 
    Henry Yu
    Huawei Technologies Canada
@@ -1563,17 +1554,20 @@ Authors' Addresses
    Email: oscar.gonzalezdedios@telefonica.com
 
 
+   Victor Lopez
+   Nokia
+
+   Email: victor.lopez@nokia.com
+
+
+
+
+
 
 
 Zheng, et al.             Expires 25 April 2022                [Page 28]
 
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
-
-
-   Victor Lopez
-   Nokia
-
-   Email: victor.lopez@nokia.com
 
 
    Sergio Belotti
@@ -1610,6 +1604,12 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
    Volta Networks
 
    Email: xufeng.liu.ietf@gmail.com
+
+
+
+
+
+
 
 
 

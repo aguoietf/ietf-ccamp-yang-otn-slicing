@@ -427,7 +427,7 @@ shall support configuring an OTN slice with both options.
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS>file "ietf-otn-slice@2021-02-22.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2021-10-22.yang"
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -474,7 +474,7 @@ shall support configuring an OTN slice with both options.
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS>file "ietf-transport-network-slice@2021-10-18.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2021-10-22.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
