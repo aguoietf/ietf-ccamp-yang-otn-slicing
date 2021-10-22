@@ -394,10 +394,13 @@ shall support configuring an OTN slice with both options.
    OTN-SC functionalities are logically independent and may be deployed in 
    different combinations to cater to the realization needs. In reference with the 
    ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
-    - as an independent network function;
-    - together with a Physical Network Controller (PNC) for single-domain
+
+   - as an independent network function;
+
+   - together with a Physical Network Controller (PNC) for single-domain
       or with a Multi-Domain Service Orchestrator (MDSC)for multi-domain;
-    - together with a higher-level network slice controller to support 
+
+   - together with a higher-level network slice controller to support 
       end-to-end network slicing;
 
 # YANG Data Model for OTN Slicing Configuration
@@ -447,22 +450,27 @@ shall support configuring an OTN slice with both options.
 
    The base model defines a transport network slice (TNS) with the following
    constructs and attributes:
+
    - Common attributes, which include a set of common attributes like slice identifier,
      name, description and names of customers who use the slice.
+
    - Endpoints, which represent conceptual points of connection from a customer
      device to the TNS. An endpoint is mapped to specific physical or virtual resources
-     of the customer and provider, and such mapping is pre-negotiated and known to 
-     both the customer and provider prior to the slice configuration. The mechanism 
-     for endpoint negotiation is outside the scope of this draft.
+      of the customer and provider, and such mapping is pre-negotiated and known to 
+      both the customer and provider prior to the slice configuration. The mechanism 
+      for endpoint negotiation is outside the scope of this draft.
+
    - Network topology, which represent set of shared, reserved resources organized as a virtual 
-     topology between all of the endpoints. A customer could use such network topology
-     to define detailed connecvitiy path traversing the topology, and allow sharing of 
-     resources between its multiple endpoint pairs.
+      topology between all of the endpoints. A customer could use such network topology
+      to define detailed connecvitiy path traversing the topology, and allow sharing of 
+      resources between its multiple endpoint pairs.
+
    - Connectivity matrix, which represent the intended virtual connections between the endpoints
-     within a TNS. A connctivity matrix entry could be associated with an explicit path 
-     over the above network topology. 
+      within a TNS. A connctivity matrix entry could be associated with an explicit path 
+      over the above network topology. 
+
    - Service-level objectives (SLOs) associated with different objects, including the TNS, 
-     node, link, termination point, and explicit path, within a TNS.
+      node, link, termination point, and explicit path, within a TNS.
 
 ### NBI YANG Model Tree for Transport Network Slice
 
