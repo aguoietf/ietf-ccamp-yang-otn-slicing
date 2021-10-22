@@ -51,11 +51,11 @@
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
 
-     revision "2021-10-06" {
+     revision "2021-10-22" {
        description
-         "Initial Version";
+         "Latest revision of NBI YANG model for OTN slicing.";
        reference
-         "draft-zheng-ccamp-yang-otn-slicing-01: Framework and Data
+         "draft-zheng-ccamp-yang-otn-slicing-03: Framework and Data
           Model for OTN Network Slicing";
      }
 
@@ -149,10 +149,10 @@
          "SLO configuration of a network slice";
 
        container slo {
-	     description
+         description
            "SLO configuration of a network slice";
-		   
-		 leaf optimization-criterion {
+   
+       leaf optimization-criterion {
            type identityref {
              base te-types:objective-function-type;
            }
@@ -168,7 +168,7 @@
              "GSMA-NS-Template: Generic Network Slice Template,
               Version 3.0.";
          }
-		 leaf-list periodicity {
+         leaf-list periodicity {
            type uint64;
            units seconds;
            description
@@ -187,14 +187,14 @@
               instance. This attribute describes different types of
               isolation:";
          }
-	   }
+       }
      }
 
      grouping node-slo {
        description
          "Node SLO";
        container slo {
-	     description
+         description
            "SLO configuration of a node";
          leaf isolation-level {
            type identityref {
@@ -213,7 +213,7 @@
        description
          "Link SLO";
        container slo {
-	     description
+         description
            "SLO configuration of a link";
          leaf delay-tolerance {
            type boolean;
@@ -251,55 +251,53 @@
          "SLO configuration of a path within a network slice";
 
        container slo {
-	     description
+         description
            "Path SLO configuration";
-	   }
-	   leaf delay-tolerance {
-           type boolean;
-           description
-             "'true' if is not too critical how long it takes to deliver
-              the amount of data.";
-           reference
-             "GSMA-NS-Template: Generic Network Slice Template,
-              Version 3.0.";
+       }
+       leaf delay-tolerance {
+         type boolean;
+         description
+           "'true' if is not too critical how long it takes to deliver
+            the amount of data.";
+         reference
+           "GSMA-NS-Template: Generic Network Slice Template,
+            Version 3.0.";
+       }
+       leaf-list periodicity {
+         type uint64;
+         units seconds;
+         description
+           "A list of periodicities supported by the network slice.";
+         reference
+           "GSMA-NS-Template: Generic Network Slice Template,
+            Version 3.0.";
+       }
+       leaf isolation-level {
+         type identityref {
+           base isolation-level;
          }
-         leaf-list periodicity {
-           type uint64;
-           units seconds;
-           description
-             "A list of periodicities supported by the network slice.";
-           reference
-             "GSMA-NS-Template: Generic Network Slice Template,
-              Version 3.0.";
-         }
-         leaf isolation-level {
-           type identityref {
-             base isolation-level;
-           }
-           description
-             "A network slice instance may be fully or partly, logically
-              and/or physically, isolated from another network slice
-              instance. This attribute describes different types of
-              isolation:";
-         }
+         description
+           "A network slice instance may be fully or partly, logically
+            and/or physically, isolated from another network slice
+            instance. This attribute describes different types of
+            isolation:";
+       }
      }
 
      grouping connectivity-matrix-entry-slo {
        description
          "SLO configuration of a connectivity matrix entry within a
-		  network slice";
+          network slice";
 
        container slo {
-	     description
+         description
            "SLO configuration of a connectivity matrix entry";
-	   }
-	   
-	   
+       }
      }
 
      grouping explicit-path {
        description
-         "Underlay path for a connectivity matrix entry";
+         "Explicit path for a connectivity matrix entry";
 
        list explicit-path {
          key "tp-id";
@@ -308,9 +306,9 @@
          leaf tp-id {
            type leafref {
              path "/network-slices/network-slice[ns-id=current()"+
-			      "/../../../../ns-id]/network-topologies"+
+                  "/../../../../ns-id]/network-topologies"+
                   "/network-topology[topology-id=current()"+
-				  "/../../topology-id]/node/termination-point/tp-id";
+                  "/../../topology-id]/node/termination-point/tp-id";
            }
            description
              "Relative reference to TP id.";
@@ -319,88 +317,90 @@
      }
 
      grouping network-topology-def {
-		 list node {
-		   key "node-id";
-		   description
-			 "The inventory of nodes of this topology.";
-		   leaf node-id {
-			 type inet:uri;
-			 description
-			   "Node identifier.";
-		   }
-		   uses node-slo;
-		   list termination-point {
-			 key "tp-id";
-			 description
-			   "TP identifier";
-			 leaf tp-id {
-			   type inet:uri;
-			   description
-				 "Termination point identifier.";
-			 }
-			 leaf endpoint-id {
-			   type leafref {
-                 path "/network-slices/network-slice[ns-id=current()"+
-			          "/../../../../../ns-id]/endpoints/endpoint/"+
-					  "endpoint-id";
-               }
-               description
-                 "Relative reference to TP id.";
-			 }
-		   }
-		 }
-		 list link {
-		   key "link-id";
-			 description
-			   "Link identifier.";
-		   leaf link-id {
-			 type inet:uri;
-			 description
-			   "Link identifier.";
-		   }
-		   uses link-slo;
-		   container source {
-			 description
-			   "Link source node";
-			 leaf source-node {
-			   type leafref {
-				 path "../../../node/node-id";
-			   }
-			   description
-				 "Source node identifier, must be in same topology.";
-			 }
-			 leaf source-tp {
-			   type leafref {
-				 path "../../../node[node-id=current()/../"+
-					  "source-node]/termination-point/tp-id";
-			   }
-			   description
-				 "Termination point within source node that terminates
-				  the link.";
-			 }
-		   }
-		   container destination {
-			 description
-			   "Link destination node";
-			 leaf dest-node {
-			   type leafref {
-				 path "../../../node/node-id";
-			   }
-			   description
-				 "Destination node identifier, must be in same topology.";
-			 }
-			 leaf dest-tp {
-			   type leafref {
-				 path "../../../node[node-id=current()/../"+
-					  "dest-node]/termination-point/tp-id";
-			   }
-			   description
-				 "Termination point within destination node that terminates
-				  the link.";
-			 }
-		   }
-		 }
-	 }
+       description
+         "Network topology definition";
+       list node {
+         key "node-id";
+         description
+         "The inventory of nodes of this topology.";
+         leaf node-id {
+           type inet:uri;
+           description
+             "Node identifier.";
+         }
+         uses node-slo;
+         list termination-point {
+           key "tp-id";
+           description
+             "TP identifier";
+           leaf tp-id {
+             type inet:uri;
+             description
+               "Termination point identifier.";
+           }
+           leaf endpoint-id {
+             type leafref {
+               path "/network-slices/network-slice[ns-id=current()"+
+                    "/../../../../../ns-id]/endpoints/endpoint/"+
+                    "endpoint-id";
+             }
+             description
+               "Relative reference to TP id.";
+           }
+         }
+       }
+       list link {
+         key "link-id";
+         description
+           "Link identifier.";
+         leaf link-id {
+           type inet:uri;
+           description
+             "Link identifier.";
+         }
+         uses link-slo;
+         container source {
+           description
+             "Link source node";
+           leaf source-node {
+             type leafref {
+               path "../../../node/node-id";
+             }
+             description
+               "Source node identifier, must be in same topology.";
+           }
+           leaf source-tp {
+             type leafref {
+               path "../../../node[node-id=current()/../"+
+                    "source-node]/termination-point/tp-id";
+             }
+             description
+               "Termination point within source node that terminates
+                the link.";
+           }
+         }
+         container destination {
+           description
+             "Link destination node";
+           leaf dest-node {
+             type leafref {
+               path "../../../node/node-id";
+             }
+             description
+               "Destination node identifier, must be in same topology.";
+           }
+           leaf dest-tp {
+             type leafref {
+               path "../../../node[node-id=current()/../"+
+                    "dest-node]/termination-point/tp-id";
+             }
+             description
+               "Termination point within destination node that terminates
+                the link.";
+           }
+         }
+       }
+     }
 
      /*
       * Configuration data nodes
@@ -418,12 +418,12 @@
              "A unique network slice identifier across a slice controller";
          }
          uses ns-generic-info;
-		 uses ns-slo;
+         uses ns-slo;
 
-		 container endpoints {
-		   description
+         container endpoints {
+           description
              "Endpoints of a network slice";
-			 
+ 
            list endpoint {
              key "endpoint-id";
              description
@@ -434,11 +434,11 @@
                  "Endpoint identifier";
              }
            }
-		 }
-		 container network-topologies {
-		   description
+         }
+         container network-topologies {
+           description
              "A network slice is described as a network topology";
-			 
+ 
            list network-topology {
              key "topology-id";
              description
@@ -450,11 +450,11 @@
              }
              uses network-topology-def;
            }
-		 }	 
-		 container connectivity-matrices {
-		   description
+         } 
+         container connectivity-matrices {
+           description
              "Connectivity matrices";
-			 
+ 
            list connectivity-matrix {
              key "connectivity-matrix-id";
              description
@@ -464,31 +464,31 @@
                description
                  "Connectivity matrix identifier";
              }
-			 leaf topology-id {
-			   type leafref {
+             leaf topology-id {
+               type leafref {
                  path "../../../network-topologies/network-topology/topology-id";
                }
                description
                  "Relative reference to network topology id.";
-			 }
-			 leaf src-endpoint {
-			   type leafref {
+             }
+             leaf src-endpoint {
+               type leafref {
                  path "../../../endpoints/endpoint/endpoint-id";
                }
                description
                  "Relative reference to endpoint id.";
-			 }
-			 leaf dst-endpoint {
-			   type leafref {
+             }
+             leaf dst-endpoint {
+               type leafref {
                  path "../../../endpoints/endpoint/endpoint-id";
                }
                description
                  "Relative reference to endpoint id.";
-			 }
-			 uses connectivity-matrix-entry-slo;
-			 uses explicit-path;
+             }
+             uses connectivity-matrix-entry-slo;
+             uses explicit-path;
            } //connectivity-matrix
-		 } //connectivity-matrices
+         } //connectivity-matrices
        } //network-slice
      } //network slices
    }
