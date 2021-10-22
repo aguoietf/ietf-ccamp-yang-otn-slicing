@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-zheng-ccamp-yang-otn-slicing-02
+docname: draft-zheng-ccamp-yang-otn-slicing-03
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -526,3 +526,8 @@ TBD.
     Huawei Technologies Canada
     
     Email: henry.yu@huawei.com
+
+    Jiang Sun
+    China Mobile
+
+    Email: sunjiang@chinamobile.com

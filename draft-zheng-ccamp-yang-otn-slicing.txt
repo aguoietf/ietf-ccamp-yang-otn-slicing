@@ -25,7 +25,7 @@ Expires: 25 April 2022                                            A. Guo
 
 
             Framework and Data Model for OTN Network Slicing
-                 draft-zheng-ccamp-yang-otn-slicing-02
+                 draft-zheng-ccamp-yang-otn-slicing-03
 
 Abstract
 
@@ -1519,6 +1519,11 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
 
    Email: henry.yu@huawei.com
 
+   Jiang Sun
+   China Mobile
+
+   Email: sunjiang@chinamobile.com
+
 Authors' Addresses
 
    Haomian Zheng
@@ -1557,17 +1562,15 @@ Authors' Addresses
    Victor Lopez
    Nokia
 
-   Email: victor.lopez@nokia.com
-
-
-
-
 
 
 
 Zheng, et al.             Expires 25 April 2022                [Page 28]
 
 Internet-Draft      Framework and YANG of OTN Slices        October 2021
+
+
+   Email: victor.lopez@nokia.com
 
 
    Sergio Belotti
@@ -1604,9 +1607,6 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2021
    Volta Networks
 
    Email: xufeng.liu.ietf@gmail.com
-
-
-
 
 
 
