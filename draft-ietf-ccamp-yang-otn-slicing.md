@@ -50,8 +50,8 @@ author:
     email: Dieter.Beller@nokia.com
   -
     name: Reza Rokui
-    org: Nokia
-    email: reza.rokui@nokia.com
+    org: Ciena
+    email: rrokui@ciena.com
   -
     name: Yunbin Xu
     org: CAICT
