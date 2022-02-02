@@ -2,13 +2,13 @@
 
 ## Scope
 
-This repository is to facilitate the work on the [IETF CCAMP](https://datatracker.ietf.org/wg/ccamp/documents/) Individual Internet-Draft, "[Framework and YANG of OTN Slices](https://datatracker.ietf.org/doc/draft-zheng-ccamp-yang-otn-slicing/)".
+This repository is to facilitate the work on the [IETF CCAMP](https://datatracker.ietf.org/wg/ccamp/documents/) Working Group Internet-Draft, "[Framework and YANG of OTN Slices](https://datatracker.ietf.org/doc/draft-ietf-ccamp-yang-otn-slicing/)".
 
 Diff editor copy vs published version:
-- [Side-by-side diff](https://www.ietf.org/rfcdiff?url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiff&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbars&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
-- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiff&url1=draft-zheng-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-zheng-ccamp-yang-otn-slicing.txt)
+- [Side-by-side diff](https://www.ietf.org/rfcdiff?url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbars&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
 
 # Abstract
 
