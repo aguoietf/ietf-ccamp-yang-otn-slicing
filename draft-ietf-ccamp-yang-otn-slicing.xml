@@ -10,7 +10,7 @@
 <?rfc symrefs="yes"?>
 <?rfc comments="yes"?>
 
-<rfc ipr="trust200902" docName="draft-ietf-ccamp-yang-otn-slicing-00" category="std">
+<rfc ipr="trust200902" docName="draft-ietf-ccamp-yang-otn-slicing-01" category="std">
 
   <front>
     <title abbrev="Framework and YANG of OTN Slices">Framework and Data Model for OTN Network Slicing</title>
@@ -93,7 +93,7 @@
       </address>
     </author>
 
-    <date year="2022" month="January" day="26"/>
+    <date year="2022" month="February" day="11"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -1318,7 +1318,7 @@ module: ietf-transport-network-slice
       <author fullname='Oscar Gonzalez de Dios'>
 	 <organization>Telefonica</organization>
       </author>
-      <date day='25' month='October' year='2021'/>
+      <date day='7' month='February' year='2022'/>
       <abstract>
 	 <t>   This document defines a YANG data model for the provisioning and
    management of Traffic Engineering (TE) tunnels, Label Switched Paths
@@ -1332,8 +1332,8 @@ module: ietf-transport-network-slice
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-28'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-28.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-29'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-29.txt' type='TXT'/>
 </reference>
 
 
@@ -1463,11 +1463,11 @@ Email: sunjiang@chinamobile.com
   </back>
 
 <!-- ##markdown-source:
-H4sIALCa8WEAA+19a3cbx5Hod/yKvvQ5a9ICQEmOE4dKbNEUrWiPRPGYjOzc
+H4sIAGzFBmIAA+19a3cbx5Hod/yKvvQ5a9ICQEmOE4dKbNEUrWiPRPGYjOzc
 bM6ewaBBTDSYQeZBCjJ1f/utV79mekDIkpPcu8JuLALTXV1dXV1dr66ZTCaj
 tJxnxdWRapvF5OvRqMmaXB+p76tkpW/K6rVKirl6kjSJelHOda4WZaVeXp6p
 M93Q44s8S6H/aJTMZpW+7vb8y/HZU1UuqAs21fVoXqYFNDlS8ypZNJNMw8Bp
-mqzWk01SXE3KppjUDHRy//4IIV1VZbs+Uicnxy/O1Y/wAzxTT/HHUZo0+qqs
+mqzWk01SXE3KppjUDHRy/8EIIV1VZbs+Uicnxy/O1Y/wAzxTT/HHUZo0+qqs
 NkeqbuajbF0dqaZq6+bh/fu/v/9wNKobwOK/k7wsYMANjL7OjtRfmzIdq7qs
 mkovavhrs+I/0nK10kVT/w2m0zbLsjoaKTWB/ynFKP8pKVdZUqj/vdQwZ/y9
 rIB2f2qTG52pS50uizIvrzIYCB/WMIBu4PmDsfopy7NWfaezdaleZXmeXOmx
@@ -1717,7 +1717,7 @@ d/8NQnh2fHa8vTe16PWcTCZqlqSvR7jB+LUXev7HParuSNe81XFq3vHDt/KI
 c6mKk1zUUzcJVaBaYwa8ZDa/rpLVvLyRa53neMetbO2dPOeKdzDwTUQdIA8n
 P5bVfHL9cHp/2kg8dzovsXLUELL0fiyMVJZV/bk65jckaUZa/UkX1Ub9peUv
 dDNXXZoCaqiYn8DSzjkuSP85xXuzR2qJ/aab1rvNywD/M0Opc9GyFD8BAx5L
-8MOW1SO/f90Wf8eWj1NssaIGBOT/AiYwW4vVtgAA
+8MOW1SO/f90Wf8eWj1NssaIGBOT/AnlHDcTVtgAA
 
 -->
 
