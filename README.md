@@ -5,10 +5,10 @@
 This repository is to facilitate the work on the [IETF CCAMP](https://datatracker.ietf.org/wg/ccamp/documents/) Working Group Internet-Draft, "[Framework and YANG of OTN Slices](https://datatracker.ietf.org/doc/draft-ietf-ccamp-yang-otn-slicing/)".
 
 Diff editor copy vs published version:
-- [Side-by-side diff](https://www.ietf.org/rfcdiff?url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
-- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
-- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbars&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
-- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/aguoietf/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Side-by-side diff](https://www.ietf.org/rfcdiff?url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/ietf-ccamp-wg/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Before-after diff](https://www.ietf.org/rfcdiff?difftype=--abdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/ietf-ccamp-wg/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Changebars](https://www.ietf.org/rfcdiff?difftype=--chbars&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/ietf-ccamp-wg/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
+- [Html wdiff](https://www.ietf.org/rfcdiff?difftype=--hwdiff&url1=draft-ietf-ccamp-yang-otn-slicing&url2=https://raw.githubusercontent.com/ietf-ccamp-wg/ietf-ccamp-yang-otn-slicing/main/draft-ietf-ccamp-yang-otn-slicing.txt)
 
 # Abstract
 
@@ -42,6 +42,12 @@ You agree to comply with all applicable IETF policies and procedures, including,
 BCP 78, 79, the TLP, and the TLP rules regarding code components (e.g. being
 subject to a Simplified BSD License) in Contributions.
 
+### Weekly Calls
+
+The contributors on this draft has weekly informal conference calls on Thursday at 10am NAEST from February 3, 2022 till July 21, 2022:
+- [CCAMP WG Announcement](https://mailarchive.ietf.org/arch/msg/ccamp/Dr3HWPlmP9LyA6NmabWJvx7hWIc/)
+- [Add to Calendar](https://ietf.webex.com/ietf/j.php?MTID=me5bdb04b41fa94ebdfee1fc0a909d77a)
+- [Join Meeting](https://ietf.webex.com/ietf/j.php?MTID=mb06e7cc6924092ea885fe09ef5902b19)
 
 ## Other Resources
 
