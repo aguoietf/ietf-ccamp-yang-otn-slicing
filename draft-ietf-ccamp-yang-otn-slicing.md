@@ -62,7 +62,7 @@ author:
     email: zhaoyangyjy@chinamobile.com
   -
     name: Xufeng Liu
-    org: Volta Networks
+    org: IBM Corporation
     email: xufeng.liu.ietf@gmail.com
 
 #contributor:
