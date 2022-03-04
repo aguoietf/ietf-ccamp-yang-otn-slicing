@@ -315,8 +315,8 @@
              path "/network-slices/network-slice[ns-id=current()"+
                   "/../../../../ns-id]/network-topologies"+
                   "/network-topology[topology-id=current()"+
-                  "/../../topology-id]/node/termination-point
-				   /tp-id";
+                  "/../../topology-id]/node/termination-point"+
+				  "/tp-id";
            }
            description
              "Relative reference to TP id.";
@@ -476,8 +476,8 @@
              }
              leaf topology-id {
                type leafref {
-                 path "../../../network-topologies/network-topology
-				       /topology-id";
+                 path "../../../network-topologies/network-topology"+
+				       "/topology-id";
                }
                description
                  "Relative reference to network topology id.";
