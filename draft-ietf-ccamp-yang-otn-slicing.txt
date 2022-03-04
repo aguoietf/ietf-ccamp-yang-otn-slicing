@@ -4,8 +4,8 @@
 
 CCAMP Working Group                                               A. Guo
 Internet-Draft                                    Futurewei Technologies
-Intended status: Standards Track                         L. M. Contreras
-Expires: 5 September 2022                                     Telefonica
+Intended status: Standards Track                          L.M. Contreras
+Expires: 6 September 2022                                     Telefonica
                                                               S. Belotti
                                                                    Nokia
                                                                 R. Rokui
@@ -16,7 +16,7 @@ Expires: 5 September 2022                                     Telefonica
                                                             China Mobile
                                                                   X. Liu
                                                          IBM Corporation
-                                                            4 March 2022
+                                                            5 March 2022
 
 
             Framework and Data Model for OTN Network Slicing
@@ -53,12 +53,12 @@ Status of This Memo
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 1]
+Guo, et al.             Expires 6 September 2022                [Page 1]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
-   This Internet-Draft will expire on 5 September 2022.
+   This Internet-Draft will expire on 6 September 2022.
 
 Copyright Notice
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 2]
+Guo, et al.             Expires 6 September 2022                [Page 2]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -165,7 +165,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 3]
+Guo, et al.             Expires 6 September 2022                [Page 3]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -221,7 +221,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 4]
+Guo, et al.             Expires 6 September 2022                [Page 4]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -277,7 +277,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 5]
+Guo, et al.             Expires 6 September 2022                [Page 5]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -333,7 +333,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 6]
+Guo, et al.             Expires 6 September 2022                [Page 6]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -389,7 +389,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 7]
+Guo, et al.             Expires 6 September 2022                [Page 7]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -445,7 +445,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 8]
+Guo, et al.             Expires 6 September 2022                [Page 8]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -501,7 +501,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022                [Page 9]
+Guo, et al.             Expires 6 September 2022                [Page 9]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -557,7 +557,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 10]
+Guo, et al.             Expires 6 September 2022               [Page 10]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -613,7 +613,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 11]
+Guo, et al.             Expires 6 September 2022               [Page 11]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -669,7 +669,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 12]
+Guo, et al.             Expires 6 September 2022               [Page 12]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -725,7 +725,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 13]
+Guo, et al.             Expires 6 September 2022               [Page 13]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -781,7 +781,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 14]
+Guo, et al.             Expires 6 September 2022               [Page 14]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -837,7 +837,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 15]
+Guo, et al.             Expires 6 September 2022               [Page 15]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -893,7 +893,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 16]
+Guo, et al.             Expires 6 September 2022               [Page 16]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -949,7 +949,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 17]
+Guo, et al.             Expires 6 September 2022               [Page 17]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1005,7 +1005,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 18]
+Guo, et al.             Expires 6 September 2022               [Page 18]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1061,7 +1061,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 19]
+Guo, et al.             Expires 6 September 2022               [Page 19]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1117,7 +1117,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 20]
+Guo, et al.             Expires 6 September 2022               [Page 20]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1173,7 +1173,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 21]
+Guo, et al.             Expires 6 September 2022               [Page 21]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1229,7 +1229,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 22]
+Guo, et al.             Expires 6 September 2022               [Page 22]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1285,7 +1285,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 23]
+Guo, et al.             Expires 6 September 2022               [Page 23]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1341,7 +1341,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 24]
+Guo, et al.             Expires 6 September 2022               [Page 24]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1397,7 +1397,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 25]
+Guo, et al.             Expires 6 September 2022               [Page 25]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1453,7 +1453,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 26]
+Guo, et al.             Expires 6 September 2022               [Page 26]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1509,7 +1509,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 27]
+Guo, et al.             Expires 6 September 2022               [Page 27]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1565,7 +1565,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 28]
+Guo, et al.             Expires 6 September 2022               [Page 28]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1621,7 +1621,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 29]
+Guo, et al.             Expires 6 September 2022               [Page 29]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1643,26 +1643,26 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
    It is proposed to IANA to assign new URIs from the "IETF XML
    Registry" [RFC3688] as follows:
 
-        URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-        Registrant Contact: The IESG
-        XML: N/A; the requested URI is an XML namespace.
+      URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+      Registrant Contact: The IESG
+      XML: N/A; the requested URI is an XML namespace.
 
-        URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
-        Registrant Contact: The IESG
-        XML: N/A; the requested URI is an XML namespace.
+      URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
+      Registrant Contact: The IESG
+      XML: N/A; the requested URI is an XML namespace.
 
    This document registers a YANG module in the YANG Module Names
    registry [RFC6020].
 
-  name:         ietf-transport-network-slice
-  namespace:    urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-  prefix:       tns
-  reference:    RFC XXXX
+     name: ietf-transport-network-slice
+     namespace: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+     prefix: tns
+     reference: RFC XXXX
 
-  name:         ietf-otn-slice
-  namespace:    urn:ietf:params:xml:ns:yang:ietf-otn-slice
-  prefix:       otnslice
-  reference:    RFC XXXX
+     name: ietf-otn-slice
+     namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice
+     prefix: otnslice
+     reference: RFC XXXX
 
 8.  Normative References
 
@@ -1677,7 +1677,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 30]
+Guo, et al.             Expires 6 September 2022               [Page 30]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1733,7 +1733,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 31]
+Guo, et al.             Expires 6 September 2022               [Page 31]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1789,7 +1789,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 32]
+Guo, et al.             Expires 6 September 2022               [Page 32]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
@@ -1836,42 +1836,53 @@ Contributors
    H1, Xiliu Beipo Village, Songshan Lake
    Dongguan
    China
+
    Email: zhenghaomian@huawei.com
 
 
-   Italo Busi
-   Huawei Technologies
-   Email: italo.busi@huawei.com
 
 
 
-Guo, et al.             Expires 5 September 2022               [Page 33]
+
+
+Guo, et al.             Expires 6 September 2022               [Page 33]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
+   Italo Busi
+   Huawei Technologies
+
+   Email: italo.busi@huawei.com
+
+
    Oscar Gonzalez de Dios
    Telefonica
+
    Email: oscar.gonzalezdedios@telefonica.com
 
 
    Victor Lopez
    Nokia
+
    Email: victor.lopez@nokia.com
 
 
    Dieter Beller
    Nokia
+
    Email: Dieter.Beller@nokia.com
 
 
    Henry Yu
    Huawei Technologies Canada
+
    Email: henry.yu@huawei.com
 
 
    Jiang Sun
    China Mobile
+
    Email: sunjiang@chinamobile.com
 
 
@@ -1879,45 +1890,49 @@ Authors' Addresses
 
    Aihua Guo
    Futurewei Technologies
+
    Email: aihuaguo.ietf@gmail.com
 
 
    Luis M. Contreras
    Telefonica
+
    Email: luismiguel.contrerasmurillo@telefonica.com
+
+
+
+Guo, et al.             Expires 6 September 2022               [Page 34]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
    Sergio Belotti
    Nokia
+
    Email: Sergio.belotti@nokia.com
 
 
    Reza Rokui
    Ciena
+
    Email: rrokui@ciena.com
-
-
-
-
-
-
-Guo, et al.             Expires 5 September 2022               [Page 34]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
    Yunbin Xu
    CAICT
+
    Email: xuyunbin@caict.ca.cn
 
 
    Yang Zhao
    China Mobile
+
    Email: zhaoyangyjy@chinamobile.com
 
 
    Xufeng Liu
    IBM Corporation
+
    Email: xufeng.liu.ietf@gmail.com
 
 
@@ -1942,19 +1957,4 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2022
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Guo, et al.             Expires 5 September 2022               [Page 35]
+Guo, et al.             Expires 6 September 2022               [Page 35]

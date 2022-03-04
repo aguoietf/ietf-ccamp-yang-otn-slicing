@@ -614,28 +614,28 @@ TBD.
    Registry" {{!RFC3688}} as follows:
 
 ~~~~
-         URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-         Registrant Contact: The IESG
-         XML: N/A; the requested URI is an XML namespace.
+   URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+   Registrant Contact: The IESG
+   XML: N/A; the requested URI is an XML namespace.
 
-         URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
-         Registrant Contact: The IESG
-         XML: N/A; the requested URI is an XML namespace.
+   URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
+   Registrant Contact: The IESG
+   XML: N/A; the requested URI is an XML namespace.
 ~~~~
 
    This document registers a YANG module in the YANG Module Names
    registry {{!RFC6020}}.
 
 ~~~~
-      name:         ietf-transport-network-slice
-      namespace:    urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-      prefix:       tns
-      reference:    RFC XXXX
+   name: ietf-transport-network-slice
+   namespace: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+   prefix: tns
+   reference: RFC XXXX
 
-      name:         ietf-otn-slice
-      namespace:    urn:ietf:params:xml:ns:yang:ietf-otn-slice
-      prefix:       otnslice
-      reference:    RFC XXXX
+   name: ietf-otn-slice
+   namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice
+   prefix: otnslice
+   reference: RFC XXXX
 ~~~~
 
 --- back
