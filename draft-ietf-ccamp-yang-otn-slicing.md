@@ -89,11 +89,11 @@ normative:
 
   GSMA-NS-Template:
     title: Generic Network Slice Template, Version 5.0
-	author:
-	  org: GSMA Association
-	date: June 2021
-	seriesinfo: NG.116
-	target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
+    author:
+      org: GSMA Association
+    date: June 2021
+    seriesinfo: NG.116
+    target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
 
 --- abstract
 

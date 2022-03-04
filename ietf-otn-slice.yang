@@ -6,13 +6,13 @@
      import ietf-network {
        prefix "nw";
        reference 
-	     "RFC 8345: A YANG Data Model for Network Topologies";
+         "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
      import ietf-network-topology {
        prefix "nt";
        reference 
-	     "RFC 8345: A YANG Data Model for Network Topologies";
+         "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
      import ietf-te-topology {
@@ -67,8 +67,8 @@
         Redistribution and use in source and binary forms, with or
         without modification, is permitted pursuant to, and subject
         to the license terms contained in, the Simplified BSD
-		License set forth in Section 4.c of the IETF Trust's Legal
-		Provisions Relating to IETF Documents
+        License set forth in Section 4.c of the IETF Trust's Legal
+        Provisions Relating to IETF Documents
         (https://trustee.ietf.org/license-info).
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
@@ -124,7 +124,7 @@
                        type uint32;
                        description
                          "Number of OTN tributary slots allocated
-						  for the slice.";
+                          for the slice.";
                      }
                    }
                  }
