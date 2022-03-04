@@ -55,7 +55,8 @@ contributor:
     org: Huawei Technologies
     email: italo.busi@huawei.com
   -
-    name: Oscar Gonzalez de Dios 
+    name: Oscar Gonzalez de Dios
+    ins: O. Gonzalez de Dios
     org: Telefonica
     email: oscar.gonzalezdedios@telefonica.com
   -
@@ -74,7 +75,6 @@ contributor:
     name: Jiang Sun
     org: China Mobile
     email: sunjiang@chinamobile.com
-
 
 normative:
   TS.28.530-3GPP:
@@ -123,7 +123,9 @@ normative:
    YANG data model augmentation of the OTN topology model. Additional
    YANG data model augmentations will be defined in a future version of
    this draft.
+
 ## Terminology
+
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
    "OPTIONAL" in this document are to be interpreted as described in
@@ -137,31 +139,20 @@ normative:
 
    In this document, names of data nodes and other data model objects
    are prefixed using the standard prefix associated with the
-   corresponding YANG imported modules, as shown in {{table-prefixes}}.
+   corresponding YANG imported modules, as shown in {{tab-prefixes}}.
 
-   +----------+------------------------------+-------------------+
    | Prefix   | YANG Module                  | Reference         |
-   +==========+==============================+===================+
+   |----------|------------------------------|-------------------|
    | yang     | ietf-yang-types              | {{!RFC6991}}      |
-   +----------+------------------------------+-------------------+
    | inet     | ietf-inet-types              | {{!RFC6991}}      |
-   +----------+------------------------------+-------------------+
    | nt       | ietf-network-topology        | {{!RFC8345}}      |
-   +----------+------------------------------+-------------------+
    | nw       | ietf-network-topology        | {{!RFC8345}}      |
-   +----------+------------------------------+-------------------+
    | tet      | ietf-te-topology             | {{!RFC8795}}      |
-   +----------+------------------------------+-------------------+
    | te-types | ietf-te-types                | {{!RFC8776}}      |
-   +----------+------------------------------+-------------------+
    | otnt     | ietf-otn-topology            | \[RFCYYYY]        |
-   +----------+------------------------------+-------------------+
    | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
-   +----------+------------------------------+-------------------+
    | tns      | ietf-transport-network-slice | RFCXXXX           |
-   +----------+------------------------------+-------------------+
    | otns     | ietf-otn-slice               | RFCXXXX           |
-   +----------+------------------------------+-------------------+
 {: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
 
 RFC Editor Note:
@@ -622,6 +613,7 @@ TBD.
    It is proposed to IANA to assign new URIs from the "IETF XML
    Registry" {{!RFC3688}} as follows:
 
+~~~~
          URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
          Registrant Contact: The IESG
          XML: N/A; the requested URI is an XML namespace.
@@ -629,11 +621,12 @@ TBD.
          URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
          Registrant Contact: The IESG
          XML: N/A; the requested URI is an XML namespace.
+~~~~
 
    This document registers a YANG module in the YANG Module Names
    registry {{!RFC6020}}.
 
-
+~~~~
       name:         ietf-transport-network-slice
       namespace:    urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
       prefix:       tns
@@ -643,6 +636,7 @@ TBD.
       namespace:    urn:ietf:params:xml:ns:yang:ietf-otn-slice
       prefix:       otnslice
       reference:    RFC XXXX
+~~~~
 
 --- back
 
