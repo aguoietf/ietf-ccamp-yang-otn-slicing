@@ -284,9 +284,9 @@
          }
          description
            "A network slice instance may be fully or partly,
-    logically and/or physically, isolated from another
-network slice instance. This attribute describes
-different types of isolation:";
+            logically and/or physically, isolated from another
+            network slice instance. This attribute describes
+            different types of isolation:";
        }
      }
 
@@ -309,14 +309,14 @@ different types of isolation:";
          key "tp-id";
          description
            "List of TPs within a network topology that form a
-    path.";
+            path.";
          leaf tp-id {
            type leafref {
              path "/network-slices/network-slice[ns-id=current()"+
                   "/../../../../ns-id]/network-topologies"+
                   "/network-topology[topology-id=current()"+
                   "/../../topology-id]/node/termination-point"+
-  "/tp-id";
+                  "/tp-id";
            }
            description
              "Relative reference to TP id.";
@@ -396,7 +396,7 @@ different types of isolation:";
              }
              description
                "Destination node identifier, must be in same
-    topology.";
+                topology.";
            }
            leaf dest-tp {
              type leafref {
@@ -405,7 +405,7 @@ different types of isolation:";
              }
              description
                "Termination point within destination node that
-    terminates the link.";
+                terminates the link.";
            }
          }
        }
