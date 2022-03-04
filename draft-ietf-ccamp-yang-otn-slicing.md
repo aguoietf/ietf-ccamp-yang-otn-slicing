@@ -387,13 +387,7 @@ shall support configuring an OTN slice with both options.
    Option 3\[opt.3]: An OTN-aware orchestrator may request an OTN technology-specific slice with OTN-specific SLOs through the 
    OTN-SC NBI to the OTN-SC. The OTN-SC in turn realizes the slice in single or multi domain OTN networks by working with the underlying PNC or MDSC
    
-   An OTN slice may be realized by using standard MPI interfaces, control plane,     
-   network management system (NMS) or any other proprietary interfaces as needed. Examples of such
-   interfaces include the abstract TE topology {{!RFC8795}}, TE tunnel {{!I-D.ietf-teas-yang-te}},
-   L1VPN{{!RFC4847}}, or Netconf/YANG based interfaces such as OpenConfig. Some of these interfaces,
-   such as the TE tunnel model, are suitable for creating connectivity-based OTN slices which represent a 
-   slice as a set of TE tunnels, while other interfaces such as the TE topology model are more suitable for 
-   creating resource-based OTN slices which represent a slice as a topology.
+   An OTN slice may be realized by using standard MPI interfaces, control plane, network management system (NMS) or any other proprietary interfaces as needed. Examples of such interfaces include the abstract TE topology {{!RFC8795}}, TE tunnel {{!I-D.ietf-teas-yang-te}},L1VPN{{!RFC4847}}, or Netconf/YANG based interfaces such as OpenConfig. Some of these interfaces, such as the TE tunnel model, are suitable for creating connectivity-based OTN slices which represent a slice as a set of TE tunnels, while other interfaces such as the TE topology model are more suitable for creating resource-based OTN slices which represent a slice as a topology.
    
    The OTN-SC NBI is a technology-specific interface that augments the IETF NSC NBI, which is technology-
    agnostic. 
