@@ -14,17 +14,6 @@ pi: [toc, sortrefs, symrefs, comments]
 
 author:
   -
-    name: Haomian Zheng
-    org: Huawei Technologies
-    street: H1, Xiliu Beipo Village, Songshan Lake
-    city: Dongguan
-    country: China
-    email: zhenghaomian@huawei.com
-  -
-    name: Italo Busi
-    org: Huawei Technologies
-    email: italo.busi@huawei.com
-  -
     name: Aihua Guo
     org: Futurewei Technologies
     email: aihuaguo.ietf@gmail.com
@@ -33,21 +22,9 @@ author:
     org: Telefonica
     email: luismiguel.contrerasmurillo@telefonica.com
   -
-    name: Oscar Gonzalez de Dios 
-    org: Telefonica
-    email: oscar.gonzalezdedios@telefonica.com
-  -
-    name: Victor Lopez
-    org: Nokia
-    email: victor.lopez@nokia.com
-  -
     name: Sergio Belotti
     org: Nokia
     email: Sergio.belotti@nokia.com
-  -
-    name: Dieter Beller
-    org: Nokia
-    email: Dieter.Beller@nokia.com
   -
     name: Reza Rokui
     org: Ciena
@@ -65,8 +42,39 @@ author:
     org: IBM Corporation
     email: xufeng.liu.ietf@gmail.com
 
-#contributor:
-#  -
+contributor:
+  -
+    name: Haomian Zheng
+    org: Huawei Technologies
+    street: H1, Xiliu Beipo Village, Songshan Lake
+    city: Dongguan
+    country: China
+    email: zhenghaomian@huawei.com
+  -
+    name: Italo Busi
+    org: Huawei Technologies
+    email: italo.busi@huawei.com
+  -
+    name: Oscar Gonzalez de Dios 
+    org: Telefonica
+    email: oscar.gonzalezdedios@telefonica.com
+  -
+    name: Victor Lopez
+    org: Nokia
+    email: victor.lopez@nokia.com
+  -
+    name: Dieter Beller
+    org: Nokia
+    email: Dieter.Beller@nokia.com
+  -
+    name: Henry Yu
+    org: Huawei Technologies Canada
+    email: henry.yu@huawei.com
+  -
+    name: Jiang Sun
+    org: China Mobile
+    email: sunjiang@chinamobile.com
+
 
 normative:
   TS.28.530-3GPP:
@@ -78,6 +86,14 @@ normative:
     date: December 2018
     seriesinfo: 3GPP TS 28.530
     target: http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-f10.zip
+
+  GSMA-NS-Template:
+    title: Generic Network Slice Template, Version 5.0
+	author:
+	  org: GSMA Association
+	date: June 2021
+	seriesinfo: NG.116
+	target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
 
 --- abstract
 
@@ -107,6 +123,52 @@ normative:
    YANG data model augmentation of the OTN topology model. Additional
    YANG data model augmentations will be defined in a future version of
    this draft.
+## Terminology
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 {{!RFC2119}} {{!RFC8174}} when, and only when, they appear in all
+   capitals, as shown here.
+
+   The terminology for describing YANG data models is found in
+   {{!RFC7950}}.
+
+## Prefixes in Data Node Names
+
+   In this document, names of data nodes and other data model objects
+   are prefixed using the standard prefix associated with the
+   corresponding YANG imported modules, as shown in {{table-prefixes}}.
+
+   +----------+------------------------------+-------------------+
+   | Prefix   | YANG Module                  | Reference         |
+   +==========+==============================+===================+
+   | yang     | ietf-yang-types              | {{!RFC6991}}      |
+   +----------+------------------------------+-------------------+
+   | inet     | ietf-inet-types              | {{!RFC6991}}      |
+   +----------+------------------------------+-------------------+
+   | nt       | ietf-network-topology        | {{!RFC8345}}      |
+   +----------+------------------------------+-------------------+
+   | nw       | ietf-network-topology        | {{!RFC8345}}      |
+   +----------+------------------------------+-------------------+
+   | tet      | ietf-te-topology             | {{!RFC8795}}      |
+   +----------+------------------------------+-------------------+
+   | te-types | ietf-te-types                | {{!RFC8776}}      |
+   +----------+------------------------------+-------------------+
+   | otnt     | ietf-otn-topology            | \[RFCYYYY]        |
+   +----------+------------------------------+-------------------+
+   | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
+   +----------+------------------------------+-------------------+
+   | tns      | ietf-transport-network-slice | RFCXXXX           |
+   +----------+------------------------------+-------------------+
+   | otns     | ietf-otn-slice               | RFCXXXX           |
+   +----------+------------------------------+-------------------+
+{: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
+
+RFC Editor Note:
+Please replace XXXX with the RFC number assigned to this document.
+Please replace YYYY with the RFC number assigned to {{!I-D.ietf-ccamp-otn-topo-yang}}.
+Please replace ZZZZ with the RFC number assigned to {{!I-D.ietf-ccamp-layer1-types}}.
+Please remove this note.
 
 ## Definition of OTN Slice
    An OTN slice is an OTN virtual network topology connecting a number
@@ -114,10 +176,10 @@ normative:
    satisfy specific service level objectives (SLOs).
 
    An OTN slice is a technology-specific realization of an IETF network slice 
-   {{?I-D.ietf-teas-ietf-network-slices}} in the OTN domain, with the
+   {{!I-D.ietf-teas-ietf-network-slices}} in the OTN domain, with the
    capability of configuring slice resources in the term of OTN technologies. 
    Therefore, all the terms and definitions concerning network slicing as 
-   defined in {{?I-D.ietf-teas-ietf-network-slices}} apply to OTN slicing.
+   defined in {{!I-D.ietf-teas-ietf-network-slices}} apply to OTN slicing.
    
    An OTN slice can span multiple OTN administrative domains, encompassing 
    access links, intra-domain paths, and inter-domain links. 
@@ -141,12 +203,12 @@ normative:
        | +-----+      +-------+  |  | +-------+      +-----+|
 +----+ | | OTN |      | OTN   |  |  | | OTN   |      | OTN ||  +----+
 | CE +-+-o PE  +-...--+ Borde o--+--+-o Borde +-...--+ PE  o+--+ CE |
-+----+ |/|     |      | Node  |\ |  | | Node  |      |     ||  +----+
-      |||+-----+      +-------+ ||| | +-------+      +-----+| |
-      |||    OTN Domain 1       ||| |      OTN Domain 2     | |
-      |++-----------------------++| +-----------------------+ |
-      | |                       | |                           |
-      | +-----+    +------------+ |                           |
++----+||/|     |      | Node  |\ || | | Node  |      |     || |+----+
+      |||+-----+      +-------+| || | +-------+      +-----+| |
+      |||    OTN Domain 1      | || |      OTN Domain 2     | |
+      |++----------------------+-+| +-----------------------+ |
+      | |                      |  |                           |
+      | +-----+    +-----------+  |                           |
       |       |    |              |                           |
       V       V    V              V                           V
    Access    OTN Slice        Inter-domain                  Access
@@ -275,7 +337,7 @@ normative:
    within the slice as needed.
    
    It is worth noting that those means to abstract an OTN slice are similar to the Virtual 
-   Network (VN) abstraction defined for higher-level interfaces in {{?RFC8453}}, in which context
+   Network (VN) abstraction defined for higher-level interfaces in {{!RFC8453}}, in which context
    a connectivity-based slice corresponds to Type 1 VN and a resource-based slice corresponds to 
    Type 2 VN, respectively.
 
@@ -307,30 +369,46 @@ shall support configuring an OTN slice with both options.
    the life-cycle management of OTN slices instantiated within the 
    corresponding OTN network domains. The OTN-SC provides technology-specific 
    interfaces at its northbound (OTN-SC NBI) to allow a higher-layer slice 
-   controller, such as an IETF network slice controller (NSC), or an orchestrator, 
+   controller, such as an IETF network slice controller (NSC) or an orchestrator, 
    to request OTN slices with OTN-specific 
    requirements. The OTN-SC interfaces at the southbound using the MDSC-to-PNC 
    interface (MPI) with a Physical Network Controller (PNC) or Multi-Domain Service Orchestrator (MDSC),
-   as defined in the ACTN control framework {{?RFC8453}}. The logical function 
+   as defined in the ACTN control framework {{!RFC8453}}. The logical function 
    within the OTN-SC is responsible for translating the OTN slice requests 
    into concrete slice realization which can be understood and 
    provisioned at the southbound by the PNC or MDSC.
    
-   When realizing OTN slices, the OTN-SC may translate a connectivity-based OTN slice 
-   into a set of end-to-end tunnels using the Traffic-engineering(TE) tunnel interface defined in 
-   {{!I-D.ietf-teas-yang-te}}. For a resource-based OTN slice, the 
-   OTN-SC may translate the abstract topology representing the slice into a colored graph on an 
-   abstract TE topology using the TE topology interface defined in {{!RFC8795}}.
+   The presence of OTN-SC provides multiple options for a high-level slice controller 
+   or an orchestrator to configure and realize slicing in OTN networks, depending on
+   whether a customer's slice request is technology agnostic or technology specific:
+    
+   Option 1\[opt.1]: An IETF NSC receives a technology-agnostic slice request from the IETF NSC NBI and
+   realizes full or part of the slice in OTN networks directly through MPI provided by
+   the PNC or MDSC. The IETF NSC is responsible for mapping a technology-agnostic slicing request 
+   into an OTN technology-specific realization. In this option, the OTN-SC is not used.
    
-   The OTN-SC NBI is technology-specific, while the IETF NSC-NBI is technology-
-   agnostic. An IETF NSC may translate its customer's technology-agnostic slice
-   request into an OTN slice request and utilize the OTN-SC NBI to realize 
-   the IETF network slice. Alternatively, the IETF NSC may translate the slicing
-   request into tunnel or topology configuration commands and communicate directly
-   with the underlying PNC or MDSC to provision the IETF network slice.
-
+   Option 2\[opt.2]: An IETF NSC receives a technology-agnostic slice request from the IETF NSC NBI and delegates the
+   request to the OTN-SC through the OTN-SC NBI, which is OTN technology specific. The OTN-SC in turn realizes the slice in single or multi domain OTN networks by working with the underlying PNC or MDSC. In this option, the OTN-SC is considered as a realization of IETF NSC, i.e.,
+   an NS realizer as per {{!I-D.draft-contreras-teas-slice-controller-models}},
+   when the underlying network is OTN. The OTN-SC is also a subordinate slice controller of the IETF NSC, which 
+   is consistent with the hierarchical control of slices defined by the IETF network slice framework.
+   
+   Option 3\[opt.3]: An OTN-aware orchestrator may request an OTN technology-specific slice with OTN-specific SLOs through the 
+   OTN-SC NBI to the OTN-SC. The OTN-SC in turn realizes the slice in single or multi domain OTN networks by working with the underlying PNC or MDSC
+   
+   An OTN slice may be realized by using standard MPI interfaces, control plane,     
+   network management system (NMS) or any other proprietary interfaces as needed. Examples of such
+   interfaces include the abstract TE topology {{!RFC8795}}, TE tunnel {{!I-D.ietf-teas-yang-te}},
+   L1VPN{{!RFC4847}}, or Netconf/YANG based interfaces such as OpenConfig. Some of these interfaces,
+   such as the TE tunnel model, are suitable for creating connectivity-based OTN slices which represent a 
+   slice as a set of TE tunnels, while other interfaces such as the TE topology model are more suitable for 
+   creating resource-based OTN slices which represent a slice as a topology.
+   
+   The OTN-SC NBI is a technology-specific interface that augments the IETF NSC NBI, which is technology-
+   agnostic. 
+   
    {{fig-slice-interfaces}} illustrates the OTN slicing control hierarchy 
-   and the positioning of the OTN slicing interfaces.
+   , the positioning of the OTN slicing interfaces as well as the options for OTN slice configuration.
 
 
 ~~~~
@@ -345,7 +423,7 @@ shall support configuring an OTN slice with both options.
                     |       +---------------------+---------+
                     |       | IETF Network Slice Controller |
                     |       +-----+---------------+---------+
-                    |             |               |
+                    | opt.3       | opt.2         | opt.1
                     | OTN-SC NBI  |OTN-SC NBI     |               
        +------------+-------------+--------+      |
        |               OTN-SC              |      |
@@ -393,7 +471,7 @@ shall support configuring an OTN slice with both options.
 
    OTN-SC functionalities are logically independent and may be deployed in 
    different combinations to cater to the realization needs. In reference with the 
-   ACTN control framework {{?RFC8453}}, an OTN-SC may be deployed
+   ACTN control framework {{!RFC8453}}, an OTN-SC may be deployed
 
    - as an independent network function;
 
@@ -430,7 +508,7 @@ shall support configuring an OTN slice with both options.
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2021-10-22.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2022-03-04.yang"
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -443,7 +521,7 @@ shall support configuring an OTN slice with both options.
    common constructs and attributes with generic network slicing YANG models.
    Furthermore, the OTN-SC NBI YANG is expected to support both connectivity-based
    and resource-based slice configuration, which is likely a common requirement for
-   supporting slicing at other transport network layers, e.g. WDM or MPLS-TP.
+   supporting slicing at other transport network layers, e.g. WDM or MPLS(-TP).
    Therefore, the OTN-SC NBI YANG model is designed into two models, a common base 
    model for transport network slicing, and an OTN slicing model which augments the 
    base model with OTN technology-specific constructs.
@@ -482,7 +560,7 @@ shall support configuring an OTN slice with both options.
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2021-10-22.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2022-03-04.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -510,11 +588,61 @@ TBD.
 
 # Security Considerations
 
-   \<Add any security considerations>
+   The YANG module specified in this document defines a schema for data
+   that is designed to be accessed via network management protocols such
+   as NETCONF {{!RFC6241}} or RESTCONF {{!RFC8040}}.  The lowest NETCONF layer
+   is the secure transport layer, and the mandatory-to-implement secure
+   transport is Secure Shell (SSH) {{!RFC6242}}.  The lowest RESTCONF layer
+   is HTTPS, and the mandatory-to-implement secure transport is TLS
+   {{!RFC8446}}.
+
+   The NETCONF access control model {{!RFC8341}} provides the means to
+   restrict access for particular NETCONF or RESTCONF users to a
+   preconfigured subset of all available NETCONF or RESTCONF protocol
+   operations and content.
+
+   There are a number of data nodes defined in this YANG module that are
+   writable/creatable/deletable (i.e., config true, which is the
+   default).  These data nodes may be considered sensitive or vulnerable
+   in some network environments.  Write operations (e.g., edit-config)
+   to these data nodes without proper protection can have a negative
+   effect on network operations.  Considerations in Section 8 of
+   {{!RFC8795}} are also applicable to their subtrees in the module defined
+   in this document.
+
+   Some of the readable data nodes in this YANG module may be considered
+   sensitive or vulnerable in some network environments.  It is thus
+   important to control read access (e.g., via get, get-config, or
+   notification) to these data nodes.  Considerations in Section 8 of
+   {{!RFC8795}} are also applicable to their subtrees in the module defined
+   in this document.
 
 # IANA Considerations
 
-   \<Add any IANA considerations>
+   It is proposed to IANA to assign new URIs from the "IETF XML
+   Registry" {{!RFC3688}} as follows:
+
+         URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+         Registrant Contact: The IESG
+         XML: N/A; the requested URI is an XML namespace.
+
+         URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
+         Registrant Contact: The IESG
+         XML: N/A; the requested URI is an XML namespace.
+
+   This document registers a YANG module in the YANG Module Names
+   registry {{!RFC6020}}.
+
+
+      name:         ietf-transport-network-slice
+      namespace:    urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
+      prefix:       tns
+      reference:    RFC XXXX
+
+      name:         ietf-otn-slice
+      namespace:    urn:ietf:params:xml:ns:yang:ietf-otn-slice
+      prefix:       otnslice
+      reference:    RFC XXXX
 
 --- back
 
@@ -526,16 +654,6 @@ TBD.
 
    Previous versions of this document were prepared using 2-Word-v2.0.template.dot.
 
-{: numbered="false"}
-
-# Contributors' Addresses
-
-    Henry Yu
-    Huawei Technologies Canada
-    
-    Email: henry.yu@huawei.com
-
-    Jiang Sun
-    China Mobile
-
-    Email: sunjiang@chinamobile.com
+   The authors would like to thank Adrian Farrel, Danielle Ceccarelli,
+   Igor Bryskin, Bo Wu, Gyan Mishra, Joel M. Halpen, Dhruv Dhoddy and Loa Andersson
+   for providing valuable insights.
