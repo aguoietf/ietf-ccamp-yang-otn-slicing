@@ -466,6 +466,61 @@ shall support configuring an OTN slice with both options.
    - together with a higher-level network slice controller to support 
       end-to-end network slicing;
 
+# Realizing OTN Slices
+
+[I-D.ietf-teas-ietf-network-slices] introduces a mechanism for an IETF network slice controller to realize network slices by constructing Network Resource Partitions (NRP). A NRP is a collection of resources identified in the underlay network to facilitate the mapping of network slices onto available network resources. An NRP is a scope view of a topology and may be considered as a topology in its own right. Thus, in traffic-engineered (TE) networks including OTN, an NRP may be simply represented as an abstract TE tology defined by [RFC8795]. For OTN networks, An NRP may be respresented as an abstract OTN topology defined by [I-D.ietf-ccamp-otn-topo-yang].
+
+The NRP may be used to address the scalability issues where there may be considerable numbers of control and data plane states required to be stored and programmed if network slices are mapped directly to the underlay topology. NRP is internal to a network slice controller, and use of NRPs is optional yet could benefit a network slice realization in large-scale networks, including OTN networks.
+
+Without using the NRP, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC). In this case the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identififer and maintain the coloring in order to keep track of the mapping of OTN slices. The OTN-SC pushes the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
+
+Alternatively, by using the NRP, an OTN slice is mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked using the abstract topology, thus eliminating the need of coloring links in the underlay topology. Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per [I-D.ietf-teas-ietf-network-slices].
+
+{{fig-otn-sc-nrp}} illustrates the relationship between OTN slices and NRP.
+
+~~~~
+        /---------------/      |            /---------------/
+       /  --     --    /       |           /  --     --    /
+      /  |N1|---|N3|  /        |          /  |N2|   |N3|  /
+     /    --\    --  /         |         /    --     --  /
+    /        \--    /          |        /       \ --/   /
+   /         |N2|  /           |       /         |N4|  /
+  / Slice 1   --  /            |      / Slice 2   --  /
+ /------------<--/             |     /-----------<---/
+              <                |                 <
++-------------<----------------V-----------------<------------+
+|          /--<--------------/             /-----<-----------/|
+|         / /--\     /--\   /             /          /--\   / |
+|        / |NE1 |---|NE2 | /             /          |NE2 | /  |
+|       /   \--/\  . \--/ /             /            \--/ /   |
+|      /       ..\ ........            /              /. /    |
+|     /        . /--\   / .           / /--\     /--\/ ./     |
+|    /         .|NE4 | /  .          / |NE3 |---|NE4 | .      |
+|   /          . \--/ /   .         /   \--/  .  \--/ /.      |
+|  /  NRP Topology 1 /    .        /  NRP Topology 2 / .      |
+| /------------.----/     .       /-----------.-----/  .      |
+|              .......    .                   .        .      |
+|             /------.----.-----------------/ .        .      |
+|            / /--\  .    .     /--\       /  .        .      |
+|           / |NE1 |-.----v----|NE2 |     /   .        .      |
+|          /   ---/\ .         /\--/     /    .        .      |
+|         /   /     \v        /<........................      |
+|        / /-/\      \ /--\  /         /      .               |
+|       / |NE3 |------|NE4 |/         /       .               |
+|      /   \--/  ^     \--/          /        .               |
+|     /  Underlay.OTN TE Topology   /         .               |
+|    /-----------.-----------------/          .               |
+|                ..............................     OTN-SC    |
++-------------------------------------------------------------+
+                 |                         ^
+                 |MPI                      |MPI
++----------------V--------------------------------------------+
+|                                                             |
+|                       OTN MDSC/PNC                          |
++-------------------------------------------------------------+
+~~~~
+{: #fig-otn-sc-nrp title="Mapping OTN Slices to NRP"}
+
 # YANG Data Model for OTN Slicing Configuration
 
 ## OTN Slicing YANG Model for MPI
