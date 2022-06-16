@@ -153,6 +153,7 @@ normative:
    | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
    | tns      | ietf-transport-network-slice | RFCXXXX           |
    | otns     | ietf-otn-slice               | RFCXXXX           |
+   | otns-mpi | ietf-otn-slice-mpi           | RFCXXXX           |
 {: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
 
 RFC Editor Note:
@@ -541,18 +542,18 @@ Alternatively, by using the NRP, an OTN slice is mapped to a NRP as an overlay a
 ### MPI YANG Model Tree
 
 ~~~~
-{::include ./ietf-otn-slice.tree}
+{::include ./ietf-otn-slice-mpi.tree}
 ~~~~
-{: #fig-otn-slice-tree title="OTN slicing tree diagram"}
+{: #fig-otn-slice-mpi-tree title="OTN slicing MPI tree diagram"}
 
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2022-03-04.yang"
-{::include ./ietf-otn-slice.yang}
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-06-15.yang"
+{::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
-{: #fig-otn-slice-yang title="OTN slicing YANG model"}
+{: #fig-otn-slice-mpi-yang title="OTN slicing MPI YANG model"}
 
 ## OTN Slicing YANG Model for OTN-SC NBI
 
@@ -683,7 +684,12 @@ TBD.
 
    name: ietf-otn-slice
    namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice
-   prefix: otnslice
+   prefix: otns
+   reference: RFC XXXX
+
+   name: ietf-otn-slice-mpi
+   namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice-mpi
+   prefix: otns-mpi
    reference: RFC XXXX
 ~~~~
 

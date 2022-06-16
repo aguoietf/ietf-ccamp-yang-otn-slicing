@@ -1,7 +1,7 @@
-   module ietf-otn-slice {
+   module ietf-otn-slice-mpi {
      yang-version 1.1;
-     namespace "urn:ietf:params:xml:ns:yang:ietf-otn-slice";
-     prefix "otns";
+     namespace "urn:ietf:params:xml:ns:yang:ietf-otn-slice-mpi";
+     prefix "otns-mpi";
 
      import ietf-network {
        prefix "nw";
@@ -73,11 +73,11 @@
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
 
-     revision "2022-03-04" {
+     revision "2022-06-15" {
        description
          "Latest revision of MPI YANG model for OTN slicing.";
        reference
-         "draft-ietf-ccamp-yang-otn-slicing-01: Framework and Data
+         "draft-ietf-ccamp-yang-otn-slicing-02: Framework and Data
           Model for OTN Network Slicing";
      }
 

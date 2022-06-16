@@ -1,48 +1,82 @@
 module: ietf-transport-network-slice
-  +--rw network-slices
-     +--rw network-slice* [ns-id]
-        +--rw ns-id                    string
-        +--rw ns-name?                 string
-        +--rw ns-description?          string
-        +--rw customer-name*           string
-        +--rw slo
-        |  +--rw optimization-criterion?   identityref
-        |  +--rw delay-tolerance?          boolean
-        |  +--rw periodicity*              uint64
-        |  +--rw isolation-level?          identityref
-        +--rw endpoints
-        |  +--rw endpoint* [endpoint-id]
-        |     +--rw endpoint-id    string
-        +--rw network-topologies
-        |  +--rw network-topology* [topology-id]
-        |     +--rw topology-id    string
-        |     +--rw node* [node-id]
-        |     |  +--rw node-id              inet:uri
-        |     |  +--rw slo
-        |     |  |  +--rw isolation-level?   identityref
-        |     |  +--rw termination-point* [tp-id]
-        |     |     +--rw tp-id          inet:uri
-        |     |     +--rw endpoint-id?   leafref
-        |     +--rw link* [link-id]
-        |        +--rw link-id        inet:uri
-        |        +--rw slo
-        |        |  +--rw delay-tolerance?   boolean
-        |        |  +--rw periodicity*       uint64
-        |        |  +--rw isolation-level?   identityref
-        |        +--rw source
-        |        |  +--rw source-node?   -> ../../../node/node-id
-        |        |  +--rw source-tp?     leafref
-        |        +--rw destination
-        |           +--rw dest-node?   -> ../../../node/node-id
-        |           +--rw dest-tp?     leafref
-        +--rw connectivity-matrices
-           +--rw connectivity-matrix* [connectivity-matrix-id]
-              +--rw connectivity-matrix-id    uint32
-              +--rw topology-id?              leafref
-              +--rw src-endpoint?
-              |       -> ../../../endpoints/endpoint/endpoint-id
-              +--rw dst-endpoint?
-              |       -> ../../../endpoints/endpoint/endpoint-id
-              +--rw slo
-              +--rw explicit-path* [tp-id]
-                 +--rw tp-id    leafref
+
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service:
+    +--rw network-topologies
+       +--rw network-topology* [topology-id]
+          +--rw topology-id                     string
+          +--rw (slo-sle-policy)?
+          |  +--:(standard)
+          |  |  +--rw slo-sle-template?         leafref
+          |  +--:(custom)
+          |     +--rw service-slo-sle-policy
+          |        +--rw policy-description?     string
+          |        +--rw metric-bounds
+          |        |  +--rw metric-bound* [metric-type]
+          |        |     +--rw metric-type          identityref
+          |        |     +--rw metric-unit          string
+          |        |     +--rw value-description?   string
+          |        |     +--rw bound?               uint64
+          |        +--rw security*               identityref
+          |        +--rw isolation?              identityref
+          |        +--rw max-occupancy-level?    uint8
+          |        +--rw mtu?                    uint16
+          |        +--rw steering-constraints
+          |           +--rw path-constraints
+          |           +--rw service-function
+          +--rw node* [node-id]
+          |  +--rw node-id                         inet:uri
+          |  +--rw (slo-sle-policy)?
+          |  |  +--:(standard)
+          |  |  |  +--rw slo-sle-template?         leafref
+          |  |  +--:(custom)
+          |  |     +--rw service-slo-sle-policy
+          |  |        +--rw policy-description?     string
+          |  |        +--rw metric-bounds
+          |  |        |  +--rw metric-bound* [metric-type]
+          |  |        |     +--rw metric-type          identityref
+          |  |        |     +--rw metric-unit          string
+          |  |        |     +--rw value-description?   string
+          |  |        |     +--rw bound?               uint64
+          |  |        +--rw security*               identityref
+          |  |        +--rw isolation?              identityref
+          |  |        +--rw max-occupancy-level?    uint8
+          |  |        +--rw mtu?                    uint16
+          |  |        +--rw steering-constraints
+          |  |           +--rw path-constraints
+          |  |           +--rw service-function
+          |  +--rw termination-point* [tp-id]
+          |     +--rw tp-id     inet:uri
+          |     +--rw sdp-id?   leafref
+          +--rw link* [link-id]
+             +--rw link-id                         inet:uri
+             +--rw (slo-sle-policy)?
+             |  +--:(standard)
+             |  |  +--rw slo-sle-template?         leafref
+             |  +--:(custom)
+             |     +--rw service-slo-sle-policy
+             |        +--rw policy-description?     string
+             |        +--rw metric-bounds
+             |        |  +--rw metric-bound* [metric-type]
+             |        |     +--rw metric-type          identityref
+             |        |     +--rw metric-unit          string
+             |        |     +--rw value-description?   string
+             |        |     +--rw bound?               uint64
+             |        +--rw security*               identityref
+             |        +--rw isolation?              identityref
+             |        +--rw max-occupancy-level?    uint8
+             |        +--rw mtu?                    uint16
+             |        +--rw steering-constraints
+             |           +--rw path-constraints
+             |           +--rw service-function
+             +--rw source
+             |  +--rw source-node?   -> ../../../node/node-id
+             |  +--rw source-tp?     leafref
+             +--rw destination
+                +--rw dest-node?   -> ../../../node/node-id
+                +--rw dest-tp?     leafref
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /ietf-nss:connection-groups/ietf-nss:connection-group
+            /ietf-nss:connectivity-construct:
+    +--rw topology-id?     leafref
+    +--rw explicit-path* [tp-id]
+       +--rw tp-id    leafref
