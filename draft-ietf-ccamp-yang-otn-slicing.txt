@@ -645,15 +645,15 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2022
    encapsulated in and tracked by the abstract topology, and a given
    link or port in the NRP topology represents resources that are
    reserved in the underlay topology.  The use of NRP eliminates the
-   need of coloring links in the underlay topology.
+   need of coloring links in the underlay topology in that the NRP
+   topology may be pushed directly to the subtended MDSC or PNC by the
+   OTN-SC.
 
    Multiple OTN slices may be mapped to the same NRP, and a single
    connectivity construct of the slice may be mapped to only one NRP, as
    per [I-D.ietf-teas-ietf-network-slices].
 
    Figure 4 illustrates the relationship between OTN slices and NRP.
-
-
 
 
 
