@@ -475,7 +475,7 @@ The NRP may be used to address the scalability issues where there may be conside
 
 Without using the NRP, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC). In this case the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identififer and maintain the coloring in order to keep track of the mapping of OTN slices. The OTN-SC pushes the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
 
-Alternatively, by using the NRP, an OTN slice is mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. The use of NRP eliminates the need of coloring links in the underlay topology.
+Alternatively, by using the NRP, an OTN slice is mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. The use of NRP eliminates the need of coloring links in the underlay topology in that the NRP topology may be pushed directly to the subtended MDSC or PNC by the OTN-SC.
 
 Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per [I-D.ietf-teas-ietf-network-slices].
 
