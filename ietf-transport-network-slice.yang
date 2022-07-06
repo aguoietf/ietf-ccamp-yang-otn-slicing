@@ -18,7 +18,8 @@
      import ietf-network-slice-service {
        prefix "ietf-nss";
        reference
-         "draft-ietf-teas-ietf-network-slice-nbi-yang-00: IETF Network Slice Service YANG Model";
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
+		  IETF Network Slice Service YANG Model";
      }
 	 
      organization
@@ -59,7 +60,7 @@
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
 
-     revision "2022-03-04" {
+     revision "2022-07-06" {
        description
          "Latest revision of NBI YANG model for OTN slicing.";
        reference
@@ -204,8 +205,11 @@
            }
            leaf sdp-id {
              type leafref {
-               path "/ietf-nss:network-slice-services/ietf-nss:slice-service[ietf-nss:service-id=current()"+
-                  "/../../../../../ietf-nss:service-id]/ietf-nss:sdps"+"/ietf-nss:sdp/ietf-nss:sdp-id";
+               path "/ietf-nss:network-slice-services"+
+                    "/ietf-nss:slice-service"+
+                    "[ietf-nss:service-id=current()"+
+                    "/../../../../../ietf-nss:service-id]"+
+                    "/ietf-nss:sdps/ietf-nss:sdp/ietf-nss:sdp-id";
              }
              description
                "Relative reference to SDP id.";
@@ -238,8 +242,8 @@
                     "source-node]/termination-point/tp-id";
              }
              description
-               "Termination point within source node that terminates
-                the link.";
+               "Termination point within source node that
+			    terminates the link.";
            }
          }
          container destination {
@@ -291,8 +295,11 @@
             path.";
          leaf tp-id {
            type leafref {
-             path "/ietf-nss:network-slice-services/ietf-nss:slice-service[ietf-nss:service-id=current()"+
-                  "/../../../../../ietf-nss:service-id]/network-topologies"+
+             path "/ietf-nss:network-slice-services"+
+                  "/ietf-nss:slice-service"+
+                  "[ietf-nss:service-id=current()"+
+                  "/../../../../../ietf-nss:service-id]"+
+                  "/network-topologies"+
                   "/network-topology[topology-id=current()"+
                   "/../../topology-id]/node/termination-point"+
                   "/tp-id";
@@ -309,10 +316,11 @@
 	 augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" {
 	   description
-	     "Augment IETF network slice services to include network topologies.";
+	     "Augment IETF network slice services to include network
+		  topologies.";
 	   container network-topologies {
 	     description
-		   "Set of network topologies referenced by network slices";
+           "Set of network topologies referenced by network slices";
 
 	     list network-topology {
 		   key "topology-id";
@@ -334,7 +342,8 @@
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct"{
        description
-         "Add toplogy id and explicit path to a connectivity construct";
+         "Add toplogy id and explicit path to a connectivity
+		  construct";
 	   uses topology-ref;
      }
    }

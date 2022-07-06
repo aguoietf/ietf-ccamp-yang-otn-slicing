@@ -51,8 +51,8 @@
         Editor: Aihua Guo
                 <mailto:aihuaguo.ietf@gmail.com>
 
-        Editor: Victor Lopez
-                <mailto:victor.lopez@nokia.com>";
+        Editor: Sergio Belotti
+                <mailto:sergio.belotti@nokia.com>";
 
      description
        "This module defines a YANG data model for network slice
@@ -73,7 +73,7 @@
         This version of this YANG module is part of RFC XXXX; see
         the RFC itself for full legal notices.";
 
-     revision "2022-06-15" {
+     revision "2022-07-06" {
        description
          "Latest revision of MPI YANG model for OTN slicing.";
        reference
