@@ -153,6 +153,7 @@ normative:
    | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
    | tns      | ietf-transport-network-slice | RFCXXXX           |
    | otns     | ietf-otn-slice               | RFCXXXX           |
+   | otns-mpi | ietf-otn-slice-mpi           | RFCXXXX           |
 {: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
 
 RFC Editor Note:
@@ -210,7 +211,7 @@ Please remove this note.
 
    OTN slices may be pre-configured by the management plane and presented to 
    the customer via the northbound interface (NBI), or be dynamically 
-   provisioned by a higher layer slice controller, e.g. an IETF network slice 
+   provisioned by a higher layer slice controller, e.g., an IETF network slice 
    controller (IETF NSC) through the NBI. The OTN slice is 
    provided by a service provider to a customer to be used as though it was part
    of the customer's own networks.
@@ -303,7 +304,7 @@ Please remove this note.
    performance commitment. An IETF network slice could be composed of 
    network slices from multiple technological and administrative 
    domains. An IETF network slice can be realized by using or combining
-   multiple underlying OTN slices with OTN resources, e.g. ODU time 
+   multiple underlying OTN slices with OTN resources, e.g., ODU time 
    slots or ODU containers, to achieve end-to-end slicing across the transport
    domain.
 
@@ -311,7 +312,7 @@ Please remove this note.
 
    OTN slices may be abstracted differently depending on the requirement contained
    in the configuration provided by the slice customer. Whereas the customer requests
-   an OTN slice to provide connectivities between specified endpoints, an OTN slice 
+   an OTN slice to provide connectivity between specified endpoints, an OTN slice 
    can be abstracted as a set of endpoint-to-endpoint links, with each link formed 
    by an end-to-end tunnel across the underlying OTN networks. The resources
    associated with each link of the slice is reserved and commissioned in the underlying
@@ -320,7 +321,7 @@ Please remove this note.
    
    An OTN slice can also be abstracted as an abstract topology when the customer requests
    the slice to share resources between multiple endpoints and to use the resources on demand.
-   The abstract topology may consist of virtual nodes and virtual links, whose associated
+   The abstract topology may consist of virtual nodes and virtual links, and their associated
    resources are reserved but not commissioned across the underlying OTN networks. The 
    customer can later commission resources within the slice dynamically using the NBI provided
    by the service provider. An OTN slice could use abstract topology to connect endpoints with 
@@ -343,7 +344,7 @@ Please remove this note.
       share the same link by allocating different OTN tributary slots in
       different granularities.
 
-   Furthermore, an OTN switch is typically fully non-blockable switching 
+   Furthermore, an OTN switch is typically fully non-blocking switching 
    at the lowest ODU container granularity, it is
 desirable to specify just the total number of ODU containers in the
 lowest granularity (e.g. ODU0), when configuring tributary-slot based
@@ -353,7 +354,7 @@ each of the OTN networks and are stitched at inter-domain OTN links, it
 is necessary to specify matching tributary slots at the endpoints of the
 inter-domain links. In some real network scenarios, OTN network resources
 including tributary slots are managed explicitly by network operators for
-network maintenance considerations. Therefore an OTN slice controller
+network maintenance considerations. Therefore, an OTN slice controller
 shall support configuring an OTN slice with both options.
 
    An OTN slice controller (OTN-SC) is a logical function responsible for
@@ -455,7 +456,7 @@ shall support configuring an OTN slice with both options.
 {: #fig-otn-sc-recursion title="OTN-SC for multi-domain"}
 
    OTN-SC functionalities are logically independent and may be deployed in 
-   different combinations to cater to the realization needs. In reference with the 
+   different combinations to cater to the realization needs. In reference to the 
    ACTN control framework {{!RFC8453}}, an OTN-SC may be deployed
 
    - as an independent network function;
@@ -465,6 +466,65 @@ shall support configuring an OTN slice with both options.
 
    - together with a higher-level network slice controller to support 
       end-to-end network slicing;
+
+# Realizing OTN Slices
+
+[I-D.ietf-teas-ietf-network-slices] introduces a mechanism for an IETF network slice controller to realize network slices by constructing Network Resource Partitions (NRP). A NRP is a collection of resources identified in the underlay network to facilitate the mapping of network slices onto available network resources. An NRP is a scope view of a topology and may be considered as a topology in its own right. Thus, in traffic-engineered (TE) networks including OTN, an NRP may be simply represented as an abstract TE topology defined by [RFC8795]. For OTN networks, An NRP may be represented as an abstract OTN topology defined by [I-D.ietf-ccamp-otn-topo-yang].
+
+The NRP may be used to address the scalability issues where there may be considerable numbers of control and data plane states required to be stored and programmed if network slices are mapped directly to the underlay topology. NRP is internal to a network slice controller, and use of NRPs is optional yet could benefit a network slice realization in large-scale networks, including OTN networks. 
+
+For connectivity-based OTN slices, a connection within an OTN slice can be realized by an OTN tunnel in the underlay topology and resources are reserved by the tunnel, thus use of NRP is optional in this case. 
+
+For resource-based OTN slices, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC) without creating NRP topologies. Due to the need for reserving resources, the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identifier and maintain the coloring to keep track of the mapping of OTN slices. The OTN-SC may push the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
+
+Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. One OTN slice is typically realized by one dedicated NRP topology and all the resources within that NRP topology are reserved for the OTN slice. In this case, the use of NRP eliminates the need for coloring links in the underlay topology, and the NRP topology may be pushed directly to the subtended MDSC or PNC by the OTN-SC.
+
+Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per [I-D.ietf-teas-ietf-network-slices].
+
+{{fig-otn-sc-nrp}} illustrates the relationship between OTN slices and NRP.
+
+~~~~
+        /---------------/      |            /---------------/
+       /  --     --    /       |           /  --     --    /
+      /  |N1|---|N3|  /        |          /  |N2|   |N3|  /
+     /    --\    --  /         |         /    --     --  /
+    /        \--    /          |        /       \ --/   /
+   /         |N2|  /           |       /         |N4|  /
+  / Slice 1   --  /            |      / Slice 2   --  /
+ /------------<--/             |     /-----------<---/
+              <                |                 <
++-------------<----------------V-----------------<------------+
+|          /--<--------------/             /-----<-----------/|
+|         / /--\     /--\   /             /          /--\   / |
+|        / |NE1 |---|NE2 | /             /          |NE2 | /  |
+|       /   \--/\  . \--/ /             /            \--/ /   |
+|      /       ..\ ........            /              /. /    |
+|     /        . /--\   / .           / /--\     /--\/ ./     |
+|    /         .|NE4 | /  .          / |NE3 |---|NE4 | .      |
+|   /          . \--/ /   .         /   \--/  .  \--/ /.      |
+|  /  NRP Topology 1 /    .        /  NRP Topology 2 / .      |
+| /------------.----/     .       /-----------.-----/  .      |
+|              .......    .                   .        .      |
+|             /------.----.-----------------/ .        .      |
+|            / /--\  .    .     /--\       /  .        .      |
+|           / |NE1 |-.----v----|NE2 |     /   .        .      |
+|          /   ---/\ .         /\--/     /    .        .      |
+|         /   /     \v        /<........................      |
+|        / /-/\      \ /--\  /         /      .               |
+|       / |NE3 |------|NE4 |/         /       .               |
+|      /   \--/  ^     \--/          /        .               |
+|     /  Underlay.OTN TE Topology   /         .               |
+|    /-----------.-----------------/          .               |
+|                ..............................     OTN-SC    |
++-------------------------------------------------------------+
+                 |                         ^
+                 |MPI                      |MPI
++----------------V--------------------------------------------+
+|                                                             |
+|                       OTN MDSC/PNC                          |
++-------------------------------------------------------------+
+~~~~
+{: #fig-otn-sc-nrp title="Mapping OTN Slices to NRP"}
 
 # YANG Data Model for OTN Slicing Configuration
 
@@ -486,18 +546,18 @@ shall support configuring an OTN slice with both options.
 ### MPI YANG Model Tree
 
 ~~~~
-{::include ./ietf-otn-slice.tree}
+{::include ./ietf-otn-slice-mpi.tree}
 ~~~~
-{: #fig-otn-slice-tree title="OTN slicing tree diagram"}
+{: #fig-otn-slice-mpi-tree title="OTN slicing MPI tree diagram"}
 
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2022-03-04.yang"
-{::include ./ietf-otn-slice.yang}
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-06-15.yang"
+{::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
-{: #fig-otn-slice-yang title="OTN slicing YANG model"}
+{: #fig-otn-slice-mpi-yang title="OTN slicing MPI YANG model"}
 
 ## OTN Slicing YANG Model for OTN-SC NBI
 
@@ -515,7 +575,7 @@ shall support configuring an OTN slice with both options.
    constructs and attributes:
 
    - Common attributes, which include a set of common attributes like slice identifier,
-     name, description and names of customers who use the slice.
+     name, description, and names of customers who use the slice.
 
    - Endpoints, which represent conceptual points of connection from a customer
      device to the TNS. An endpoint is mapped to specific physical or virtual resources
@@ -525,11 +585,11 @@ shall support configuring an OTN slice with both options.
 
    - Network topology, which represent set of shared, reserved resources organized as a virtual 
       topology between all of the endpoints. A customer could use such network topology
-      to define detailed connecvitiy path traversing the topology, and allow sharing of 
+      to define detailed connectivity path traversing the topology, and allow sharing of 
       resources between its multiple endpoint pairs.
 
    - Connectivity matrix, which represent the intended virtual connections between the endpoints
-      within a TNS. A connctivity matrix entry could be associated with an explicit path 
+      within a TNS. A connectivity matrix entry could be associated with an explicit path 
       over the above network topology. 
 
    - Service-level objectives (SLOs) associated with different objects, including the TNS, 
@@ -628,7 +688,12 @@ TBD.
 
    name: ietf-otn-slice
    namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice
-   prefix: otnslice
+   prefix: otns
+   reference: RFC XXXX
+
+   name: ietf-otn-slice-mpi
+   namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice-mpi
+   prefix: otns-mpi
    reference: RFC XXXX
 ~~~~
 

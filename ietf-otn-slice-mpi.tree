@@ -1,4 +1,4 @@
-module: ietf-otn-slice
+module: ietf-otn-slice-mpi
 
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes:
