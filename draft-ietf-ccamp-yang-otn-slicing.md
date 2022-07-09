@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-ietf-ccamp-yang-otn-slicing-01
+docname: draft-ietf-ccamp-yang-otn-slicing-02
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -553,7 +553,7 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-06-15.yang"
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-07-09.yang"
 {::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
@@ -605,7 +605,7 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2022-03-04.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2022-07-09.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
