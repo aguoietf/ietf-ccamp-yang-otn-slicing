@@ -477,24 +477,23 @@ For connectivity-based OTN slices, a connection within an OTN slice is typically
 
 For resource-based OTN slices, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC) without creating NRP topologies. Due to the need for reserving resources, the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identifier and maintain the coloring to keep track of the mapping of OTN slices. The OTN-SC may push the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
 
-Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. One slice topology for a resource-based OTN slice is typically realized by one dedicated NRP topology, and all the resources within that NRP topology are reserved for the OTN slice. In this case, the use of NRP eliminates the need for coloring links in the underlay topology, and the NRP topology may be pushed directly to the subtended MDSC or PNC by the OTN-SC.
-
-Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!I-D.ietf-teas-ietf-network-slices}}.
+Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!I-D.ietf-teas-ietf-network-slices}}. The resources of an NRP topology are reserved and shared by all the OTN slices mapped to this NRP, and the NRP topology may be pushed directly to the subtended MDSC or PNC, thus eliminating the need for link coloring if using the underlay topology.
 
 {{fig-otn-sc-nrp}} illustrates the relationship between OTN slices and NRP.
 
 ~~~~
         /---------------/      |            /---------------/
        /  --     --    /       |           /  --     --    /
-      /  |N1|---|N3|  /        |          /  |N2|   |N3|  /
-     /    --\    --  /         |         /    --     --  /
-    /        \--    /          |        /       \ --/   /
-   /         |N2|  /           |       /         |N4|  /
-  / Slice 1   --  /            |      / Slice 2   --  /
- /------------<--/             |     /-----------<---/
-              <                |                 <
-+-------------<----------------V-----------------<------------+
-|          /--<--------------/             /-----<-----------/|
+      /  |N1|---|N3|  /---/    |          /  |N2|   |N3|  /
+     /    --\    --  /   /     |         /    --     --  /
+    /        \--    /   /      |        /       \ --/   /
+   /         |N2|  /   /       |       /         |N4|  /
+  / Slice 1   --  /   /        |      / Slice 2   --  /
+ /------------<--/   /         |     /-----------<---/
+    / Slice 3 <     /          |                 <
+   /--------- <-<--/           |                 <
++-------------<-<--------------V-----------------<------------+
+|          /--<-<------------/             /-----<-----------/|
 |         / /--\     /--\   /             /          /--\   / |
 |        / |NE1 |---|NE2 | /             /          |NE2 | /  |
 |       /   \--/\  . \--/ /             /            \--/ /   |
