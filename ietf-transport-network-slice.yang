@@ -9,11 +9,13 @@
        reference 
          "RFC 6991: Common YANG Data Types";
      }
+	 /*
      import ietf-te-types {
        prefix "te-types";
        reference
          "RFC 8776: Traffic Engineering Common YANG Types";
      }
+	 */
 
      import ietf-network-slice-service {
        prefix "ietf-nss";
@@ -133,7 +135,7 @@
      /*
       * Groupings
       */
-
+/*
      grouping slo-sle-policy {
        description
          "Policy grouping for Transport Network Slices.";
@@ -180,11 +182,11 @@
          }
        }
      }
-
+*/
      grouping network-topology-def {
        description
          "Network topology definition";
-       uses slo-sle-policy;
+       uses ietf-nss:service-slo-sle-policy;
        list node {
          key "node-id";
          description
@@ -194,7 +196,7 @@
            description
              "Node identifier.";
          }
-         uses slo-sle-policy;
+         uses ietf-nss:service-slo-sle-policy;
          list termination-point {
            key "tp-id";
            description
@@ -215,6 +217,7 @@
              description
                "Relative reference to SDP id.";
            }
+		   uses ietf-nss:service-slo-sle-policy;
          }
        }
        list link {
@@ -226,7 +229,7 @@
            description
              "Link identifier.";
          }
-         uses slo-sle-policy;
+         uses ietf-nss:service-slo-sle-policy;
          container source {
            description
              "Link source node";

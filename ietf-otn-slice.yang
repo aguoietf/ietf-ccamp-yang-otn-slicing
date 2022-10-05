@@ -1,0 +1,406 @@
+   module ietf-otn-slice {
+     yang-version 1.1;
+     namespace
+       "urn:ietf:params:xml:ns:yang:ietf-otn-slice";
+     prefix "ietf-otns";
+
+     import ietf-te-types {
+       prefix "te-types";
+       reference
+         "RFC 8776: Traffic Engineering Common YANG Types";
+     }
+
+     import ietf-layer1-types {
+       prefix "l1-types";
+       reference
+         "draft-ietf-ccamp-layer1-types-14: 
+		  A YANG Data Model for Layer 1 Types";
+     }
+
+     import ietf-network-slice-service {
+       prefix "ietf-nss";
+       reference
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
+		  IETF Network Slice Service YANG Model";
+     }
+	 
+     import ietf-transport-network-slice {
+       prefix "tns";
+       reference
+         "draft-ietf-ccamp-yang-otn-slicing-02:
+		  Framework and Data Model for OTN Network Slicing";
+     }
+	 
+     organization
+       "IETF CCAMP Working Group";
+     contact
+       "WG Web: <http://tools.ietf.org/wg/ccamp/>
+        WG List: <mailto:ccamp@ietf.org>
+
+        Editor: Haomian Zheng
+                <mailto:zhenghaomian@huawei.com>
+
+        Editor: Italo Busi
+                <mailto:italo.busi@huawei.com>
+
+        Editor: Aihua Guo
+                <mailto:aihuaguo.ietf@gmail.com>
+
+        Editor: Sergio Belotti
+                <mailto:sergio.belotti@nokia.com>";
+
+     description
+       "This module defines a YANG data model for configuring 
+        technology-specific network slices in optical transport
+		networks, e.g., Optical Transport Network (OTN).
+
+        The model fully conforms to the Network Management Datastore
+        Architecture (NMDA).
+
+        Copyright (c) 2022 IETF Trust and the persons identified as
+        authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see the
+        RFC itself for full legal notices.";
+
+     revision "2022-10-06" {
+       description
+         "Latest revision of NBI YANG model for OTN slicing.";
+       reference
+         "draft-ietf-ccamp-yang-otn-slicing-02: Framework and Data
+          Model for OTN Network Slicing";
+     }
+
+
+     /*
+      * Identities
+      */
+     identity bit-error-rate {
+       base ietf-nss:service-slo-metric-type;
+       description
+         "ODU bit error rate";
+     }
+
+	 identity resize-option {
+       description
+         "Base identity for link or connectivity resizing options";
+     }
+	 
+	 identity resize-none {
+	   base resize-option;
+       description
+         "Not resizable";
+     }
+	 
+	 identity resize-with-hit {
+	   base resize-option;
+       description
+         "Resizable with traffic hits";
+     }
+
+	 identity resize-hitless {
+	   base resize-option;
+       description
+         "Hitless resizable";
+     }
+	 
+	 identity slice-resource-disjointness {
+       description
+         "Base identity for disjointness specification";
+     }
+	 
+	 identity slice-link-disjoint {
+	   base slice-resource-disjointness;
+       description
+         "Resources within a slice are link disjoint";
+     }
+	 identity slice-node-disjoint {
+	   base slice-resource-disjointness;
+       description
+         "Resources within a slice are node disjoint";
+     }
+	 identity slice-srlg-disjoint {
+	   base slice-resource-disjointness;
+       description
+         "Resources within a slice are SRLG disjoint";
+     }
+	 
+     /*
+      * Groupings
+      */
+
+     grouping odu-signal-quality {
+       description
+         "Grouping for ODU signal quality.";
+		 
+	   container odu-signal-quality {
+	     description
+           "Contianer for ODU signal quality attributes.";
+		   
+		 leaf odu-ber-max {
+           type te-types:bandwidth-scientific-notation;
+           description
+             "Maximal ODU bit error rate";
+         }
+		 leaf odu-bbe-max {
+           type uint64;
+           description
+             "Maximal total number of ODU background block errors";
+         }
+		 leaf odu-bbe-eb {
+           type uint64;
+           description
+             "Maximal total number of ODU errored blocks";
+         }
+		 leaf odu-bbe-es {
+           type uint64;
+           description
+             "Maximal total number of ODU errored seconds";
+         }
+		 leaf odu-bbe-ses {
+           type uint64;
+           description
+             "Maximal total number of ODU severely errored seconds";
+         }
+	   }
+     }
+
+     grouping otn-slice-slo-sle-policy {
+       description
+         "Policy grouping for OTN network slices.";
+
+       container otn {
+         description
+           "OTN technology-specific SLO/SLE policy container";
+   
+         uses odu-signal-quality;
+		 
+		 uses l1-types:otn-link-bandwidth;
+   
+         leaf resize-requirement {
+           type identityref {
+             base resize-option;
+           }
+           description
+             "Indicates resizing requirments";
+         }
+         leaf service-info {
+           type string;
+           description
+             "Describe type of services running on the slice. It may be
+			  useful information to help the slice controller to 
+			  optimize resource allocation";
+         }
+       }
+     }
+
+     grouping otn-steering-constraints {
+       description
+         "Policy grouping for specifying steering constraints for
+		  OTN slices.";
+
+       container otn {
+         description
+           "OTN steering constraints";
+   
+         leaf disjointness {
+           type identityref {
+             base slice-resource-disjointness;
+           }
+           description
+             "Indicate the level of disjointness";
+         }
+         leaf service-info {
+           type string;
+           description
+             "Describe type of services running on the slice. It may be
+			  useful information to help the slice controller to 
+			  optimize resource allocation";
+         }
+       }
+     }
+
+     /*
+      * Augmented data nodes
+      */
+     /* slice augments */
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" {
+	   description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for connectivity-based OTN slices.";
+		  
+       uses otn-slice-slo-sle-policy;
+     }
+
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" {
+	   description
+	     "Augment IETF network slice services to include steering
+		 constraints for connectivity-based OTN slices.";
+		  
+       uses otn-steering-constraints;
+     }
+
+     /* network topology augments */
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+			 "/tns:network-topologies" + 
+             "/tns:network-topology" + 
+             "/tns:slo-sle-policy" + 
+             "/tns:custom" + 
+			 "/tns:service-slo-sle-policy" {
+	   description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for the network topology of a
+		  resource-based OTN slice.";
+		  
+       uses otn-slice-slo-sle-policy;
+     }
+
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+			 "/tns:network-topologies" + 
+             "/tns:network-topology" + 
+             "/tns:node" + 
+             "/tns:slo-sle-policy" + 
+             "/tns:custom" + 
+			 "/tns:service-slo-sle-policy" {
+	   description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for nodes within a resource-based
+		  OTN slice.";
+		  
+       uses otn-slice-slo-sle-policy;
+     }
+	 
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+			 "/tns:network-topologies" + 
+             "/tns:network-topology" + 
+             "/tns:node" + 
+			 "/tns:termination-point" +
+             "/tns:slo-sle-policy" + 
+             "/tns:custom" + 
+			 "/tns:service-slo-sle-policy" {
+	   description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for termination points within a
+		  resource-based OTN slice.";
+		  
+       uses otn-slice-slo-sle-policy;
+     }
+	 
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+			 "/tns:network-topologies" + 
+             "/tns:network-topology" + 
+             "/tns:link" + 
+             "/tns:slo-sle-policy" + 
+             "/tns:custom" + 
+			 "/tns:service-slo-sle-policy" {
+	   description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for links within a resource-based
+		  OTN slice.";
+		  
+       uses otn-slice-slo-sle-policy;
+     }
+	 
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+			 "/tns:network-topologies" + 
+             "/tns:network-topology" + 
+             "/tns:link" + 
+             "/tns:slo-sle-policy" + 
+             "/tns:custom" + 
+			 "/tns:service-slo-sle-policy" + 
+             "/tns:steering-constraints" {
+	   description
+	     "Augment IETF network slice services to include steering
+		 constraints for links within a resource-based OTN slice.";
+		  
+       uses otn-steering-constraints;
+     }	 
+
+     /* connectivity construct augments */
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" {
+       description
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for connectivity-constructs within
+		  a connectivity-based OTN slice.";
+	   uses otn-slice-slo-sle-policy;
+     }
+	 
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" {
+       description
+	     "Augment IETF network slice services to include steering
+		 constraints for connectivity-constructs within a
+		 connectivity-based OTN slice.";
+       uses otn-steering-constraints;
+     }
+
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" +
+             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:a2a" +
+             "/ietf-nss:a2a-sdp" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" {
+       description
+	     "Augment IETF network slice services to include steering
+		 constraints for connectivity-constructs within a
+		 connectivity-based OTN slice.";
+       uses otn-steering-constraints;
+     }
+
+	 augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" +
+             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:a2a" +
+             "/ietf-nss:a2a-sdp" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" {
+       description
+	     "Augment IETF network slice services to include steering
+		 constraints for connectivity-constructs within a
+		 connectivity-based OTN slice.";
+       uses otn-steering-constraints;
+     }
+   }
+
