@@ -5,117 +5,91 @@ module: ietf-otn-slice
             /ietf-nss:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw otn
-       +--rw disjointness?   identityref
-       +--rw service-info?   string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /tns:network-topologies/tns:network-topology
             /tns:slo-sle-policy/tns:custom
             /tns:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /tns:network-topologies/tns:network-topology/tns:node
             /tns:slo-sle-policy/tns:custom
             /tns:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /tns:network-topologies/tns:network-topology/tns:node
             /tns:termination-point/tns:slo-sle-policy/tns:custom
             /tns:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /tns:network-topologies/tns:network-topology/tns:link
             /tns:slo-sle-policy/tns:custom
             /tns:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /tns:network-topologies/tns:network-topology/tns:link
-            /tns:slo-sle-policy/tns:custom/tns:service-slo-sle-policy
-            /tns:steering-constraints:
-    +--rw otn
-       +--rw disjointness?   identityref
-       +--rw service-info?   string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct:
+            /ietf-nss:slo-sle-policy/ietf-nss:custom
+            /ietf-nss:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
-       |  +--rw odu-ber-max?   te-types:bandwidth-scientific-notation
-       |  +--rw odu-bbe-max?   uint64
-       |  +--rw odu-bbe-eb?    uint64
-       |  +--rw odu-bbe-es?    uint64
-       |  +--rw odu-bbe-ses?   uint64
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
        +--rw odulist* [odu-type]
-       |  +--rw odu-type    identityref
-       |  +--rw number?     uint16
-       +--rw resize-requirement?   identityref
-       +--rw service-info?         string
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
     +--rw otn
-       +--rw disjointness?   identityref
-       +--rw service-info?   string
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct
@@ -123,15 +97,11 @@ module: ietf-otn-slice
             /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
             /ietf-nss:service-slo-sle-policy:
     +--rw otn
-       +--rw disjointness?   identityref
-       +--rw service-info?   string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct
-            /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-            /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw otn
-       +--rw disjointness?   identityref
-       +--rw service-info?   string
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16

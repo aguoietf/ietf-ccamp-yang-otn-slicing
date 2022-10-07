@@ -2,7 +2,7 @@
      yang-version 1.1;
      namespace
        "urn:ietf:params:xml:ns:yang:ietf-otn-slice";
-     prefix "ietf-otns";
+     prefix "otns";
 
      import ietf-te-types {
        prefix "te-types";
@@ -88,87 +88,95 @@
          "ODU bit error rate";
      }
 
-	 identity resize-option {
+	 identity odu-tca-threshold-type {
        description
-         "Base identity for link or connectivity resizing options";
+         "Base identity for ODU performance counter";
      }
 	 
-	 identity resize-none {
-	   base resize-option;
+	 identity odu-bbe {
+	   base odu-tca-threshold-type;
        description
-         "Not resizable";
+         "ODU Background Block Error (BBE) threshold";
      }
 	 
-	 identity resize-with-hit {
-	   base resize-option;
+	 identity odu-es {
+	   base odu-tca-threshold-type;
        description
-         "Resizable with traffic hits";
+         "ODU Errored Seconds (ES) threshold";
+     }
+	 
+	 identity odu-ses {
+	   base odu-tca-threshold-type;
+       description
+         "ODU Severely Errored Seconds (SES) threshold";
      }
 
-	 identity resize-hitless {
-	   base resize-option;
+	 identity odu-uas {
+	   base odu-tca-threshold-type;
        description
-         "Hitless resizable";
+         "ODU Unavailable Seconds (UAS) threshold";
+     }
+
+	 identity odu-ber {
+	   base odu-tca-threshold-type;
+       description
+         "ODU Bit Error Rate (BER) threshold";
+     }
+
+	 identity pm-duration {
+       description
+         "Base identity for ODU performance monitoring interval";
      }
 	 
-	 identity slice-resource-disjointness {
+	 identity pm-15m {
+	   base pm-duration;
        description
-         "Base identity for disjointness specification";
+         "15 minuites pm duration";
      }
-	 
-	 identity slice-link-disjoint {
-	   base slice-resource-disjointness;
+
+	 identity pm-24h {
+	   base pm-duration;
        description
-         "Resources within a slice are link disjoint";
+         "24 hours pm duration";
      }
-	 identity slice-node-disjoint {
-	   base slice-resource-disjointness;
-       description
-         "Resources within a slice are node disjoint";
-     }
-	 identity slice-srlg-disjoint {
-	   base slice-resource-disjointness;
-       description
-         "Resources within a slice are SRLG disjoint";
-     }
-	 
+
      /*
       * Groupings
       */
-
      grouping odu-signal-quality {
        description
          "Grouping for ODU signal quality.";
-		 
-	   container odu-signal-quality {
-	     description
+ 
+       container odu-signal-quality {
+         description
            "Contianer for ODU signal quality attributes.";
+   
+         list odu-pm-objective {
+           key "duration pm-type";
+           description
+             "List of ODU performance requirements.";
+           leaf duration {
+             type identityref {
+               base pm-duration;
+             }
+             description
+               "Time duration.";
+           }
+           leaf pm-type {
+             type identityref {
+               base odu-tca-threshold-type;
+             }
+             description
+               "ODU PM metric threshold.";
+           }
 		   
-		 leaf odu-ber-max {
-           type te-types:bandwidth-scientific-notation;
-           description
-             "Maximal ODU bit error rate";
-         }
-		 leaf odu-bbe-max {
-           type uint64;
-           description
-             "Maximal total number of ODU background block errors";
-         }
-		 leaf odu-bbe-eb {
-           type uint64;
-           description
-             "Maximal total number of ODU errored blocks";
-         }
-		 leaf odu-bbe-es {
-           type uint64;
-           description
-             "Maximal total number of ODU errored seconds";
-         }
-		 leaf odu-bbe-ses {
-           type uint64;
-           description
-             "Maximal total number of ODU severely errored seconds";
-         }
+           leaf pm-threshold {
+             type union {
+               type te-types:bandwidth-scientific-notation;
+               type uint64;
+             }
+           }
+		 }
 	   }
      }
 
@@ -181,49 +189,7 @@
            "OTN technology-specific SLO/SLE policy container";
    
          uses odu-signal-quality;
-		 
-		 uses l1-types:otn-link-bandwidth;
-   
-         leaf resize-requirement {
-           type identityref {
-             base resize-option;
-           }
-           description
-             "Indicates resizing requirments";
-         }
-         leaf service-info {
-           type string;
-           description
-             "Describe type of services running on the slice. It may be
-			  useful information to help the slice controller to 
-			  optimize resource allocation";
-         }
-       }
-     }
-
-     grouping otn-steering-constraints {
-       description
-         "Policy grouping for specifying steering constraints for
-		  OTN slices.";
-
-       container otn {
-         description
-           "OTN steering constraints";
-   
-         leaf disjointness {
-           type identityref {
-             base slice-resource-disjointness;
-           }
-           description
-             "Indicate the level of disjointness";
-         }
-         leaf service-info {
-           type string;
-           description
-             "Describe type of services running on the slice. It may be
-			  useful information to help the slice controller to 
-			  optimize resource allocation";
-         }
+         uses l1-types:otn-link-bandwidth;
        }
      }
 
@@ -241,19 +207,6 @@
 		  specific SLO/SLE policy for connectivity-based OTN slices.";
 		  
        uses otn-slice-slo-sle-policy;
-     }
-
-	 augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/ietf-nss:slo-sle-policy" + 
-             "/ietf-nss:custom" + 
-			 "/ietf-nss:service-slo-sle-policy" + 
-             "/ietf-nss:steering-constraints" {
-	   description
-	     "Augment IETF network slice services to include steering
-		 constraints for connectivity-based OTN slices.";
-		  
-       uses otn-steering-constraints;
      }
 
      /* network topology augments */
@@ -321,35 +274,21 @@
        uses otn-slice-slo-sle-policy;
      }
 	 
-	 augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-			 "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:link" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-			 "/tns:service-slo-sle-policy" + 
-             "/tns:steering-constraints" {
-	   description
-	     "Augment IETF network slice services to include steering
-		 constraints for links within a resource-based OTN slice.";
-		  
-       uses otn-steering-constraints;
-     }	 
-
      /* connectivity construct augments */
-	 augment "/ietf-nss:network-slice-services" +
+     augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
-             "/ietf-nss:connectivity-construct" {
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+			 "/ietf-nss:service-slo-sle-policy" {
        description
 	     "Augment IETF network slice services to include technology-
 		  specific SLO/SLE policy for connectivity-constructs within
-		  a connectivity-based OTN slice.";
+		  a connectivity-based transport network slice.";
 	   uses otn-slice-slo-sle-policy;
      }
-	 
+
 	 augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
              "/ietf-nss:connection-groups" +
@@ -357,15 +296,14 @@
              "/ietf-nss:connectivity-construct" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-			 "/ietf-nss:service-slo-sle-policy" + 
-             "/ietf-nss:steering-constraints" {
+			 "/ietf-nss:service-slo-sle-policy" {
        description
-	     "Augment IETF network slice services to include steering
-		 constraints for connectivity-constructs within a
-		 connectivity-based OTN slice.";
-       uses otn-steering-constraints;
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for connectivity-constructs within
+		  a connectivity-based transport network slice.";
+	   uses otn-slice-slo-sle-policy;
      }
-
+	 
 	 augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
              "/ietf-nss:connection-groups" +
@@ -378,29 +316,10 @@
              "/ietf-nss:custom" + 
 			 "/ietf-nss:service-slo-sle-policy" {
        description
-	     "Augment IETF network slice services to include steering
-		 constraints for connectivity-constructs within a
-		 connectivity-based OTN slice.";
-       uses otn-steering-constraints;
-     }
-
-	 augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/ietf-nss:connection-groups" +
-             "/ietf-nss:connection-group" +
-             "/ietf-nss:connectivity-construct" +
-             "/ietf-nss:connectivity-construct-type" +
-             "/ietf-nss:a2a" +
-             "/ietf-nss:a2a-sdp" +
-             "/ietf-nss:slo-sle-policy" + 
-             "/ietf-nss:custom" + 
-			 "/ietf-nss:service-slo-sle-policy" + 
-             "/ietf-nss:steering-constraints" {
-       description
-	     "Augment IETF network slice services to include steering
-		 constraints for connectivity-constructs within a
-		 connectivity-based OTN slice.";
-       uses otn-steering-constraints;
+	     "Augment IETF network slice services to include technology-
+		  specific SLO/SLE policy for a2a connectivity-constructs
+		  within a connectivity-based transport network slice.";
+       uses otn-slice-slo-sle-policy;
      }
    }
 
