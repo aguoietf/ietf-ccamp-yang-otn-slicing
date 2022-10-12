@@ -95,6 +95,15 @@ normative:
     seriesinfo: NG.116
     target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
 
+  ITU-T-G.8201-Amd.1:
+    title: Error performance parameters and objectives for multi-operator international
+	paths within optical transport networks (Amendment 1)
+    author:
+      org: ITU Telecommunication Standardization Sector (ITU-T)
+    date: December 2021
+    seriesinfo: ITU-T G.8201 (2011) Amd. 1 
+    target: https://www.itu.int/rec/T-REC-G.8201
+
 --- abstract
 
    The requirement of slicing network resources with desired quality of
@@ -552,7 +561,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-07-09.yang"
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-10-12.yang"
 {::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
@@ -594,6 +603,16 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
    - Service-level objectives (SLOs) associated with different objects, including the TNS, 
       node, link, termination point, and explicit path, within a TNS.
 
+   The OTN slicing model further augments the common TNS model with OTN technology-specific
+   SLO/SLE attributes upon requesting slice services by an OTN-aware customer. These attributes
+   allows the customer to specify desired signal quality and bandwidth in terms of OTN signal
+   structure. These attributes include:
+   
+   - The performance objective for Optical Data Unit (ODU) containers as defined in
+     ITU-T-G.8201-Amd.1.
+   
+   - Bandwidth specification in the type and number of ODU containers.
+
 ### NBI YANG Model Tree for Transport Network Slice
 
 ~~~~
@@ -604,7 +623,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2022-07-09.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2022-10-12.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -612,12 +631,20 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
    
 ### NBI YANG Model Tree for OTN slice
 
-TBD.
+~~~~
+{::include ./ietf-otn-slice.tree}
+~~~~
+{: #fig-ietf-otn-slice title="Tree diagram for OTN slice"}
 
 ### NBI YANG Code for OTN Slice
 
-TBD. 
-
+~~~~
+   <CODE BEGINS> file "ietf-otn-slice@2022-10-12.yang"
+{::include ./ietf-otn-slice.yang}
+   <CODE ENDS>
+~~~~
+{: #fig-ietf-otn-slice-yang title="YANG model for transport network slice"}   
+  
 # Manageability Considerations
 
    To ensure the security and controllability of physical resource
