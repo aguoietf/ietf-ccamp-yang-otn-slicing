@@ -89,7 +89,7 @@
   <middle>
 
 
-<section anchor="introduction" title="Introduction">
+<section anchor="introduction"><name>Introduction</name>
 
 <t>The requirement of slicing network resources with desired quality of
    service is emerging at every network technology, including the
@@ -102,11 +102,11 @@
    YANG data model augmentations will be defined in a future version of
    this draft.</t>
 
-<section anchor="terminology" title="Terminology">
+<section anchor="terminology"><name>Terminology</name>
 
-<t>The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”,
-   “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “NOT RECOMMENDED”, “MAY”, and
-   “OPTIONAL” in this document are to be interpreted as described in
+<t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
    BCP 14 <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when, they appear in all
    capitals, as shown here.</t>
 
@@ -114,7 +114,7 @@
    <xref target="RFC7950"/>.</t>
 
 </section>
-<section anchor="prefixes-in-data-node-names" title="Prefixes in Data Node Names">
+<section anchor="prefixes-in-data-node-names"><name>Prefixes in Data Node Names</name>
 
 <t>In this document, names of data nodes and other data model objects
    are prefixed using the standard prefix associated with the
@@ -166,7 +166,7 @@ Please replace ZZZZ with the RFC number assigned to <xref target="I-D.ietf-ccamp
 Please remove this note.</t>
 
 </section>
-<section anchor="definition-of-otn-slice" title="Definition of OTN Slice">
+<section anchor="definition-of-otn-slice"><name>Definition of OTN Slice</name>
 <t>An OTN slice is an OTN virtual network topology connecting a number
    of OTN endpoints using a set of shared or dedicated OTN network resources to
    satisfy specific service level objectives (SLOs).</t>
@@ -217,13 +217,13 @@ Please remove this note.</t>
    provisioned by a higher layer slice controller, e.g., an IETF network slice 
    controller (IETF NSC) through the NBI. The OTN slice is 
    provided by a service provider to a customer to be used as though it was part
-   of the customer’s own networks.</t>
+   of the customer's own networks.</t>
 
 </section>
 </section>
-<section anchor="use-cases-for-otn-network-slicing" title="Use Cases for OTN Network Slicing">
+<section anchor="use-cases-for-otn-network-slicing"><name>Use Cases for OTN Network Slicing</name>
 
-<section anchor="leased-line-services-with-otn" title="Leased Line Services with OTN">
+<section anchor="leased-line-services-with-otn"><name>Leased Line Services with OTN</name>
 
 <t>For end business customers (like OTT or enterprises), leased lines
    have the advantage of providing high-speed connections with low
@@ -234,7 +234,7 @@ Please remove this note.</t>
    full control over the sliced resources which have been allocated to them
    and which could be used to support their leased lines, when needed.
    Users may formulate policies based on the demand for services and
-   time to schedule the resources from the entire network’s perspective
+   time to schedule the resources from the entire network's perspective
    flexibly. For example, the bandwidth between any two points may be
    established or released based on the time or monitored traffic
    characteristics. The routing and bandwidth may be adjusted at a
@@ -242,7 +242,7 @@ Please remove this note.</t>
    efficiency.</t>
 
 </section>
-<section anchor="co-construction-and-sharing" title="Co-construction and Sharing">
+<section anchor="co-construction-and-sharing"><name>Co-construction and Sharing</name>
 
 <t>Co-construction and sharing of a network are becoming a popular means
    among service providers to reduce networking building CAPEX. For Co-
@@ -253,15 +253,15 @@ Please remove this note.</t>
    resources. In this scenario, the network O&amp;M is performed by a
    certain founder in each region, where the same founder usually
    deploys an independent management and control system. The other
-   founders of the network use each other’s management and control
+   founders of the network use each other's management and control
    system to provision services remotely. In this scenario, different
-   founders’ network resources need to be automatically (associated)
+   founders' network resources need to be automatically (associated)
    divided, isolated, and visualized. All founders may share or have
    independent O&amp;M capabilities, and should be able to perform service-
    level provisioning in their respective slices.</t>
 
 </section>
-<section anchor="wholesale-of-optical-resources" title="Wholesale of optical resources">
+<section anchor="wholesale-of-optical-resources"><name>Wholesale of optical resources</name>
 
 <t>In the optical resource wholesale market, smaller, local carriers and
    wireless carriers may rent resources from larger carriers, or
@@ -272,7 +272,7 @@ Please remove this note.</t>
    From the perspective of a resource provider, it is crucial that a
    network slice is timely configured to meet traffic matrix
    requirements requested by its tenants. The support for multi-tenancy
-   within the resource provider’s network demands that the network
+   within the resource provider's network demands that the network
    slices are qualitatively isolated from each other to meet the
    requirements for transparency, non-interference, and security.
    Typically, a resource purchaser expects to use the leased network
@@ -285,7 +285,7 @@ Please remove this note.</t>
    resources.</t>
 
 </section>
-<section anchor="vertical-dedicated-network-with-otn" title="Vertical dedicated network with OTN">
+<section anchor="vertical-dedicated-network-with-otn"><name>Vertical dedicated network with OTN</name>
 
 <t>Vertical industry slicing is an emerging category of network slicing
    due to the high demand for private high-speed network interconnects
@@ -303,7 +303,7 @@ Please remove this note.</t>
    required to ensure flexible and efficient network resource usage.</t>
 
 </section>
-<section anchor="end-to-end-network-slicing" title="End-to-end network slicing">
+<section anchor="end-to-end-network-slicing"><name>End-to-end network slicing</name>
 
 <t>In an end-to-end network slicing scenario such as 5G network slicing
    <xref target="TS.28.530-3GPP"/>, an IETF network slice <xref target="I-D.ietf-teas-ietf-network-slices"/>
@@ -319,7 +319,7 @@ Please remove this note.</t>
 
 </section>
 </section>
-<section anchor="framework-for-otn-slicing" title="Framework for OTN slicing">
+<section anchor="framework-for-otn-slicing"><name>Framework for OTN slicing</name>
 
 <t>OTN slices may be abstracted differently depending on the requirement contained
    in the configuration provided by the slice customer. Whereas the customer requests
@@ -384,7 +384,7 @@ shall support configuring an OTN slice with both options.</t>
 
 <t>The presence of OTN-SC provides multiple options for a high-level slice controller 
    or an orchestrator to configure and realize slicing in OTN networks, depending on
-   whether a customer’s slice request is technology agnostic or technology specific:</t>
+   whether a customer's slice request is technology agnostic or technology specific:</t>
 
 <t>Option 1[opt.1]: An IETF NSC receives a technology-agnostic slice request from the IETF NSC NBI and
    realizes full or part of the slice in OTN networks directly through MPI provided by
@@ -477,7 +477,7 @@ shall support configuring an OTN slice with both options.</t>
 </list></t>
 
 </section>
-<section anchor="realizing-otn-slices" title="Realizing OTN Slices">
+<section anchor="realizing-otn-slices"><name>Realizing OTN Slices</name>
 
 <t><xref target="I-D.ietf-teas-ietf-network-slices"/> introduces a mechanism for an IETF network slice controller to realize network slices by constructing Network Resource Partitions (NRP). A NRP is a collection of resources identified in the underlay network to facilitate the mapping of network slices onto available network resources. An NRP is a scope view of a topology and may be considered as a topology in its own right. Thus, in traffic-engineered (TE) networks including OTN, an NRP may be simply represented as an abstract TE topology defined by <xref target="RFC8795"/>. For OTN networks, An NRP may be represented as an abstract OTN topology defined by <xref target="I-D.ietf-ccamp-otn-topo-yang"/>.</t>
 
@@ -535,11 +535,11 @@ shall support configuring an OTN slice with both options.</t>
 ]]></artwork></figure>
 
 </section>
-<section anchor="yang-data-model-for-otn-slicing-configuration" title="YANG Data Model for OTN Slicing Configuration">
+<section anchor="yang-data-model-for-otn-slicing-configuration"><name>YANG Data Model for OTN Slicing Configuration</name>
 
-<section anchor="otn-slicing-yang-model-for-mpi" title="OTN Slicing YANG Model for MPI">
+<section anchor="otn-slicing-yang-model-for-mpi"><name>OTN Slicing YANG Model for MPI</name>
 
-<section anchor="mpi-yang-model-overview" title="MPI YANG Model Overview">
+<section anchor="mpi-yang-model-overview"><name>MPI YANG Model Overview</name>
 
 <t>For the configuration of connectivity-based OTN slices, existing models such as 
    the TE tunnel interface <xref target="I-D.ietf-teas-yang-te"/> may be used and no addition is 
@@ -553,7 +553,7 @@ shall support configuring an OTN slice with both options.</t>
    the colored links to keep booked the reserved OTN resources e.g. time slots or ODU containers.</t>
 
 </section>
-<section anchor="mpi-yang-model-tree" title="MPI YANG Model Tree">
+<section anchor="mpi-yang-model-tree"><name>MPI YANG Model Tree</name>
 
 <figure title="OTN slicing MPI tree diagram" anchor="fig-otn-slice-mpi-tree"><artwork><![CDATA[
 module: ietf-otn-slice-mpi
@@ -580,7 +580,7 @@ module: ietf-otn-slice-mpi
 ]]></artwork></figure>
 
 </section>
-<section anchor="mpi-yang-code" title="MPI YANG Code">
+<section anchor="mpi-yang-code"><name>MPI YANG Code</name>
 
 <figure title="OTN slicing MPI YANG model" anchor="fig-otn-slice-mpi-yang"><artwork><![CDATA[
    <CODE BEGINS> file "ietf-otn-slice-mpi@2022-10-12.yang"
@@ -752,9 +752,9 @@ module: ietf-otn-slice-mpi
 
 </section>
 </section>
-<section anchor="otn-slicing-yang-model-for-otn-sc-nbi" title="OTN Slicing YANG Model for OTN-SC NBI">
+<section anchor="otn-slicing-yang-model-for-otn-sc-nbi"><name>OTN Slicing YANG Model for OTN-SC NBI</name>
 
-<section anchor="nbi-yang-model-overview" title="NBI YANG Model Overview">
+<section anchor="nbi-yang-model-overview"><name>NBI YANG Model Overview</name>
 <t>The YANG model for OTN-SC NBI is OTN-technology specific, but shares many
    common constructs and attributes with generic network slicing YANG models.
    Furthermore, the OTN-SC NBI YANG is expected to support both connectivity-based
@@ -798,7 +798,7 @@ ITU-T-G.8201-Amd.1.</t>
 </list></t>
 
 </section>
-<section anchor="nbi-yang-model-tree-for-transport-network-slice" title="NBI YANG Model Tree for Transport Network Slice">
+<section anchor="nbi-yang-model-tree-for-transport-network-slice"><name>NBI YANG Model Tree for Transport Network Slice</name>
 
 <figure title="Tree diagram for transport network slice" anchor="fig-ietf-transport-network-slice"><artwork><![CDATA[
 module: ietf-transport-network-slice
@@ -997,7 +997,7 @@ module: ietf-transport-network-slice
 ]]></artwork></figure>
 
 </section>
-<section anchor="nbi-yang-code-for-transport-network-slice" title="NBI YANG Code for Transport Network Slice">
+<section anchor="nbi-yang-code-for-transport-network-slice"><name>NBI YANG Code for Transport Network Slice</name>
 
 <figure title="YANG model for transport network slice" anchor="fig-ietf-transport-network-yang"><artwork><![CDATA[
    <CODE BEGINS> file "ietf-transport-network-slice@2022-10-12.yang"
@@ -1622,7 +1622,7 @@ module: ietf-transport-network-slice
 ]]></artwork></figure>
 
 </section>
-<section anchor="nbi-yang-model-tree-for-otn-slice" title="NBI YANG Model Tree for OTN slice">
+<section anchor="nbi-yang-model-tree-for-otn-slice"><name>NBI YANG Model Tree for OTN slice</name>
 
 <figure title="Tree diagram for OTN slice" anchor="fig-ietf-otn-slice"><artwork><![CDATA[
 module: ietf-otn-slice
@@ -1735,7 +1735,7 @@ module: ietf-otn-slice
 ]]></artwork></figure>
 
 </section>
-<section anchor="nbi-yang-code-for-otn-slice" title="NBI YANG Code for OTN Slice">
+<section anchor="nbi-yang-code-for-otn-slice"><name>NBI YANG Code for OTN Slice</name>
 
 <figure title="YANG model for transport network slice" anchor="fig-ietf-otn-slice-yang"><artwork><![CDATA[
    <CODE BEGINS> file "ietf-otn-slice@2022-10-12.yang"
@@ -2071,7 +2071,7 @@ module: ietf-otn-slice
 </section>
 </section>
 </section>
-<section anchor="manageability-considerations" title="Manageability Considerations">
+<section anchor="manageability-considerations"><name>Manageability Considerations</name>
 
 <t>To ensure the security and controllability of physical resource
    isolation, slice-based independent operation and management are
@@ -2084,7 +2084,7 @@ module: ietf-otn-slice
    checks.</t>
 
 </section>
-<section anchor="security-considerations" title="Security Considerations">
+<section anchor="security-considerations"><name>Security Considerations</name>
 
 <t>The YANG module specified in this document defines a schema for data
    that is designed to be accessed via network management protocols such
@@ -2116,10 +2116,10 @@ module: ietf-otn-slice
    in this document.</t>
 
 </section>
-<section anchor="iana-considerations" title="IANA Considerations">
+<section anchor="iana-considerations"><name>IANA Considerations</name>
 
-<t>It is proposed to IANA to assign new URIs from the “IETF XML
-   Registry” <xref target="RFC3688"/> as follows:</t>
+<t>It is proposed to IANA to assign new URIs from the "IETF XML
+   Registry" <xref target="RFC3688"/> as follows:</t>
 
 <figure><artwork><![CDATA[
    URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
@@ -2623,7 +2623,7 @@ module: ietf-otn-slice
 
 
 
-<section numbered="false" anchor="acknowledgments" title="Acknowledgments">
+<section numbered="false" anchor="acknowledgments"><name>Acknowledgments</name>
 
 <t>This document was prepared using kramdown.</t>
 
@@ -2635,13 +2635,61 @@ module: ietf-otn-slice
 
 </section>
 
-    <section anchor="contributors" numbered="false" title="Contributors">
+    <section anchor="contributors" numbered="false" toc="include" removeInRFC="false">
+        <name>Contributors</name>
+    <contact initials="H." surname="Zheng" fullname="Haomian Zheng">
+      <organization>Huawei Technologies</organization>
+      <address>
+        <postal>
+          <street>H1, Xiliu Beipo Village, Songshan Lake</street>
+          <city>Dongguan</city>
+          <country>China</country>
+        </postal>
+        <email>zhenghaomian@huawei.com</email>
+      </address>
+    </contact>
+    <contact initials="I." surname="Busi" fullname="Italo Busi">
+      <organization>Huawei Technologies</organization>
+      <address>
+        <email>italo.busi@huawei.com</email>
+      </address>
+    </contact>
+    <contact initials="O." surname="Gonzalez de Dios" fullname="Oscar Gonzalez de Dios">
+      <organization>Telefonica</organization>
+      <address>
+        <email>oscar.gonzalezdedios@telefonica.com</email>
+      </address>
+    </contact>
+    <contact initials="V." surname="Lopez" fullname="Victor Lopez">
+      <organization>Nokia</organization>
+      <address>
+        <email>victor.lopez@nokia.com</email>
+      </address>
+    </contact>
+    <contact initials="D." surname="Beller" fullname="Dieter Beller">
+      <organization>Nokia</organization>
+      <address>
+        <email>Dieter.Beller@nokia.com</email>
+      </address>
+    </contact>
+    <contact initials="H." surname="Yu" fullname="Henry Yu">
+      <organization>Huawei Technologies Canada</organization>
+      <address>
+        <email>henry.yu@huawei.com</email>
+      </address>
+    </contact>
+    <contact initials="J." surname="Sun" fullname="Jiang Sun">
+      <organization>China Mobile</organization>
+      <address>
+        <email>sunjiang@chinamobile.com</email>
+      </address>
+    </contact>
     </section>
 
   </back>
 
 <!-- ##markdown-source:
-H4sIAE8XR2MAA+19+1cct5Lw7/wVWnLOBuJ5GOwkDsneBANxvMdgPoOdezfJ
+H4sIAMxFR2MAA+19+1cct5Lw7/wVWnLOBuJ5GOwkDsneBANxvMdgPoOdezfJ
 7mlmepi+7ume7QeEGO/f/tVLr271zABxHjfMvTEz3VKpVCqVqkqlUr/fXxvl
 4yQ731F1Nek/WVurkiqNd9S3RTSLL/PirYqysdqPqkgd5uM4VZO8UC9Pj9RR
 XNHrkzQZQf21tejsrIgvmjX/sXv0TOUTqoJF43JtnI8yKLKjxkU0qfpJDA2P

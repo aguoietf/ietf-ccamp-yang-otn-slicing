@@ -105,7 +105,7 @@ Table of Contents
    9.  Normative References  . . . . . . . . . . . . . . . . . . . .  47
    Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  50
    Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  50
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  50
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  51
 
 
 
@@ -2773,6 +2773,59 @@ Acknowledgments
 
 Contributors
 
+   Haomian Zheng
+   Huawei Technologies
+   H1, Xiliu Beipo Village, Songshan Lake
+   Dongguan
+   China
+
+   Email: zhenghaomian@huawei.com
+
+
+   Italo Busi
+   Huawei Technologies
+
+   Email: italo.busi@huawei.com
+
+
+   Oscar Gonzalez de Dios
+   Telefonica
+
+   Email: oscar.gonzalezdedios@telefonica.com
+
+
+
+
+
+Guo, et al.               Expires 16 April 2023                [Page 50]
+
+Internet-Draft      Framework and YANG of OTN Slices        October 2022
+
+
+   Victor Lopez
+   Nokia
+
+   Email: victor.lopez@nokia.com
+
+
+   Dieter Beller
+   Nokia
+
+   Email: Dieter.Beller@nokia.com
+
+
+   Henry Yu
+   Huawei Technologies Canada
+
+   Email: henry.yu@huawei.com
+
+
+   Jiang Sun
+   China Mobile
+
+   Email: sunjiang@chinamobile.com
+
+
 Authors' Addresses
 
    Aihua Guo
@@ -2793,19 +2846,16 @@ Authors' Addresses
    Email: Sergio.belotti@nokia.com
 
 
-
-
-
-
-Guo, et al.               Expires 16 April 2023                [Page 50]
-
-Internet-Draft      Framework and YANG of OTN Slices        October 2022
-
-
    Reza Rokui
    Ciena
 
    Email: rrokui@ciena.com
+
+
+
+Guo, et al.               Expires 16 April 2023                [Page 51]
+
+Internet-Draft      Framework and YANG of OTN Slices        October 2022
 
 
    Yunbin Xu
@@ -2853,4 +2903,10 @@ Internet-Draft      Framework and YANG of OTN Slices        October 2022
 
 
 
-Guo, et al.               Expires 16 April 2023                [Page 51]
+
+
+
+
+
+
+Guo, et al.               Expires 16 April 2023                [Page 52]
