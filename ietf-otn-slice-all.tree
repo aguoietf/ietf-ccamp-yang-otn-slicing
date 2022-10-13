@@ -551,3 +551,4 @@ module: ietf-network-slice-service
                  +--rw tns:destination
                     +--rw tns:dest-node?   -> ../../../node/node-id
                     +--rw tns:dest-tp?     leafref
+
