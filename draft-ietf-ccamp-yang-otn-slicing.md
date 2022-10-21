@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-ietf-ccamp-yang-otn-slicing-02
+docname: draft-ietf-ccamp-yang-otn-slicing-03
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
