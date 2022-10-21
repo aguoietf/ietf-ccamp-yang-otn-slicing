@@ -1,0 +1,107 @@
+module: ietf-otn-slice
+
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /ietf-nss:slo-sle-policy/ietf-nss:custom
+            /ietf-nss:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /tns:network-topologies/tns:network-topology
+            /tns:slo-sle-policy/tns:custom
+            /tns:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /tns:network-topologies/tns:network-topology/tns:node
+            /tns:slo-sle-policy/tns:custom
+            /tns:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /tns:network-topologies/tns:network-topology/tns:node
+            /tns:termination-point/tns:slo-sle-policy/tns:custom
+            /tns:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /tns:network-topologies/tns:network-topology/tns:link
+            /tns:slo-sle-policy/tns:custom
+            /tns:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /ietf-nss:connection-groups/ietf-nss:connection-group
+            /ietf-nss:slo-sle-policy/ietf-nss:custom
+            /ietf-nss:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /ietf-nss:connection-groups/ietf-nss:connection-group
+            /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16
+  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
+            /ietf-nss:connection-groups/ietf-nss:connection-group
+            /ietf-nss:connectivity-construct
+            /ietf-nss:connectivity-construct-type/ietf-nss:a2a
+            /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
+            /ietf-nss:service-slo-sle-policy:
+    +--rw otn
+       +--rw odu-signal-quality
+       |  +--rw odu-pm-objective* [duration pm-type]
+       |     +--rw duration        identityref
+       |     +--rw pm-type         identityref
+       |     +--rw pm-threshold?   union
+       +--rw odulist* [odu-type]
+          +--rw odu-type    identityref
+          +--rw number?     uint16

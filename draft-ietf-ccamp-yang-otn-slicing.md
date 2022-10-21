@@ -95,6 +95,15 @@ normative:
     seriesinfo: NG.116
     target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
 
+  ITU-T-G.8201-Amd.1:
+    title: Error performance parameters and objectives for multi-operator international
+	paths within optical transport networks (Amendment 1)
+    author:
+      org: ITU Telecommunication Standardization Sector (ITU-T)
+    date: December 2021
+    seriesinfo: ITU-T G.8201 (2011) Amd. 1 
+    target: https://www.itu.int/rec/T-REC-G.8201
+
 --- abstract
 
    The requirement of slicing network resources with desired quality of
@@ -477,24 +486,23 @@ For connectivity-based OTN slices, a connection within an OTN slice is typically
 
 For resource-based OTN slices, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC) without creating NRP topologies. Due to the need for reserving resources, the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identifier and maintain the coloring to keep track of the mapping of OTN slices. The OTN-SC may push the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
 
-Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. One slice topology for a resource-based OTN slice is typically realized by one dedicated NRP topology, and all the resources within that NRP topology are reserved for the OTN slice. In this case, the use of NRP eliminates the need for coloring links in the underlay topology, and the NRP topology may be pushed directly to the subtended MDSC or PNC by the OTN-SC.
-
-Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!I-D.ietf-teas-ietf-network-slices}}.
+Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!I-D.ietf-teas-ietf-network-slices}}. The resources of an NRP topology are reserved and shared by all the OTN slices mapped to this NRP, and the NRP topology may be pushed directly to the subtended MDSC or PNC, thus eliminating the need for link coloring if using the underlay topology.
 
 {{fig-otn-sc-nrp}} illustrates the relationship between OTN slices and NRP.
 
 ~~~~
         /---------------/      |            /---------------/
        /  --     --    /       |           /  --     --    /
-      /  |N1|---|N3|  /        |          /  |N2|   |N3|  /
-     /    --\    --  /         |         /    --     --  /
-    /        \--    /          |        /       \ --/   /
-   /         |N2|  /           |       /         |N4|  /
-  / Slice 1   --  /            |      / Slice 2   --  /
- /------------<--/             |     /-----------<---/
-              <                |                 <
-+-------------<----------------V-----------------<------------+
-|          /--<--------------/             /-----<-----------/|
+      /  |N1|---|N3|  /---/    |          /  |N2|   |N3|  /
+     /    --\    --  /   /     |         /    --     --  /
+    /        \--    /   /      |        /       \ --/   /
+   /         |N2|  /   /       |       /         |N4|  /
+  / Slice 1   --  /   /        |      / Slice 2   --  /
+ /------------<--/   /         |     /-----------<---/
+    / Slice 3 <     /          |                 <
+   /--------- <-<--/           |                 <
++-------------<-<--------------V-----------------<------------+
+|          /--<-<------------/             /-----<-----------/|
 |         / /--\     /--\   /             /          /--\   / |
 |        / |NE1 |---|NE2 | /             /          |NE2 | /  |
 |       /   \--/\  . \--/ /             /            \--/ /   |
@@ -553,7 +561,7 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-07-09.yang"
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-10-12.yang"
 {::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
@@ -595,6 +603,16 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
    - Service-level objectives (SLOs) associated with different objects, including the TNS, 
       node, link, termination point, and explicit path, within a TNS.
 
+   The OTN slicing model further augments the common TNS model with OTN technology-specific
+   SLO/SLE attributes upon requesting slice services by an OTN-aware customer. These attributes
+   allows the customer to specify desired signal quality and bandwidth in terms of OTN signal
+   structure. These attributes include:
+   
+   - The performance objective for Optical Data Unit (ODU) containers as defined in
+     ITU-T-G.8201-Amd.1.
+   
+   - Bandwidth specification in the type and number of ODU containers.
+
 ### NBI YANG Model Tree for Transport Network Slice
 
 ~~~~
@@ -605,7 +623,7 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2022-07-09.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2022-10-12.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -613,12 +631,20 @@ Multiple OTN slices may be mapped to the same NRP, and a single connectivity con
    
 ### NBI YANG Model Tree for OTN slice
 
-TBD.
+~~~~
+{::include ./ietf-otn-slice.tree}
+~~~~
+{: #fig-ietf-otn-slice title="Tree diagram for OTN slice"}
 
 ### NBI YANG Code for OTN Slice
 
-TBD. 
-
+~~~~
+   <CODE BEGINS> file "ietf-otn-slice@2022-10-12.yang"
+{::include ./ietf-otn-slice.yang}
+   <CODE ENDS>
+~~~~
+{: #fig-ietf-otn-slice-yang title="YANG model for transport network slice"}   
+  
 # Manageability Considerations
 
    To ensure the security and controllability of physical resource
