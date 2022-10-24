@@ -1908,7 +1908,7 @@ module: ietf-otn-slice
                base odu-tca-threshold-type;
              }
              description
-               "ODU PM metric threshold.";
+               "ODU PM metric type.";
            }
            
            leaf pm-threshold {
@@ -1916,6 +1916,8 @@ module: ietf-otn-slice
                type te-types:bandwidth-scientific-notation;
                type uint64;
              }
+             description
+               "ODU PM metric threshold.";
            }
          }
        }
