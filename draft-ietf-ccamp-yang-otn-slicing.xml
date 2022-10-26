@@ -58,7 +58,7 @@
       </address>
     </author>
 
-    <date year="2022" month="October" day="22"/>
+    <date year="2022" month="October" day="27"/>
 
     
     <workgroup>CCAMP Working Group</workgroup>
@@ -2388,7 +2388,7 @@ module: ietf-otn-slice
       <author fullname='Jeff Tantsura' initials='J.' surname='Tantsura'>
          <organization>Microsoft Inc.</organization>
       </author>
-      <date day='21' month='October' year='2022'/>
+      <date day='24' month='October' year='2022'/>
       <abstract>
 	 <t>   This document describes network slicing in the context of networks
    built from IETF technologies.  It defines the term &quot;IETF Network
@@ -2409,8 +2409,8 @@ module: ietf-otn-slice
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-ietf-network-slices-15'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-ietf-network-slices-15.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-ietf-network-slices-16'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-ietf-network-slices-16.txt' type='TXT'/>
 </reference>
 
 
@@ -2452,18 +2452,18 @@ module: ietf-otn-slice
       <author fullname='Sergio Belotti' initials='S.' surname='Belotti'>
          <organization>Nokia</organization>
       </author>
-      <date day='11' month='July' year='2022'/>
+      <date day='24' month='October' year='2022'/>
       <abstract>
 	 <t>   This document describes the major functional components of an IETF
    Network Slice Controller (NSC) as well as references the data models
-   required for supporting the requests of IETF network slices and their
-   realization.
+   required for supporting the requests of IETF network slice services
+   and their realization.
 
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-contreras-teas-slice-controller-models-03'/>
-   <format target='https://www.ietf.org/archive/id/draft-contreras-teas-slice-controller-models-03.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-contreras-teas-slice-controller-models-04'/>
+   <format target='https://www.ietf.org/archive/id/draft-contreras-teas-slice-controller-models-04.txt' type='TXT'/>
 </reference>
 
 
@@ -2471,7 +2471,7 @@ module: ietf-otn-slice
    <front>
       <title>A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths and Interfaces</title>
       <author fullname='Tarek Saad' initials='T.' surname='Saad'>
-         <organization>Juniper Networks</organization>
+         <organization>Cisco Systems Inc</organization>
       </author>
       <author fullname='Rakesh Gandhi' initials='R.' surname='Gandhi'>
          <organization>Cisco Systems Inc</organization>
@@ -2488,7 +2488,7 @@ module: ietf-otn-slice
       <author fullname='Oscar Gonzalez de Dios' initials='O. G.' surname='de Dios'>
          <organization>Telefonica</organization>
       </author>
-      <date day='11' month='July' year='2022'/>
+      <date day='24' month='October' year='2022'/>
       <abstract>
 	 <t>   This document defines a YANG data model for the provisioning and
    management of Traffic Engineering (TE) tunnels, Label Switched Paths
@@ -2502,8 +2502,8 @@ module: ietf-otn-slice
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-30'/>
-   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-30.txt' type='TXT'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-31'/>
+   <format target='https://www.ietf.org/archive/id/draft-ietf-teas-yang-te-31.txt' type='TXT'/>
 </reference>
 
 
@@ -2691,7 +2691,7 @@ module: ietf-otn-slice
   </back>
 
 <!-- ##markdown-source:
-H4sIAALbUmMAA+19+1cct5Lw7/wVWnLOBuJ5GOwkDsneBANxvMdgPoOdezfJ
+H4sIAOdcWWMAA+19+1cct5Lw7/wVWnLOBuJ5GOwkDsneBANxvMdgPoOdezfJ
 7mlmepi+7ume7QeEGO/f/tVLr271zABxHjfMvTEz3VKpVCqVqkqlUr/fXxvl
 4yQ731F1Nek/WVurkiqNd9S3RTSLL/PirYqysdqPqkgd5uM4VZO8UC9Pj9RR
 XNHrkzQZQf21tejsrIgvmjX/sXv0TOUTqoJF43JtnI8yKLKjxkU0qfpJDA2P
@@ -3031,41 +3031,41 @@ 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
-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
-/wP9IJfNNFUBAA==
+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
+B2v/H5hNyRxzVQEA
 
 -->
 
