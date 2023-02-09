@@ -4,23 +4,27 @@
        "urn:ietf:params:xml:ns:yang:ietf-transport-network-slice";
      prefix "tns";
 
-     import ietf-inet-types {
-       prefix inet;
-       reference 
-         "RFC 6991: Common YANG Data Types";
+     import ietf-network {
+       prefix "nw";
+       reference "RFC 8345: A YANG Data Model for Network Topologies";
      }
-
-     import ietf-te-types {
-       prefix "te-types";
-       reference
-         "RFC 8776: Traffic Engineering Common YANG Types";
+     import ietf-network-topology {
+       prefix "nt";
+       reference "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
      import ietf-network-slice-service {
        prefix "ietf-nss";
        reference
-         "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-01:
           IETF Network Slice Service YANG Model";
+     }
+
+     import ietf-ns-topo {
+       prefix "ns-topo";
+       reference
+         "draft-liu-teas-transport-network-slice-yang-06:
+          IETF Network Slice YANG Model";
      }
  
      organization
@@ -62,7 +66,7 @@
         This version of this YANG module is part of RFC XXXX; see the
         RFC itself for full legal notices.";
 
-     revision "2022-10-12" {
+     revision "2023-02-08" {
        description
          "Latest revision of NBI YANG model for OTN slicing.";
        reference
@@ -71,260 +75,17 @@
      }
 
      /*
-      * Identities
-      */
-     identity isolation-level {
-       description
-         "Base identity for the isolation-level.";
-       reference
-         "GSMA-NS-Template: Generic Network Slice Template,
-          Version 3.0.";
-     }
-     identity no-isolation {
-       base isolation-level;
-       description
-         "Network slices are not separated.";
-     }
-     identity physical-isolation {
-       base isolation-level;
-       description
-         "Network slices are physically separated (e.g. different
-          rack, different hardware, different location, etc.).";
-     }
-     identity logical-isolation {
-       base isolation-level;
-       description
-         "Network slices are logically separated.";
-     }
-     identity process-isolation {
-       base physical-isolation;
-       description
-         "Process and threads isolation.";
-     }
-     identity physical-memory-isolation {
-       base physical-isolation;
-       description
-         "Process and threads isolation.";
-     }
-     identity physical-network-isolation {
-       base physical-isolation;
-       description
-         "Process and threads isolation.";
-     }
-     identity virtual-resource-isolation {
-       base logical-isolation;
-       description
-         "A network slice has access to specific range of resources
-          that do not overlap with other network slices
-          (e.g. VM isolation).";
-     }
-     identity network-functions-isolation {
-       base logical-isolation;
-       description
-         "NF (Network Function) is dedicated to the network slice,
-          but virtual resources are shared.";
-     }
-     identity service-isolation {
-       base logical-isolation;
-       description
-         "NSC data are isolated from other NSCs, but virtual
-          resources and NFs are shared.";
-     }
-
-     identity resize-option {
-       description
-         "Base identity for link or connectivity resizing options";
-     }
- 
-     identity resize-none {
-       base resize-option;
-       description
-         "Not resizable";
-     }
- 
-     identity resize-with-hit {
-       base resize-option;
-       description
-         "Resizable with traffic hits";
-     }
-
-     identity resize-hitless {
-       base resize-option;
-       description
-         "Hitless resizable";
-     }
- 
-     /*
       * Groupings
       */
-
-     grouping tns-slo-sle-policy {
-       description
-         "Policy grouping for Transport Network Slices.";
-
-       leaf optimization-criterion {
-           type identityref {
-             base te-types:objective-function-type;
-           }
-           description
-             "Optimization criterion applied to this topology.";
-       }
-       leaf delay-tolerance {
-         type boolean;
-         description
-           "'true' if is not too critical how long it takes to
-            deliver the amount of data.";
-         reference
-           "GSMA-NS-Template: Generic Network Slice Template,
-            Version 3.0.";
-       }
-       leaf-list periodicity {
-         type uint64;
-         units seconds;
-         description
-           "A list of periodicities supported by the network
-            slice.";
-         reference
-           "GSMA-NS-Template: Generic Network Slice Template,
-            Version 3.0.";
-       }
-       leaf resize-requirement {
-         type identityref {
-           base resize-option;
-         }
-         description
-           "Indicates resizing requirments";
-       }
-       leaf service-info {
-         type string;
-         description
-           "Describe type of services running on the slice. It may be
-            useful information to help the slice controller to 
-            optimize resource allocation";
-       }
-     }
-
-     grouping tns-steering-constraints {
-       description
-         "Policy grouping for specifying steering constraints for
-          Transport Network Slices.";
-
-       leaf disjointness {
-         type te-types:te-path-disjointness;
-         description
-           "Indicate the level of disjointness for slice
-            resources.";
-       }
-       leaf service-info {
-         type string;
-         description
-           "Describe type of services running on the slice. It may be
-            useful information to help the slice controller to 
-            optimize resource allocation";
-       }
-     }
-
-     grouping network-topology-def {
-       description
-         "Network topology definition";
-       uses ietf-nss:service-slo-sle-policy;
-       list node {
-         key "node-id";
-         description
-         "The inventory of nodes of this topology.";
-         leaf node-id {
-           type inet:uri;
-           description
-             "Node identifier.";
-         }
-         uses ietf-nss:service-slo-sle-policy;
-         list termination-point {
-           key "tp-id";
-           description
-             "TP identifier";
-           leaf tp-id {
-             type inet:uri;
-             description
-               "Termination point identifier.";
-           }
-           leaf sdp-id {
-             type leafref {
-               path "/ietf-nss:network-slice-services"+
-                    "/ietf-nss:slice-service"+
-                    "[ietf-nss:service-id=current()"+
-                    "/../../../../../ietf-nss:service-id]"+
-                    "/ietf-nss:sdps/ietf-nss:sdp/ietf-nss:sdp-id";
-             }
-             description
-               "Relative reference to SDP id.";
-           }
-           uses ietf-nss:service-slo-sle-policy;
-         }
-       }
-       list link {
-         key "link-id";
-         description
-           "Link identifier.";
-         leaf link-id {
-           type inet:uri;
-           description
-             "Link identifier.";
-         }
-         uses ietf-nss:service-slo-sle-policy;
-         container source {
-           description
-             "Link source node";
-           leaf source-node {
-             type leafref {
-               path "../../../node/node-id";
-             }
-             description
-               "Source node identifier, must be in same topology.";
-           }
-           leaf source-tp {
-             type leafref {
-               path "../../../node[node-id=current()/../"+
-                    "source-node]/termination-point/tp-id";
-             }
-             description
-               "Termination point within source node that
-                terminates the link.";
-           }
-         }
-         container destination {
-           description
-             "Link destination node";
-           leaf dest-node {
-             type leafref {
-               path "../../../node/node-id";
-             }
-             description
-               "Destination node identifier, must be in same
-                topology.";
-           }
-           leaf dest-tp {
-             type leafref {
-               path "../../../node[node-id=current()/../"+
-                    "dest-node]/termination-point/tp-id";
-             }
-             description
-               "Termination point within destination node that
-                terminates the link.";
-           }
-         }
-       }
-     }
-
      grouping topology-ref {
        description
          "Grouping for network topology reference.";
        leaf topology-id {
          type leafref {
-           path "../../../../network-topologies/network-topology"+
-                "/topology-id";
+           path "/nw:networks/nw:network/nw:network-id";
          }
          description
-           "Relative reference to network topology id.";
+           "Relative reference to network slice topology id.";
        }
        uses explicit-path;
      }
@@ -340,14 +101,8 @@
             path.";
          leaf tp-id {
            type leafref {
-             path "/ietf-nss:network-slice-services"+
-                  "/ietf-nss:slice-service"+
-                  "[ietf-nss:service-id=current()"+
-                  "/../../../../../ietf-nss:service-id]"+
-                  "/network-topologies"+
-                  "/network-topology[topology-id=current()"+
-                  "/../../topology-id]/node/termination-point"+
-                  "/tp-id";
+             path "/nw:networks/nw:network/nw:node"+
+                  "/nt:termination-point/nt:tp-id";
            }
            description
              "Relative reference to TP id.";
@@ -357,30 +112,7 @@
 
      /*
       * Augmented data nodes
-      */
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" {
-       description
-         "Augment IETF network slice services to include network
-          topologies.";
-       container network-topologies {
-         description
-           "Set of network topologies referenced by network slices";
-
-         list network-topology {
-           key "topology-id";
-           description
-             "List of network topologies";
-           leaf topology-id {
-             type string;
-             description
-               "Topology identifier";
-           }
-           uses network-topology-def;
-         }
-       }
-     }
-     
+      */    
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
              "/ietf-nss:connection-groups" +
@@ -402,7 +134,7 @@
            specific SLO/SLE policy for connectivity-based transport 
           network slices.";
   
-       uses tns-slo-sle-policy;
+       uses ns-topo:ns-topo-slo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -416,106 +148,8 @@
          constraints for connectivity-based transport network
          slices.";
           
-       uses tns-steering-constraints;
+       uses ns-topo:ns-topo-steering-constraints;
      }
-
-     /* network topology augments */
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for the network topology of a
-          resource-based transport network slice.";
-          
-       uses tns-slo-sle-policy;
-     }
-
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" + 
-             "/tns:steering-constraints" {
-       description
-         "Augment IETF network slice services to include steering
-          constraints for links within a resource-based transport
-          network slice.";
-          
-       uses tns-steering-constraints;
-     }     
-
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:node" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for nodes within a resource-based
-          transport network slice.";
-          
-       uses tns-slo-sle-policy;
-     }
-
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:node" + 
-             "/tns:termination-point" +
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for termination points within a
-          resource-based transport network slice.";
-          
-       uses tns-slo-sle-policy;
-     }
-     
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:link" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for links within a resource-based
-          transport network slice.";
-          
-       uses tns-slo-sle-policy;
-     }
-     
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:link" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" + 
-             "/tns:steering-constraints" {
-       description
-         "Augment IETF network slice services to include steering
-          constraints for links within a resource-based transport
-          network slice.";
-          
-       uses tns-steering-constraints;
-     }     
 
      /* connectivity construct augments */
      augment "/ietf-nss:network-slice-services" +
@@ -529,7 +163,7 @@
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-constructs within
           a connectivity-based transport network slice.";
-       uses tns-slo-sle-policy;
+       uses ns-topo:ns-topo-slo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -544,7 +178,7 @@
          "Augment IETF network slice services to include steering
          constraints for connectivity-constructs within a
          connectivity-based transport network slice.";
-       uses tns-steering-constraints;
+       uses ns-topo:ns-topo-steering-constraints;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -559,7 +193,7 @@
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-constructs within
           a connectivity-based transport network slice.";
-       uses tns-slo-sle-policy;
+       uses ns-topo:ns-topo-slo-sle-policy;
      }
      
      augment "/ietf-nss:network-slice-services" +
@@ -575,7 +209,7 @@
          "Augment IETF network slice services to include steering
          constraints for connectivity-constructs within a
          connectivity-based transport network slice.";
-       uses tns-steering-constraints;
+       uses ns-topo:ns-topo-steering-constraints;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -593,7 +227,7 @@
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for a2a connectivity-constructs
           within a connectivity-based transport network slice.";
-       uses tns-slo-sle-policy;
+       uses ns-topo:ns-topo-slo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -612,6 +246,6 @@
          "Augment IETF network slice services to include steering
          constraints for a2a connectivity-constructs within a
          connectivity-based transport network slice.";
-       uses tns-steering-constraints;
+       uses ns-topo:ns-topo-steering-constraints;
      }
    }

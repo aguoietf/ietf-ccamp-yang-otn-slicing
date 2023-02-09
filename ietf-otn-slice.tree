@@ -12,10 +12,8 @@ module: ietf-otn-slice
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /tns:network-topologies/tns:network-topology
-            /tns:slo-sle-policy/tns:custom
-            /tns:service-slo-sle-policy:
+  augment /nw:networks/nw:network/ns-topo:slo-sle-policy
+            /ns-topo:custom/ns-topo:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -25,10 +23,8 @@ module: ietf-otn-slice
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /tns:network-topologies/tns:network-topology/tns:node
-            /tns:slo-sle-policy/tns:custom
-            /tns:service-slo-sle-policy:
+  augment /nw:networks/nw:network/nw:node/ns-topo:slo-sle-policy
+            /ns-topo:custom/ns-topo:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -38,10 +34,9 @@ module: ietf-otn-slice
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /tns:network-topologies/tns:network-topology/tns:node
-            /tns:termination-point/tns:slo-sle-policy/tns:custom
-            /tns:service-slo-sle-policy:
+  augment /nw:networks/nw:network/nw:node/nt:termination-point
+            /ns-topo:slo-sle-policy/ns-topo:custom
+            /ns-topo:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -51,10 +46,8 @@ module: ietf-otn-slice
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /tns:network-topologies/tns:network-topology/tns:link
-            /tns:slo-sle-policy/tns:custom
-            /tns:service-slo-sle-policy:
+  augment /nw:networks/nw:network/nt:link/ns-topo:slo-sle-policy
+            /ns-topo:custom/ns-topo:service-slo-sle-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]

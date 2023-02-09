@@ -4,6 +4,15 @@
        "urn:ietf:params:xml:ns:yang:ietf-otn-slice";
      prefix "otns";
 
+     import ietf-network {
+       prefix "nw";
+       reference "RFC 8345: A YANG Data Model for Network Topologies";
+     }
+     import ietf-network-topology {
+       prefix "nt";
+       reference "RFC 8345: A YANG Data Model for Network Topologies";
+     }
+
      import ietf-te-types {
        prefix "te-types";
        reference
@@ -23,14 +32,14 @@
          "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
           IETF Network Slice Service YANG Model";
      }
-     
-     import ietf-transport-network-slice {
-       prefix "tns";
+
+     import ietf-ns-topo {
+       prefix "ns-topo";
        reference
-         "draft-ietf-ccamp-yang-otn-slicing-02:
-          Framework and Data Model for OTN Network Slicing";
+         "draft-liu-teas-transport-network-slice-yang-06:
+          IETF Network Slice YANG Model";
      }
-     
+      
      organization
        "IETF CCAMP Working Group";
      contact
@@ -213,67 +222,52 @@
      }
 
      /* network topology augments */
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for the network topology of a
-          resource-based OTN slice.";
-          
+     augment "/nw:networks/nw:network" +
+             "/ns-topo:slo-sle-policy" +
+             "/ns-topo:custom" +
+             "/ns-topo:service-slo-sle-policy" {
+       when "../nw:network-types/ns-topo:network-slice" {
+         description "Augment only for Network Slice topology.";
+       }
+       description "Augment topology configuration and state.";
        uses otn-slice-slo-sle-policy;
      }
 
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:node" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for nodes within a resource-based
-          OTN slice.";
-          
+     /* network node augments */
+     augment "/nw:networks/nw:network/nw:node" +
+             "/ns-topo:slo-sle-policy" + 
+             "/ns-topo:custom" + 
+             "/ns-topo:service-slo-sle-policy" {
+       when "../../nw:network-types/ns-topo:network-slice" {
+         description "Augment only for Network Slice topology.";
+       }
+       description "Augment node configuration and state.";
        uses otn-slice-slo-sle-policy;
      }
-     
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:node" + 
-             "/tns:termination-point" +
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for termination points within a
-          resource-based OTN slice.";
-          
+
+     /* network node's termination point augments */
+     augment "/nw:networks/nw:network/nw:node" +
+             "/nt:termination-point" +
+             "/ns-topo:slo-sle-policy" + 
+             "/ns-topo:custom" + 
+             "/ns-topo:service-slo-sle-policy" {
+       when "../../../nw:network-types/ns-topo:network-slice" {
+         description "Augment only for Network Slice topology.";
+       }
+       description "Augment node configuration and state.";
+	   
        uses otn-slice-slo-sle-policy;
      }
-     
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/tns:network-topologies" + 
-             "/tns:network-topology" + 
-             "/tns:link" + 
-             "/tns:slo-sle-policy" + 
-             "/tns:custom" + 
-             "/tns:service-slo-sle-policy" {
-       description
-         "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for links within a resource-based
-          OTN slice.";
-          
+
+     /* network link augments */
+     augment "/nw:networks/nw:network/nt:link" +
+             "/ns-topo:slo-sle-policy" + 
+             "/ns-topo:custom" + 
+             "/ns-topo:service-slo-sle-policy" {
+       when "../../nw:network-types/ns-topo:network-slice" {
+         description "Augment only for Network Slice topology.";
+       }
+       description "Augment link configuration and state.";
        uses otn-slice-slo-sle-policy;
      }
      
