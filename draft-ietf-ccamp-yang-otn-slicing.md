@@ -113,8 +113,9 @@ normative:
    deterministic low latency, which are highly demanded in the Service
    Level Agreement (SLA).
 
-   This document describes a framework for OTN network slicing and a
-   YANG data model augmentation of the OTN topology model. Additional
+   This document describes a framework for OTN network slicing and defines
+   YANG data models with OTN technology-specific augments deployed at both
+   the north and south bound of the OTN network slice controller. Additional
    YANG data model augmentations will be defined in a future version of
    this draft.
 
@@ -128,8 +129,9 @@ normative:
    OTN can provide hard pipes with guaranteed data isolation and
    deterministic low latency, which are highly demanded in the Service
    Level Agreement (SLA).
-   This document describes a framework for OTN network slicing and a
-   YANG data model augmentation of the OTN topology model. Additional
+   This document describes a framework for OTN network slicing and defines
+   YANG data models with OTN technology-specific augments deployed at both
+   the north and south bound of the OTN network slice controller. Additional
    YANG data model augmentations will be defined in a future version of
    this draft.
 
@@ -336,7 +338,7 @@ Please remove this note.
    by the service provider. An OTN slice could use abstract topology to connect endpoints with 
    shared resources to optimize the resource utilization, and connections can be activated 
    within the slice as needed.
-   
+    
    It is worth noting that those means to abstract an OTN slice are similar to the Virtual 
    Network (VN) abstraction defined for higher-level interfaces in {{!RFC8453}}, in which context
    a connectivity-based slice corresponds to Type 1 VN and a resource-based slice corresponds to 
@@ -579,29 +581,15 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
    model for transport network slicing, and an OTN slicing model which augments the 
    base model with OTN technology-specific constructs.
 
-   The base model defines a transport network slice (TNS) with the following
-   constructs and attributes:
+   The base model defines a transport network slice (TNS), which augments the network
+   slice topology model defined in {{!I-D.draft-liu-teas-transport-network-slice-yang}}
+   by adding the following constructs and attributes applicable to trasnport network slicing:
 
-   - Common attributes, which include a set of common attributes like slice identifier,
-     name, description, and names of customers who use the slice.
-
-   - Endpoints, which represent conceptual points of connection from a customer
-     device to the TNS. An endpoint is mapped to specific physical or virtual resources
-      of the customer and provider, and such mapping is pre-negotiated and known to 
-      both the customer and provider prior to the slice configuration. The mechanism 
-      for endpoint negotiation is outside the scope of this draft.
-
-   - Network topology, which represent set of shared, reserved resources organized as a virtual 
-      topology between all of the endpoints. A customer could use such network topology
-      to define detailed connectivity path traversing the topology, and allow sharing of 
-      resources between its multiple endpoint pairs.
-
-   - Connectivity matrix, which represent the intended virtual connections between the endpoints
-      within a TNS. A connectivity matrix entry could be associated with an explicit path 
-      over the above network topology. 
-
-   - Service-level objectives (SLOs) associated with different objects, including the TNS, 
-      node, link, termination point, and explicit path, within a TNS.
+   - Explicit path, which defines a customized service path for routing connections
+     over a customized topology on which the slice is built.
+   
+   - Service-level objectives (SLOs) and service-level expectation (SLEs) associated 
+    with connections within the slice.
 
    The OTN slicing model further augments the common TNS model with OTN technology-specific
    SLO/SLE attributes upon requesting slice services by an OTN-aware customer. These attributes

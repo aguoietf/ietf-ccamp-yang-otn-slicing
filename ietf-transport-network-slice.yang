@@ -115,17 +115,6 @@
       */    
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
-             "/ietf-nss:connection-groups" +
-             "/ietf-nss:connection-group" +
-             "/ietf-nss:connectivity-construct"{
-       description
-         "Add toplogy id and explicit path to a connectivity
-          construct";
-       uses topology-ref;
-     }
-
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" {
@@ -149,6 +138,19 @@
          slices.";
           
        uses ns-topo:ns-topo-steering-constraints;
+     }
+	 
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" +
+             "/ietf-nss:path-constraints" {
+       description
+         "Add toplogy id and explicit path to the slice";
+
+       uses topology-ref;
      }
 
      /* connectivity construct augments */
@@ -179,6 +181,21 @@
          constraints for connectivity-constructs within a
          connectivity-based transport network slice.";
        uses ns-topo:ns-topo-steering-constraints;
+     }
+
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" +
+             "/ietf-nss:path-constraints" {
+       description
+         "Add toplogy id and explicit path to the connection group";
+
+       uses topology-ref;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -217,6 +234,23 @@
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" +
+             "/ietf-nss:path-constraints" {
+       description
+         "Add toplogy id and explicit path to the connectivity
+		  construct";
+
+       uses topology-ref;
+     }
+
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" +
              "/ietf-nss:connectivity-construct-type" +
              "/ietf-nss:a2a" +
              "/ietf-nss:a2a-sdp" +
@@ -247,5 +281,25 @@
          constraints for a2a connectivity-constructs within a
          connectivity-based transport network slice.";
        uses ns-topo:ns-topo-steering-constraints;
+     }
+
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slice-service" +
+             "/ietf-nss:connection-groups" +
+             "/ietf-nss:connection-group" +
+             "/ietf-nss:connectivity-construct" +
+             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:a2a" +
+             "/ietf-nss:a2a-sdp" +
+             "/ietf-nss:slo-sle-policy" + 
+             "/ietf-nss:custom" + 
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:steering-constraints" +
+             "/ietf-nss:path-constraints" {
+       description
+         "Add toplogy id and explicit path to a2a connectivity
+		  construct";
+
+       uses topology-ref;
      }
    }

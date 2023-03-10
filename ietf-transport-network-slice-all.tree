@@ -1,197 +1,334 @@
-module: ietf-transport-network-slice
+module: ietf-network-slice-service
+  +--rw network-slice-services
+     +--rw slo-sle-templates
+     |  +--rw slo-sle-template* [id]
+     |     +--rw id                        string
+     |     +--rw template-description?     string
+     |     +--rw template-ref?             leafref
+     |     +--rw service-slo-sle-policy
+     |        +--rw policy-description?     string
+     |        +--rw metric-bounds
+     |        |  +--rw metric-bound* [metric-type]
+     |        |     +--rw metric-type          identityref
+     |        |     +--rw metric-unit          string
+     |        |     +--rw value-description?   string
+     |        |     +--rw bound?               uint64
+     |        +--rw security*               identityref
+     |        +--rw isolation?              identityref
+     |        +--rw max-occupancy-level?    uint8
+     |        +--rw mtu?                    uint16
+     |        +--rw steering-constraints
+     |           +--rw path-constraints
+     |           +--rw service-function
+     +--rw slice-service* [service-id]
+        +--rw service-id                      string
+        +--rw service-description?            string
+        +--rw service-tags
+        |  +--rw tag-type* [tag-type]
+        |  |  +--rw tag-type    identityref
+        |  |  +--rw value*      string
+        |  +--rw tag-opaque* [tag-name]
+        |     +--rw tag-name    string
+        |     +--rw value*      string
+        +--rw (slo-sle-policy)?
+        |  +--:(standard)
+        |  |  +--rw slo-sle-template?         leafref
+        |  +--:(custom)
+        |     +--rw service-slo-sle-policy
+        |        +--rw policy-description?           string
+        |        +--rw metric-bounds
+        |        |  +--rw metric-bound* [metric-type]
+        |        |     +--rw metric-type          identityref
+        |        |     +--rw metric-unit          string
+        |        |     +--rw value-description?   string
+        |        |     +--rw bound?               uint64
+        |        +--rw security*                     identityref
+        |        +--rw isolation?                    identityref
+        |        +--rw max-occupancy-level?          uint8
+        |        +--rw mtu?                          uint16
+        |        +--rw steering-constraints
+        |        |  +--rw path-constraints
+        |        |  |  +--rw tns:topology-id?
+        |        |  |  |       -> /nw:networks/network/network-id
+        |        |  |  +--rw tns:explicit-path* [tp-id]
+        |        |  |     +--rw tns:tp-id    leafref
+        |        |  +--rw service-function
+        |        |  +--rw tns:disjointness?
+        |        |  |       te-types:te-path-disjointness
+        |        |  +--rw tns:service-info?   string
+        |        +--rw tns:optimization-criterion?   identityref
+        |        +--rw tns:delay-tolerance?          boolean
+        |        +--rw tns:periodicity*              uint64
+        |        +--rw tns:resize-requirement?       identityref
+        |        +--rw tns:service-info?             string
+        +--rw status
+        |  +--rw admin-status
+        |  |  +--rw status?        identityref
+        |  |  +--rw last-change?   yang:date-and-time
+        |  +--ro oper-status
+        |     +--ro status?        identityref
+        |     +--ro last-change?   yang:date-and-time
+        +--rw sdps
+        |  +--rw sdp* [sdp-id]
+        |     +--rw sdp-id                    string
+        |     +--rw sdp-description?          string
+        |     +--rw location
+        |     |  +--rw altitude?    int64
+        |     |  +--rw latitude?    decimal64
+        |     |  +--rw longitude?   decimal64
+        |     +--rw node-id?                  string
+        |     +--rw sdp-ip?                   inet:ip-address
+        |     +--rw peer-sap-id?              string
+        |     +--rw ltp?                      leafref
+        |     +--rw service-match-criteria
+        |     |  +--rw match-criterion* [index]
+        |     |     +--rw index                               uint32
+        |     |     +--rw match-type
+        |     |     |       identityref
+        |     |     +--rw value*                              string
+        |     |     +--rw target-connection-group-id          leafref
+        |     |     +--rw connection-group-sdp-role?
+        |     |     |       identityref
+        |     |     +--rw target-connectivity-construct-id?   leafref
+        |     +--rw sdp-peering
+        |     |  +--rw protocol* [protocol-type]
+        |     |  |  +--rw protocol-type    identityref
+        |     |  |  +--rw attribute* [attribute-type]
+        |     |  |     +--rw attribute-type    identityref
+        |     |  |     +--rw value*            string
+        |     |  +--rw opaque* [attribute-name]
+        |     |     +--rw attribute-name    string
+        |     |     +--rw value*            string
+        |     +--rw attachment-circuits
+        |     |  +--rw attachment-circuit* [ac-id]
+        |     |     +--rw ac-id                     string
+        |     |     +--rw ac-description?           string
+        |     |     +--rw ac-node-id?               string
+        |     |     +--rw ac-tp-id?                 string
+        |     |     +--rw ac-ip-address?            inet:ip-address
+        |     |     +--rw ac-ip-prefix-length?      uint8
+        |     |     +--rw peer-sap-id?              string
+        |     |     +--rw mtu?                      uint16
+        |     |     +--rw ac-tags
+        |     |     |  +--rw ac-tags* [ac-tag-type]
+        |     |     |  |  +--rw ac-tag-type    identityref
+        |     |     |  |  +--rw value*         string
+        |     |     |  +--rw ac-tag-opaque* [tag-name]
+        |     |     |     +--rw tag-name    string
+        |     |     |     +--rw value*      string
+        |     |     +--rw service-match-criteria
+        |     |     |  +--rw match-criterion* [index]
+        |     |     |     +--rw index
+        |     |     |     |       uint32
+        |     |     |     +--rw match-type
+        |     |     |     |       identityref
+        |     |     |     +--rw value*
+        |     |     |     |       string
+        |     |     |     +--rw target-connection-group-id          leafref
+        |     |     |     +--rw connection-group-sdp-role?
+        |     |     |     |       identityref
+        |     |     |     +--rw target-connectivity-construct-id?   leafref
+        |     |     +--rw sdp-peering
+        |     |        +--rw protocol* [protocol-type]
+        |     |        |  +--rw protocol-type    identityref
+        |     |        |  +--rw attribute* [attribute-type]
+        |     |        |     +--rw attribute-type    identityref
+        |     |        |     +--rw value*            string
+        |     |        +--rw opaque* [attribute-name]
+        |     |           +--rw attribute-name    string
+        |     |           +--rw value*            string
+        |     +--rw incoming-qos-policy
+        |     |  +--rw qos-policy-name?   string
+        |     |  +--rw rate-limits
+        |     |     +--rw cir?   uint64
+        |     |     +--rw cbs?   uint64
+        |     |     +--rw eir?   uint64
+        |     |     +--rw ebs?   uint64
+        |     |     +--rw pir?   uint64
+        |     |     +--rw pbs?   uint64
+        |     +--rw outgoing-qos-policy
+        |     |  +--rw qos-policy-name?   string
+        |     |  +--rw rate-limits
+        |     |     +--rw cir?   uint64
+        |     |     +--rw cbs?   uint64
+        |     |     +--rw eir?   uint64
+        |     |     +--rw ebs?   uint64
+        |     |     +--rw pir?   uint64
+        |     |     +--rw pbs?   uint64
+        |     +--rw status
+        |     |  +--rw admin-status
+        |     |  |  +--rw status?        identityref
+        |     |  |  +--rw last-change?   yang:date-and-time
+        |     |  +--ro oper-status
+        |     |     +--ro status?        identityref
+        |     |     +--ro last-change?   yang:date-and-time
+        |     +--ro sdp-monitoring
+        |        +--ro incoming-utilized-bandwidth?
+        |        |       te-types:te-bandwidth
+        |        +--ro incoming-bw-utilization        decimal64
+        |        +--ro outgoing-utilized-bandwidth?
+        |        |       te-types:te-bandwidth
+        |        +--ro outgoing-bw-utilization        decimal64
+        +--rw connection-groups
+        |  +--rw connection-group* [connection-group-id]
+        |     +--rw connection-group-id                string
+        |     +--rw connectivity-type?                 identityref
+        |     +--rw (slo-sle-policy)?
+        |     |  +--:(standard)
+        |     |  |  +--rw slo-sle-template?            leafref
+        |     |  +--:(custom)
+        |     |     +--rw service-slo-sle-policy
+        |     |        +--rw policy-description?           string
+        |     |        +--rw metric-bounds
+        |     |        |  +--rw metric-bound* [metric-type]
+        |     |        |     +--rw metric-type          identityref
+        |     |        |     +--rw metric-unit          string
+        |     |        |     +--rw value-description?   string
+        |     |        |     +--rw bound?               uint64
+        |     |        +--rw security*
+        |     |        |       identityref
+        |     |        +--rw isolation?
+        |     |        |       identityref
+        |     |        +--rw max-occupancy-level?          uint8
+        |     |        +--rw mtu?                          uint16
+        |     |        +--rw steering-constraints
+        |     |        |  +--rw path-constraints
+        |     |        |  |  +--rw tns:topology-id?     leafref
+        |     |        |  |  +--rw tns:explicit-path* [tp-id]
+        |     |        |  |     +--rw tns:tp-id    leafref
+        |     |        |  +--rw service-function
+        |     |        |  +--rw tns:disjointness?
+        |     |        |  |       te-types:te-path-disjointness
+        |     |        |  +--rw tns:service-info?   string
+        |     |        +--rw tns:optimization-criterion?
+        |     |        |       identityref
+        |     |        +--rw tns:delay-tolerance?          boolean
+        |     |        +--rw tns:periodicity*              uint64
+        |     |        +--rw tns:resize-requirement?
+        |     |        |       identityref
+        |     |        +--rw tns:service-info?             string
+        |     +--rw service-slo-sle-policy-override?   identityref
+        |     +--rw connectivity-construct* [cc-id]
+        |     |  +--rw cc-id                                uint32
+        |     |  +--rw (connectivity-construct-type)?
+        |     |  |  +--:(p2p)
+        |     |  |  |  +--rw p2p-sender-sdp?
+        |     |  |  |  |       -> ../../../../sdps/sdp/sdp-id
+        |     |  |  |  +--rw p2p-receiver-sdp?
+        |     |  |  |          -> ../../../../sdps/sdp/sdp-id
+        |     |  |  +--:(p2mp)
+        |     |  |  |  +--rw p2mp-sender-sdp?
+        |     |  |  |  |       -> ../../../../sdps/sdp/sdp-id
+        |     |  |  |  +--rw p2mp-receiver-sdp*
+        |     |  |  |          -> ../../../../sdps/sdp/sdp-id
+        |     |  |  +--:(a2a)
+        |     |  |     +--rw a2a-sdp* [sdp-id]
+        |     |  |        +--rw sdp-id
+        |     |  |        |       -> ../../../../../sdps/sdp/sdp-id
+        |     |  |        +--rw (slo-sle-policy)?
+        |     |  |           +--:(standard)
+        |     |  |           |  +--rw slo-sle-template?         leafref
+        |     |  |           +--:(custom)
+        |     |  |              +--rw service-slo-sle-policy
+        |     |  |                 +--rw policy-description?
+        |     |  |                 |       string
+        |     |  |                 +--rw metric-bounds
+        |     |  |                 |  +--rw metric-bound*
+        |     |  |                 |          [metric-type]
+        |     |  |                 |     +--rw metric-type
+        |     |  |                 |     |       identityref
+        |     |  |                 |     +--rw metric-unit
+        |     |  |                 |     |       string
+        |     |  |                 |     +--rw value-description?
+        |     |  |                 |     |       string
+        |     |  |                 |     +--rw bound?
+        |     |  |                 |             uint64
+        |     |  |                 +--rw security*
+        |     |  |                 |       identityref
+        |     |  |                 +--rw isolation?
+        |     |  |                 |       identityref
+        |     |  |                 +--rw max-occupancy-level?
+        |     |  |                 |       uint8
+        |     |  |                 +--rw mtu?
+        |     |  |                 |       uint16
+        |     |  |                 +--rw steering-constraints
+        |     |  |                 |  +--rw path-constraints
+        |     |  |                 |  |  +--rw tns:topology-id?     leafref
+        |     |  |                 |  |  +--rw tns:explicit-path*
+        |     |  |                 |  |          [tp-id]
+        |     |  |                 |  |     +--rw tns:tp-id    leafref
+        |     |  |                 |  +--rw service-function
+        |     |  |                 |  +--rw tns:disjointness?
+        |     |  |                 |  |       te-types:te-path-disjointness
+        |     |  |                 |  +--rw tns:service-info?
+        |     |  |                 |          string
+        |     |  |                 +--rw tns:optimization-criterion?
+        |     |  |                 |       identityref
+        |     |  |                 +--rw tns:delay-tolerance?
+        |     |  |                 |       boolean
+        |     |  |                 +--rw tns:periodicity*
+        |     |  |                 |       uint64
+        |     |  |                 +--rw tns:resize-requirement?
+        |     |  |                 |       identityref
+        |     |  |                 +--rw tns:service-info?
+        |     |  |                         string
+        |     |  +--rw (slo-sle-policy)?
+        |     |  |  +--:(standard)
+        |     |  |  |  +--rw slo-sle-template?              leafref
+        |     |  |  +--:(custom)
+        |     |  |     +--rw service-slo-sle-policy
+        |     |  |        +--rw policy-description?           string
+        |     |  |        +--rw metric-bounds
+        |     |  |        |  +--rw metric-bound* [metric-type]
+        |     |  |        |     +--rw metric-type
+        |     |  |        |     |       identityref
+        |     |  |        |     +--rw metric-unit          string
+        |     |  |        |     +--rw value-description?   string
+        |     |  |        |     +--rw bound?               uint64
+        |     |  |        +--rw security*
+        |     |  |        |       identityref
+        |     |  |        +--rw isolation?
+        |     |  |        |       identityref
+        |     |  |        +--rw max-occupancy-level?          uint8
+        |     |  |        +--rw mtu?                          uint16
+        |     |  |        +--rw steering-constraints
+        |     |  |        |  +--rw path-constraints
+        |     |  |        |  |  +--rw tns:topology-id?     leafref
+        |     |  |        |  |  +--rw tns:explicit-path* [tp-id]
+        |     |  |        |  |     +--rw tns:tp-id    leafref
+        |     |  |        |  +--rw service-function
+        |     |  |        |  +--rw tns:disjointness?
+        |     |  |        |  |       te-types:te-path-disjointness
+        |     |  |        |  +--rw tns:service-info?   string
+        |     |  |        +--rw tns:optimization-criterion?
+        |     |  |        |       identityref
+        |     |  |        +--rw tns:delay-tolerance?          boolean
+        |     |  |        +--rw tns:periodicity*              uint64
+        |     |  |        +--rw tns:resize-requirement?
+        |     |  |        |       identityref
+        |     |  |        +--rw tns:service-info?             string
+        |     |  +--rw service-slo-sle-policy-override?
+        |     |  |       identityref
+        |     |  +--ro connectivity-construct-monitoring
+        |     |     +--ro one-way-min-delay?         uint32
+        |     |     +--ro one-way-max-delay?         uint32
+        |     |     +--ro one-way-delay-variation?   uint32
+        |     |     +--ro one-way-packet-loss?       decimal64
+        |     |     +--ro two-way-min-delay?         uint32
+        |     |     +--ro two-way-max-delay?         uint32
+        |     |     +--ro two-way-delay-variation?   uint32
+        |     |     +--ro two-way-packet-loss?       decimal64
+        |     +--ro connection-group-monitoring
+        |        +--ro one-way-min-delay?         uint32
+        |        +--ro one-way-max-delay?         uint32
+        |        +--ro one-way-delay-variation?   uint32
+        |        +--ro one-way-packet-loss?       decimal64
+        |        +--ro two-way-min-delay?         uint32
+        |        +--ro two-way-max-delay?         uint32
+        |        +--ro two-way-delay-variation?   uint32
+        |        +--ro two-way-packet-loss?       decimal64
+        +--rw te-topology-identifier
+           +--rw provider-id?   te-global-id
+           +--rw client-id?     te-global-id
+           +--rw topology-id?   te-topology-id
 
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct:
-    +--rw topology-id?     -> /nw:networks/network/network-id
-    +--rw explicit-path* [tp-id]
-       +--rw tp-id
-               -> /nw:networks/network/node/nt:termination-point/tp-id
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
-    +--rw optimization-criterion?   identityref
-    +--rw delay-tolerance?          boolean
-    +--rw periodicity*              uint64
-    +--rw resize-requirement?       identityref
-    +--rw service-info?             string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw disjointness?   te-types:te-path-disjointness
-    +--rw service-info?   string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
-    +--rw optimization-criterion?   identityref
-    +--rw delay-tolerance?          boolean
-    +--rw periodicity*              uint64
-    +--rw resize-requirement?       identityref
-    +--rw service-info?             string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw disjointness?   te-types:te-path-disjointness
-    +--rw service-info?   string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
-    +--rw optimization-criterion?   identityref
-    +--rw delay-tolerance?          boolean
-    +--rw periodicity*              uint64
-    +--rw resize-requirement?       identityref
-    +--rw service-info?             string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw disjointness?   te-types:te-path-disjointness
-    +--rw service-info?   string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct
-            /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-            /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
-    +--rw optimization-criterion?   identityref
-    +--rw delay-tolerance?          boolean
-    +--rw periodicity*              uint64
-    +--rw resize-requirement?       identityref
-    +--rw service-info?             string
-  augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-            /ietf-nss:connection-groups/ietf-nss:connection-group
-            /ietf-nss:connectivity-construct
-            /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-            /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
-    +--rw disjointness?   te-types:te-path-disjointness
-    +--rw service-info?   string
-
-module: ietf-network
-  +--rw networks
-     +--rw network* [network-id]
-        +--rw network-id                              network-id
-        +--rw network-types
-        |  +--rw ns-topo:network-slice!
-        +--rw supporting-network* [network-ref]
-        |  +--rw network-ref    -> /networks/network/network-id
-        +--rw node* [node-id]
-        |  +--rw node-id                                 node-id
-        |  +--rw supporting-node* [network-ref node-ref]
-        |  |  +--rw network-ref
-        |  |  |       -> ../../../supporting-network/network-ref
-        |  |  +--rw node-ref       -> /networks/network/node/node-id
-        |  +--rw nt:termination-point* [tp-id]
-        |  |  +--rw nt:tp-id                                tp-id
-        |  |  +--rw nt:supporting-termination-point*
-        |  |  |       [network-ref node-ref tp-ref]
-        |  |  |  +--rw nt:network-ref
-        |  |  |  |       -> ../../../nw:supporting-node/network-ref
-        |  |  |  +--rw nt:node-ref
-        |  |  |  |       -> ../../../nw:supporting-node/node-ref
-        |  |  |  +--rw nt:tp-ref         leafref
-        |  |  +--rw ns-topo:sdp-id?                         leafref
-        |  |  +--rw (ns-topo:slo-sle-policy)?
-        |  |     +--:(ns-topo:standard)
-        |  |     |  +--rw ns-topo:slo-sle-template?         leafref
-        |  |     +--:(ns-topo:custom)
-        |  |        +--rw ns-topo:service-slo-sle-policy
-        |  |           +--rw ns-topo:policy-description?       string
-        |  |           +--rw ns-topo:metric-bounds
-        |  |           |  +--rw ns-topo:metric-bound* [metric-type]
-        |  |           |     +--rw ns-topo:metric-type
-        |  |           |     |       identityref
-        |  |           |     +--rw ns-topo:metric-unit
-        |  |           |     |       string
-        |  |           |     +--rw ns-topo:value-description?
-        |  |           |     |       string
-        |  |           |     +--rw ns-topo:bound?
-        |  |           |             uint64
-        |  |           +--rw ns-topo:security*
-        |  |           |       identityref
-        |  |           +--rw ns-topo:isolation?
-        |  |           |       identityref
-        |  |           +--rw ns-topo:max-occupancy-level?      uint8
-        |  |           +--rw ns-topo:mtu?                      uint16
-        |  |           +--rw ns-topo:steering-constraints
-        |  |           |  +--rw ns-topo:path-constraints
-        |  |           |  +--rw ns-topo:service-function
-        |  |           +--rw ns-topo:optimization-criterion?
-        |  |           |       identityref
-        |  |           +--rw ns-topo:delay-tolerance?
-        |  |           |       boolean
-        |  |           +--rw ns-topo:periodicity*              uint64
-        |  |           +--rw ns-topo:resize-requirement?
-        |  |           |       identityref
-        |  |           +--rw ns-topo:service-info?             string
-        |  +--rw (ns-topo:slo-sle-policy)?
-        |  |  +--:(ns-topo:standard)
-        |  |  |  +--rw ns-topo:slo-sle-template?         leafref
-        |  |  +--:(ns-topo:custom)
-        |  |     +--rw ns-topo:service-slo-sle-policy
-        |  |        +--rw ns-topo:policy-description?       string
-        |  |        +--rw ns-topo:metric-bounds
-        |  |        |  +--rw ns-topo:metric-bound* [metric-type]
-        |  |        |     +--rw ns-topo:metric-type
-        |  |        |     |       identityref
-        |  |        |     +--rw ns-topo:metric-unit          string
-        |  |        |     +--rw ns-topo:value-description?   string
-        |  |        |     +--rw ns-topo:bound?               uint64
-        |  |        +--rw ns-topo:security*
-        |  |        |       identityref
-        |  |        +--rw ns-topo:isolation?
-        |  |        |       identityref
-        |  |        +--rw ns-topo:max-occupancy-level?      uint8
-        |  |        +--rw ns-topo:mtu?                      uint16
-        |  |        +--rw ns-topo:steering-constraints
-        |  |        |  +--rw ns-topo:path-constraints
-        |  |        |  +--rw ns-topo:service-function
-        |  |        |  +--rw ns-topo:disjointness?
-        |  |        |  |       te-types:te-path-disjointness
-        |  |        |  +--rw ns-topo:service-info?       string
-        |  |        +--rw ns-topo:optimization-criterion?
-        |  |        |       identityref
-        |  |        +--rw ns-topo:delay-tolerance?          boolean
-        |  |        +--rw ns-topo:periodicity*              uint64
-        |  |        +--rw ns-topo:resize-requirement?
-        |  |        |       identityref
-        |  |        +--rw ns-topo:service-info?             string
-        |  +--rw ns-topo:optimization-criterion?         identityref
-        |  +--rw ns-topo:delay-tolerance?                boolean
-        |  +--rw ns-topo:periodicity*                    uint64
-        |  +--rw ns-topo:resize-requirement?             identityref
-        |  +--rw ns-topo:service-info?                   string
-        +--rw (ns-topo:slo-sle-policy)?
-           +--:(ns-topo:standard)
-           |  +--rw ns-topo:slo-sle-template?         leafref
-           +--:(ns-topo:custom)
-              +--rw ns-topo:service-slo-sle-policy
-                 +--rw ns-topo:policy-description?       string
-                 +--rw ns-topo:metric-bounds
-                 |  +--rw ns-topo:metric-bound* [metric-type]
-                 |     +--rw ns-topo:metric-type          identityref
-                 |     +--rw ns-topo:metric-unit          string
-                 |     +--rw ns-topo:value-description?   string
-                 |     +--rw ns-topo:bound?               uint64
-                 +--rw ns-topo:security*                 identityref
-                 +--rw ns-topo:isolation?                identityref
-                 +--rw ns-topo:max-occupancy-level?      uint8
-                 +--rw ns-topo:mtu?                      uint16
-                 +--rw ns-topo:steering-constraints
-                 |  +--rw ns-topo:path-constraints
-                 |  +--rw ns-topo:service-function
-                 |  +--rw ns-topo:disjointness?
-                 |  |       te-types:te-path-disjointness
-                 |  +--rw ns-topo:service-info?       string
-                 +--rw ns-topo:optimization-criterion?   identityref
-                 +--rw ns-topo:delay-tolerance?          boolean
-                 +--rw ns-topo:periodicity*              uint64
-                 +--rw ns-topo:resize-requirement?       identityref
-                 +--rw ns-topo:service-info?             string
