@@ -114,6 +114,29 @@
       * Augmented data nodes
       */    
      augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slo-sle-templates" +
+             "/ietf-nss:slo-sle-template" + 
+             "/ietf-nss:service-slo-sle-policy" {
+       description
+          "Augment IETF network slice service templates with
+		   technology-specific SLO/SLE policy attributes.";
+  
+       uses ns-topo:ns-topo-slo-sle-policy;
+     }
+
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slo-sle-templates" +
+             "/ietf-nss:slo-sle-template" + 
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:steering-constraints" {
+       description
+          "Augment IETF network slice service templates with
+		   technology-specific steering constraints.";
+  
+       uses ns-topo:ns-topo-steering-constraints;
+     }
+
+     augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
@@ -138,19 +161,6 @@
          slices.";
           
        uses ns-topo:ns-topo-steering-constraints;
-     }
-	 
-     augment "/ietf-nss:network-slice-services" +
-             "/ietf-nss:slice-service" +
-             "/ietf-nss:slo-sle-policy" + 
-             "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" + 
-             "/ietf-nss:steering-constraints" +
-             "/ietf-nss:path-constraints" {
-       description
-         "Add toplogy id and explicit path to the slice";
-
-       uses topology-ref;
      }
 
      /* connectivity construct augments */
@@ -251,7 +261,7 @@
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct" +
-             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:type" +
              "/ietf-nss:a2a" +
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 
@@ -269,7 +279,7 @@
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct" +
-             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:type" +
              "/ietf-nss:a2a" +
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 
@@ -288,7 +298,7 @@
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct" +
-             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:type" +
              "/ietf-nss:a2a" +
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 

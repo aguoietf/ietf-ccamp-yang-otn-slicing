@@ -5,7 +5,7 @@
 CCAMP Working Group                                               A. Guo
 Internet-Draft                                    Futurewei Technologies
 Intended status: Standards Track                          L.M. Contreras
-Expires: 12 September 2023                                    Telefonica
+Expires: 14 September 2023                                    Telefonica
                                                               S. Belotti
                                                                    Nokia
                                                                 R. Rokui
@@ -16,7 +16,7 @@ Expires: 12 September 2023                                    Telefonica
                                                             China Mobile
                                                                   X. Liu
                                                          IBM Corporation
-                                                           11 March 2023
+                                                           13 March 2023
 
 
             Framework and Data Model for OTN Network Slicing
@@ -53,7 +53,7 @@ Status of This Memo
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 1]
+Guo, et al.             Expires 14 September 2023               [Page 1]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -63,7 +63,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 September 2023.
+   This Internet-Draft will expire on 14 September 2023.
 
 Copyright Notice
 
@@ -109,16 +109,16 @@ Table of Contents
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 2]
+Guo, et al.             Expires 14 September 2023               [Page 2]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  38
-   9.  Normative References  . . . . . . . . . . . . . . . . . . . .  38
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  41
-   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  41
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  42
+   9.  Normative References  . . . . . . . . . . . . . . . . . . . .  39
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .  42
+   Contributors  . . . . . . . . . . . . . . . . . . . . . . . . . .  42
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .  43
 
 1.  Introduction
 
@@ -165,7 +165,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 3]
+Guo, et al.             Expires 14 September 2023               [Page 3]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -221,7 +221,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 4]
+Guo, et al.             Expires 14 September 2023               [Page 4]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -277,7 +277,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 5]
+Guo, et al.             Expires 14 September 2023               [Page 5]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -333,7 +333,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 6]
+Guo, et al.             Expires 14 September 2023               [Page 6]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -389,7 +389,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 7]
+Guo, et al.             Expires 14 September 2023               [Page 7]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -445,7 +445,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 8]
+Guo, et al.             Expires 14 September 2023               [Page 8]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -501,7 +501,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023               [Page 9]
+Guo, et al.             Expires 14 September 2023               [Page 9]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -557,7 +557,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 10]
+Guo, et al.             Expires 14 September 2023              [Page 10]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -613,7 +613,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 11]
+Guo, et al.             Expires 14 September 2023              [Page 11]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -669,7 +669,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 12]
+Guo, et al.             Expires 14 September 2023              [Page 12]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -725,7 +725,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 13]
+Guo, et al.             Expires 14 September 2023              [Page 13]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -781,7 +781,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 14]
+Guo, et al.             Expires 14 September 2023              [Page 14]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -837,7 +837,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 15]
+Guo, et al.             Expires 14 September 2023              [Page 15]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -893,7 +893,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 16]
+Guo, et al.             Expires 14 September 2023              [Page 16]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -949,7 +949,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 17]
+Guo, et al.             Expires 14 September 2023              [Page 17]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -1005,7 +1005,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 18]
+Guo, et al.             Expires 14 September 2023              [Page 18]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
@@ -1032,12 +1032,21 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
   module: ietf-transport-network-slice
 
+    augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
+              /ietf-nss:slo-sle-template
+              /ietf-nss:service-slo-sle-policy:
+      +--rw optimization-criterion?   identityref
+      +--rw resize-requirement?       identityref
+      +--rw service-info?             string
+    augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
+              /ietf-nss:slo-sle-template
+              /ietf-nss:service-slo-sle-policy
+              /ietf-nss:steering-constraints:
+      +--rw disjointness?   te-types:te-path-disjointness
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:slo-sle-policy/ietf-nss:custom
               /ietf-nss:service-slo-sle-policy:
       +--rw optimization-criterion?   identityref
-      +--rw delay-tolerance?          boolean
-      +--rw periodicity*              uint64
       +--rw resize-requirement?       identityref
       +--rw service-info?             string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
@@ -1045,15 +1054,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               /ietf-nss:service-slo-sle-policy
               /ietf-nss:steering-constraints:
       +--rw disjointness?   te-types:te-path-disjointness
-      +--rw service-info?   string
-    augment /ietf-nss:network-slice-services/ietf-nss:slice-service
-              /ietf-nss:slo-sle-policy/ietf-nss:custom
-              /ietf-nss:service-slo-sle-policy
-              /ietf-nss:steering-constraints/ietf-nss:path-constraints:
-      +--rw topology-id?     -> /nw:networks/network/network-id
-      +--rw explicit-path* [tp-id]
-         +--rw tp-id
-                 -> /nw:networks/network/node/nt:termination-point/tp-id
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
               /ietf-nss:slo-sle-policy/ietf-nss:custom
@@ -1061,14 +1061,12 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 19]
+Guo, et al.             Expires 14 September 2023              [Page 19]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
       +--rw optimization-criterion?   identityref
-      +--rw delay-tolerance?          boolean
-      +--rw periodicity*              uint64
       +--rw resize-requirement?       identityref
       +--rw service-info?             string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
@@ -1077,7 +1075,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               /ietf-nss:service-slo-sle-policy
               /ietf-nss:steering-constraints:
       +--rw disjointness?   te-types:te-path-disjointness
-      +--rw service-info?   string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
               /ietf-nss:slo-sle-policy/ietf-nss:custom
@@ -1092,8 +1089,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
               /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
       +--rw optimization-criterion?   identityref
-      +--rw delay-tolerance?          boolean
-      +--rw periodicity*              uint64
       +--rw resize-requirement?       identityref
       +--rw service-info?             string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
@@ -1102,7 +1097,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               /ietf-nss:custom/ietf-nss:service-slo-sle-policy
               /ietf-nss:steering-constraints:
       +--rw disjointness?   te-types:te-path-disjointness
-      +--rw service-info?   string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
               /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
@@ -1114,38 +1108,32 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                  -> /nw:networks/network/node/nt:termination-point/tp-id
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
+              /ietf-nss:connectivity-construct/ietf-nss:type
+              /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
+              /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+      +--rw optimization-criterion?   identityref
+      +--rw resize-requirement?       identityref
+      +--rw service-info?             string
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 20]
+Guo, et al.             Expires 14 September 2023              [Page 20]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
-              /ietf-nss:connectivity-construct
-              /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-              /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-              /ietf-nss:service-slo-sle-policy:
-      +--rw optimization-criterion?   identityref
-      +--rw delay-tolerance?          boolean
-      +--rw periodicity*              uint64
-      +--rw resize-requirement?       identityref
-      +--rw service-info?             string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
-              /ietf-nss:connectivity-construct
-              /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-              /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-              /ietf-nss:service-slo-sle-policy
+              /ietf-nss:connectivity-construct/ietf-nss:type
+              /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
+              /ietf-nss:custom/ietf-nss:service-slo-sle-policy
               /ietf-nss:steering-constraints:
       +--rw disjointness?   te-types:te-path-disjointness
-      +--rw service-info?   string
     augment /ietf-nss:network-slice-services/ietf-nss:slice-service
               /ietf-nss:connection-groups/ietf-nss:connection-group
-              /ietf-nss:connectivity-construct
-              /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-              /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-              /ietf-nss:service-slo-sle-policy
+              /ietf-nss:connectivity-construct/ietf-nss:type
+              /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
+              /ietf-nss:custom/ietf-nss:service-slo-sle-policy
               /ietf-nss:steering-constraints/ietf-nss:path-constraints:
       +--rw topology-id?     -> /nw:networks/network/network-id
       +--rw explicit-path* [tp-id]
@@ -1170,14 +1158,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
         import ietf-network-topology {
           prefix "nt";
           reference "RFC 8345: A YANG Data Model for Network Topologies";
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 21]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
         }
 
         import ietf-network-slice-service {
@@ -1190,6 +1170,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
         import ietf-ns-topo {
           prefix "ns-topo";
           reference
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 21]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
             "draft-liu-teas-transport-network-slice-yang-06:
              IETF Network Slice YANG Model";
         }
@@ -1226,14 +1214,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
            Redistribution and use in source and binary forms, with or
            without modification, is permitted pursuant to, and subject
            to the license terms contained in, the Revised BSD License
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 22]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
            set forth in Section 4.c of the IETF Trust's Legal Provisions
            Relating to IETF Documents
            (https://trustee.ietf.org/license-info).
@@ -1246,6 +1226,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
             "Latest revision of NBI YANG model for OTN slicing.";
           reference
             "draft-ietf-ccamp-yang-otn-slicing-03: Framework and Data
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 22]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
              Model for OTN Network Slicing";
         }
 
@@ -1282,20 +1270,43 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               description
                 "Relative reference to TP id.";
             }
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 23]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
           }
         }
 
         /*
          * Augmented data nodes
          */
+        augment "/ietf-nss:network-slice-services" +
+                "/ietf-nss:slo-sle-templates" +
+                "/ietf-nss:slo-sle-template" +
+                "/ietf-nss:service-slo-sle-policy" {
+          description
+             "Augment IETF network slice service templates with
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 23]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
+                      technology-specific SLO/SLE policy attributes.";
+
+          uses ns-topo:ns-topo-slo-sle-policy;
+        }
+
+        augment "/ietf-nss:network-slice-services" +
+                "/ietf-nss:slo-sle-templates" +
+                "/ietf-nss:slo-sle-template" +
+                "/ietf-nss:service-slo-sle-policy" +
+                "/ietf-nss:steering-constraints" {
+          description
+             "Augment IETF network slice service templates with
+                      technology-specific steering constraints.";
+
+          uses ns-topo:ns-topo-steering-constraints;
+        }
+
         augment "/ietf-nss:network-slice-services" +
                 "/ietf-nss:slice-service" +
                 "/ietf-nss:slo-sle-policy" +
@@ -1323,31 +1334,18 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
           uses ns-topo:ns-topo-steering-constraints;
         }
 
-        augment "/ietf-nss:network-slice-services" +
-                "/ietf-nss:slice-service" +
-                "/ietf-nss:slo-sle-policy" +
-                "/ietf-nss:custom" +
-                "/ietf-nss:service-slo-sle-policy" +
-                "/ietf-nss:steering-constraints" +
-                "/ietf-nss:path-constraints" {
-          description
-            "Add toplogy id and explicit path to the slice";
-
-          uses topology-ref;
-        }
-
         /* connectivity construct augments */
         augment "/ietf-nss:network-slice-services" +
+                "/ietf-nss:slice-service" +
+                "/ietf-nss:connection-groups" +
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 24]
+Guo, et al.             Expires 14 September 2023              [Page 24]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
-                "/ietf-nss:slice-service" +
-                "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:slo-sle-policy" +
                 "/ietf-nss:custom" +
@@ -1394,16 +1392,16 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:connectivity-construct" +
+                "/ietf-nss:slo-sle-policy" +
+                "/ietf-nss:custom" +
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 25]
+Guo, et al.             Expires 14 September 2023              [Page 25]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
-                "/ietf-nss:slo-sle-policy" +
-                "/ietf-nss:custom" +
                 "/ietf-nss:service-slo-sle-policy" {
           description
             "Augment IETF network slice services to include technology-
@@ -1450,16 +1448,16 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:connectivity-construct" +
+                "/ietf-nss:type" +
+                "/ietf-nss:a2a" +
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 26]
+Guo, et al.             Expires 14 September 2023              [Page 26]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
-                "/ietf-nss:connectivity-construct-type" +
-                "/ietf-nss:a2a" +
                 "/ietf-nss:a2a-sdp" +
                 "/ietf-nss:slo-sle-policy" +
                 "/ietf-nss:custom" +
@@ -1476,7 +1474,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:connectivity-construct" +
-                "/ietf-nss:connectivity-construct-type" +
+                "/ietf-nss:type" +
                 "/ietf-nss:a2a" +
                 "/ietf-nss:a2a-sdp" +
                 "/ietf-nss:slo-sle-policy" +
@@ -1495,7 +1493,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:connectivity-construct" +
-                "/ietf-nss:connectivity-construct-type" +
+                "/ietf-nss:type" +
                 "/ietf-nss:a2a" +
                 "/ietf-nss:a2a-sdp" +
                 "/ietf-nss:slo-sle-policy" +
@@ -1507,14 +1505,15 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
             "Add toplogy id and explicit path to a2a connectivity
                      construct";
 
+          uses topology-ref;
 
 
-Guo, et al.             Expires 12 September 2023              [Page 27]
+
+Guo, et al.             Expires 14 September 2023              [Page 27]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
-          uses topology-ref;
         }
       }
    <CODE ENDS>
@@ -1525,6 +1524,18 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
    module: ietf-otn-slice
 
+     augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
+               /ietf-nss:slo-sle-template
+               /ietf-nss:service-slo-sle-policy:
+       +--rw otn
+          +--rw odu-signal-quality
+          |  +--rw odu-pm-objective* [duration pm-type]
+          |     +--rw duration        identityref
+          |     +--rw pm-type         identityref
+          |     +--rw pm-threshold?   union
+          +--rw odulist* [odu-type]
+             +--rw odu-type    identityref
+             +--rw number?     uint16
      augment /ietf-nss:network-slice-services/ietf-nss:slice-service
                /ietf-nss:slo-sle-policy/ietf-nss:custom
                /ietf-nss:service-slo-sle-policy:
@@ -1551,6 +1562,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
      augment /nw:networks/nw:network/nw:node/ns-topo:slo-sle-policy
                /ns-topo:custom/ns-topo:service-slo-sle-policy:
        +--rw otn
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 28]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
           +--rw odu-signal-quality
           |  +--rw odu-pm-objective* [duration pm-type]
           |     +--rw duration        identityref
@@ -1562,14 +1581,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
      augment /nw:networks/nw:network/nw:node/nt:termination-point
                /ns-topo:slo-sle-policy/ns-topo:custom
                /ns-topo:service-slo-sle-policy:
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 28]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
        +--rw otn
           +--rw odu-signal-quality
           |  +--rw odu-pm-objective* [duration pm-type]
@@ -1607,6 +1618,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                /ietf-nss:connection-groups/ietf-nss:connection-group
                /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
                /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 29]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
        +--rw otn
           +--rw odu-signal-quality
           |  +--rw odu-pm-objective* [duration pm-type]
@@ -1618,18 +1637,9 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
              +--rw number?     uint16
      augment /ietf-nss:network-slice-services/ietf-nss:slice-service
                /ietf-nss:connection-groups/ietf-nss:connection-group
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 29]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
-               /ietf-nss:connectivity-construct
-               /ietf-nss:connectivity-construct-type/ietf-nss:a2a
-               /ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy/ietf-nss:custom
-               /ietf-nss:service-slo-sle-policy:
+               /ietf-nss:connectivity-construct/ietf-nss:type
+               /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
+               /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
        +--rw otn
           +--rw odu-signal-quality
           |  +--rw odu-pm-objective* [duration pm-type]
@@ -1664,6 +1674,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
           prefix "te-types";
           reference
             "RFC 8776: Traffic Engineering Common YANG Types";
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 30]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
         }
 
         import ietf-layer1-types {
@@ -1674,14 +1692,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
         }
 
         import ietf-network-slice-service {
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 30]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
           prefix "ietf-nss";
           reference
             "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
@@ -1721,6 +1731,13 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
            The model fully conforms to the Network Management Datastore
            Architecture (NMDA).
 
+
+
+Guo, et al.             Expires 14 September 2023              [Page 31]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
            Copyright (c) 2022 IETF Trust and the persons identified as
            authors of the code.  All rights reserved.
 
@@ -1730,13 +1747,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
            set forth in Section 4.c of the IETF Trust's Legal Provisions
            Relating to IETF Documents
            (https://trustee.ietf.org/license-info).
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 31]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
 
            This version of this YANG module is part of RFC XXXX; see the
            RFC itself for full legal notices.";
@@ -1776,6 +1786,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
             "ODU Errored Seconds (ES) threshold";
         }
 
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 32]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
         identity odu-ses {
           base odu-tca-threshold-type;
           description
@@ -1786,14 +1804,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
           base odu-tca-threshold-type;
           description
             "ODU Unavailable Seconds (UAS) threshold";
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 32]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
         }
 
         identity odu-ber {
@@ -1832,6 +1842,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
             list odu-pm-objective {
               key "duration pm-type";
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 33]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
               description
                 "List of ODU performance requirements.";
               leaf duration {
@@ -1842,14 +1860,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                   "Time duration.";
               }
               leaf pm-type {
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 33]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
                 type identityref {
                   base odu-tca-threshold-type;
                 }
@@ -1885,6 +1895,26 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
         /*
          * Augmented data nodes
          */
+        /* slice template */
+        augment "/ietf-nss:network-slice-services" +
+                "/ietf-nss:slo-sle-templates" +
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 34]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
+                "/ietf-nss:slo-sle-template" +
+                "/ietf-nss:service-slo-sle-policy" {
+          description
+             "Augment IETF network slice service templates with
+                      OTN technology-specific SLO/SLE policy attributes.";
+
+          uses otn-slice-slo-sle-policy;
+        }
+
         /* slice augments */
         augment "/ietf-nss:network-slice-services" +
                 "/ietf-nss:slice-service" +
@@ -1898,13 +1928,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
           uses otn-slice-slo-sle-policy;
         }
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 34]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
 
         /* network topology augments */
         augment "/nw:networks/nw:network" +
@@ -1931,6 +1954,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
         }
 
         /* network node's termination point augments */
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 35]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
         augment "/nw:networks/nw:network/nw:node" +
                 "/nt:termination-point" +
                 "/ns-topo:slo-sle-policy" +
@@ -1954,14 +1985,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
           }
           description "Augment link configuration and state.";
           uses otn-slice-slo-sle-policy;
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 35]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
         }
 
         /* connectivity construct augments */
@@ -1974,7 +1997,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:service-slo-sle-policy" {
           description
             "Augment IETF network slice services to include technology-
-             specific SLO/SLE policy for connectivity-constructs within
+             specific SLO/SLE policy for connection groups within
              a connectivity-based transport network slice.";
           uses otn-slice-slo-sle-policy;
         }
@@ -1987,6 +2010,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:slo-sle-policy" +
                 "/ietf-nss:custom" +
                 "/ietf-nss:service-slo-sle-policy" {
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 36]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
           description
             "Augment IETF network slice services to include technology-
              specific SLO/SLE policy for connectivity-constructs within
@@ -1999,7 +2030,7 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
                 "/ietf-nss:connection-groups" +
                 "/ietf-nss:connection-group" +
                 "/ietf-nss:connectivity-construct" +
-                "/ietf-nss:connectivity-construct-type" +
+                "/ietf-nss:type" +
                 "/ietf-nss:a2a" +
                 "/ietf-nss:a2a-sdp" +
                 "/ietf-nss:slo-sle-policy" +
@@ -2010,14 +2041,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
              specific SLO/SLE policy for a2a connectivity-constructs
              within a connectivity-based transport network slice.";
           uses otn-slice-slo-sle-policy;
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 36]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
         }
       }
    <CODE ENDS>
@@ -2043,6 +2066,14 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    is the secure transport layer, and the mandatory-to-implement secure
    transport is Secure Shell (SSH) [RFC6242].  The lowest RESTCONF layer
    is HTTPS, and the mandatory-to-implement secure transport is TLS
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 37]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
+
    [RFC8446].
 
    The NETCONF access control model [RFC8341] provides the means to
@@ -2066,14 +2097,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    [RFC8795] are also applicable to their subtrees in the module defined
    in this document.
 
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 37]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
 8.  IANA Considerations
 
    It is proposed to IANA to assign new URIs from the "IETF XML
@@ -2089,6 +2112,23 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
    This document registers a YANG module in the YANG Module Names
    registry [RFC6020].
+
+
+
+
+
+
+
+
+
+
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 38]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
 
      name: ietf-transport-network-slice
      namespace: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
@@ -2121,15 +2161,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               <https://datatracker.ietf.org/doc/html/draft-contreras-
               teas-slice-controller-models-04>.
 
-
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 38]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    [I-D.draft-liu-teas-transport-network-slice-yang]
               Liu, X., Tantsura, J., Bryskin, I., Contreras, L. M., Wu,
               Q., Belotti, S., and R. Rokui, "IETF Network Slice YANG
@@ -2144,6 +2175,16 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               ccamp-layer1-types-15, 23 November 2022,
               <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
               layer1-types-15>.
+
+
+
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 39]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
 
    [I-D.ietf-ccamp-otn-topo-yang]
               Zheng, H., Busi, I., Liu, X., Belotti, S., and O. G. de
@@ -2177,15 +2218,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               networks (Amendment 1)", ITU-T G.8201 (2011) Amd. 1 ,
               December 2021, <https://www.itu.int/rec/T-REC-G.8201>.
 
-
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 39]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
@@ -2198,6 +2230,17 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    [RFC4847]  Takeda, T., Ed., "Framework and Requirements for Layer 1
               Virtual Private Networks", RFC 4847, DOI 10.17487/RFC4847,
               April 2007, <https://www.rfc-editor.org/info/rfc4847>.
+
+
+
+
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 40]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
 
    [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
               the Network Configuration Protocol (NETCONF)", RFC 6020,
@@ -2234,14 +2277,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               DOI 10.17487/RFC8341, March 2018,
               <https://www.rfc-editor.org/info/rfc8341>.
 
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 40]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
               Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
@@ -2255,6 +2290,13 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               Abstraction and Control of TE Networks (ACTN)", RFC 8453,
               DOI 10.17487/RFC8453, August 2018,
               <https://www.rfc-editor.org/info/rfc8453>.
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 41]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
+
 
    [RFC8776]  Saad, T., Gandhi, R., Liu, X., Beeram, V., and I. Bryskin,
               "Common YANG Data Types for Traffic Engineering",
@@ -2288,16 +2330,6 @@ Acknowledgments
 
 Contributors
 
-
-
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 41]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    Haomian Zheng
    Huawei Technologies
    H1, Xiliu Beipo Village, Songshan Lake
@@ -2311,6 +2343,15 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    Huawei Technologies
 
    Email: italo.busi@huawei.com
+
+
+
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 42]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
    Oscar Gonzalez de Dios
@@ -2345,15 +2386,6 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 Authors' Addresses
 
-
-
-
-
-Guo, et al.             Expires 12 September 2023              [Page 42]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    Aihua Guo
    Futurewei Technologies
 
@@ -2370,6 +2402,12 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    Nokia
 
    Email: Sergio.belotti@nokia.com
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 43]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
    Reza Rokui
@@ -2405,4 +2443,22 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
 
-Guo, et al.             Expires 12 September 2023              [Page 43]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 44]

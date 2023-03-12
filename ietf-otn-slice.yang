@@ -207,6 +207,18 @@
      /*
       * Augmented data nodes
       */
+     /* slice template */
+     augment "/ietf-nss:network-slice-services" +
+             "/ietf-nss:slo-sle-templates" +
+             "/ietf-nss:slo-sle-template" + 
+             "/ietf-nss:service-slo-sle-policy" {
+       description
+          "Augment IETF network slice service templates with
+		   OTN technology-specific SLO/SLE policy attributes.";
+  
+       uses otn-slice-slo-sle-policy;
+     }
+
      /* slice augments */
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slice-service" +
@@ -281,7 +293,7 @@
              "/ietf-nss:service-slo-sle-policy" {
        description
          "Augment IETF network slice services to include technology-
-          specific SLO/SLE policy for connectivity-constructs within
+          specific SLO/SLE policy for connection groups within
           a connectivity-based transport network slice.";
        uses otn-slice-slo-sle-policy;
      }
@@ -306,7 +318,7 @@
              "/ietf-nss:connection-groups" +
              "/ietf-nss:connection-group" +
              "/ietf-nss:connectivity-construct" +
-             "/ietf-nss:connectivity-construct-type" +
+             "/ietf-nss:type" +
              "/ietf-nss:a2a" +
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 
