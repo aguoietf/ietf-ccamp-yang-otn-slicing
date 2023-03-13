@@ -20,7 +20,7 @@ Expires: 14 September 2023                                    Telefonica
 
 
             Framework and Data Model for OTN Network Slicing
-                  draft-ietf-ccamp-yang-otn-slicing-03
+                  draft-ietf-ccamp-yang-otn-slicing-04
 
 Abstract
 
@@ -2207,9 +2207,8 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               and O. G. de Dios, "A YANG Data Model for Traffic
               Engineering Tunnels, Label Switched Paths and Interfaces",
               Work in Progress, Internet-Draft, draft-ietf-teas-yang-te-
-              31, 24 October 2022,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              yang-te-31>.
+              32, 12 March 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-yang-te-32>.
 
    [ITU-T-G.8201-Amd.1]
               ITU Telecommunication Standardization Sector (ITU-T),
@@ -2231,9 +2230,10 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               Virtual Private Networks", RFC 4847, DOI 10.17487/RFC4847,
               April 2007, <https://www.rfc-editor.org/info/rfc4847>.
 
-
-
-
+   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
+              the Network Configuration Protocol (NETCONF)", RFC 6020,
+              DOI 10.17487/RFC6020, October 2010,
+              <https://www.rfc-editor.org/info/rfc6020>.
 
 
 
@@ -2241,11 +2241,6 @@ Guo, et al.             Expires 14 September 2023              [Page 40]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
-
-   [RFC6020]  Bjorklund, M., Ed., "YANG - A Data Modeling Language for
-              the Network Configuration Protocol (NETCONF)", RFC 6020,
-              DOI 10.17487/RFC6020, October 2010,
-              <https://www.rfc-editor.org/info/rfc6020>.
 
    [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
               and A. Bierman, Ed., "Network Configuration Protocol
@@ -2291,17 +2286,17 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
               DOI 10.17487/RFC8453, August 2018,
               <https://www.rfc-editor.org/info/rfc8453>.
 
+   [RFC8776]  Saad, T., Gandhi, R., Liu, X., Beeram, V., and I. Bryskin,
+              "Common YANG Data Types for Traffic Engineering",
+              RFC 8776, DOI 10.17487/RFC8776, June 2020,
+              <https://www.rfc-editor.org/info/rfc8776>.
+
 
 
 Guo, et al.             Expires 14 September 2023              [Page 41]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
-
-   [RFC8776]  Saad, T., Gandhi, R., Liu, X., Beeram, V., and I. Bryskin,
-              "Common YANG Data Types for Traffic Engineering",
-              RFC 8776, DOI 10.17487/RFC8776, June 2020,
-              <https://www.rfc-editor.org/info/rfc8776>.
 
    [RFC8795]  Liu, X., Bryskin, I., Beeram, V., Saad, T., Shah, H., and
               O. Gonzalez de Dios, "YANG Data Model for Traffic
@@ -2345,6 +2340,11 @@ Contributors
    Email: italo.busi@huawei.com
 
 
+   Oscar Gonzalez de Dios
+   Telefonica
+
+   Email: oscar.gonzalezdedios@telefonica.com
+
 
 
 
@@ -2352,12 +2352,6 @@ Contributors
 Guo, et al.             Expires 14 September 2023              [Page 42]
 
 Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
-   Oscar Gonzalez de Dios
-   Telefonica
-
-   Email: oscar.gonzalezdedios@telefonica.com
 
 
    Victor Lopez
@@ -2404,16 +2398,16 @@ Authors' Addresses
    Email: Sergio.belotti@nokia.com
 
 
-
-Guo, et al.             Expires 14 September 2023              [Page 43]
-
-Internet-Draft      Framework and YANG of OTN Slices          March 2023
-
-
    Reza Rokui
    Ciena
 
    Email: rrokui@ciena.com
+
+
+
+Guo, et al.             Expires 14 September 2023              [Page 43]
+
+Internet-Draft      Framework and YANG of OTN Slices          March 2023
 
 
    Yunbin Xu
@@ -2432,6 +2426,12 @@ Internet-Draft      Framework and YANG of OTN Slices          March 2023
    IBM Corporation
 
    Email: xufeng.liu.ietf@gmail.com
+
+
+
+
+
+
 
 
 

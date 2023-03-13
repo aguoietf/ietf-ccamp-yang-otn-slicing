@@ -10,7 +10,7 @@
 <?rfc symrefs="yes"?>
 <?rfc comments="yes"?>
 
-<rfc ipr="trust200902" docName="draft-ietf-ccamp-yang-otn-slicing-03" category="std">
+<rfc ipr="trust200902" docName="draft-ietf-ccamp-yang-otn-slicing-04" category="std">
 
   <front>
     <title abbrev="Framework and YANG of OTN Slices">Framework and Data Model for OTN Network Slicing</title>
@@ -2067,7 +2067,7 @@ module: ietf-otn-slice
 </reference>
 
 
-<reference anchor='I-D.ietf-teas-yang-te' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-31'>
+<reference anchor='I-D.ietf-teas-yang-te' target='https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-32'>
    <front>
       <title>A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths and Interfaces</title>
       <author fullname='Tarek Saad' initials='T.' surname='Saad'>
@@ -2088,7 +2088,7 @@ module: ietf-otn-slice
       <author fullname='Oscar Gonzalez de Dios' initials='O. G.' surname='de Dios'>
          <organization>Telefonica</organization>
       </author>
-      <date day='24' month='October' year='2022'/>
+      <date day='12' month='March' year='2023'/>
       <abstract>
 	 <t>   This document defines a YANG data model for the provisioning and
    management of Traffic Engineering (TE) tunnels, Label Switched Paths
@@ -2102,7 +2102,7 @@ module: ietf-otn-slice
 	 </t>
       </abstract>
    </front>
-   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-31'/>
+   <seriesInfo name='Internet-Draft' value='draft-ietf-teas-yang-te-32'/>
    
 </reference>
 
@@ -2329,11 +2329,11 @@ module: ietf-otn-slice
   </back>
 
 <!-- ##markdown-source:
-H4sIALQEDmQAA+19+1cbR7Lw7/or+pJz7kKskQA7iUNyN8GYOOwxmM9gZ/du
+H4sIAIwrD2QAA+19+1cbR7Lw7/or+pJz7kKskQA7iUNyN8GYOOwxmM9gZ/du
 9t4zSC2Y9WhGOw+IYnz/9q9e/ZqHwI6zdhK0GyPNdFdXV1VXV1VXd0dRNJjk
 0yQ731F1NYseDgZVUqV6R31XxHN9lRevVJxN1eO4itVhPtWpmuWFenZ6pI50
 Ra9P0mQC9QeD+Oys0JfNmn/bPXqi8hlVwaK6HEzzSQZFdtS0iGdVlGhoeDKJ
-54toGWfnUV5lUclAo837A4R0XuT1Ykft7e0eHqsf4AG8U0/w4WASV/o8L5Y7
+54toGWfnUV5lUclAo80HA4R0XuT1Ykft7e0eHqsf4AG8U0/w4WASV/o8L5Y7
 qqymg2RR7KiqqMtqe3Pzy83twaCsAIv/jdM8gwaX0Poi2VF/r/LJUJV5URV6
 VsK35Zy/TPL5XGdV+Q/oTl1d5MXOQKkI/lOKUd5NLupYPalzepYXQLfv6qou
 9JVO1KmeXGR5mp8n0A6+1/M4SXdUjJXO63yEXf32HB+OoKUG6Kd1UqrDkdrL
@@ -2655,7 +2655,7 @@ c9DAKaDz22ARVDTt5u/QcDRfJO/cuKnsI2CedSHBjI+iSJ3Fk1cD9Dd4XtTT
 vLZJt6XNunUwcHZuANmOfsiLaXS5PdocmeXm0TR3E7pNsb7K63Sq0uSVaKs4
 e6V2pwXuEPguLgqdDtVjsNHB8tJqT08m0EiaJuQBHJyDEn9ULMtXmNX8KFc/
 1EP1BOirDpPyooiH6i852EFg8H8fp+ALAKSLor6Ef/PplD2jp3msdsFJKMqS
-3Vgyf8hWwm5cxmkt80NJid+jwf8HPVBk6pIcAQA=
+3Vgyf8hWwm5cxmkt80NJid+jwf8H3ubPhJIcAQA=
 
 -->
 
