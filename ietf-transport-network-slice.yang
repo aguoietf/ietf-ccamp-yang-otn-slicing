@@ -16,7 +16,7 @@
      import ietf-network-slice-service {
        prefix "ietf-nss";
        reference
-         "draft-ietf-teas-ietf-network-slice-nbi-yang-01:
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-04:
           IETF Network Slice Service YANG Model";
      }
 
@@ -66,11 +66,11 @@
         This version of this YANG module is part of RFC XXXX; see the
         RFC itself for full legal notices.";
 
-     revision "2023-02-08" {
+     revision "2023-06-28" {
        description
          "Latest revision of NBI YANG model for OTN slicing.";
        reference
-         "draft-ietf-ccamp-yang-otn-slicing-03: Framework and Data
+         "draft-ietf-ccamp-yang-otn-slicing-05: Framework and Data
           Model for OTN Network Slicing";
      }
 
@@ -116,18 +116,18 @@
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slo-sle-templates" +
              "/ietf-nss:slo-sle-template" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:sle-policy" {
        description
           "Augment IETF network slice service templates with
 		   technology-specific SLO/SLE policy attributes.";
   
-       uses ns-topo:ns-topo-slo-sle-policy;
+       uses ns-topo:ns-topo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slo-sle-templates" +
              "/ietf-nss:slo-sle-template" + 
-             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" {
        description
           "Augment IETF network slice service templates with
@@ -140,13 +140,14 @@
              "/ietf-nss:slice-service" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:sle-policy" {
        description
           "Augment IETF network slice services to include technology-
            specific SLO/SLE policy for connectivity-based transport 
           network slices.";
   
-       uses ns-topo:ns-topo-slo-sle-policy;
+       uses ns-topo:ns-topo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -154,6 +155,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" + 
              "/ietf-nss:steering-constraints" {
        description
          "Augment IETF network slice services to include steering
@@ -170,12 +172,13 @@
              "/ietf-nss:connection-group" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-constructs within
           a connectivity-based transport network slice.";
-       uses ns-topo:ns-topo-slo-sle-policy;
+       uses ns-topo:ns-topo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -185,6 +188,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" {
        description
          "Augment IETF network slice services to include steering
@@ -200,6 +204,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" +
              "/ietf-nss:path-constraints" {
        description
@@ -215,12 +220,13 @@
              "/ietf-nss:connectivity-construct" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-constructs within
           a connectivity-based transport network slice.";
-       uses ns-topo:ns-topo-slo-sle-policy;
+       uses ns-topo:ns-topo-sle-policy;
      }
      
      augment "/ietf-nss:network-slice-services" +
@@ -231,6 +237,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" {
        description
          "Augment IETF network slice services to include steering
@@ -247,6 +254,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" +
              "/ietf-nss:path-constraints" {
        description
@@ -266,12 +274,13 @@
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for a2a connectivity-constructs
           within a connectivity-based transport network slice.";
-       uses ns-topo:ns-topo-slo-sle-policy;
+       uses ns-topo:ns-topo-sle-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -285,6 +294,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" {
        description
          "Augment IETF network slice services to include steering
@@ -304,6 +314,7 @@
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
              "/ietf-nss:service-slo-sle-policy" + 
+             "/ietf-nss:sle-policy" +
              "/ietf-nss:steering-constraints" +
              "/ietf-nss:path-constraints" {
        description

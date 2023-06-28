@@ -1,44 +1,42 @@
 module: ietf-transport-network-slice
 
   augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
-            /ietf-nss:slo-sle-template
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:slo-sle-template/ietf-nss:sle-policy:
     +--rw optimization-criterion?   identityref
     +--rw resize-requirement?       identityref
     +--rw service-info?             string
   augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
-            /ietf-nss:slo-sle-template
-            /ietf-nss:service-slo-sle-policy
+            /ietf-nss:slo-sle-template/ietf-nss:sle-policy
             /ietf-nss:steering-constraints:
     +--rw disjointness?   te-types:te-path-disjointness
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:service-slo-sle-policy/ietf-nss:sle-policy:
     +--rw optimization-criterion?   identityref
     +--rw resize-requirement?       identityref
     +--rw service-info?             string
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
+            /ietf-nss:service-slo-sle-policy/ietf-nss:sle-policy
             /ietf-nss:steering-constraints:
     +--rw disjointness?   te-types:te-path-disjointness
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:service-slo-sle-policy/ietf-nss:sle-policy:
     +--rw optimization-criterion?   identityref
     +--rw resize-requirement?       identityref
     +--rw service-info?             string
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
+            /ietf-nss:service-slo-sle-policy/ietf-nss:sle-policy
             /ietf-nss:steering-constraints:
     +--rw disjointness?   te-types:te-path-disjointness
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy
+            /ietf-nss:service-slo-sle-policy/ietf-nss:sle-policy
             /ietf-nss:steering-constraints/ietf-nss:path-constraints:
     +--rw topology-id?     -> /nw:networks/network/network-id
     +--rw explicit-path* [tp-id]
@@ -47,7 +45,8 @@ module: ietf-transport-network-slice
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
+            /ietf-nss:sle-policy:
     +--rw optimization-criterion?   identityref
     +--rw resize-requirement?       identityref
     +--rw service-info?             string
@@ -55,13 +54,14 @@ module: ietf-transport-network-slice
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
             /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
+            /ietf-nss:sle-policy/ietf-nss:steering-constraints:
     +--rw disjointness?   te-types:te-path-disjointness
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
             /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints/ietf-nss:path-constraints:
+            /ietf-nss:sle-policy/ietf-nss:steering-constraints
+            /ietf-nss:path-constraints:
     +--rw topology-id?     -> /nw:networks/network/network-id
     +--rw explicit-path* [tp-id]
        +--rw tp-id
@@ -70,7 +70,8 @@ module: ietf-transport-network-slice
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:type
             /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
+            /ietf-nss:sle-policy:
     +--rw optimization-criterion?   identityref
     +--rw resize-requirement?       identityref
     +--rw service-info?             string
@@ -79,14 +80,15 @@ module: ietf-transport-network-slice
             /ietf-nss:connectivity-construct/ietf-nss:type
             /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
             /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints:
+            /ietf-nss:sle-policy/ietf-nss:steering-constraints:
     +--rw disjointness?   te-types:te-path-disjointness
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:type
             /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
             /ietf-nss:custom/ietf-nss:service-slo-sle-policy
-            /ietf-nss:steering-constraints/ietf-nss:path-constraints:
+            /ietf-nss:sle-policy/ietf-nss:steering-constraints
+            /ietf-nss:path-constraints:
     +--rw topology-id?     -> /nw:networks/network/network-id
     +--rw explicit-path* [tp-id]
        +--rw tp-id

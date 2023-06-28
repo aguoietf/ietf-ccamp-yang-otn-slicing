@@ -16,7 +16,8 @@
      import ietf-te-types {
        prefix "te-types";
        reference
-         "RFC 8776: Traffic Engineering Common YANG Types";
+         "draft-ietf-teas-rfc8776-update-04: 
+          Common YANG Data Types for Traffic Engineering";
      }
 
      import ietf-layer1-types {
@@ -29,7 +30,7 @@
      import ietf-network-slice-service {
        prefix "ietf-nss";
        reference
-         "draft-ietf-teas-ietf-network-slice-nbi-yang-00:
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-04:
           IETF Network Slice Service YANG Model";
      }
 
@@ -79,11 +80,11 @@
         This version of this YANG module is part of RFC XXXX; see the
         RFC itself for full legal notices.";
 
-     revision "2022-10-12" {
+     revision "2023-06-28" {
        description
          "Latest revision of NBI YANG model for OTN slicing.";
        reference
-         "draft-ietf-ccamp-yang-otn-slicing-03: Framework and Data
+         "draft-ietf-ccamp-yang-otn-slicing-05: Framework and Data
           Model for OTN Network Slicing";
      }
 
@@ -191,7 +192,7 @@
        }
      }
 
-     grouping otn-slice-slo-sle-policy {
+     grouping otn-slice-slo-policy {
        description
          "Policy grouping for OTN network slices.";
 
@@ -211,12 +212,12 @@
      augment "/ietf-nss:network-slice-services" +
              "/ietf-nss:slo-sle-templates" +
              "/ietf-nss:slo-sle-template" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:slo-policy" {
        description
           "Augment IETF network slice service templates with
 		   OTN technology-specific SLO/SLE policy attributes.";
   
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      /* slice augments */
@@ -224,37 +225,40 @@
              "/ietf-nss:slice-service" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:slo-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-based OTN
           slices.";
           
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      /* network topology augments */
      augment "/nw:networks/nw:network" +
              "/ns-topo:slo-sle-policy" +
              "/ns-topo:custom" +
-             "/ns-topo:service-slo-sle-policy" {
-       when "../nw:network-types/ns-topo:network-slice" {
+             "/ns-topo:service-slo-sle-policy" +
+             "/ns-topo:slo-policy" {
+       when "../../nw:network-types/ns-topo:network-slice" {
          description "Augment only for Network Slice topology.";
        }
        description "Augment topology configuration and state.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      /* network node augments */
      augment "/nw:networks/nw:network/nw:node" +
              "/ns-topo:slo-sle-policy" + 
              "/ns-topo:custom" + 
-             "/ns-topo:service-slo-sle-policy" {
-       when "../../nw:network-types/ns-topo:network-slice" {
+             "/ns-topo:service-slo-sle-policy" +
+             "/ns-topo:slo-policy" {
+       when "../../../nw:network-types/ns-topo:network-slice" {
          description "Augment only for Network Slice topology.";
        }
        description "Augment node configuration and state.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      /* network node's termination point augments */
@@ -262,25 +266,27 @@
              "/nt:termination-point" +
              "/ns-topo:slo-sle-policy" + 
              "/ns-topo:custom" + 
-             "/ns-topo:service-slo-sle-policy" {
-       when "../../../nw:network-types/ns-topo:network-slice" {
+             "/ns-topo:service-slo-sle-policy" +
+             "/ns-topo:slo-policy" {
+       when "../../../../nw:network-types/ns-topo:network-slice" {
          description "Augment only for Network Slice topology.";
        }
        description "Augment node configuration and state.";
 	   
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      /* network link augments */
      augment "/nw:networks/nw:network/nt:link" +
              "/ns-topo:slo-sle-policy" + 
              "/ns-topo:custom" + 
-             "/ns-topo:service-slo-sle-policy" {
-       when "../../nw:network-types/ns-topo:network-slice" {
+             "/ns-topo:service-slo-sle-policy" +
+             "/ns-topo:slo-policy" {
+       when "../../../nw:network-types/ns-topo:network-slice" {
          description "Augment only for Network Slice topology.";
        }
        description "Augment link configuration and state.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
      
      /* connectivity construct augments */
@@ -290,12 +296,13 @@
              "/ietf-nss:connection-group" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:slo-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connection groups within
           a connectivity-based transport network slice.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
 
      augment "/ietf-nss:network-slice-services" +
@@ -305,12 +312,13 @@
              "/ietf-nss:connectivity-construct" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:slo-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for connectivity-constructs within
           a connectivity-based transport network slice.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
      
      augment "/ietf-nss:network-slice-services" +
@@ -323,12 +331,13 @@
              "/ietf-nss:a2a-sdp" +
              "/ietf-nss:slo-sle-policy" + 
              "/ietf-nss:custom" + 
-             "/ietf-nss:service-slo-sle-policy" {
+             "/ietf-nss:service-slo-sle-policy" +
+             "/ietf-nss:slo-policy" {
        description
          "Augment IETF network slice services to include technology-
           specific SLO/SLE policy for a2a connectivity-constructs
           within a connectivity-based transport network slice.";
-       uses otn-slice-slo-sle-policy;
+       uses otn-slice-slo-policy;
      }
    }
 

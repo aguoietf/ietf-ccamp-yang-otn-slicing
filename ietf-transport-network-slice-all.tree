@@ -2,22 +2,22 @@ module: ietf-network-slice-service
   +--rw network-slice-services
      +--rw slo-sle-templates
      |  +--rw slo-sle-template* [id]
-     |     +--rw id                        string
-     |     +--rw description?              string
-     |     +--rw template-ref?             leafref
-     |     +--rw service-slo-sle-policy
-     |        +--rw description?                  string
-     |        +--rw metric-bounds
-     |        |  +--rw metric-bound* [metric-type]
-     |        |     +--rw metric-type          identityref
-     |        |     +--rw metric-unit          string
-     |        |     +--rw value-description?   string
-     |        |     +--rw percentile-value?    percentile
-     |        |     +--rw bound?               uint64
+     |     +--rw id              string
+     |     +--rw description?    string
+     |     +--rw template-ref?   leafref
+     |     +--rw slo-policy
+     |     |  +--rw metric-bound* [metric-type]
+     |     |  |  +--rw metric-type          identityref
+     |     |  |  +--rw metric-unit          string
+     |     |  |  +--rw value-description?   string
+     |     |  |  +--rw percentile-value?    percentile
+     |     |  |  +--rw bound?               uint64
+     |     |  +--rw availability?   identityref
+     |     |  +--rw mtu?            uint16
+     |     +--rw sle-policy
      |        +--rw security*                     identityref
-     |        +--rw isolation?                    identityref
+     |        +--rw isolation*                    identityref
      |        +--rw max-occupancy-level?          uint8
-     |        +--rw mtu?                          uint16
      |        +--rw steering-constraints
      |        |  +--rw path-constraints
      |        |  +--rw service-function
@@ -38,26 +38,28 @@ module: ietf-network-slice-service
         |  |  +--rw slo-sle-template?         leafref
         |  +--:(custom)
         |     +--rw service-slo-sle-policy
-        |        +--rw description?                  string
-        |        +--rw metric-bounds
+        |        +--rw description?   string
+        |        +--rw slo-policy
         |        |  +--rw metric-bound* [metric-type]
-        |        |     +--rw metric-type          identityref
-        |        |     +--rw metric-unit          string
-        |        |     +--rw value-description?   string
-        |        |     +--rw percentile-value?    percentile
-        |        |     +--rw bound?               uint64
-        |        +--rw security*                     identityref
-        |        +--rw isolation?                    identityref
-        |        +--rw max-occupancy-level?          uint8
-        |        +--rw mtu?                          uint16
-        |        +--rw steering-constraints
-        |        |  +--rw path-constraints
-        |        |  +--rw service-function
-        |        |  +--rw tns:disjointness?
-        |        |          te-types:te-path-disjointness
-        |        +--rw tns:optimization-criterion?   identityref
-        |        +--rw tns:resize-requirement?       identityref
-        |        +--rw tns:service-info?             string
+        |        |  |  +--rw metric-type          identityref
+        |        |  |  +--rw metric-unit          string
+        |        |  |  +--rw value-description?   string
+        |        |  |  +--rw percentile-value?    percentile
+        |        |  |  +--rw bound?               uint64
+        |        |  +--rw availability?   identityref
+        |        |  +--rw mtu?            uint16
+        |        +--rw sle-policy
+        |           +--rw security*                     identityref
+        |           +--rw isolation*                    identityref
+        |           +--rw max-occupancy-level?          uint8
+        |           +--rw steering-constraints
+        |           |  +--rw path-constraints
+        |           |  +--rw service-function
+        |           |  +--rw tns:disjointness?
+        |           |          te-types:te-path-disjointness
+        |           +--rw tns:optimization-criterion?   identityref
+        |           +--rw tns:resize-requirement?       identityref
+        |           +--rw tns:service-info?             string
         +--rw compute-only?                   empty
         +--rw status
         |  +--rw admin-status
@@ -106,9 +108,9 @@ module: ietf-network-slice-service
         |     |     +--rw pir?   uint64
         |     |     +--rw pbs?   uint64
         |     +--rw sdp-peering
-        |     |  +--rw peer-sap-id?   string
+        |     |  +--rw peer-sap-id*   string
         |     |  +--rw protocols
-        |     +--rw ac-svc-name?              string
+        |     +--rw ac-svc-name*              string
         |     +--rw attachment-circuits
         |     |  +--rw attachment-circuit* [id]
         |     |     +--rw id                       string
@@ -174,33 +176,35 @@ module: ietf-network-slice-service
         |     |  |  +--rw slo-sle-template?            leafref
         |     |  +--:(custom)
         |     |     +--rw service-slo-sle-policy
-        |     |        +--rw description?                  string
-        |     |        +--rw metric-bounds
+        |     |        +--rw description?   string
+        |     |        +--rw slo-policy
         |     |        |  +--rw metric-bound* [metric-type]
-        |     |        |     +--rw metric-type          identityref
-        |     |        |     +--rw metric-unit          string
-        |     |        |     +--rw value-description?   string
-        |     |        |     +--rw percentile-value?    percentile
-        |     |        |     +--rw bound?               uint64
-        |     |        +--rw security*
-        |     |        |       identityref
-        |     |        +--rw isolation?
-        |     |        |       identityref
-        |     |        +--rw max-occupancy-level?          uint8
-        |     |        +--rw mtu?                          uint16
-        |     |        +--rw steering-constraints
-        |     |        |  +--rw path-constraints
-        |     |        |  |  +--rw tns:topology-id?     leafref
-        |     |        |  |  +--rw tns:explicit-path* [tp-id]
-        |     |        |  |     +--rw tns:tp-id    leafref
-        |     |        |  +--rw service-function
-        |     |        |  +--rw tns:disjointness?
-        |     |        |          te-types:te-path-disjointness
-        |     |        +--rw tns:optimization-criterion?
-        |     |        |       identityref
-        |     |        +--rw tns:resize-requirement?
-        |     |        |       identityref
-        |     |        +--rw tns:service-info?             string
+        |     |        |  |  +--rw metric-type          identityref
+        |     |        |  |  +--rw metric-unit          string
+        |     |        |  |  +--rw value-description?   string
+        |     |        |  |  +--rw percentile-value?    percentile
+        |     |        |  |  +--rw bound?               uint64
+        |     |        |  +--rw availability?   identityref
+        |     |        |  +--rw mtu?            uint16
+        |     |        +--rw sle-policy
+        |     |           +--rw security*
+        |     |           |       identityref
+        |     |           +--rw isolation*
+        |     |           |       identityref
+        |     |           +--rw max-occupancy-level?          uint8
+        |     |           +--rw steering-constraints
+        |     |           |  +--rw path-constraints
+        |     |           |  |  +--rw tns:topology-id?     leafref
+        |     |           |  |  +--rw tns:explicit-path* [tp-id]
+        |     |           |  |     +--rw tns:tp-id    leafref
+        |     |           |  +--rw service-function
+        |     |           |  +--rw tns:disjointness?
+        |     |           |          te-types:te-path-disjointness
+        |     |           +--rw tns:optimization-criterion?
+        |     |           |       identityref
+        |     |           +--rw tns:resize-requirement?
+        |     |           |       identityref
+        |     |           +--rw tns:service-info?             string
         |     +--rw service-slo-sle-policy-override?   identityref
         |     +--rw connectivity-construct* [id]
         |     |  +--rw id                                   uint32
@@ -224,77 +228,82 @@ module: ietf-network-slice-service
         |     |  |           |  +--rw slo-sle-template?         leafref
         |     |  |           +--:(custom)
         |     |  |              +--rw service-slo-sle-policy
-        |     |  |                 +--rw description?
-        |     |  |                 |       string
-        |     |  |                 +--rw metric-bounds
+        |     |  |                 +--rw description?   string
+        |     |  |                 +--rw slo-policy
         |     |  |                 |  +--rw metric-bound*
-        |     |  |                 |          [metric-type]
-        |     |  |                 |     +--rw metric-type
-        |     |  |                 |     |       identityref
-        |     |  |                 |     +--rw metric-unit
-        |     |  |                 |     |       string
-        |     |  |                 |     +--rw value-description?
-        |     |  |                 |     |       string
-        |     |  |                 |     +--rw percentile-value?
-        |     |  |                 |     |       percentile
-        |     |  |                 |     +--rw bound?
-        |     |  |                 |             uint64
-        |     |  |                 +--rw security*
-        |     |  |                 |       identityref
-        |     |  |                 +--rw isolation?
-        |     |  |                 |       identityref
-        |     |  |                 +--rw max-occupancy-level?
-        |     |  |                 |       uint8
-        |     |  |                 +--rw mtu?
-        |     |  |                 |       uint16
-        |     |  |                 +--rw steering-constraints
-        |     |  |                 |  +--rw path-constraints
-        |     |  |                 |  |  +--rw tns:topology-id?     leafref
-        |     |  |                 |  |  +--rw tns:explicit-path*
-        |     |  |                 |  |          [tp-id]
-        |     |  |                 |  |     +--rw tns:tp-id    leafref
-        |     |  |                 |  +--rw service-function
-        |     |  |                 |  +--rw tns:disjointness?
-        |     |  |                 |          te-types:te-path-disjointness
-        |     |  |                 +--rw tns:optimization-criterion?
-        |     |  |                 |       identityref
-        |     |  |                 +--rw tns:resize-requirement?
-        |     |  |                 |       identityref
-        |     |  |                 +--rw tns:service-info?
-        |     |  |                         string
+        |     |  |                 |  |       [metric-type]
+        |     |  |                 |  |  +--rw metric-type
+        |     |  |                 |  |  |       identityref
+        |     |  |                 |  |  +--rw metric-unit
+        |     |  |                 |  |  |       string
+        |     |  |                 |  |  +--rw value-description?
+        |     |  |                 |  |  |       string
+        |     |  |                 |  |  +--rw percentile-value?
+        |     |  |                 |  |  |       percentile
+        |     |  |                 |  |  +--rw bound?
+        |     |  |                 |  |          uint64
+        |     |  |                 |  +--rw availability?
+        |     |  |                 |  |       identityref
+        |     |  |                 |  +--rw mtu?            uint16
+        |     |  |                 +--rw sle-policy
+        |     |  |                    +--rw security*
+        |     |  |                    |       identityref
+        |     |  |                    +--rw isolation*
+        |     |  |                    |       identityref
+        |     |  |                    +--rw max-occupancy-level?
+        |     |  |                    |       uint8
+        |     |  |                    +--rw steering-constraints
+        |     |  |                    |  +--rw path-constraints
+        |     |  |                    |  |  +--rw tns:topology-id?     leafref
+        |     |  |                    |  |  +--rw tns:explicit-path*
+        |     |  |                    |  |          [tp-id]
+        |     |  |                    |  |     +--rw tns:tp-id    leafref
+        |     |  |                    |  +--rw service-function
+        |     |  |                    |  +--rw tns:disjointness?
+        |     |  |                    |          te-types:te-path-disjointness
+        |     |  |                    +--rw tns:optimization-criterion?
+        |     |  |                    |       identityref
+        |     |  |                    +--rw tns:resize-requirement?
+        |     |  |                    |       identityref
+        |     |  |                    +--rw tns:service-info?
+        |     |  |                            string
         |     |  +--rw (slo-sle-policy)?
         |     |  |  +--:(standard)
         |     |  |  |  +--rw slo-sle-template?              leafref
         |     |  |  +--:(custom)
         |     |  |     +--rw service-slo-sle-policy
-        |     |  |        +--rw description?                  string
-        |     |  |        +--rw metric-bounds
+        |     |  |        +--rw description?   string
+        |     |  |        +--rw slo-policy
         |     |  |        |  +--rw metric-bound* [metric-type]
-        |     |  |        |     +--rw metric-type
-        |     |  |        |     |       identityref
-        |     |  |        |     +--rw metric-unit          string
-        |     |  |        |     +--rw value-description?   string
-        |     |  |        |     +--rw percentile-value?    percentile
-        |     |  |        |     +--rw bound?               uint64
-        |     |  |        +--rw security*
-        |     |  |        |       identityref
-        |     |  |        +--rw isolation?
-        |     |  |        |       identityref
-        |     |  |        +--rw max-occupancy-level?          uint8
-        |     |  |        +--rw mtu?                          uint16
-        |     |  |        +--rw steering-constraints
-        |     |  |        |  +--rw path-constraints
-        |     |  |        |  |  +--rw tns:topology-id?     leafref
-        |     |  |        |  |  +--rw tns:explicit-path* [tp-id]
-        |     |  |        |  |     +--rw tns:tp-id    leafref
-        |     |  |        |  +--rw service-function
-        |     |  |        |  +--rw tns:disjointness?
-        |     |  |        |          te-types:te-path-disjointness
-        |     |  |        +--rw tns:optimization-criterion?
-        |     |  |        |       identityref
-        |     |  |        +--rw tns:resize-requirement?
-        |     |  |        |       identityref
-        |     |  |        +--rw tns:service-info?             string
+        |     |  |        |  |  +--rw metric-type
+        |     |  |        |  |  |       identityref
+        |     |  |        |  |  +--rw metric-unit          string
+        |     |  |        |  |  +--rw value-description?   string
+        |     |  |        |  |  +--rw percentile-value?    percentile
+        |     |  |        |  |  +--rw bound?               uint64
+        |     |  |        |  +--rw availability?   identityref
+        |     |  |        |  +--rw mtu?            uint16
+        |     |  |        +--rw sle-policy
+        |     |  |           +--rw security*
+        |     |  |           |       identityref
+        |     |  |           +--rw isolation*
+        |     |  |           |       identityref
+        |     |  |           +--rw max-occupancy-level?
+        |     |  |           |       uint8
+        |     |  |           +--rw steering-constraints
+        |     |  |           |  +--rw path-constraints
+        |     |  |           |  |  +--rw tns:topology-id?     leafref
+        |     |  |           |  |  +--rw tns:explicit-path* [tp-id]
+        |     |  |           |  |     +--rw tns:tp-id    leafref
+        |     |  |           |  +--rw service-function
+        |     |  |           |  +--rw tns:disjointness?
+        |     |  |           |          te-types:te-path-disjointness
+        |     |  |           +--rw tns:optimization-criterion?
+        |     |  |           |       identityref
+        |     |  |           +--rw tns:resize-requirement?
+        |     |  |           |       identityref
+        |     |  |           +--rw tns:service-info?
+        |     |  |                   string
         |     |  +--rw service-slo-sle-policy-override?
         |     |  |       identityref
         |     |  +--rw status

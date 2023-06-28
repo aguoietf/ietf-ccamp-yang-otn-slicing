@@ -1,8 +1,7 @@
 module: ietf-otn-slice
 
   augment /ietf-nss:network-slice-services/ietf-nss:slo-sle-templates
-            /ietf-nss:slo-sle-template
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:slo-sle-template/ietf-nss:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -14,7 +13,7 @@ module: ietf-otn-slice
           +--rw number?     uint16
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:service-slo-sle-policy/ietf-nss:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -25,7 +24,8 @@ module: ietf-otn-slice
           +--rw odu-type    identityref
           +--rw number?     uint16
   augment /nw:networks/nw:network/ns-topo:slo-sle-policy
-            /ns-topo:custom/ns-topo:service-slo-sle-policy:
+            /ns-topo:custom/ns-topo:service-slo-sle-policy
+            /ns-topo:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -36,7 +36,8 @@ module: ietf-otn-slice
           +--rw odu-type    identityref
           +--rw number?     uint16
   augment /nw:networks/nw:network/nw:node/ns-topo:slo-sle-policy
-            /ns-topo:custom/ns-topo:service-slo-sle-policy:
+            /ns-topo:custom/ns-topo:service-slo-sle-policy
+            /ns-topo:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -48,7 +49,7 @@ module: ietf-otn-slice
           +--rw number?     uint16
   augment /nw:networks/nw:network/nw:node/nt:termination-point
             /ns-topo:slo-sle-policy/ns-topo:custom
-            /ns-topo:service-slo-sle-policy:
+            /ns-topo:service-slo-sle-policy/ns-topo:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -59,7 +60,8 @@ module: ietf-otn-slice
           +--rw odu-type    identityref
           +--rw number?     uint16
   augment /nw:networks/nw:network/nt:link/ns-topo:slo-sle-policy
-            /ns-topo:custom/ns-topo:service-slo-sle-policy:
+            /ns-topo:custom/ns-topo:service-slo-sle-policy
+            /ns-topo:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -72,7 +74,7 @@ module: ietf-otn-slice
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:slo-sle-policy/ietf-nss:custom
-            /ietf-nss:service-slo-sle-policy:
+            /ietf-nss:service-slo-sle-policy/ietf-nss:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -85,7 +87,8 @@ module: ietf-otn-slice
   augment /ietf-nss:network-slice-services/ietf-nss:slice-service
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
+            /ietf-nss:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]
@@ -99,7 +102,8 @@ module: ietf-otn-slice
             /ietf-nss:connection-groups/ietf-nss:connection-group
             /ietf-nss:connectivity-construct/ietf-nss:type
             /ietf-nss:a2a/ietf-nss:a2a-sdp/ietf-nss:slo-sle-policy
-            /ietf-nss:custom/ietf-nss:service-slo-sle-policy:
+            /ietf-nss:custom/ietf-nss:service-slo-sle-policy
+            /ietf-nss:slo-policy:
     +--rw otn
        +--rw odu-signal-quality
        |  +--rw odu-pm-objective* [duration pm-type]

@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-ietf-ccamp-yang-otn-slicing-04
+docname: draft-ietf-ccamp-yang-otn-slicing-05
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -159,18 +159,19 @@ normative:
    | nt       | ietf-network-topology        | {{!RFC8345}}      |
    | nw       | ietf-network-topology        | {{!RFC8345}}      |
    | tet      | ietf-te-topology             | {{!RFC8795}}      |
-   | te-types | ietf-te-types                | {{!RFC8776}}      |
+   | te-types | ietf-te-types                | \[RFCWWWW]        |
    | otnt     | ietf-otn-topology            | \[RFCYYYY]        |
    | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
-   | tns      | ietf-transport-network-slice | RFCXXXX           |
-   | otns     | ietf-otn-slice               | RFCXXXX           |
-   | otns-mpi | ietf-otn-slice-mpi           | RFCXXXX           |
+   | tns      | ietf-transport-network-slice | \[RFCXXXX]        |
+   | otns     | ietf-otn-slice               | \[RFCXXXX]        |
+   | otns-mpi | ietf-otn-slice-mpi           | \[RFCXXXX]        |
 {: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
 
 RFC Editor Note:
 Please replace XXXX with the RFC number assigned to this document.
 Please replace YYYY with the RFC number assigned to {{!I-D.ietf-ccamp-otn-topo-yang}}.
 Please replace ZZZZ with the RFC number assigned to {{!I-D.ietf-ccamp-layer1-types}}.
+Please replace WWWW with the RFC number assigned to {{?I-D.ietf-teas-rfc8776-update}}.
 Please remove this note.
 
 ## Definition of OTN Slice
@@ -611,7 +612,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### NBI YANG Code for Transport Network Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2022-10-12.yang"
+   <CODE BEGINS> file "ietf-transport-network-slice@2023-06-28.yang"
 {::include ./ietf-transport-network-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -627,7 +628,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### NBI YANG Code for OTN Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2022-10-12.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2023-06-28.yang"
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~
