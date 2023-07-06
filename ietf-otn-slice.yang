@@ -6,11 +6,13 @@
 
      import ietf-network {
        prefix "nw";
-       reference "RFC 8345: A YANG Data Model for Network Topologies";
+       reference 
+         "RFC 8345: A YANG Data Model for Network Topologies";
      }
      import ietf-network-topology {
        prefix "nt";
-       reference "RFC 8345: A YANG Data Model for Network Topologies";
+       reference
+         "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
      import ietf-te-types {
@@ -30,7 +32,7 @@
      import ietf-network-slice-service {
        prefix "ietf-nss";
        reference
-         "draft-ietf-teas-ietf-network-slice-nbi-yang-04:
+         "draft-ietf-teas-ietf-network-slice-nbi-yang-05:
           IETF Network Slice Service YANG Model";
      }
 
@@ -80,7 +82,7 @@
         This version of this YANG module is part of RFC XXXX; see the
         RFC itself for full legal notices.";
 
-     revision "2023-06-28" {
+     revision "2023-07-06" {
        description
          "Latest revision of NBI YANG model for OTN slicing.";
        reference
@@ -215,7 +217,7 @@
              "/ietf-nss:slo-policy" {
        description
           "Augment IETF network slice service templates with
-		   OTN technology-specific SLO/SLE policy attributes.";
+           OTN technology-specific SLO/SLE policy attributes.";
   
        uses otn-slice-slo-policy;
      }

@@ -87,14 +87,6 @@ normative:
     seriesinfo: 3GPP TS 28.530
     target: http://ftp.3gpp.org//Specs/archive/28_series/28.530/28530-f10.zip
 
-  GSMA-NS-Template:
-    title: Generic Network Slice Template, Version 5.0
-    author:
-      org: GSMA Association
-    date: June 2021
-    seriesinfo: NG.116
-    target: https://www.gsma.com/newsroom/wp-content/uploads//NG.116-v5.0-7.pdf
-
   ITU-T-G.8201-Amd.1:
     title: Error performance parameters and objectives for multi-operator international
 	paths within optical transport networks (Amendment 1)
@@ -159,19 +151,20 @@ normative:
    | nt       | ietf-network-topology        | {{!RFC8345}}      |
    | nw       | ietf-network-topology        | {{!RFC8345}}      |
    | tet      | ietf-te-topology             | {{!RFC8795}}      |
+   | ietf-nss | ietf-network-slice-service   | \[RFCVVVV]        |
    | te-types | ietf-te-types                | \[RFCWWWW]        |
    | otnt     | ietf-otn-topology            | \[RFCYYYY]        |
    | l1-types | ietf-layer1-types            | \[RFCZZZZ]        |
-   | tns      | ietf-transport-network-slice | \[RFCXXXX]        |
    | otns     | ietf-otn-slice               | \[RFCXXXX]        |
    | otns-mpi | ietf-otn-slice-mpi           | \[RFCXXXX]        |
 {: #tab-prefixes title="Prefixes and Corresponding YANG Modules"}
 
 RFC Editor Note:
+Please replace VVVV with the RFC number assigned to {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}.
+Please replace WWWW with the RFC number assigned to {{?I-D.ietf-teas-rfc8776-update}}.
 Please replace XXXX with the RFC number assigned to this document.
 Please replace YYYY with the RFC number assigned to {{!I-D.ietf-ccamp-otn-topo-yang}}.
 Please replace ZZZZ with the RFC number assigned to {{!I-D.ietf-ccamp-layer1-types}}.
-Please replace WWWW with the RFC number assigned to {{?I-D.ietf-teas-rfc8776-update}}.
 Please remove this note.
 
 ## Definition of OTN Slice
@@ -573,51 +566,24 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ## OTN Slicing YANG Model for OTN-SC NBI
 
 ### NBI YANG Model Overview
+
    The YANG model for OTN-SC NBI is OTN-technology specific, but shares many
-   common constructs and attributes with generic network slicing YANG models.
-   Furthermore, the OTN-SC NBI YANG is expected to support both connectivity-based
+   common constructs and attributes with the common network slicing YANG model
+   defined in {{?I-D.ietf-teas-ietf-network-slice-nbi-yang}}. Furthermore, the 
+   OTN-SC NBI YANG is expected to support both connectivity-based
    and resource-based slice configuration, which is likely a common requirement for
    supporting slicing at other transport network layers, e.g. WDM or MPLS(-TP).
-   Therefore, the OTN-SC NBI YANG model is designed into two models, a common base 
-   model for transport network slicing, and an OTN slicing model which augments the 
-   base model with OTN technology-specific constructs.
-
-   The base model defines a transport network slice (TNS), which augments the network
-   slice topology model defined in {{!I-D.draft-liu-teas-transport-network-slice-yang}}
-   by adding the following constructs and attributes applicable to trasnport network slicing:
-
-   - Explicit path, which defines a customized service path for routing connections
-     over a customized topology on which the slice is built.
    
-   - Service-level objectives (SLOs) and service-level expectation (SLEs) associated 
-    with connections within the slice.
-
-   The OTN slicing model further augments the common TNS model with OTN technology-specific
-   SLO/SLE attributes upon requesting slice services by an OTN-aware customer. These attributes
-   allows the customer to specify desired signal quality and bandwidth in terms of OTN signal
-   structure. These attributes include:
+   The OTN slicing model augments the common network slicing YANG model by extending
+   OTN technology-specific SLO and SLE attributes which can be requested by OTN-aware
+   customers and allows the customer to specify desired OTN signal quality. 
+   These attributes include:
    
    - The performance objective for Optical Data Unit (ODU) containers as defined in
      ITU-T-G.8201-Amd.1.
    
    - Bandwidth specification in the type and number of ODU containers.
 
-### NBI YANG Model Tree for Transport Network Slice
-
-~~~~
-{::include ./ietf-transport-network-slice.tree}
-~~~~
-{: #fig-ietf-transport-network-slice title="Tree diagram for transport network slice"}
-
-### NBI YANG Code for Transport Network Slice
-
-~~~~
-   <CODE BEGINS> file "ietf-transport-network-slice@2023-06-28.yang"
-{::include ./ietf-transport-network-slice.yang}
-   <CODE ENDS>
-~~~~
-{: #fig-ietf-transport-network-yang title="YANG model for transport network slice"}   
-   
 ### NBI YANG Model Tree for OTN slice
 
 ~~~~
@@ -628,7 +594,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### NBI YANG Code for OTN Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2023-06-28.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2023-07-06.yang"
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~
@@ -683,24 +649,19 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
    Registry" {{!RFC3688}} as follows:
 
 ~~~~
-   URI: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-   Registrant Contact: The IESG
-   XML: N/A; the requested URI is an XML namespace.
-
    URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice
    Registrant Contact: The IESG
    XML: N/A; the requested URI is an XML namespace.
+
+   URI: urn:ietf:params:xml:ns:yang:ietf-otn-slice-mpi
+   Registrant Contact: The IESG
+   XML: N/A; the requested URI is an XML namespace.
 ~~~~
 
-   This document registers a YANG module in the YANG Module Names
+   This document registers two YANG modules in the YANG Module Names
    registry {{!RFC6020}}.
 
 ~~~~
-   name: ietf-transport-network-slice
-   namespace: urn:ietf:params:xml:ns:yang:ietf-transport-network-slice
-   prefix: tns
-   reference: RFC XXXX
-
    name: ietf-otn-slice
    namespace: urn:ietf:params:xml:ns:yang:ietf-otn-slice
    prefix: otns
