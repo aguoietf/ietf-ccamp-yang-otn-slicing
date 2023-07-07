@@ -19,7 +19,7 @@ module: ietf-network-slice-service
      |     |     |  +--rw otns:odu-pm-objective* [duration pm-type]
      |     |     |     +--rw otns:duration        identityref
      |     |     |     +--rw otns:pm-type         identityref
-     |     |     |     +--rw otns:pm-threshold?   union
+     |     |     |     +--rw otns:pm-threshold?   uint64
      |     |     +--rw otns:odulist* [odu-type]
      |     |        +--rw otns:odu-type    identityref
      |     |        +--rw otns:number?     uint16
@@ -60,7 +60,7 @@ module: ietf-network-slice-service
         |        |     |          [duration pm-type]
         |        |     |     +--rw otns:duration        identityref
         |        |     |     +--rw otns:pm-type         identityref
-        |        |     |     +--rw otns:pm-threshold?   union
+        |        |     |     +--rw otns:pm-threshold?   uint64
         |        |     +--rw otns:odulist* [odu-type]
         |        |        +--rw otns:odu-type    identityref
         |        |        +--rw otns:number?     uint16
@@ -207,7 +207,7 @@ module: ietf-network-slice-service
         |     |        |     |     |       identityref
         |     |        |     |     +--rw otns:pm-type
         |     |        |     |     |       identityref
-        |     |        |     |     +--rw otns:pm-threshold?   union
+        |     |        |     |     +--rw otns:pm-threshold?   uint64
         |     |        |     +--rw otns:odulist* [odu-type]
         |     |        |        +--rw otns:odu-type    identityref
         |     |        |        +--rw otns:number?     uint16
@@ -272,7 +272,7 @@ module: ietf-network-slice-service
         |     |  |                 |     |     +--rw otns:pm-type
         |     |  |                 |     |     |       identityref
         |     |  |                 |     |     +--rw otns:pm-threshold?
-        |     |  |                 |     |             union
+        |     |  |                 |     |             uint64
         |     |  |                 |     +--rw otns:odulist*
         |     |  |                 |             [odu-type]
         |     |  |                 |        +--rw otns:odu-type
@@ -320,7 +320,7 @@ module: ietf-network-slice-service
         |     |  |        |     |     +--rw otns:pm-type
         |     |  |        |     |     |       identityref
         |     |  |        |     |     +--rw otns:pm-threshold?
-        |     |  |        |     |             union
+        |     |  |        |     |             uint64
         |     |  |        |     +--rw otns:odulist* [odu-type]
         |     |  |        |        +--rw otns:odu-type    identityref
         |     |  |        |        +--rw otns:number?     uint16
@@ -420,7 +420,7 @@ module: ietf-network
         |  |           |     |     |       identityref
         |  |           |     |     +--rw otns:pm-type
         |  |           |     |     |       identityref
-        |  |           |     |     +--rw otns:pm-threshold?   union
+        |  |           |     |     +--rw otns:pm-threshold?   uint64
         |  |           |     +--rw otns:odulist* [odu-type]
         |  |           |        +--rw otns:odu-type    identityref
         |  |           |        +--rw otns:number?     uint16
@@ -458,7 +458,7 @@ module: ietf-network
         |           |     |     |       identityref
         |           |     |     +--rw otns:pm-type
         |           |     |     |       identityref
-        |           |     |     +--rw otns:pm-threshold?   union
+        |           |     |     +--rw otns:pm-threshold?   uint64
         |           |     +--rw otns:odulist* [odu-type]
         |           |        +--rw otns:odu-type    identityref
         |           |        +--rw otns:number?     uint16
@@ -510,7 +510,7 @@ module: ietf-network
         |           |     |     |       identityref
         |           |     |     +--rw otns:pm-type
         |           |     |     |       identityref
-        |           |     |     +--rw otns:pm-threshold?   union
+        |           |     |     +--rw otns:pm-threshold?   uint64
         |           |     +--rw otns:odulist* [odu-type]
         |           |        +--rw otns:odu-type    identityref
         |           |        +--rw otns:number?     uint16
@@ -546,7 +546,7 @@ module: ietf-network
                  |     |          [duration pm-type]
                  |     |     +--rw otns:duration        identityref
                  |     |     +--rw otns:pm-type         identityref
-                 |     |     +--rw otns:pm-threshold?   union
+                 |     |     +--rw otns:pm-threshold?   uint64
                  |     +--rw otns:odulist* [odu-type]
                  |        +--rw otns:odu-type    identityref
                  |        +--rw otns:number?     uint16

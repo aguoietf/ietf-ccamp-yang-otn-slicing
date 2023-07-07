@@ -15,13 +15,6 @@
          "RFC 8345: A YANG Data Model for Network Topologies";
      }
 
-     import ietf-te-types {
-       prefix "te-types";
-       reference
-         "draft-ietf-teas-rfc8776-update-04: 
-          Common YANG Data Types for Traffic Engineering";
-     }
-
      import ietf-layer1-types {
        prefix "l1-types";
        reference
@@ -183,10 +176,7 @@
            }
            
            leaf pm-threshold {
-             type union {
-               type te-types:bandwidth-scientific-notation;
-               type uint64;
-             }
+             type uint64;
              description
                "ODU PM metric threshold.";
            }
