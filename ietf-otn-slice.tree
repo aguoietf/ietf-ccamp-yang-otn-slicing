@@ -7,7 +7,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -19,7 +19,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -31,7 +31,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -43,7 +43,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -55,7 +55,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -67,7 +67,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -80,7 +80,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -94,7 +94,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
@@ -109,7 +109,7 @@ module: ietf-otn-slice
        |  +--rw odu-pm-objective* [duration pm-type]
        |     +--rw duration        identityref
        |     +--rw pm-type         identityref
-       |     +--rw pm-threshold?   union
+       |     +--rw pm-threshold?   uint64
        +--rw odulist* [odu-type]
           +--rw odu-type    identityref
           +--rw number?     uint16
