@@ -15,7 +15,7 @@ Expires: 8 January 2024                                       Telefonica
                                                                  Y. Zhao
                                                             China Mobile
                                                                   X. Liu
-                                                         IBM Corporation
+                                                               Alef Edge
                                                              7 July 2023
 
 
@@ -1798,9 +1798,9 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2023
               Wu, B., Dhody, D., Rokui, R., Saad, T., Han, L., and J.
               Mullooly, "A YANG Data Model for the IETF Network Slice
               Service", Work in Progress, Internet-Draft, draft-ietf-
-              teas-ietf-network-slice-nbi-yang-04, 13 March 2023,
+              teas-ietf-network-slice-nbi-yang-05, 7 July 2023,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              ietf-network-slice-nbi-yang-04>.
+              ietf-network-slice-nbi-yang-05>.
 
    [I-D.ietf-teas-rfc8776-update]
               Busi, I., Guo, A., Liu, X., Saad, T., Beeram, V. P., and
@@ -1919,7 +1919,7 @@ Internet-Draft      Framework and YANG of OTN Slices           July 2023
 
 
    Xufeng Liu
-   IBM Corporation
+   Alef Edge
 
    Email: xufeng.liu.ietf@gmail.com
 

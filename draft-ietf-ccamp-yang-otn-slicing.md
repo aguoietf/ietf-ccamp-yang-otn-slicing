@@ -39,7 +39,7 @@ author:
     email: zhaoyangyjy@chinamobile.com
   -
     name: Xufeng Liu
-    org: IBM Corporation
+    org: Alef Edge
     email: xufeng.liu.ietf@gmail.com
 
 contributor:
