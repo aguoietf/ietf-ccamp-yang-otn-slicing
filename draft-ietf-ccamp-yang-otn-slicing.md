@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-ietf-ccamp-yang-otn-slicing-06
+docname: draft-ietf-ccamp-yang-otn-slicing-07
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -172,11 +172,11 @@ Please remove this note.
    of OTN endpoints using a set of shared or dedicated OTN network resources to
    satisfy specific service level objectives (SLOs).
 
-   An OTN slice is a technology-specific realization of an IETF network slice 
-   {{!I-D.ietf-teas-ietf-network-slices}} in the OTN domain, with the
+   An OTN slice is a technology-specific realization of the RFC 9543 network slice service 
+   {{!RFC9543}} in the OTN domain, with the
    capability of configuring slice resources in the term of OTN technologies. 
    Therefore, all the terms and definitions concerning network slicing as 
-   defined in {{!I-D.ietf-teas-ietf-network-slices}} apply to OTN slicing.
+   defined in {{!RFC9543}} apply to OTN slicing.
    
    An OTN slice can span multiple OTN administrative domains, encompassing 
    access links, intra-domain paths, and inter-domain links. 
@@ -216,8 +216,8 @@ Please remove this note.
 
    OTN slices may be pre-configured by the management plane and presented to 
    the customer via the northbound interface (NBI), or be dynamically 
-   provisioned by a higher layer slice controller, e.g., an IETF network slice 
-   controller (IETF NSC) through the NBI. The OTN slice is 
+   provisioned by a higher layer slice controller, e.g., an RFC 9543 network slice 
+   controller (NSC) through the NBI. The OTN slice is 
    provided by a service provider to a customer to be used as though it was part
    of the customer's own networks.
          
@@ -302,13 +302,13 @@ Please remove this note.
 ## End-to-end network slicing
 
    In an end-to-end network slicing scenario such as 5G network slicing
-   {{TS.28.530-3GPP}}, an IETF network slice {{?I-D.ietf-teas-ietf-network-slices}}
+   {{TS.28.530-3GPP}}, an RFC 9543 network slice {{?RFC9543}}
    provides the required connectivity between other different segments 
    of an end-to-end network slice, such as the Radio Access Network 
    (RAN) and the Core Network (CN) segments, with a specific 
-   performance commitment. An IETF network slice could be composed of 
+   performance commitment. An RFC 9543 network slice could be composed of 
    network slices from multiple technological and administrative 
-   domains. An IETF network slice can be realized by using or combining
+   domains. An RFC 9543 network slice can be realized by using or combining
    multiple underlying OTN slices with OTN resources, e.g., ODU time 
    slots or ODU containers, to achieve end-to-end slicing across the transport
    domain.
@@ -366,7 +366,7 @@ shall support configuring an OTN slice with both options.
    the life-cycle management of OTN slices instantiated within the 
    corresponding OTN network domains. The OTN-SC provides technology-specific 
    interfaces at its northbound (OTN-SC NBI) to allow a higher-layer slice 
-   controller, such as an IETF network slice controller (NSC) or an orchestrator, 
+   controller, such as an RFC 9543 network slice controller (NSC) or an orchestrator, 
    to request OTN slices with OTN-specific 
    requirements. The OTN-SC interfaces at the southbound using the MDSC-to-PNC 
    interface (MPI) with a Physical Network Controller (PNC) or Multi-Domain Service Orchestrator (MDSC),
@@ -387,8 +387,8 @@ shall support configuring an OTN slice with both options.
    Option 2\[opt.2]: An IETF NSC receives a technology-agnostic slice request from the IETF NSC NBI and delegates the
    request to the OTN-SC through the OTN-SC NBI, which is OTN technology specific. The OTN-SC in turn realizes the slice in single or multi domain OTN networks by working with the underlying PNC or MDSC. In this option, the OTN-SC is considered as a realization of IETF NSC, i.e.,
    an NS realizer as per {{!I-D.draft-contreras-teas-slice-controller-models}},
-   when the underlying network is OTN. The OTN-SC is also a subordinate slice controller of the IETF NSC, which 
-   is consistent with the hierarchical control of slices defined by the IETF network slice framework.
+   when the underlying network is OTN. The OTN-SC is also a subordinate slice controller of the RFC 9543 NSC, which 
+   is consistent with the hierarchical control of slices specified by {{!RFC9543}}.
    
    Option 3\[opt.3]: An OTN-aware orchestrator may request an OTN technology-specific slice with OTN-specific SLOs through the 
    OTN-SC NBI to the OTN-SC. The OTN-SC in turn realizes the slice in single or multi domain OTN networks by working with the underlying PNC or MDSC
@@ -407,22 +407,22 @@ shall support configuring an OTN slice with both options.
                       | Provider's User    |
                       +--------|-----------+
                                | CMI
-       +-----------------------+----------------------------+
-       |          Orchestrator / E2E Slice Controller       | 
-       +------------+-----------------------------+---------+
+       +-----------------------+--------------------------------+
+       |          Orchestrator / E2E Slice Controller           | 
+       +------------+-----------------------------+-------------+
                     |                             | NSC-NBI
-                    |       +---------------------+---------+
-                    |       | IETF Network Slice Controller |
-                    |       +-----+---------------+---------+
+                    |       +---------------------+-------------+
+                    |       | RFC 9543 Network Slice Controller |
+                    |       +-----+---------------+-------------+
                     | opt.3       | opt.2         | opt.1
                     | OTN-SC NBI  |OTN-SC NBI     |               
        +------------+-------------+--------+      |
        |               OTN-SC              |      |
        +--------------------------+--------+      |      
                                   | MPI           | MPI                           
-       +--------------------------+---------------+---------+ 
-       |                         PNC                        | 
-       +--------------------------+-------------------------+ 
+       +--------------------------+---------------+------------+ 
+       |                         PNC                           | 
+       +--------------------------+----------------------------+ 
                                   | SBI
                       +-----------+----------+
                       |OTN Physical Network  |
@@ -474,7 +474,7 @@ shall support configuring an OTN slice with both options.
 
 # Realizing OTN Slices
 
-{{!I-D.ietf-teas-ietf-network-slices}} introduces a mechanism for an IETF network slice controller to realize network slices by constructing Network Resource Partitions (NRP). A NRP is a collection of resources identified in the underlay network to facilitate the mapping of network slices onto available network resources. An NRP is a scope view of a topology and may be considered as a topology in its own right. Thus, in traffic-engineered (TE) networks including OTN, an NRP may be simply represented as an abstract TE topology defined by {{!RFC8795}}. For OTN networks, An NRP may be represented as an abstract OTN topology defined by {{!I-D.ietf-ccamp-otn-topo-yang}}.
+{{!RFC9543}} introduces a mechanism for an RFC 9543 network slice controller to realize network slices by constructing Network Resource Partitions (NRP). A NRP is a collection of resources identified in the underlay network to facilitate the mapping of network slices onto available network resources. An NRP is a scope view of a topology and may be considered as a topology in its own right. Thus, in traffic-engineered (TE) networks including OTN, an NRP may be simply represented as an abstract TE topology defined by {{!RFC8795}}. For OTN networks, An NRP may be represented as an abstract OTN topology defined by {{!I-D.ietf-ccamp-otn-topo-yang}}.
 
 The NRP may be used to address the scalability issues where there may be considerable numbers of control and data plane states required to be stored and programmed if network slices are mapped directly to the underlay topology. NRP is internal to a network slice controller, and use of NRPs is optional yet could benefit a network slice realization in large-scale networks, including OTN networks. 
 
@@ -482,7 +482,7 @@ For connectivity-based OTN slices, a connection within an OTN slice is typically
 
 For resource-based OTN slices, the OTN-SC may map an OTN slice directly onto the underlay TE topology presented by the subtended network controller (MDSC or PNC) without creating NRP topologies. Due to the need for reserving resources, the OTN-SC needs to color corresponding link resources of the underlay topology with a slice identifier and maintain the coloring to keep track of the mapping of OTN slices. The OTN-SC may push the colored topology to the subtended MDSC or PNC using the MPI model defined in this draft.
 
-Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!I-D.ietf-teas-ietf-network-slices}}. The resources of an NRP topology are reserved and shared by all the OTN slices mapped to this NRP, and the NRP topology may be pushed directly to the subtended MDSC or PNC, thus eliminating the need for link coloring if using the underlay topology.
+Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE topology on top of the underlay topology. The corresponding link resources allocated to the slice is encapsulated in and tracked by the abstract topology, and a given link or port in the NRP topology represents resources that are reserved in the underlay topology. Multiple OTN slices may be mapped to the same NRP, and a single connectivity construct of the slice may be mapped to only one NRP, as per {{!RFC9543}}. The resources of an NRP topology are reserved and shared by all the OTN slices mapped to this NRP, and the NRP topology may be pushed directly to the subtended MDSC or PNC, thus eliminating the need for link coloring if using the underlay topology.
 
 {{fig-otn-sc-nrp}} illustrates the relationship between OTN slices and NRP.
 
