@@ -4,7 +4,7 @@ coding: utf-8
 title: Framework and Data Model for OTN Network Slicing
 
 abbrev: Framework and YANG of OTN Slices
-docname: draft-ietf-ccamp-yang-otn-slicing-07
+docname: draft-ietf-ccamp-yang-otn-slicing-08
 workgroup: CCAMP Working Group
 category: std
 ipr: trust200902
@@ -557,7 +557,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### MPI YANG Code
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice-mpi@2022-10-12.yang"
+   <CODE BEGINS> file "ietf-otn-slice-mpi@2024-07-07.yang"
 {::include ./ietf-otn-slice-mpi.yang}
    <CODE ENDS>
 ~~~~
@@ -580,7 +580,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
    These attributes include:
    
    - The performance objective for Optical Data Unit (ODU) containers as defined in
-     ITU-T-G.8201-Amd.1.
+     {{ITU-T-G.8201-Amd.1}}.
    
    - Bandwidth specification in the type and number of ODU containers.
 
@@ -594,7 +594,7 @@ Alternatively, an OTN slice may be mapped to a NRP as an overlay abstract OTN TE
 ### NBI YANG Code for OTN Slice
 
 ~~~~
-   <CODE BEGINS> file "ietf-otn-slice@2023-07-06.yang"
+   <CODE BEGINS> file "ietf-otn-slice@2024-07-07.yang"
 {::include ./ietf-otn-slice.yang}
    <CODE ENDS>
 ~~~~

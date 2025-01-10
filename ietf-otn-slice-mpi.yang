@@ -74,11 +74,11 @@
         This version of this YANG module is part of RFC XXXX; see the
         RFC itself for full legal notices.";
 
-     revision "2022-10-12" {
+     revision "2024-07-07" {
        description
          "Latest revision of MPI YANG model for OTN slicing.";
        reference
-         "draft-ietf-ccamp-yang-otn-slicing-03: Framework and Data
+         "draft-ietf-ccamp-yang-otn-slicing-08: Framework and Data
           Model for OTN Network Slicing";
      }
 
